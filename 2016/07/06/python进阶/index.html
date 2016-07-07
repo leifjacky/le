@@ -98,7 +98,7 @@ dictionary类型（词典、映射）dictionary定义&amp;gt;&amp;gt;&amp;gt;dic
 dictionary类型（词典、映射）dictionary定义&amp;gt;&amp;gt;&amp;gt;dic = {&amp;apos;tom&amp;apos;:11, &amp;apos;sam&amp;apos;:57,&amp;apos;lily&amp;apos;:100}
 &amp;gt;&amp;gt;&amp;gt;dic[&amp;apos;tom&amp;apos;] = 30
 遍历键值dic = {&amp;apos;lilei&amp;apos;: 90, &amp;">
-<meta property="og:updated_time" content="2016-07-06T15:36:45.000Z">
+<meta property="og:updated_time" content="2016-07-07T08:22:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python进阶">
 <meta name="twitter:description" content="本文基于实验楼教程重新编写
@@ -412,6 +412,238 @@ while True:
     print content,
 
 file.close()
+</code></pre><p><br><br></p>
+<h1 id="循环设计"><a href="#循环设计" class="headerlink" title="循环设计"></a>循环设计</h1><h2 id="range-进阶"><a href="#range-进阶" class="headerlink" title="range()进阶"></a>range()进阶</h2><pre><code>S = &apos;abcdefghijk&apos;
+for i in range(0,len(S),2):
+    print S[i]
+</code></pre><ul>
+<li>利用 len() 函数和 range() 函数，用 i 作为 S 序列的下标来控制循环。在range函数中，分别定义上限，下限和每次循环的步长。这就和C语言中的for循环相类似了。</li>
+<li>range(下限, 上限, 步长)</li>
+</ul>
+<h2 id="enumerate"><a href="#enumerate" class="headerlink" title="enumerate()"></a>enumerate()</h2><pre><code>S = &apos;abcdefghijk&apos;
+for (index,char) in enumerate(S):
+    print index
+    print char
+</code></pre><ul>
+<li>enumerate()在每次循环中，返回的是一个包含两个元素的定值表(tuple)，两个元素分别赋予index和char。</li>
+</ul>
+<h2 id="zip"><a href="#zip" class="headerlink" title="zip()"></a>zip()</h2><pre><code>ta = [1,2,3]
+tb = [9,8,7]
+tc = [&apos;a&apos;,&apos;b&apos;,&apos;c&apos;]
+for (a,b,c) in zip(ta,tb,tc):
+    print(a,b,c)
+</code></pre><ul>
+<li>每次循环时，从各个序列分别从左到右取出一个元素，合并成一个tuple，然后tuple的元素赋予给a,b,c 。</li>
+</ul>
+<p>也可以分解聚合后的列表：</p>
+<pre><code>&gt;&gt;&gt; ta = [1,2,3]
+&gt;&gt;&gt; tb = [9,8,7]
+
+&gt;&gt;&gt; zipped = zip(ta,tb)
+&gt;&gt;&gt; print(zipped)
+[(1, 9), (2, 8), (3, 7)]
+
+&gt;&gt;&gt; na, nb = zip(*zipped)
+&gt;&gt;&gt; print(na, nb)
+((1, 2, 3), (9, 8, 7))
+</code></pre><p><br><br></p>
+<h1 id="循环对象"><a href="#循环对象" class="headerlink" title="循环对象"></a>循环对象</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>循环对象是这样一个对象，<strong>它包含有一个next()方法 ( __next__() 方法，在python 3x中 )</strong>， 这个方法的目的是进行到下一个结果，而在结束一系列结果之后，举出<strong>StopIteration错误</strong>。</p>
+<pre><code>&gt;&gt;&gt;f = open(&apos;test.txt&apos;)
+&gt;&gt;&gt;f.next()
+&gt;&gt;&gt;f.next()
+...
+</code></pre><p>不断输入f.next()，直到最后出现StopIteration 。</p>
+<p><strong>open()返回的实际上是一个循环对象</strong>，包含有next()方法。而该next()方法每次返回的就是新的一行的内容，到达文件结尾时举出StopIteration。这样，我们相当于手工进行了循环。</p>
+<p>自动运行的话，就是：</p>
+<pre><code>for line in open(&apos;test.txt&apos;):
+    print line
+</code></pre><ul>
+<li>for结构自动调用next()方法，将该方法的返回值赋予给line。<strong>循环知道出现StopIteration的时候结束。</strong></li>
+<li><strong>所使用的元素可以在循环过程中逐次生成。</strong>相对于序列，用循环对象的好处在于：不用在循环还没有开始的时候，就生成好要使用的元素。</li>
+</ul>
+<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><p>从技术上来说，循环对象和for循环调用之间还有一个中间层，就是要将循环对象转换成迭代器(iterator)。这一转换是通过使用iter()函数实现的。但从逻辑层面上，常常可以忽略这一层，所以循环对象和迭代器常常相互指代对方。</p>
+<h2 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h2><p>生成器(generator)的主要目的是构成一个用户自定义的循环对象。</p>
+<p>生成器的编写方法和函数定义类似，<strong>只是在return的地方改为yield</strong>。生成器中可以有多个yield。当生成器遇到一个yield时，会暂停运行生成器，返回yield后面的值。<strong>当再次调用生成器的时候，会从刚才暂停的地方继续运行，直到下一个yield。</strong>生成器自身又构成一个循环器，每次循环使用一个yield返回的值。</p>
+<p>下面是一个生成器:</p>
+<pre><code>def gen():
+    a = 100
+    yield a
+    a = a*8
+    yield a
+    yield 1000
+</code></pre><p>该生成器共有三个yield， 如果用作循环器时，会进行三次循环。</p>
+<pre><code>for i in gen():
+    print i
+</code></pre><p>另一个生成器：</p>
+<pre><code>def gen():
+    for i in range(4):
+        yield i
+</code></pre><p>又可以写成生成器表达式(Generator Expression)：</p>
+<pre><code>G = (x for x in range(4))
+</code></pre><h2 id="list-comprehension表推导"><a href="#list-comprehension表推导" class="headerlink" title="list comprehension表推导"></a>list comprehension表推导</h2><p>普通方法生成表：</p>
+<pre><code>L = []
+for x in range(10):
+    L.append(x**2)
+</code></pre><p>表推导方式生成表：</p>
+<pre><code>L = [x**2 for x in range(10)]
+</code></pre><ul>
+<li>生成器表达式类似，只不过用的是中括号。    </li>
+<li>表推导的机制实际上是利用循环对象。</li>
+</ul>
+<p><br><br></p>
+<h1 id="函数对象"><a href="#函数对象" class="headerlink" title="函数对象"></a>函数对象</h1><h2 id="lambda函数"><a href="#lambda函数" class="headerlink" title="lambda函数"></a>lambda函数</h2><pre><code>func = lambda x,y: x + y
+print func(3,4)
+</code></pre><h2 id="函数作为参数传递"><a href="#函数作为参数传递" class="headerlink" title="函数作为参数传递"></a>函数作为参数传递</h2><pre><code>def test(f, a, b):
+    print &apos;test&apos;
+    print f(a, b)
+
+test(func, 3, 5)
+</code></pre><p>结合lambda，变成：</p>
+<pre><code>test((lambda x,y: x**2 + y), 6, 9)
+</code></pre><h2 id="map-函数"><a href="#map-函数" class="headerlink" title="map()函数"></a>map()函数</h2><pre><code>re = map((lambda x: x+3),[1,3,5,6])
+</code></pre><ul>
+<li>map()有两个参数，一个是lambda所定义的函数对象，一个是包含有多个元素的表。</li>
+<li><strong>map()的功能是将函数对象依次作用于表的每一个元素，每次作用的结果储存于返回的表re中。</strong>map通过读入的函数(这里是lambda函数)来操作数据（这里“数据”是表中的每一个元素，“操作”是对每个数据加3）。</li>
+<li>在Python 3.X中，map()的返回值是一个循环对象。可以利用list()函数，将该循环对象转换成表。</li>
+</ul>
+<p>假设有多个参数是，分开成若干个元组：</p>
+<pre><code>re = map((lambda x,y: x+y),[1,2,3],[6,7,9])
+# map()将每次从两个表中分别取出一个元素，带入lambda所定义的函数。
+</code></pre><h2 id="filter-筛选函数"><a href="#filter-筛选函数" class="headerlink" title="filter()筛选函数"></a>filter()筛选函数</h2><pre><code>def func(a):
+    if a &gt; 100:
+        return True
+    else:
+        return False
+
+print filter(func,[10,56,101,500])
+</code></pre><ul>
+<li>如果函数对象返回的是True，则该次的元素被储存于返回的表中。 filter通过读入的函数来筛选数据。</li>
+<li>在Python 3.X中，filter返回的不是表，而是循环对象。</li>
+</ul>
+<h2 id="reduce-函数"><a href="#reduce-函数" class="headerlink" title="reduce()函数"></a>reduce()函数</h2><pre><code>print reduce((lambda x,y: x+y),[1,2,5,7,9])
+</code></pre><ul>
+<li><strong>reduce可以累进地将函数作用于各个参数。上例相当于(((1+2)+5)+7)+9，</strong>即reduce将表中的前两个元素(1和2)传递给lambda函数，得到3。该返回值(3)将作为lambda函数的第一个参数，而表中的下一个元素(5)作为lambda函数的第二个参数，进行下一次的对lambda函数的调用，得到8。依次调用lambda函数，每次lambda函数的第一个参数是上一次运算结果，而第二个参数为表中的下一个元素，直到表中没有剩余元素。</li>
+<li>reduce()函数在3.0里面不能直接用的，它被定义在了functools包里面，需要引入包。</li>
+</ul>
+<p><br><br></p>
+<h1 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h1><h2 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h2><p>异常语法解构：</p>
+<pre><code>try:
+    ...
+except exception1:
+    ...
+except exception2:
+    ...
+except:
+    ...
+else:
+    ...
+finally:
+    ...
+</code></pre><p>如果try中有异常发生时，将执行异常的归属，执行except。异常层层比较，看是否是exception1, exception2…，直到找到其归属，执行相应的except中的语句。如果except后面没有任何参数，那么表示所有的exception都交给这段程序处理。</p>
+<p>如果try中没有异常，那么except部分将跳过，执行else中的语句。</p>
+<p>finally是无论是否有异常，最后都要做的一些事情。</p>
+<pre><code>流程如下:
+try-&gt;异常-&gt;except-&gt;finally
+try-&gt;无异常-&gt;else-&gt;finally
+</code></pre><h2 id="手动抛出异常"><a href="#手动抛出异常" class="headerlink" title="手动抛出异常"></a>手动抛出异常</h2><pre><code>raise StopIteration
+</code></pre><p><br><br></p>
+<h1 id="动态类型"><a href="#动态类型" class="headerlink" title="动态类型"></a>动态类型</h1><h2 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h2><p>我们在程序中写的对象名，只是指向这一对象的引用(reference)。</p>
+<p>引用和对象分离，是动态类型的核心。引用可以随时指向一个新的对象。</p>
+<p><strong>即使是多个引用指向同一个对象，如果一个引用值发生变化，那么实际上是让这个引用指向一个新的引用，并不影响其他的引用的指向。</strong>从效果上看，就是各个引用各自独立，互不影响。</p>
+<p>注意！</p>
+<pre><code>L1 = [1,2,3]
+L2 = L1
+L1[0] = 10
+print L2
+</code></pre><p>在该情况下，我们不再对L1这一引用赋值，而是对L1所指向的表的元素赋值。结果是，L2也同时发生变化。</p>
+<ul>
+<li>列表可以通过引用其元素，<strong>改变对象自身(in-place change)</strong>。这种对象类型，称为<strong>可变数据对象(mutable object)</strong>，词典也是这样的数据类型。</li>
+<li>而像之前的数字和字符串，<strong>不能改变对象本身，只能改变引用的指向</strong>，称为<strong>不可变数据对象(immutable object)</strong>。</li>
+</ul>
+<h2 id="从动态类型看函数的参数传递"><a href="#从动态类型看函数的参数传递" class="headerlink" title="从动态类型看函数的参数传递"></a>从动态类型看函数的参数传递</h2><p>函数的参数传递，本质上传递的是引用。比如说：</p>
+<pre><code>def f(x):
+    x = 100
+    print x
+
+a = 1
+f(a)
+print a
+
+输出：
+100
+1
+
+############
+
+def f(x):
+x[0] = 100
+print x
+
+a = [1,2,3]
+f(a)
+print a
+
+输出：
+[100, 2, 3]
+[100, 2, 3]
+</code></pre><ul>
+<li>如果参数是不可变(immutable)的对象，a和x引用之间相互独立。对参数x的操作不会影响引用a。这样的传递类似于C语言中的值传递。</li>
+<li>如果传递的是可变(mutable)的对象，那么改变函数参数，有可能改变原对象。类似于C语言中的引用传递。</li>
+</ul>
+<h1 id="课后练习2"><a href="#课后练习2" class="headerlink" title="课后练习2"></a>课后练习2</h1><p>1、练习 下面的表推导会生成什么？</p>
+<pre><code>xl = [1,3,5]
+yl = [9,12,13]
+L  = [ x**2 for (x,y) in zip(xl,yl) if y &gt; 10]
+</code></pre><p>答案：L = [3, 5]。只有当 y &gt; 10 时才会将x的平方加入L中。</p>
+<p>2、通过参数传递，判断数字、字符串、list、tuple、词典等数据类型是否为可变数据对象。</p>
+<p>数字、字符串、tuple不是可变数据对象。<br>list、字典是可变数据对象。</p>
+<p>数字不是的原因：当函数中改变x引用的值后，原来引用的值不受影响。<br>字符串、tuple不是的原因：函数中尝试改变元素的值时，会有错误：</p>
+<pre><code>Traceback (most recent call last):
+  File &quot;testV.py&quot;, line 34, in &lt;module&gt;
+    testTuple(x)
+  File &quot;testV.py&quot;, line 14, in testTuple
+    x[0] = 100
+TypeError: &apos;tuple&apos; object does not support item assignment
+</code></pre><p>测试代码：</p>
+<pre><code>def testNum(x):
+    x = 100
+    print x
+
+def testString(x):
+    x[0] = &apos;b&apos;
+    print x
+
+def testList(x):
+    x[0] = 100
+    print x
+
+def testTuple(x):
+    x[0] = 100
+    print x
+
+def testDic(x):
+    x[&apos;0&apos;] = 100
+    print x
+
+x = 1
+testNum(x)
+print x
+
+x = &apos;aaaaaa&apos;
+#testString(x)
+print x
+
+x = [1, 2, 3, 4, 5]
+testList(x)
+print x
+
+x = (1, 2, 3, 4, 5)
+#testTuple(x)
+print x
+
+x = {&apos;0&apos;:0, &apos;1&apos;:1, &apos;2&apos;:2}
+testDic(x)
+print x
 </code></pre>
       
     </div>
@@ -555,7 +787,7 @@ file.close()
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#dictionary类型（词典、映射）"><span class="nav-number">1.</span> <span class="nav-text">dictionary类型（词典、映射）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#dictionary定义"><span class="nav-number">1.1.</span> <span class="nav-text">dictionary定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遍历键值"><span class="nav-number">1.2.</span> <span class="nav-text">遍历键值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用方法"><span class="nav-number">1.3.</span> <span class="nav-text">常用方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件"><span class="nav-number">2.</span> <span class="nav-text">文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建文件对象"><span class="nav-number">2.1.</span> <span class="nav-text">创建文件对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用方法-1"><span class="nav-number">2.2.</span> <span class="nav-text">常用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#读文件"><span class="nav-number">2.2.1.</span> <span class="nav-text">读文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#写文件"><span class="nav-number">2.2.2.</span> <span class="nav-text">写文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关闭文件"><span class="nav-number">2.2.3.</span> <span class="nav-text">关闭文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Module模块"><span class="nav-number">3.</span> <span class="nav-text">Module模块</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#导入文件"><span class="nav-number">3.1.</span> <span class="nav-text">导入文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他导入方法"><span class="nav-number">3.2.</span> <span class="nav-text">其他导入方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块搜索路径"><span class="nav-number">3.3.</span> <span class="nav-text">模块搜索路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块包"><span class="nav-number">3.4.</span> <span class="nav-text">模块包</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数的参数传递"><span class="nav-number">4.</span> <span class="nav-text">函数的参数传递</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#参数默认值"><span class="nav-number">4.1.</span> <span class="nav-text">参数默认值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#位置传递"><span class="nav-number">4.2.</span> <span class="nav-text">位置传递</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关键字传递"><span class="nav-number">4.3.</span> <span class="nav-text">关键字传递</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包裹传递"><span class="nav-number">4.4.</span> <span class="nav-text">包裹传递</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#包裹位置传递"><span class="nav-number">4.4.1.</span> <span class="nav-text">包裹位置传递</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#包裹关键字传递"><span class="nav-number">4.4.2.</span> <span class="nav-text">包裹关键字传递</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解包裹"><span class="nav-number">4.4.3.</span> <span class="nav-text">解包裹</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用tuple解包裹"><span class="nav-number">4.4.3.1.</span> <span class="nav-text">使用tuple解包裹</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用dictionary解包裹"><span class="nav-number">4.4.3.2.</span> <span class="nav-text">使用dictionary解包裹</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#混合传递"><span class="nav-number">4.4.4.</span> <span class="nav-text">混合传递</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#课后练习"><span class="nav-number">5.</span> <span class="nav-text">课后练习</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#dictionary类型（词典、映射）"><span class="nav-number">1.</span> <span class="nav-text">dictionary类型（词典、映射）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#dictionary定义"><span class="nav-number">1.1.</span> <span class="nav-text">dictionary定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遍历键值"><span class="nav-number">1.2.</span> <span class="nav-text">遍历键值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用方法"><span class="nav-number">1.3.</span> <span class="nav-text">常用方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件"><span class="nav-number">2.</span> <span class="nav-text">文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建文件对象"><span class="nav-number">2.1.</span> <span class="nav-text">创建文件对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用方法-1"><span class="nav-number">2.2.</span> <span class="nav-text">常用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#读文件"><span class="nav-number">2.2.1.</span> <span class="nav-text">读文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#写文件"><span class="nav-number">2.2.2.</span> <span class="nav-text">写文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关闭文件"><span class="nav-number">2.2.3.</span> <span class="nav-text">关闭文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Module模块"><span class="nav-number">3.</span> <span class="nav-text">Module模块</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#导入文件"><span class="nav-number">3.1.</span> <span class="nav-text">导入文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他导入方法"><span class="nav-number">3.2.</span> <span class="nav-text">其他导入方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块搜索路径"><span class="nav-number">3.3.</span> <span class="nav-text">模块搜索路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块包"><span class="nav-number">3.4.</span> <span class="nav-text">模块包</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数的参数传递"><span class="nav-number">4.</span> <span class="nav-text">函数的参数传递</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#参数默认值"><span class="nav-number">4.1.</span> <span class="nav-text">参数默认值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#位置传递"><span class="nav-number">4.2.</span> <span class="nav-text">位置传递</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关键字传递"><span class="nav-number">4.3.</span> <span class="nav-text">关键字传递</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包裹传递"><span class="nav-number">4.4.</span> <span class="nav-text">包裹传递</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#包裹位置传递"><span class="nav-number">4.4.1.</span> <span class="nav-text">包裹位置传递</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#包裹关键字传递"><span class="nav-number">4.4.2.</span> <span class="nav-text">包裹关键字传递</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解包裹"><span class="nav-number">4.4.3.</span> <span class="nav-text">解包裹</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用tuple解包裹"><span class="nav-number">4.4.3.1.</span> <span class="nav-text">使用tuple解包裹</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用dictionary解包裹"><span class="nav-number">4.4.3.2.</span> <span class="nav-text">使用dictionary解包裹</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#混合传递"><span class="nav-number">4.4.4.</span> <span class="nav-text">混合传递</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#课后练习"><span class="nav-number">5.</span> <span class="nav-text">课后练习</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#循环设计"><span class="nav-number">6.</span> <span class="nav-text">循环设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#range-进阶"><span class="nav-number">6.1.</span> <span class="nav-text">range()进阶</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#enumerate"><span class="nav-number">6.2.</span> <span class="nav-text">enumerate()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zip"><span class="nav-number">6.3.</span> <span class="nav-text">zip()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#循环对象"><span class="nav-number">7.</span> <span class="nav-text">循环对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">7.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迭代器"><span class="nav-number">7.2.</span> <span class="nav-text">迭代器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成器"><span class="nav-number">7.3.</span> <span class="nav-text">生成器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#list-comprehension表推导"><span class="nav-number">7.4.</span> <span class="nav-text">list comprehension表推导</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数对象"><span class="nav-number">8.</span> <span class="nav-text">函数对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#lambda函数"><span class="nav-number">8.1.</span> <span class="nav-text">lambda函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数作为参数传递"><span class="nav-number">8.2.</span> <span class="nav-text">函数作为参数传递</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#map-函数"><span class="nav-number">8.3.</span> <span class="nav-text">map()函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#filter-筛选函数"><span class="nav-number">8.4.</span> <span class="nav-text">filter()筛选函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reduce-函数"><span class="nav-number">8.5.</span> <span class="nav-text">reduce()函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#错误处理"><span class="nav-number">9.</span> <span class="nav-text">错误处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#异常处理"><span class="nav-number">9.1.</span> <span class="nav-text">异常处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#手动抛出异常"><span class="nav-number">9.2.</span> <span class="nav-text">手动抛出异常</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#动态类型"><span class="nav-number">10.</span> <span class="nav-text">动态类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念-1"><span class="nav-number">10.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从动态类型看函数的参数传递"><span class="nav-number">10.2.</span> <span class="nav-text">从动态类型看函数的参数传递</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#课后练习2"><span class="nav-number">11.</span> <span class="nav-text">课后练习2</span></a></li></ol></div>
             
           </div>
         </section>
