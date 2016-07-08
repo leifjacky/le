@@ -238,6 +238,158 @@
             
               
                 
+                <a class="post-title-link" href="/2016/07/08/Python-图片转字符画/" itemprop="url">
+                  Python 图片转字符画
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-08T23:59:40+08:00" content="2016-07-08">
+              2016-07-08
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>系统需要先安装python、pillow</p>
+<p>Mac下安装pillow可以参照《Mac下安装pillow》<br><a href="http://yecj.me/2016/07/08/Mac下安装pillow/">http://yecj.me/2016/07/08/Mac下安装pillow/</a></p>
+</blockquote>
+<h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><p>原图：<br><img src="https://github.com/leifjacky/leifjacky.github.io//images/raw/master/inArticles/Img2CharOrigin.jpg" alt="origin"></p>
+<p>效果图：<br><img src="https://github.com/leifjacky/leifjacky.github.io//images/raw/master/inArticles/Img2CharFinal.png" alt="origin"></p>
+<p><br><br></p>
+<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><h2 id="将RGB图转换成灰度图"><a href="#将RGB图转换成灰度图" class="headerlink" title="将RGB图转换成灰度图"></a>将RGB图转换成灰度图</h2><pre><code>灰度值 ＝ 0.2126 * r + 0.7152 * g + 0.0722 * b
+</code></pre><p>每个像素点都有一个0-255的值，值越大，说明该点越黑色；值越大，该点越偏白色。所以我们可以根据灰度值，通过不同像素密度的字符代替每个像素点，来“表示”原图。</p>
+<h2 id="编写灰度值字符串"><a href="#编写灰度值字符串" class="headerlink" title="编写灰度值字符串"></a>编写灰度值字符串</h2><p>观察原图，注意到我们实际需要保留的是黑色的部分，也就是灰度值小的部分，可以得到以下字符串：</p>
+<pre><code>ascii_char = list(&quot;$@B%8&amp;WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~&lt;&gt;i!lI;:,\&quot;^`&apos;. &quot;)
+</code></pre><p>下标小的部分字符像素密度越大，对应灰度值小的部分；下标大的部分字符像素密度越大，对应灰度值大的部分。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>from PIL import Image   # 从pillow导入必要的库<br>    import ArgumentParser   # 命令行参数处理相关库</p>
+<pre><code>parser = argparse.ArgumentParser()     # 命令行参数处理
+
+parser.add_argument(&apos;file&apos;)     # 输入文件
+parser.add_argument(&apos;-o&apos;, &apos;--output&apos;)   # 输出文件
+parser.add_argument(&apos;--width&apos;, type = int, default = 80)    # 输出宽度，默认80
+parser.add_argument(&apos;--height&apos;, type = int, default = 40)   # 输出高度，默认40
+
+args = parser.parse_args()      # 获取参数
+
+IMG = args.file
+WIDTH = args.width
+HEIGHT = args.height
+OUTPUT = args.output
+
+ascii_char = list(&quot;$@B%8&amp;WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~&lt;&gt;i!lI;:,\&quot;^`&apos;. &quot;)    # 灰度值字符串
+
+# 函数：根据灰度值返回字符串
+def get_char(r, b, g, alpha = 255):
+    if alpha == 0:
+        return &apos; &apos;
+    length = len(ascii_char)
+    gray = int(0.2126 * r + 0.7152 * g + 0.0722 * b)
+
+    unit = (float(alpha) + 1)/length
+
+    return ascii_char[int(gray/unit)]
+
+if __name__ == &apos;__main__&apos;:
+    im = Image.open(IMG)    # 打开图片
+    im = im.resize((WIDTH,HEIGHT), Image.NEAREST)   # 改变图片大小
+
+    txt = &quot;&quot;
+
+    for i in range(HEIGHT):
+        for j in range(WIDTH):
+            txt += get_char(*im.getpixel((j, i)))
+        txt += &apos;\n&apos;
+
+    print txt
+
+    if OUTPUT:
+        with open(OUTPUT, &apos;w&apos;) as f:
+            f.write(txt)
+    else:
+        with open(&quot;output.txt&quot;, &apos;w&apos;) as f:
+            f.write(txt)
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/08/github-readme-md-添加图片/" itemprop="url">
                   github readme.md 添加图片
                 </a>
@@ -1780,7 +1932,7 @@ From: http://stackoverflow.com/questions/15437719/git-push-error-origin-does-not
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
