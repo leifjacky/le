@@ -296,8 +296,10 @@
 <h2 id="编写灰度值字符串"><a href="#编写灰度值字符串" class="headerlink" title="编写灰度值字符串"></a>编写灰度值字符串</h2><p>观察原图，注意到我们实际需要保留的是黑色的部分，也就是灰度值小的部分，可以得到以下字符串：</p>
 <pre><code>ascii_char = list(&quot;$@B%8&amp;WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~&lt;&gt;i!lI;:,\&quot;^`&apos;. &quot;)
 </code></pre><p>下标小的部分字符像素密度越大，对应灰度值小的部分；下标大的部分字符像素密度越大，对应灰度值大的部分。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>from PIL import Image   # 从pillow导入必要的库<br>    import ArgumentParser   # 命令行参数处理相关库</p>
-<pre><code>parser = argparse.ArgumentParser()     # 命令行参数处理
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre><code>from PIL import Image   # 从pillow导入必要的库
+import ArgumentParser   # 命令行参数处理相关库
+
+parser = argparse.ArgumentParser()     # 命令行参数处理
 
 parser.add_argument(&apos;file&apos;)     # 输入文件
 parser.add_argument(&apos;-o&apos;, &apos;--output&apos;)   # 输出文件

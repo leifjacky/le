@@ -110,7 +110,7 @@ Mac下安装pillow可以参照《Mac下安装pillow》http://yecj.me/2016/07/08/
 每个像素点都有一个0-255的值，值越大，说明该点越黑色；值越大，该点越偏">
 <meta property="og:image" content="https://raw.githubusercontent.com/leifjacky/leifjacky.github.io/master/images/inArticles/Img2CharOrigin.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/leifjacky/leifjacky.github.io/master/images/inArticles/Img2CharFinal.png">
-<meta property="og:updated_time" content="2016-07-08T16:06:17.000Z">
+<meta property="og:updated_time" content="2016-07-09T00:42:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python 图片转字符画">
 <meta name="twitter:description" content="系统需要先安装python、pillow
@@ -320,8 +320,10 @@ Mac下安装pillow可以参照《Mac下安装pillow》http://yecj.me/2016/07/08/
 <h2 id="编写灰度值字符串"><a href="#编写灰度值字符串" class="headerlink" title="编写灰度值字符串"></a>编写灰度值字符串</h2><p>观察原图，注意到我们实际需要保留的是黑色的部分，也就是灰度值小的部分，可以得到以下字符串：</p>
 <pre><code>ascii_char = list(&quot;$@B%8&amp;WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~&lt;&gt;i!lI;:,\&quot;^`&apos;. &quot;)
 </code></pre><p>下标小的部分字符像素密度越大，对应灰度值小的部分；下标大的部分字符像素密度越大，对应灰度值大的部分。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>from PIL import Image   # 从pillow导入必要的库<br>    import ArgumentParser   # 命令行参数处理相关库</p>
-<pre><code>parser = argparse.ArgumentParser()     # 命令行参数处理
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre><code>from PIL import Image   # 从pillow导入必要的库
+import ArgumentParser   # 命令行参数处理相关库
+
+parser = argparse.ArgumentParser()     # 命令行参数处理
 
 parser.add_argument(&apos;file&apos;)     # 输入文件
 parser.add_argument(&apos;-o&apos;, &apos;--output&apos;)   # 输出文件
