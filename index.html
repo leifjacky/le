@@ -238,6 +238,717 @@
             
               
                 
+                <a class="post-title-link" href="/2016/07/09/linux暑期实践1-字符界面与常用命令-1/" itemprop="url">
+                  linux暑期实践1-字符界面与常用命令
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-09T16:07:01+08:00" content="2016-07-09">
+              2016-07-09
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/09/linux暑期实践1-字符界面与常用命令/" itemprop="url">
+                  linux暑期实践1-字符界面与常用命令
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-09T16:05:46+08:00" content="2016-07-09">
+              2016-07-09
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="man-帮助命令"><a href="#man-帮助命令" class="headerlink" title="man 帮助命令"></a>man 帮助命令</h1><h2 id="命令语法"><a href="#命令语法" class="headerlink" title="命令语法"></a>命令语法</h2><pre><code>man [选项] 命令名称
+-M， -P， -a， -d， -f， -p， -w
+</code></pre><h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><pre><code>$ man ls
+
+LS(1)                            User Commands                           LS(1)
+
+NAME
+   ls - list directory contents
+
+SYNOPSIS
+   ls [OPTION]... [FILE]...
+
+DESCRIPTION
+   List  information  about  the FILEs (the current directory by default).  Sort entries
+   alphabetically if none of -cftuvSUX nor --sort.
+
+   Mandatory arguments to long options are mandatory for short options too.
+...
+</code></pre><p><br><br></p>
+<h1 id="help-帮助命令"><a href="#help-帮助命令" class="headerlink" title="help 帮助命令"></a>help 帮助命令</h1><h2 id="命令语法："><a href="#命令语法：" class="headerlink" title="命令语法："></a>命令语法：</h2><pre><code>[命令]  --help
+</code></pre><h2 id="应用-1"><a href="#应用-1" class="headerlink" title="应用"></a>应用</h2><pre><code>$ ls --help
+
+Usage: ls [OPTION]... [FILE]...
+List information about the FILEs (the current directory by default).
+Sort entries alphabetically if none of -cftuvSUX nor --sort.
+
+Mandatory arguments to long options are mandatory for short options too.
+-a, --all                  do not ignore entries starting with .
+-A, --almost-all           do not list implied . and ..
+  --author               with -l, print the author of each file
+-b, --escape               print octal escapes for nongraphic characters
+  --block-size=SIZE      use SIZE-byte blocks.  See SIZE format below
+</code></pre><p><br><br></p>
+<h1 id="info-帮助命令"><a href="#info-帮助命令" class="headerlink" title="info 帮助命令"></a>info 帮助命令</h1><h2 id="命令语法：-1"><a href="#命令语法：-1" class="headerlink" title="命令语法："></a>命令语法：</h2><pre><code>info [选项] 命令名称
+</code></pre><h2 id="应用-2"><a href="#应用-2" class="headerlink" title="应用"></a>应用</h2><pre><code>$ info ls
+
+File: coreutils.info,  Node: ls invocation,  Next: dir invocation,  Up: Directory listing
+
+10.1 `ls&apos;: List directory contents
+==================================
+
+The `ls&apos; program lists information about files (of any type, including
+directories).  Options and file arguments can be intermixed
+arbitrarily, as usual.
+</code></pre><p><br><br></p>
+<h1 id="help、man和info工具的区别"><a href="#help、man和info工具的区别" class="headerlink" title="help、man和info工具的区别"></a>help、man和info工具的区别</h1><ul>
+<li>“–help”是一个工具选项，大部分的GNU工具都具备这个选项，“–help”选项可以用来显示一些工具的信息</li>
+<li>Man工具可以显示系统手册页中的内容，这些内容大多数都是对命令的解释信息。通过查看系统文档中的man页可以得到程序的更多相关主题信息和Linux的更多特性。</li>
+<li>Info工具是一个基于菜单的超文本系统，由GNU项目开发并由Linux发布。info工具包括一些关于Linux shell、工具、GNU项目开发程序的说明文档。</li>
+</ul>
+<p><br><br></p>
+<h1 id="pwd-输出当前工作目录的绝对路径"><a href="#pwd-输出当前工作目录的绝对路径" class="headerlink" title="pwd 输出当前工作目录的绝对路径"></a>pwd 输出当前工作目录的绝对路径</h1><h2 id="命令语法-1"><a href="#命令语法-1" class="headerlink" title="命令语法"></a>命令语法</h2><pre><code>pwd
+</code></pre><h2 id="应用-3"><a href="#应用-3" class="headerlink" title="应用"></a>应用</h2><pre><code>[Yecaijia_2014150087@localhost codeInPPT]$ pwd
+/home/Yecaijia_2014150087/Documents/codeInPPT
+</code></pre><p><br><br></p>
+<h1 id="cd-change-directory-更改工作目录"><a href="#cd-change-directory-更改工作目录" class="headerlink" title="cd change directory 更改工作目录"></a>cd change directory 更改工作目录</h1><h2 id="命令语法-2"><a href="#命令语法-2" class="headerlink" title="命令语法"></a>命令语法</h2><pre><code>cd [目录名]
+</code></pre><h2 id="应用-4"><a href="#应用-4" class="headerlink" title="应用"></a>应用</h2><pre><code>[Yecaijia_2014150087@localhost codeInPPT]$ cd   &lt;!-- 回到用户home下 --&gt;
+[Yecaijia_2014150087@localhost ~]$
+[Yecaijia_2014150087@localhost ~]$ cd Documents/
+[Yecaijia_2014150087@localhost Documents]$
+</code></pre><p><br><br></p>
+<h1 id="ls-打印指定目录里的文件和文件夹清单"><a href="#ls-打印指定目录里的文件和文件夹清单" class="headerlink" title="ls 打印指定目录里的文件和文件夹清单"></a>ls 打印指定目录里的文件和文件夹清单</h1><h2 id="命令语法-3"><a href="#命令语法-3" class="headerlink" title="命令语法"></a>命令语法</h2><pre><code>ls [选项] [目录或文件]
+
+主要选项：
+-a：列出目录下的所有的文件，包括以.开头的隐含文件
+-A：显示除了”.”和”..”外的所有文件
+-b：把文件名中不可输出的字符用反斜杠加字符编号的形式列出
+-c：输出文件的i节点的修改时间，并以此排序
+-d：将目录象文件一样显示，而不是显示其下的文件
+-F：在每个文件名后附上一个字符以说明该文件的类型
+      *:可执行的普通文件   /: 目录    @:符号连接
+      |:表示FIFO         =:  套接字（sockets)
+-i：输出文件的i节点索引信息
+-l：列出文件的详细信息
+</code></pre><h2 id="应用-5"><a href="#应用-5" class="headerlink" title="应用"></a>应用</h2><p>ls 缺省：</p>
+<pre><code>[Yecaijia_2014150087@localhost codeInPPT]$ ls
+code_c1_p20_1    code_c1_p20_2    code_c2_p18    code_c2_p21    code_c4_p17      code_c4_p17.c
+code_c1_p20_1.c  code_c1_p20_2.c  code_c2_p18.c  code_c2_p21.c  code_c4_p17_2.c
+
+--------------------------------------------
+[Yecaijia_2014150087@localhost codeInPPT]$ ls -la
+total 72
+drwxrwxr-x. 2 Yecaijia_2014150087 Yecaijia_2014150087 4096 Apr 11 04:37 .
+drwxr-xr-x. 3 Yecaijia_2014150087 Yecaijia_2014150087 4096 Apr 10 01:21 ..
+-rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4829 Apr 10 01:39 code_c1_p20_1
+-rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087  242 Apr 10 01:37 code_c1_p20_1.c
+-rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4865 Apr 10 01:39 code_c1_p20_2
+-rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087  311 Apr 10 01:38 code_c1_p20_2.c
+-rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4863 Apr 10 03:08 code_c2_p18
+-rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087  328 Apr 10 03:07 code_c2_p18.c
+-rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4739 Apr 10 03:22 code_c2_p21
+-rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087   99 Apr 10 03:21 code_c2_p21.c
+-rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4854 Apr 10 23:15 code_c4_p17
+-rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087   33 Apr 10 23:14 code_c4_p17_2.c
+-rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087  140 Apr 10 23:15 code_c4_p17.c
+
+--------------------------------------------
+[Yecaijia_2014150087@localhost codeInPPT]$ ls -Fla
+total 72
+drwxrwxr-x. 2 Yecaijia_2014150087 Yecaijia_2014150087 4096 Apr 11 04:37 ./
+drwxr-xr-x. 3 Yecaijia_2014150087 Yecaijia_2014150087 4096 Apr 10 01:21 ../
+-rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4829 Apr 10 01:39 code_c1_p20_1*
+-rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087  242 Apr 10 01:37 code_c1_p20_1.c
+-rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4865 Apr 10 01:39 code_c1_p20_2*
+-rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087  311 Apr 10 01:38 code_c1_p20_2.c
+-rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4863 Apr 10 03:08 code_c2_p18*
+-rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087  328 Apr 10 03:07 code_c2_p18.c
+-rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4739 Apr 10 03:22 code_c2_p21*
+-rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087   99 Apr 10 03:21 code_c2_p21.c
+-rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4854 Apr 10 23:15 code_c4_p17*
+-rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087   33 Apr 10 23:14 code_c4_p17_2.c
+-rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087  140 Apr 10 23:15 code_c4_p17.c
+
+--------------------------------------------
+[Yecaijia_2014150087@localhost codeInPPT]$ ls -ila
+total 72
+262087 drwxrwxr-x. 2 Yecaijia_2014150087 Yecaijia_2014150087 4096 Apr 11 04:37 .
+261655 drwxr-xr-x. 3 Yecaijia_2014150087 Yecaijia_2014150087 4096 Apr 10 01:21 ..
+262098 -rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4829 Apr 10 01:39 code_c1_p20_1
+262097 -rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087  242 Apr 10 01:37 code_c1_p20_1.c
+262096 -rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4865 Apr 10 01:39 code_c1_p20_2
+262091 -rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087  311 Apr 10 01:38 code_c1_p20_2.c
+262099 -rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4863 Apr 10 03:08 code_c2_p18
+262102 -rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087  328 Apr 10 03:07 code_c2_p18.c
+262100 -rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4739 Apr 10 03:22 code_c2_p21
+262103 -rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087   99 Apr 10 03:21 code_c2_p21.c
+262104 -rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4854 Apr 10 23:15 code_c4_p17
+262105 -rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087   33 Apr 10 23:14 code_c4_p17_2.c
+262107 -rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087  140 Apr 10 23:15 code_c4_p17.c
+</code></pre><h2 id="ls-信息"><a href="#ls-信息" class="headerlink" title="ls 信息"></a>ls 信息</h2><table>
+<thead>
+<tr>
+<th>文件属性</th>
+<th>硬链接数/子目录数</th>
+<th>文件拥有者</th>
+<th>文件拥有者所在组</th>
+<th>文件大小</th>
+<th>创建月份</th>
+<th>创建日期</th>
+<th>创建时间</th>
+<th>文件名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-rw-rw-r–.</td>
+<td>1</td>
+<td>Yecaijia_2014150087</td>
+<td>Yecaijia_2014150087</td>
+<td>140</td>
+<td>Apr</td>
+<td>10</td>
+<td>23:15</td>
+<td>code_c4_p17.c</td>
+</tr>
+</tbody>
+</table>
+<p>第一个符号：<br>符号 | 意义</p>
+<ul>
+<li>| -<br>d | 目录</li>
+<li>| 常规文件<br>b | 块类型特殊文件<br>c | 字符型特殊文件<br>s | 套接字<br>l | 链接<br>p | 管道</li>
+</ul>
+<p>文件读写属性：<br>（rwx) | (rwx) | (rwx)</p>
+<ul>
+<li>| - | -<br>owner | group | others</li>
+<li>r 表示允许读（查看文件中的数据）</li>
+<li>w 表示允许写（修改文件以及删除）</li>
+<li>x 表示允许“执行”（运行程序）</li>
+</ul>
+<p><br><br></p>
+<h1 id="touch-文件新建、修改文件时间"><a href="#touch-文件新建、修改文件时间" class="headerlink" title="touch 文件新建、修改文件时间"></a>touch 文件新建、修改文件时间</h1><h2 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h2><pre><code>touch [选项] 文件
+
+主要选项：
+-a   或--time=atime或--time=access或--time=use 　只更改存取时间。
+-c   或--no-create 　不建立任何文档。
+-d 　使用指定的日期时间，而非现在的时间。
+-f 　此参数将忽略不予处理，仅负责解决BSD版本touch指令的兼容性问题。
+-m   或--time=mtime或--time=modify 　只更改变动时间。
+-r 　把指定文档或目录的日期时间，统统设成和参考文档或目录的日期时间相同。
+-t 　使用指定的日期时间，而非现在的时间。
+</code></pre><h2 id="应用-6"><a href="#应用-6" class="headerlink" title="应用"></a>应用</h2><h3 id="创建不存在的文件"><a href="#创建不存在的文件" class="headerlink" title="创建不存在的文件"></a>创建不存在的文件</h3><pre><code>touch README.md
+--------------------------------------------
+[leif@localhost Documents]$ ls
+[leif@localhost Documents]$ touch README.md
+[leif@localhost Documents]$ ls
+README.md
+</code></pre><h3 id="更改file2的时间，使它与file1相同"><a href="#更改file2的时间，使它与file1相同" class="headerlink" title="更改file2的时间，使它与file1相同"></a>更改file2的时间，使它与file1相同</h3><pre><code>touch -r file1 file2
+--------------------------------------------
+[leif@localhost Documents]$ ls -la
+total 8
+drwxr-xr-x.  2 leif leif 4096 Apr 11 05:27 .
+drwx------. 22 leif leif 4096 Apr  2 20:58 ..
+-rw-rw-r--.  1 leif leif    0 Apr 11 05:26 file1
+-rw-rw-r--.  1 leif leif    0 Apr 11 05:27 file2
+-rw-rw-r--.  1 leif leif    0 Apr 11 05:25 README.md
+[leif@localhost Documents]$ touch -r file1 file2
+[leif@localhost Documents]$ ls -la
+total 8
+drwxr-xr-x.  2 leif leif 4096 Apr 11 05:27 .
+drwx------. 22 leif leif 4096 Apr  2 20:58 ..
+-rw-rw-r--.  1 leif leif    0 Apr 11 05:26 file1
+-rw-rw-r--.  1 leif leif    0 Apr 11 05:26 file2
+-rw-rw-r--.  1 leif leif    0 Apr 11 05:25 README.md
+</code></pre><h3 id="将文件file1的时间记录改为2000年5月6日18点3分。"><a href="#将文件file1的时间记录改为2000年5月6日18点3分。" class="headerlink" title="将文件file1的时间记录改为2000年5月6日18点3分。"></a>将文件file1的时间记录改为2000年5月6日18点3分。</h3><pre><code>touch -c -t 200005061803.00 file1
+--------------------------------------------
+[leif@localhost Documents]$ ls -la
+total 8
+drwxr-xr-x.  2 leif leif 4096 Apr 11 05:27 .
+drwx------. 22 leif leif 4096 Apr  2 20:58 ..
+-rw-rw-r--.  1 leif leif    0 Apr 11 05:26 file1
+-rw-rw-r--.  1 leif leif    0 Apr 11 05:26 file2
+-rw-rw-r--.  1 leif leif    0 Apr 11 05:25 README.md
+[leif@localhost Documents]$ touch -c -t 200005061803.00 file1
+[leif@localhost Documents]$ ls -la
+total 8
+drwxr-xr-x.  2 leif leif 4096 Apr 11 05:27 .
+drwx------. 22 leif leif 4096 Apr  2 20:58 ..
+-rw-rw-r--.  1 leif leif    0 May  6  2000 file1
+-rw-rw-r--.  1 leif leif    0 Apr 11 05:26 file2
+-rw-rw-r--.  1 leif leif    0 Apr 11 05:25 README.md
+</code></pre><p><br><br></p>
+<h1 id="cat-读取文件内容并且打印到标准输出"><a href="#cat-读取文件内容并且打印到标准输出" class="headerlink" title="cat 读取文件内容并且打印到标准输出"></a>cat 读取文件内容并且打印到标准输出</h1><h2 id="命令格式-1"><a href="#命令格式-1" class="headerlink" title="命令格式"></a>命令格式</h2><pre><code>cat [选项] 文件名
+主要选项：
+-n：由1开始对所有输出的行数编号
+-b：同-n,对于空白行不编号
+-s：当遇到有连续两行以上的空白行，就代换为一行的空白行
+-E：在行尾显示$符号
+</code></pre><h2 id="应用-7"><a href="#应用-7" class="headerlink" title="应用"></a>应用</h2><pre><code>[leif@localhost Documents]$ cat README.md
+test
+test
+
+
+test
+test
+
+test
+--------------------------------------------
+[leif@localhost Documents]$ cat -n README.md
+ 1  test
+ 2  test
+ 3
+ 4
+ 5  test
+ 6  test
+ 7
+ 8  test
+--------------------------------------------
+ [leif@localhost Documents]$ cat -b README.md
+ 1  test
+ 2  test
+
+
+ 3  test
+ 4  test
+
+ 5  test
+ --------------------------------------------
+ [leif@localhost Documents]$ cat -s README.md
+ test
+ test
+
+ test
+ test
+
+ test
+--------------------------------------------
+[leif@localhost Documents]$ cat -E README.md
+test$
+test$
+$
+$
+test$
+test$
+$
+test$
+</code></pre><p><br><br></p>
+<h1 id="more-分页显示文件内容"><a href="#more-分页显示文件内容" class="headerlink" title="more 分页显示文件内容"></a>more 分页显示文件内容</h1><h2 id="命令格式-2"><a href="#命令格式-2" class="headerlink" title="命令格式"></a>命令格式</h2><pre><code>more [选项] 文件名
+
+主要选项：
+-num：一次显示的行数
++num：从第num行开始显示
+-d：提示使用者，在画面下方显示 [Press space to continue, q to quit.] ，如果使用者按错键，则会显示 [Press h for instructions.]
+</code></pre><h1 id="应用-8"><a href="#应用-8" class="headerlink" title="应用"></a>应用</h1><pre><code>[leif@localhost Documents]$ more README.md
+test
+test
+
+
+test
+test
+
+test
+</code></pre><p><br><br></p>
+<h1 id="less-回卷显示文件内容"><a href="#less-回卷显示文件内容" class="headerlink" title="less 回卷显示文件内容"></a>less 回卷显示文件内容</h1><h2 id="命令格式-3"><a href="#命令格式-3" class="headerlink" title="命令格式"></a>命令格式</h2><pre><code>less [选项] 文件名
+</code></pre><ul>
+<li>与more类似，不过会在新的页面显示</li>
+</ul>
+<p><br><br></p>
+<h1 id="head-显示文件前若干行"><a href="#head-显示文件前若干行" class="headerlink" title="head 显示文件前若干行"></a>head 显示文件前若干行</h1><h2 id="命令格式-4"><a href="#命令格式-4" class="headerlink" title="命令格式"></a>命令格式</h2><pre><code>head [选项] 文件名
+
+主要选项：
+-q 隐藏文件名
+-v 显示文件名
+-c&lt;字节&gt; 显示字节数
+-n&lt;行数&gt; 显示的行数
+</code></pre><h2 id="应用-9"><a href="#应用-9" class="headerlink" title="应用"></a>应用</h2><pre><code>[leif@localhost Documents]$ head -v README.md
+==&gt; README.md &lt;==
+test
+test
+
+
+test
+test
+
+test
+--------------------------------------------
+[leif@localhost Documents]$ head -n3 README.md
+test
+test
+
+--------------------------------------------
+[leif@localhost Documents]$ head -c3 README.md
+tes
+</code></pre><p><br><br></p>
+<h1 id="tail-显示文件后若干行"><a href="#tail-显示文件后若干行" class="headerlink" title="tail 显示文件后若干行"></a>tail 显示文件后若干行</h1><h2 id="命令格式-5"><a href="#命令格式-5" class="headerlink" title="命令格式"></a>命令格式</h2><pre><code>tail [选项] 文件名
+主要选项：
+-f 循环读取
+-q 不显示处理信息
+-v 显示详细的处理信息
+-c&lt;数目&gt; 显示的字节数
+-n&lt;行数&gt; 显示行数
+--pid=PID 与-f合用,表示在进程ID,PID死掉之后结束.
+-q, --quiet, --silent 从不输出给出文件名的首部
+-s, --sleep-interval=S 与-f合用,表示在每次反复的间隔休眠S秒
+</code></pre><h2 id="应用-10"><a href="#应用-10" class="headerlink" title="应用"></a>应用</h2><pre><code>[leif@localhost Documents]$ tail -n4 README.md
+test
+test
+
+test
+</code></pre><p><br><br></p>
+<h1 id="grep-过滤、搜索命令"><a href="#grep-过滤、搜索命令" class="headerlink" title="grep 过滤、搜索命令"></a>grep 过滤、搜索命令</h1><h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><pre><code>grep [option] pattern file
+
+主要选项：
+-a   --text   #不要忽略二进制的数据。   
+-A&lt;显示行数&gt;   --after-context=&lt;显示行数&gt;   #除了显示符合范本样式的那一列之外，并显示该行之后的内容。   
+-b   --byte-offset   #在显示符合样式的那一行之前，标示出该行第一个字符的编号。   
+-B&lt;显示行数&gt;   --before-context=&lt;显示行数&gt;   #除了显示符合样式的那一行之外，并显示该行之前的内容。   
+-c    --count   #计算符合样式的列数。   
+-C&lt;显示行数&gt;    --context=&lt;显示行数&gt;或-&lt;显示行数&gt;   #除了显示符合样式的那一行之外，并显示该行之前后的内容。   
+-d &lt;动作&gt;      --directories=&lt;动作&gt;   #当指定要查找的是目录而非文件时，必须使用这项参数，否则grep指令将回报信息并停止动作。   
+-e&lt;范本样式&gt;  --regexp=&lt;范本样式&gt;   #指定字符串做为查找文件内容的样式。   
+-E      --extended-regexp   #将样式为延伸的普通表示法来使用。   
+-f&lt;规则文件&gt;  --file=&lt;规则文件&gt;   #指定规则文件，其内容含有一个或多个规则样式，让grep查找符合规则条件的文件内容，格式为每行一个规则样式。   
+-F   --fixed-regexp   #将样式视为固定字符串的列表。   
+-G   --basic-regexp   #将样式视为普通的表示法来使用。   
+-h   --no-filename   #在显示符合样式的那一行之前，不标示该行所属的文件名称。   
+-H   --with-filename   #在显示符合样式的那一行之前，表示该行所属的文件名称。   
+-i    --ignore-case   #忽略字符大小写的差别。   
+-l    --file-with-matches   #列出文件内容符合指定的样式的文件名称。   
+-L   --files-without-match   #列出文件内容不符合指定的样式的文件名称。   
+-n   --line-number   #在显示符合样式的那一行之前，标示出该行的列数编号。   
+-q   --quiet或--silent   #不显示任何信息。   
+-r   --recursive   #此参数的效果和指定“-d recurse”参数相同。   
+-s   --no-messages   #不显示错误信息。   
+-v   --revert-match   #显示不包含匹配文本的所有行。   
+-V   --version   #显示版本信息。   
+-w   --word-regexp   #只显示全字符合的列。   
+-x    --line-regexp   #只显示全列符合的列。   
+-y   #此参数的效果和指定“-i”参数相同。
+</code></pre><h2 id="pattern"><a href="#pattern" class="headerlink" title="pattern"></a>pattern</h2><h3 id="grep的规则表达式"><a href="#grep的规则表达式" class="headerlink" title="grep的规则表达式:"></a>grep的规则表达式:</h3><table>
+<thead>
+<tr>
+<th>符号</th>
+<th>意义</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>^</td>
+<td>#锚定行的开始</td>
+<td>‘^grep’匹配所有以grep开头的行。    </td>
+</tr>
+<tr>
+<td>$</td>
+<td>#锚定行的结束</td>
+<td>‘grep$’匹配所有以grep结尾的行。    </td>
+</tr>
+<tr>
+<td>.</td>
+<td>#匹配一个非换行符的字符</td>
+<td>‘gr.p’匹配gr后接一个任意字符，然后是p。    </td>
+</tr>
+<tr>
+<td>*</td>
+<td>#匹配零个或多个先前字符</td>
+<td>‘*grep’匹配所有一个或多个空格后紧跟grep的行。    </td>
+</tr>
+<tr>
+<td>.*</td>
+<td>#一起用代表任意字符。</td>
+<td></td>
+</tr>
+<tr>
+<td>[]</td>
+<td>#匹配一个指定范围内的字符</td>
+<td>‘[Gg]rep’匹配Grep和grep。    </td>
+</tr>
+<tr>
+<td>[^]</td>
+<td>#匹配一个不在指定范围内的字符</td>
+<td>‘[^A-FH-Z]rep’匹配不包含A-R和T-Z的一个字母开头，紧跟rep的行。    </td>
+</tr>
+<tr>
+<td>(..)</td>
+<td>#标记匹配字符</td>
+<td>‘(love)‘，love被标记为1。    </td>
+</tr>
+<tr>
+<td>\&lt;</td>
+<td>#锚定单词的开始</td>
+<td>‘\&lt;grep’匹配包含以grep开头的单词的行。    </td>
+</tr>
+<tr>
+<td>></td>
+<td>#锚定单词的结束</td>
+<td>如’grep>‘匹配包含以grep结尾的单词的行。    </td>
+</tr>
+<tr>
+<td>x{m}</td>
+<td>#重复字符x，m次</td>
+<td>‘0{5}‘匹配包含5个o的行。    </td>
+</tr>
+<tr>
+<td>x{m,}</td>
+<td>#重复字符x,至少m次</td>
+<td>‘o{5,}‘匹配至少有5个o的行。    </td>
+</tr>
+<tr>
+<td>x{m,n}</td>
+<td>#重复字符x，至少m次，不多于n次</td>
+<td>‘o{5,10}‘匹配5–10个o的行。   </td>
+</tr>
+<tr>
+<td>\w</td>
+<td>#匹配文字和数字字符，也就是[A-Za-z0-9]</td>
+<td>‘G\w*p’匹配以G后跟零个或多个文字或数字字符，然后是p。   </td>
+</tr>
+<tr>
+<td>\W</td>
+<td>#\w的反置形式，匹配一个或多个非单词字符，如点号句号等。</td>
+<td></td>
+</tr>
+<tr>
+<td>\b</td>
+<td>#单词锁定符</td>
+<td>‘\bgrep\b’只匹配grep。  </td>
+</tr>
+</tbody>
+</table>
+<h3 id="POSIX字符"><a href="#POSIX字符" class="headerlink" title="POSIX字符:"></a>POSIX字符:</h3><p>为了在不同国家的字符编码中保持一至，POSIX(The Portable Operating System Interface)增加了特殊的字符类，如[:alnum:]是[A-Za-z0-9]的另一个写法。要把它们放到[]号内才能成为正则表达式，如[A- Za-z0-9]或[[:alnum:]]。在linux下的grep除fgrep外，都支持POSIX的字符类。<br>表达式 | 意义</p>
+<ul>
+<li>| -<br>[:alnum:] | #文字数字字符<br>[:alpha:] | #文字字符<br>[:digit:] | #数字字符<br>[:graph:] | #非空字符（非空格、控制字符）<br>[:lower:] | #小写字符<br>[:cntrl:] | #控制字符<br>[:print:] | #非空字符（包括空格）<br>[:punct:] | #标点符号<br>[:space:] | #所有空白字符（新行，空格，制表符）<br>[:upper:] | #大写字符<br>[:xdigit:] | #十六进制数字（0-9，a-f，A-F）  </li>
+</ul>
+<h2 id="应用-11"><a href="#应用-11" class="headerlink" title="应用"></a>应用</h2><h3 id="在文件中查找包含相应字串行"><a href="#在文件中查找包含相应字串行" class="headerlink" title="在文件中查找包含相应字串行"></a>在文件中查找包含相应字串行</h3><pre><code>[leif@localhost Documents]$ grep &quot;Hello&quot; README.md
+Hello
+[leif@localhost Documents]$ grep Hello README.md
+Hello
+</code></pre><h3 id="在文件中查找包含相应字串行并打印相应的行号"><a href="#在文件中查找包含相应字串行并打印相应的行号" class="headerlink" title="在文件中查找包含相应字串行并打印相应的行号"></a>在文件中查找包含相应字串行并打印相应的行号</h3><pre><code>[leif@localhost Documents]$ grep -ni Hello README.md
+10:Hello
+</code></pre><h3 id="在文件中查找不包含相应字串的行"><a href="#在文件中查找不包含相应字串的行" class="headerlink" title="在文件中查找不包含相应字串的行"></a>在文件中查找不包含相应字串的行</h3><pre><code>[leif@localhost Documents]$ grep -vi Hello README.md
+test
+test
+
+
+test
+test
+
+test
+</code></pre><h3 id="查询系统是否安装了gcc"><a href="#查询系统是否安装了gcc" class="headerlink" title="查询系统是否安装了gcc"></a>查询系统是否安装了gcc</h3><pre><code>[leif@localhost Documents]$ rpm -qa | grep gcc
+libgcc-4.4.4-2.fc13.i686
+gcc-c++-4.4.4-2.fc13.i686
+gcc-gfortran-4.4.4-2.fc13.i686
+gcc-4.4.4-2.fc13.i686
+</code></pre><p><br><br></p>
+<h1 id="find-搜索指定目录的文件"><a href="#find-搜索指定目录的文件" class="headerlink" title="find 搜索指定目录的文件"></a>find 搜索指定目录的文件</h1><h2 id="命令格式-6"><a href="#命令格式-6" class="headerlink" title="命令格式"></a>命令格式</h2><pre><code>find [path] [options] [expression]
+常用参数:
+-name: 搜索指定文件名字的文件,支持通配符
+-atime n: 搜索过去n天之内访问过的文件
+-ctime n: 搜索过去n天之内修改过的文件
+-group gname: 搜索指定组属的文件
+</code></pre><h2 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h2><table>
+<thead>
+<tr>
+<th>符号</th>
+<th>意义</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*</td>
+<td>0到多个</td>
+<td>/etc/g<em>  /tmp/my</em>1</td>
+</tr>
+<tr>
+<td>?</td>
+<td>单个字符</td>
+<td>file?</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>与[]内任一字符相匹配</td>
+<td>file[12]</td>
+</tr>
+<tr>
+<td>[!]</td>
+<td>不与括弧中的任何字符匹配</td>
+<td>rm file[!9]</td>
+</tr>
+</tbody>
+</table>
+<pre><code>Bash对与通配符相关的字符（*、？、[、]、！）进行特殊的处理，当你需要将包含这些字符的参数输入到命令中时，需要用单引号把这些字符括起来
+$echo ‘[fo]*’ &gt; file1
+$echo \[fo\]\* &gt; file1
+</code></pre><p><br><br></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/08/Python-图片转字符画/" itemprop="url">
                   Python 图片转字符画
                 </a>
@@ -1936,7 +2647,7 @@ From: http://stackoverflow.com/questions/15437719/git-push-error-origin-does-not
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">10</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1946,7 +2657,7 @@ From: http://stackoverflow.com/questions/15437719/git-push-error-origin-does-not
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
