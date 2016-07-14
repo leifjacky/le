@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Mac,pillow,python," />
+  <meta name="keywords" content="fedora,linux,yum," />
 
 
 
@@ -84,19 +84,28 @@
 
 
 
-<meta name="description" content="安装pipsudo easy_install pip
-安装pillowsudo pip install pillow">
+<meta name="description" content="今天上linux暑期课的时候需要配置yum源，发现默认的源已经无法使用，所以需要更新为其他源。
+在网上找了好久试了163、sohu、sjtu的源均不行，遂打开sjtu源查看，发现只剩下一个README文件。
+ATTENTION
+======================================
+The contents of this directory have been moved">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mac下安装pillow">
-<meta property="og:url" content="http://yecj.me/2016/07/08/Mac下安装pillow/index.html">
+<meta property="og:title" content="fedora">
+<meta property="og:url" content="http://yecj.me/2016/07/14/fedora13更新源/index.html">
 <meta property="og:site_name" content="Miraky">
-<meta property="og:description" content="安装pipsudo easy_install pip
-安装pillowsudo pip install pillow">
-<meta property="og:updated_time" content="2016-07-08T01:33:11.000Z">
+<meta property="og:description" content="今天上linux暑期课的时候需要配置yum源，发现默认的源已经无法使用，所以需要更新为其他源。
+在网上找了好久试了163、sohu、sjtu的源均不行，遂打开sjtu源查看，发现只剩下一个README文件。
+ATTENTION
+======================================
+The contents of this directory have been moved">
+<meta property="og:updated_time" content="2016-07-14T02:40:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mac下安装pillow">
-<meta name="twitter:description" content="安装pipsudo easy_install pip
-安装pillowsudo pip install pillow">
+<meta name="twitter:title" content="fedora">
+<meta name="twitter:description" content="今天上linux暑期课的时候需要配置yum源，发现默认的源已经无法使用，所以需要更新为其他源。
+在网上找了好久试了163、sohu、sjtu的源均不行，遂打开sjtu源查看，发现只剩下一个README文件。
+ATTENTION
+======================================
+The contents of this directory have been moved">
 
 
 
@@ -117,9 +126,9 @@
 
 
 
-  <link rel="canonical" href="http://yecj.me/2016/07/08/Mac下安装pillow/"/>
+  <link rel="canonical" href="http://yecj.me/2016/07/14/fedora13更新源/"/>
 
-  <title> Mac下安装pillow | Miraky </title>
+  <title> fedora | Miraky </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -269,7 +278,7 @@
             
             
               
-                Mac下安装pillow
+                fedora
               
             
           </h1>
@@ -281,8 +290,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-08T09:30:23+08:00" content="2016-07-08">
-              2016-07-08
+            <time itemprop="dateCreated" datetime="2016-07-14T10:39:48+08:00" content="2016-07-14">
+              2016-07-14
             </time>
           </span>
 
@@ -309,9 +318,31 @@
       
 
       
-        <h1 id="安装pip"><a href="#安装pip" class="headerlink" title="安装pip"></a>安装pip</h1><pre><code>sudo easy_install pip
-</code></pre><h1 id="安装pillow"><a href="#安装pillow" class="headerlink" title="安装pillow"></a>安装pillow</h1><pre><code>sudo pip install pillow
-</code></pre>
+        <p>今天上linux暑期课的时候需要配置yum源，发现默认的源已经无法使用，所以需要更新为其他源。</p>
+<p>在网上找了好久试了163、sohu、sjtu的源均不行，遂打开sjtu源查看，发现只剩下一个README文件。</p>
+<pre><code>ATTENTION
+======================================
+The contents of this directory have been moved to our archives available at:
+
+http://archives.fedoraproject.org/pub/archive/fedora/
+
+If you are having troubles finding something there please stop by #fedora-admin on irc.freenode.net
+</code></pre><p>原来由于fedora13版本太老，大家都不维护了，能用的只剩下这个官方源了，估计是官方源也迁移过。</p>
+<p>接下来打开/etc/yum.repo.d/</p>
+<pre><code># cd /etc/yum.repo.d/
+</code></pre><p>用vim编辑.repo文件，或者先删除当前目录所有文件，再新建.repo文件，将参考repo复制。</p>
+<p>将原来的baseurl分别替换成：</p>
+<ul>
+<li><a href="http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/13/Fedora/i386/os/" target="_blank" rel="external">http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/13/Fedora/i386/os/</a></li>
+<li><a href="http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/13/Everything/i386/os/" target="_blank" rel="external">http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/13/Everything/i386/os/</a></li>
+<li><a href="http://archives.fedoraproject.org/pub/archive/fedora/linux/updates/13/i386/" target="_blank" rel="external">http://archives.fedoraproject.org/pub/archive/fedora/linux/updates/13/i386/</a></li>
+</ul>
+<p>将原来的gpgkey替换成：</p>
+<ul>
+<li>file:///RPM-GPG-KEY-fedora</li>
+</ul>
+<p>参考repo（由于一开始想使用sjtu的源，所以名称还没改过来）：<br>    [Fedora-ftp.sjtu.edu.cn]<br>    name=Fedora 13 – i386<br>    baseurl=<a href="http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/13/Fedora/i386/os/" target="_blank" rel="external">http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/13/Fedora/i386/os/</a><br>    enabled=1<br>    gpgcheck=0<br>    gpgkey=file:///RPM-GPG-KEY-fedora<br>    [Everything-ftp.sjtu.edu.cn]<br>    name=Everything 13 – i386<br>    baseurl=<a href="http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/13/Everything/i386/os/" target="_blank" rel="external">http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/13/Everything/i386/os/</a><br>    enabled=1<br>    gpgcheck=0<br>    gpgkey=file:///RPM-GPG-KEY-fedora<br>    [updates-ftp.sjtu.edu.cn]<br>    name=Fedora updates<br>    baseurl=<a href="http://archives.fedoraproject.org/pub/archive/fedora/linux/updates/13/i386/" target="_blank" rel="external">http://archives.fedoraproject.org/pub/archive/fedora/linux/updates/13/i386/</a><br>    enabled=1<br>    gpgcheck=0</p>
+
       
     </div>
 
@@ -332,11 +363,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Mac/" rel="tag">#Mac</a>
+            <a href="/tags/fedora/" rel="tag">#fedora</a>
           
-            <a href="/tags/pillow/" rel="tag">#pillow</a>
+            <a href="/tags/linux/" rel="tag">#linux</a>
           
-            <a href="/tags/python/" rel="tag">#python</a>
+            <a href="/tags/yum/" rel="tag">#yum</a>
           
         </div>
       
@@ -345,17 +376,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/07/07/python深入/" rel="next" title="python深入">
-                <i class="fa fa-chevron-left"></i> python深入
+              <a href="/2016/07/09/linux暑期实践1-字符界面与常用命令/" rel="next" title="linux暑期实践1-字符界面与常用命令">
+                <i class="fa fa-chevron-left"></i> linux暑期实践1-字符界面与常用命令
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/07/08/github-readme-md-添加图片/" rel="prev" title="github readme.md 添加图片">
-                github readme.md 添加图片 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -462,7 +489,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装pip"><span class="nav-number">1.</span> <span class="nav-text">安装pip</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装pillow"><span class="nav-number">2.</span> <span class="nav-text">安装pillow</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>
