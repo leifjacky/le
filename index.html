@@ -268,6 +268,108 @@
             
               
                 
+                <a class="post-title-link" href="/2016/07/19/Mac启用自带FTP服务/" itemprop="url">
+                  Mac启用自带FTP服务
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-19T11:07:48+08:00" content="2016-07-19">
+              2016-07-19
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>转自：<a href="http://blog.sina.com.cn/s/blog_4fa20e8c0102vd4q.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_4fa20e8c0102vd4q.html</a></p>
+</blockquote>
+<p>系统自带的的FTP<br>通过命令行来开启关闭，如下所示： </p>
+<p>开启 FTP Server </p>
+<pre><code>sudo -s launchctl load -w /System/Library/LaunchDaemons/ftp.plist 
+</code></pre><p>关闭 FTP Server </p>
+<pre><code>sudo -s launchctl unload -w /System/Library/LaunchDaemons/ftp.plist 
+</code></pre><p>登录格式为 ftp://用户名@ip<br>然后输入你在Mac上的用户名和密码就可以了</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/18/POJ-1417-True-Liars/" itemprop="url">
                   POJ 1417 True Liars
                 </a>
@@ -2470,343 +2572,6 @@ print superList([1,2,3]) - superList([3,4])
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/05/python基础/" itemprop="url">
-                  python基础
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-05T11:49:59+08:00" content="2016-07-05">
-              2016-07-05
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>本文基于实验楼教程重新编写</p>
-</blockquote>
-<h1 id="运行python程序"><a href="#运行python程序" class="headerlink" title="运行python程序"></a>运行python程序</h1><h2 id="直接使用python命令行"><a href="#直接使用python命令行" class="headerlink" title="直接使用python命令行"></a>直接使用python命令行</h2><pre><code>$python    
-&gt;&gt;&gt;print(‘Hello World!’);            
-Hello world!
-</code></pre><h2 id="写一个-py结尾的python程序"><a href="#写一个-py结尾的python程序" class="headerlink" title="写一个.py结尾的python程序"></a>写一个.py结尾的python程序</h2><pre><code>$echo &quot;print(&apos;Hello World!&apos;)&quot; &gt;&gt; hello.py
-$python hello.py
-Hello World!
-</code></pre><h2 id="使用可执行脚本的方式运行程序"><a href="#使用可执行脚本的方式运行程序" class="headerlink" title="使用可执行脚本的方式运行程序"></a>使用可执行脚本的方式运行程序</h2><h3 id="编辑helloScript-py，输入以下代码"><a href="#编辑helloScript-py，输入以下代码" class="headerlink" title="编辑helloScript.py，输入以下代码"></a>编辑helloScript.py，输入以下代码</h3><pre><code>#!/usr/bin/python
-print(&apos;Hello World!&apos;)
-</code></pre><h3 id="修改helloScript-py权限"><a href="#修改helloScript-py权限" class="headerlink" title="修改helloScript.py权限"></a>修改helloScript.py权限</h3><pre><code>chmod 755 helloScript.py
-</code></pre><h3 id="运行程序"><a href="#运行程序" class="headerlink" title="运行程序"></a>运行程序</h3><pre><code>./helloScript.py
-Hello World!
-</code></pre><p><br><br></p>
-<h1 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h1><h2 id="常用数据类型"><a href="#常用数据类型" class="headerlink" title="常用数据类型"></a>常用数据类型</h2><table>
-<thead>
-<tr>
-<th>变量</th>
-<th>数据类型</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>a = 10</td>
-<td>int 整形</td>
-</tr>
-<tr>
-<td>a = 1.3</td>
-<td>float 单精度浮点数</td>
-</tr>
-<tr>
-<td>a = True</td>
-<td>布尔型（True / False）</td>
-</tr>
-<tr>
-<td>a = ‘Hello!’</td>
-<td>字符串</td>
-</tr>
-</tbody>
-</table>
-<h2 id="查看数据类型"><a href="#查看数据类型" class="headerlink" title="查看数据类型"></a>查看数据类型</h2><pre><code>&gt;&gt;&gt;a = 1.3
-&gt;&gt;&gt;print a,type(a)
-1.3 &lt;type &apos;float&apos;&gt;
-</code></pre><h2 id="sequence-序列"><a href="#sequence-序列" class="headerlink" title="sequence 序列"></a>sequence 序列</h2><h3 id="tuple-（定值表、元组）"><a href="#tuple-（定值表、元组）" class="headerlink" title="tuple （定值表、元组）"></a>tuple （定值表、元组）</h3><pre><code>&gt;&gt;&gt;s1 = (2, 1.3, &apos;love&apos;, 5.6, 9, 12, False)   # s1是一个tuple
-</code></pre><h3 id="list-（表）"><a href="#list-（表）" class="headerlink" title="list （表）"></a>list （表）</h3><pre><code>&gt;&gt;&gt;s2 = [True, 5, &apos;smile&apos;]    # s2是一个list
-</code></pre><h3 id="tuple-和-list-的区别"><a href="#tuple-和-list-的区别" class="headerlink" title="tuple 和 list 的区别"></a>tuple 和 list 的区别</h3><p>一旦建立，tuple的各个元素不可再变更，而list的各个元素可以再变更。</p>
-<h3 id="元素引用方式"><a href="#元素引用方式" class="headerlink" title="元素引用方式"></a>元素引用方式</h3><pre><code>&gt;&gt;&gt;print s1[0]              # 下标0
-&gt;&gt;&gt;print s3[1][2]           # 二维行下标1，列下标2
-&gt;&gt;&gt;print s1[:5]             # 从开始到下标4 （下标5的元素 不包括在内）
-&gt;&gt;&gt;print s1[2:]             # 从下标2到最后
-&gt;&gt;&gt;print s1[0:5:2]          # 从下标0到下标4 (下标5不包括在内)，每隔2取一个元素 （下标为0，2，4的元素）
-&gt;&gt;&gt;print s1[2:0:-1]         # 从下标2到下标1
-&gt;&gt;&gt;print s1[-1]             # 序列最后一个元素
-&gt;&gt;&gt;print s1[-3]             # 序列倒数第三个元素
-</code></pre><p>以上引用方式同样适用于字符串，字符串是特殊的元组。</p>
-<p><br><br></p>
-<h1 id="基本运算"><a href="#基本运算" class="headerlink" title="基本运算"></a>基本运算</h1><h2 id="数学运算"><a href="#数学运算" class="headerlink" title="数学运算"></a>数学运算</h2><table>
-<thead>
-<tr>
-<th>符号</th>
-<th>意义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>+</td>
-<td>加法</td>
-</tr>
-<tr>
-<td>-</td>
-<td>减法</td>
-</tr>
-<tr>
-<td>*</td>
-<td>乘法</td>
-</tr>
-<tr>
-<td>/</td>
-<td>除法</td>
-</tr>
-<tr>
-<td>**</td>
-<td>乘方</td>
-</tr>
-<tr>
-<td>%</td>
-<td>求余</td>
-</tr>
-</tbody>
-</table>
-<h2 id="判断"><a href="#判断" class="headerlink" title="判断"></a>判断</h2><p>判断是真还是假，返回True / False</p>
-<table>
-<thead>
-<tr>
-<th>表达式</th>
-<th>意义</th>
-<th>返回值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>5 == 6</td>
-<td>5 与 6 相等</td>
-<td>False</td>
-</tr>
-<tr>
-<td>8.0 != 8.0</td>
-<td>8.0 与 8.0 不等</td>
-<td>False</td>
-</tr>
-<tr>
-<td>3 &lt; 3 , 3 &lt;= 3</td>
-<td>3 小于 3 , 3 小于等于 3</td>
-<td>False , True</td>
-</tr>
-<tr>
-<td>4 &gt; 5 , 4 &gt;= 0</td>
-<td>4 大于 5 , 4 小于等于 0</td>
-<td>False , False</td>
-</tr>
-<tr>
-<td>5 in [1, 3, 5]</td>
-<td>5 是 [1, 3, 5] 的一个元素</td>
-<td>True</td>
-</tr>
-</tbody>
-</table>
-<h2 id="逻辑运算"><a href="#逻辑运算" class="headerlink" title="逻辑运算"></a>逻辑运算</h2><table>
-<thead>
-<tr>
-<th>表达式</th>
-<th>意义</th>
-<th>返回值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>True and True, True and False</td>
-<td>逻辑与</td>
-<td>True , False</td>
-</tr>
-<tr>
-<td>True or False</td>
-<td>逻辑或</td>
-<td>True</td>
-</tr>
-<tr>
-<td>not True</td>
-<td>逻辑非</td>
-<td>False</td>
-</tr>
-</tbody>
-</table>
-<p><br><br></p>
-<h1 id="选择语句"><a href="#选择语句" class="headerlink" title="选择语句"></a>选择语句</h1><h2 id="if-语句"><a href="#if-语句" class="headerlink" title="if 语句"></a>if 语句</h2><pre><code>i = 1
-x = 1
-if i &gt; 0:
-    x = x + 1
-print x
-</code></pre><p>程序输出 2</p>
-<h2 id="缩进"><a href="#缩进" class="headerlink" title="缩进"></a>缩进</h2><p> python 中没有括号{}，在 if 语句中如果 if 后面跟了多个语句，则通过缩进的方式确定当前选择结构下的语句内容，具体看例子：</p>
-<pre><code> i = 1
- x = 0
- y = 0
- if i &gt; 2:
-    x = 1
-    y = 2
-print x, y
-</code></pre><p>程序输出 0 0，说明 x = 1 和 y = 2 两句确实包含在 if 语句中。</p>
-<h2 id="多重选择语句"><a href="#多重选择语句" class="headerlink" title="多重选择语句"></a>多重选择语句</h2><pre><code>i = 1
-
-if i &gt; 0:
-    print &apos;positive i&apos;
-    i = i + 1
-elif i == 0:
-    print &apos;i is 0&apos;
-    i = i * 10
-else:
-    print &apos;negative i&apos;
-    i = i - 1
-
-print &apos;new i:&apos;,i
-</code></pre><p>这里有三个块，分别属于if，elif，else引领。同时 if 中也可以嵌套 if。</p>
-<pre><code>i  = 5
-if i &gt; 1:
-    print &apos;i bigger than 1&apos;
-    print &apos;good&apos;
-    if i &gt; 2:
-        print &apos;i bigger than 2&apos;
-        print &apos;even better&apos;
-</code></pre><p><br><br></p>
-<h1 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h1><p>前面在 if 中说到了缩进机制，缩进机制同样适用于循环语句。</p>
-<h2 id="for-循环"><a href="#for-循环" class="headerlink" title="for 循环"></a>for 循环</h2><p>在讲 for 循环前先说一个函数 range(x)，返回 [0,1,2,3,4] 序列。</p>
-<h3 id="基本格式"><a href="#基本格式" class="headerlink" title="基本格式"></a>基本格式</h3><pre><code>for 元素 in 序列: 
-    statement
-</code></pre><h3 id="具体用法"><a href="#具体用法" class="headerlink" title="具体用法"></a>具体用法</h3><pre><code>for a in [3,4.4,&apos;life&apos;]:
-    print a
-for a in range(10):
-    print a**2
-</code></pre><h2 id="while-循环"><a href="#while-循环" class="headerlink" title="while 循环"></a>while 循环</h2><h3 id="基本格式-1"><a href="#基本格式-1" class="headerlink" title="基本格式"></a>基本格式</h3><pre><code>while 条件:
-    statement
-</code></pre><h3 id="具体用法-1"><a href="#具体用法-1" class="headerlink" title="具体用法"></a>具体用法</h3><pre><code>i = 0
-while i &lt; 10:
-    print i
-    i = i + 1
-</code></pre><h2 id="中断循环"><a href="#中断循环" class="headerlink" title="中断循环"></a>中断循环</h2><p>continue, break 与 C 用法类似</p>
-<pre><code>for i in range(10):
-    if i == 2: 
-        continue
-    if i == 3:
-        break;
-    print i
-</code></pre><p><br><br></p>
-<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="函数定义"><a href="#函数定义" class="headerlink" title="函数定义"></a>函数定义</h2><pre><code>def square_sum(a,b):
-    c = a**2 + b**2
-    return c
-</code></pre><ul>
-<li>return可以返回多个值，以逗号分隔。相当于返回一个 tuple（定值表）。return a,b,c 相当于 return (a,b,c)</li>
-<li>return并不是必须的，当没有return, 或者return后面没有返回值时，函数将自动返回None。None是Python中的一个特别的数据类型，用来表示什么都没有，相当于C中的NULL。None多用于关键字参数传递的默认值。</li>
-</ul>
-<h2 id="参数传递"><a href="#参数传递" class="headerlink" title="参数传递"></a>参数传递</h2><pre><code>a = 1
-
-def change_integer(a):
-    a = a + 1
-    return a
-
-print change_integer(a)      #注意观察结果
-print a      #注意观察结果
-
-b = [1,2,3]
-
-def change_list(b):
-    b[0] = b[0] + 1
-    return b
-
-print change_list(b)      #注意观察结果
-print b      #注意观察结果
-</code></pre><ul>
-<li><p>第一个例子，我们将一个<strong>整数变量传递给函数</strong>，函数对它进行操作，但<strong>原整数变量a不发生变化</strong>。</p>
-</li>
-<li><p>第二个例子，我们<strong>将一个表传递给函数</strong>，函数进行操作，<strong>原来的表b发生变化</strong>。</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2852,7 +2617,7 @@ print b      #注意观察结果
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -2862,7 +2627,7 @@ print b      #注意观察结果
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
