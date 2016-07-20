@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="ACM,并查集,POJ," />
 
 
 
@@ -84,15 +84,22 @@
 
 
 
-<meta name="description" content="Jacky Yip&apos;s Blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Miraky">
-<meta property="og:url" content="http://yecj.me/tags/fedora/index.html">
+<meta name="description" content="Time Limit:1000MS     Memory Limit:65536KB     64bit IO Format:%lld &amp;amp; %llu
+
+DescriptionNow and then you play the following game with your friend. Your friend writes down a sequence consisting of">
+<meta property="og:type" content="article">
+<meta property="og:title" content="POJ 1733 Parity game 并查集">
+<meta property="og:url" content="http://yecj.me/2016/07/20/POJ-1733-Parity-game-并查集/index.html">
 <meta property="og:site_name" content="Miraky">
-<meta property="og:description" content="Jacky Yip&apos;s Blog">
+<meta property="og:description" content="Time Limit:1000MS     Memory Limit:65536KB     64bit IO Format:%lld &amp;amp; %llu
+
+DescriptionNow and then you play the following game with your friend. Your friend writes down a sequence consisting of">
+<meta property="og:updated_time" content="2016-07-20T11:47:39.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Miraky">
-<meta name="twitter:description" content="Jacky Yip&apos;s Blog">
+<meta name="twitter:title" content="POJ 1733 Parity game 并查集">
+<meta name="twitter:description" content="Time Limit:1000MS     Memory Limit:65536KB     64bit IO Format:%lld &amp;amp; %llu
+
+DescriptionNow and then you play the following game with your friend. Your friend writes down a sequence consisting of">
 
 
 
@@ -113,9 +120,9 @@
 
 
 
-  <link rel="canonical" href="http://yecj.me/tags/fedora/"/>
+  <link rel="canonical" href="http://yecj.me/2016/07/20/POJ-1733-Parity-game-并查集/"/>
 
-  <title> 标签: fedora | Miraky </title>
+  <title> POJ 1733 Parity game 并查集 | Miraky </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -136,7 +143,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -244,46 +251,232 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        fedora
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                POJ 1733 Parity game 并查集
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-20T11:53:15+08:00" content="2016-07-20">
+              2016-07-20
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <blockquote>
+<p>Time Limit:1000MS     Memory Limit:65536KB     64bit IO Format:%lld &amp; %llu</p>
+</blockquote>
+<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>Now and then you play the following game with your friend. Your friend writes down a sequence consisting of zeroes and ones. You choose a continuous subsequence (for example the subsequence from the third to the fifth digit inclusively) and ask him, whether this subsequence contains even or odd number of ones. Your friend answers your question and you can ask him about another subsequence and so on. Your task is to guess the entire sequence of numbers. </p>
+<p>You suspect some of your friend’s answers may not be correct and you want to convict him of falsehood. Thus you have decided to write a program to help you in this matter. The program will receive a series of your questions together with the answers you have received from your friend. The aim of this program is to find the first answer which is provably wrong, i.e. that there exists a sequence satisfying answers to all the previous questions, but no such sequence satisfies this answer.</p>
+<p>#Input<br>The first line of input contains one number, which is the length of the sequence of zeroes and ones. This length is less or equal to 1000000000. In the second line, there is one positive integer which is the number of questions asked and answers to them. The number of questions and answers is less or equal to 5000. The remaining lines specify questions and answers. Each line contains one question and the answer to this question: two integers (the position of the first and last digit in the chosen subsequence) and one word which is either <strong>even</strong> or <strong>odd</strong> (the answer, i.e. the parity of the number of ones in the chosen subsequence, where <strong>even</strong> means an even number of ones and <strong>odd</strong> means an odd number).</p>
+<p>#Output<br>There is only one line in output containing one integer X. Number X says that there exists a sequence of zeroes and ones satisfying first X parity conditions, but there exists none satisfying X+1 conditions. If there exists a sequence of zeroes and ones satisfying all the given conditions, then number X should be the number of all the questions asked.</p>
+<p>#Sample</p>
+<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><pre><code>10
+5
+1 2 even
+3 4 odd
+5 6 even
+1 6 even
+7 10 odd
+</code></pre><h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><pre><code>3
+</code></pre><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>使用种类并查集，r[x]表示(x,r[x]]区间的奇偶情况。<br>对于每次询问p q d,如果p、q同一组，则通过判断r[p]^r[q]与d是否相等判断是否正确。如果不同组，则合并。</p>
+<h1 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h1><pre><code>#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+#include &lt;cstring&gt;
+#include &lt;map&gt;
+using namespace std;
 
-      <h1 class="post-title">
+#define N 20005
+
+struct code{
+    int x,y,d;
+}a[N];
+
+int l,n;
+int cnt;
+map&lt;int,int&gt; m;
+int b[N],f[N],r[N];
+
+int _find(int x){
+    if (f[x]==x){
+        return x;
+    }else{
+        int fx=f[x];
+        f[x]=_find(f[x]);
+        r[x]=r[x]^r[fx];
+        return f[x];
+    }
+}
+
+int main(){
+    while (~scanf(&quot;%d%d&quot;,&amp;l,&amp;n)){
+        cnt=0;
+        m.clear();
+        for (int i=0;i&lt;n;i++){
+            char st[5];
+            scanf(&quot;%d%d%s&quot;,&amp;a[i].x,&amp;a[i].y,st);
+            if (st[0]==&apos;e&apos;)
+                a[i].d=0;
+            else
+                a[i].d=1;
+
+            a[i].x--;
+
+            if (m[a[i].x]==0){
+                m[a[i].x]=1;
+                b[cnt++]=a[i].x;
+            }
+            if (m[a[i].y]==0){
+                m[a[i].y]=1;
+                b[cnt++]=a[i].y;
+            }
+        }
+
+        sort(b,b+cnt);
+        for (int i=0;i&lt;cnt;i++){
+            m[b[i]]=i;
+            f[i]=i;
+            r[i]=0;
+        }
+
+        int ans=0;
+        for (int i=0;i&lt;n;i++){
+            int p,q,d;
+            p=m[a[i].x];
+            q=m[a[i].y];
+            d=a[i].d;
+
+            int x=_find(p);
+            int y=_find(q);
+            if (x&gt;y){
+                swap(x,y);
+            }
+            if (x==y){
+                if (d==(r[p]^r[q]))
+                    ans++;
+                else{
+                    break;
+                }
+            }else{
+                f[x]=y;
+                r[x]=r[p]^d^r[q];
+                ans++;
+            }
+        }
+        printf(&quot;%d\n&quot;,ans);
+    }
+
+
+    return 0;
+}
+</code></pre>
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/07/14/fedora13更新源/" itemprop="url">
-              
-                <span itemprop="name">fedora13更新源</span>
-              
-            </a>
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-07-14T10:39:48+08:00"
-              content="2016-07-14" >
-          07-14
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ACM/" rel="tag">#ACM</a>
+          
+            <a href="/tags/并查集/" rel="tag">#并查集</a>
+          
+            <a href="/tags/POJ/" rel="tag">#POJ</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/20/POJ-1456-Supermarket-并查集/" rel="next" title="POJ 1456 Supermarket 并查集">
+                <i class="fa fa-chevron-left"></i> POJ 1456 Supermarket 并查集
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -291,6 +484,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -310,8 +507,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -354,6 +560,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Input"><span class="nav-number">1.1.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Output"><span class="nav-number">1.2.</span> <span class="nav-text">Sample Output</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AC代码"><span class="nav-number">3.</span> <span class="nav-text">AC代码</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -457,6 +674,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
