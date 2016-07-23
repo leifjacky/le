@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="ACM,并查集,POJ," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -84,22 +84,15 @@
 
 
 
-<meta name="description" content="Time Limit:5000MS     Memory Limit:65536KB     64bit IO Format:%lld &amp;amp; %llu
-
-DescriptionN children are playing Rochambeau (scissors-rock-cloth) game with you. One of them is the judge. The rest ch">
-<meta property="og:type" content="article">
-<meta property="og:title" content="POJ 2912 Rochambeau 并查集">
-<meta property="og:url" content="http://yecj.me/2016/07/23/POJ-2912-Rochambeau-并查集/index.html">
+<meta name="description" content="Jacky Yip&apos;s Blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Miraky">
+<meta property="og:url" content="http://yecj.me/archives/2016/page/3/index.html">
 <meta property="og:site_name" content="Miraky">
-<meta property="og:description" content="Time Limit:5000MS     Memory Limit:65536KB     64bit IO Format:%lld &amp;amp; %llu
-
-DescriptionN children are playing Rochambeau (scissors-rock-cloth) game with you. One of them is the judge. The rest ch">
-<meta property="og:updated_time" content="2016-07-23T15:46:43.000Z">
+<meta property="og:description" content="Jacky Yip&apos;s Blog">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="POJ 2912 Rochambeau 并查集">
-<meta name="twitter:description" content="Time Limit:5000MS     Memory Limit:65536KB     64bit IO Format:%lld &amp;amp; %llu
-
-DescriptionN children are playing Rochambeau (scissors-rock-cloth) game with you. One of them is the judge. The rest ch">
+<meta name="twitter:title" content="Miraky">
+<meta name="twitter:description" content="Jacky Yip&apos;s Blog">
 
 
 
@@ -120,9 +113,9 @@ DescriptionN children are playing Rochambeau (scissors-rock-cloth) game with you
 
 
 
-  <link rel="canonical" href="http://yecj.me/2016/07/23/POJ-2912-Rochambeau-并查集/"/>
+  <link rel="canonical" href="http://yecj.me/archives/2016/page/3/"/>
 
-  <title> POJ 2912 Rochambeau 并查集 | Miraky </title>
+  <title> 归档 | Miraky </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -143,7 +136,7 @@ DescriptionN children are playing Rochambeau (scissors-rock-cloth) game with you
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left  page-archive  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -251,256 +244,107 @@ DescriptionN children are playing Rochambeau (scissors-rock-cloth) game with you
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-collapse">
+    <span class="archive-move-on"></span>
+
+    <span class="archive-page-counter">
+      
+      
+      
+        
+      
+      嗯..! 目前共计 22 篇日志。 继续努力。
+    </span>
+
     
 
-  
-  
+      
+      
+      
 
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
+      
         
+        <div class="collection-title">
+          <h2 class="archive-year motion-element" id="archive-year-2016">2016</h2>
+        </div>
+      
+      
+
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
+            <a class="post-title-link" href="/2016/07/05/python基础/" itemprop="url">
               
-                POJ 2912 Rochambeau 并查集
+                <span itemprop="name">python基础</span>
               
-            
-          </h1>
+            </a>
         
+      </h1>
 
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-23T23:25:03+08:00" content="2016-07-23">
-              2016-07-23
-            </time>
-          </span>
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-07-05T11:49:59+08:00"
+              content="2016-07-05" >
+          07-05
+        </time>
+      </div>
 
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <blockquote>
-<p>Time Limit:5000MS     Memory Limit:65536KB     64bit IO Format:%lld &amp; %llu</p>
-</blockquote>
-<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>N children are playing Rochambeau (scissors-rock-cloth) game with you. One of them is the judge. The rest children are divided into three groups (it is possible that some group is empty). You don’t know who is the judge, or how the children are grouped. Then the children start playing Rochambeau game for M rounds. Each round two children are arbitrarily selected to play Rochambeau for one once, and you will be told the outcome while not knowing which gesture the children presented. It is known that the children in the same group would present the same gesture (hence, two children in the same group always get draw when playing) and different groups for different gestures. The judge would present gesture randomly each time, hence no one knows what gesture the judge would present. Can you guess who is the judge after after the game ends? If you can, after how many rounds can you find out the judge at the earliest?</p>
-<h1 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h1><p>Input contains multiple test cases. Each test case starts with two integers N and M (1 ≤ N ≤ 500, 0 ≤ M ≤ 2,000) in one line, which are the number of children and the number of rounds. Following are M lines, each line contains two integers in [0, N) separated by one symbol. The two integers are the IDs of the two children selected to play Rochambeau for this round. The symbol may be “=”, “&gt;” or “&lt;”, referring to a draw, that first child wins and that second child wins respectively.</p>
-<h1 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h1><p>There is only one line for each test case. If the judge can be found, print the ID of the judge, and the least number of rounds after which the judge can be uniquely determined. If the judge can not be found, or the outcomes of the M rounds of game are inconsistent, print the corresponding message.</p>
-<h1 id="Sample"><a href="#Sample" class="headerlink" title="Sample"></a>Sample</h1><h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><pre><code>3 3
-0&lt;1
-1&lt;2
-2&lt;0
-3 5
-0&lt;1
-0&gt;1
-1&lt;2
-1&gt;2
-0&lt;2
-4 4
-0&lt;1
-0&gt;1
-2&lt;3
-2&gt;3
-1 0
-</code></pre><h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><pre><code>Can not determine
-Player 1 can be determined to be the judge after 4 lines
-Impossible
-Player 0 can be determined to be the judge after 0 lines
-</code></pre><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>题目意思是一共n个人，分成3组，每组分别只出剪刀石头布。n个人中只有1个裁判，但是裁判可以任意出剪刀石头布。现在给m条提示，每条表示两个人之间的输赢情况。问是否能确定裁判是谁。</p>
-<p>因为数据并不大，可以枚举n个人，每次假设i为裁判，则所有包含i的信息直接忽略，其他的信息使用种类并查集分类看是否有冲突，如果有冲突则记录从哪里开始冲突。</p>
-<h1 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h1><pre><code>#include &lt;iostream&gt;
-#include &lt;cstdio&gt;
-#include &lt;cstring&gt;
-using namespace std;
-
-#define N 505
-#define M 2005
-
-struct node{
-    int u,v,d;
-    node(){}
-    node(int uu,int vv,int dd):u(uu),v(vv),d(dd){}
-}a[M];
-
-int n,m;
-int f[N],r[N];
-
-int _find(int x){
-    if (f[x]==-1){
-        return x;
-    }else{
-        int fx=f[x];
-        f[x]=_find(f[x]);
-        r[x]=(r[x]+r[fx])%3;
-        return f[x];
-    }
-}
-
-bool _union(int u,int v,int d){
-    int x=_find(u);
-    int y=_find(v);
-
-    if (x==y){
-        if (((r[u]-r[v]+3)%3)==d){
-            return true;
-        }else{
-            return false;
-        }
-    }else{
-        f[x]=y;
-        r[x]=(-r[u]+r[v]+d+3)%3;
-        return true;
-    }
-}
-
-int main(){
-    while (scanf(&quot;%d%d&quot;,&amp;n,&amp;m)!=EOF){
-        int u,v,d;
-        char c;
-        for (int i=0;i&lt;m;i++){
-            scanf(&quot;%d%c%d&quot;,&amp;u,&amp;c,&amp;v);
-            if (c==&apos;&lt;&apos;){
-                d=2;
-            }else if (c==&apos;=&apos;){
-                d=0;
-            }else{
-                d=1;
-            }
-            a[i]=node(u,v,d);
-        }
-
-        bool flag;
-        int cnt=0;
-        int mx=0;
-        int num=0;
-        for (int i=0;i&lt;n;i++){
-            flag=true;
-            memset(f,-1,sizeof(f));
-            memset(r,0,sizeof(r));
-            for (int j=0;j&lt;m;j++){
-                u=a[j].u;
-                v=a[j].v;
-                d=a[j].d;
-
-                if (u==i || v==i)
-                    continue;
-
-                flag=_union(u,v,d);
-                if (flag==false){
-                    mx=max(mx,j+1);
-                    break;
-                }
-            }
-            if (flag){
-                cnt++;
-                num=i;
-            }
-        }
-
-        if (cnt&gt;1){
-            printf(&quot;Can not determine\n&quot;);
-        }else if (cnt==0){
-            printf(&quot;Impossible\n&quot;);
-        }else{
-            printf(&quot;Player %d can be determined to be the judge after %d lines\n&quot;,num,mx);
-        }
-    }
-
-    return 0;
-}
-</code></pre>
-      
-    </div>
-
-    <div>
-      
-        
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/ACM/" rel="tag">#ACM</a>
-          
-            <a href="/tags/并查集/" rel="tag">#并查集</a>
-          
-            <a href="/tags/POJ/" rel="tag">#POJ</a>
-          
-        </div>
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/07/23/POJ-1984-Navigation-Nightmare-并查集/" rel="next" title="POJ 1984 Navigation Nightmare 并查集">
-                <i class="fa fa-chevron-left"></i> POJ 1984 Navigation Nightmare 并查集
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/07/23/ZOJ-3761-Connections-in-Galaxy-War-并查集/" rel="prev" title="ZOJ 3761 Connections in Galaxy War 并查集">
-                ZOJ 3761 Connections in Galaxy War 并查集 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
+    </header>
   </article>
 
 
 
-    <div class="post-spread">
+    
+
       
-    </div>
-  </div>
+      
+      
+
+      
+      
+
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
+        
+            <a class="post-title-link" href="/2016/07/04/git学习笔记/" itemprop="url">
+              
+                <span itemprop="name">git学习笔记</span>
+              
+            </a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-07-04T11:56:25+08:00"
+              content="2016-07-04" >
+          07-04
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+    
+
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/archives/2016/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/archives/2016/">1</a><a class="page-number" href="/archives/2016/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
+
+
 
 
           </div>
@@ -508,10 +352,6 @@ int main(){
 
 
           
-  <div class="comments" id="comments">
-    
-  </div>
-
 
         </div>
         
@@ -531,17 +371,8 @@ int main(){
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -584,17 +415,6 @@ int main(){
 
       </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Input"><span class="nav-number">2.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Output"><span class="nav-number">3.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Sample"><span class="nav-number">4.</span> <span class="nav-text">Sample</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Input"><span class="nav-number">4.1.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Output"><span class="nav-number">4.2.</span> <span class="nav-text">Sample Output</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#思路"><span class="nav-number">5.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AC代码"><span class="nav-number">6.</span> <span class="nav-text">AC代码</span></a></li></ol></div>
-            
-          </div>
-        </section>
       
 
     </div>
@@ -698,9 +518,11 @@ int main(){
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
+  
+    <script type="text/javascript" id="motion.page.archive">
+      $('.archive-year').velocity('transition.slideLeftIn');
+    </script>
+  
 
 
   

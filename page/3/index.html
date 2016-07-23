@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="ACM,并查集,POJ," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -84,22 +84,15 @@
 
 
 
-<meta name="description" content="Time Limit:5000MS     Memory Limit:65536KB     64bit IO Format:%lld &amp;amp; %llu
-
-DescriptionN children are playing Rochambeau (scissors-rock-cloth) game with you. One of them is the judge. The rest ch">
-<meta property="og:type" content="article">
-<meta property="og:title" content="POJ 2912 Rochambeau 并查集">
-<meta property="og:url" content="http://yecj.me/2016/07/23/POJ-2912-Rochambeau-并查集/index.html">
+<meta name="description" content="Jacky Yip&apos;s Blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Miraky">
+<meta property="og:url" content="http://yecj.me/page/3/index.html">
 <meta property="og:site_name" content="Miraky">
-<meta property="og:description" content="Time Limit:5000MS     Memory Limit:65536KB     64bit IO Format:%lld &amp;amp; %llu
-
-DescriptionN children are playing Rochambeau (scissors-rock-cloth) game with you. One of them is the judge. The rest ch">
-<meta property="og:updated_time" content="2016-07-23T15:46:43.000Z">
+<meta property="og:description" content="Jacky Yip&apos;s Blog">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="POJ 2912 Rochambeau 并查集">
-<meta name="twitter:description" content="Time Limit:5000MS     Memory Limit:65536KB     64bit IO Format:%lld &amp;amp; %llu
-
-DescriptionN children are playing Rochambeau (scissors-rock-cloth) game with you. One of them is the judge. The rest ch">
+<meta name="twitter:title" content="Miraky">
+<meta name="twitter:description" content="Jacky Yip&apos;s Blog">
 
 
 
@@ -120,9 +113,9 @@ DescriptionN children are playing Rochambeau (scissors-rock-cloth) game with you
 
 
 
-  <link rel="canonical" href="http://yecj.me/2016/07/23/POJ-2912-Rochambeau-并查集/"/>
+  <link rel="canonical" href="http://yecj.me/page/3/"/>
 
-  <title> POJ 2912 Rochambeau 并查集 | Miraky </title>
+  <title> Miraky </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -143,7 +136,9 @@ DescriptionN children are playing Rochambeau (scissors-rock-cloth) game with you
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -250,9 +245,9 @@ DescriptionN children are playing Rochambeau (scissors-rock-cloth) game with you
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
   
@@ -272,7 +267,10 @@ DescriptionN children are playing Rochambeau (scissors-rock-cloth) game with you
             
             
               
-                POJ 2912 Rochambeau 并查集
+                
+                <a class="post-title-link" href="/2016/07/05/python基础/" itemprop="url">
+                  python基础
+                </a>
               
             
           </h1>
@@ -284,8 +282,8 @@ DescriptionN children are playing Rochambeau (scissors-rock-cloth) game with you
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-23T23:25:03+08:00" content="2016-07-23">
-              2016-07-23
+            <time itemprop="dateCreated" datetime="2016-07-05T11:49:59+08:00" content="2016-07-05">
+              2016-07-05
             </time>
           </span>
 
@@ -312,195 +310,399 @@ DescriptionN children are playing Rochambeau (scissors-rock-cloth) game with you
       
 
       
-        <blockquote>
-<p>Time Limit:5000MS     Memory Limit:65536KB     64bit IO Format:%lld &amp; %llu</p>
+        
+          
+            <blockquote>
+<p>本文基于实验楼教程重新编写</p>
 </blockquote>
-<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>N children are playing Rochambeau (scissors-rock-cloth) game with you. One of them is the judge. The rest children are divided into three groups (it is possible that some group is empty). You don’t know who is the judge, or how the children are grouped. Then the children start playing Rochambeau game for M rounds. Each round two children are arbitrarily selected to play Rochambeau for one once, and you will be told the outcome while not knowing which gesture the children presented. It is known that the children in the same group would present the same gesture (hence, two children in the same group always get draw when playing) and different groups for different gestures. The judge would present gesture randomly each time, hence no one knows what gesture the judge would present. Can you guess who is the judge after after the game ends? If you can, after how many rounds can you find out the judge at the earliest?</p>
-<h1 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h1><p>Input contains multiple test cases. Each test case starts with two integers N and M (1 ≤ N ≤ 500, 0 ≤ M ≤ 2,000) in one line, which are the number of children and the number of rounds. Following are M lines, each line contains two integers in [0, N) separated by one symbol. The two integers are the IDs of the two children selected to play Rochambeau for this round. The symbol may be “=”, “&gt;” or “&lt;”, referring to a draw, that first child wins and that second child wins respectively.</p>
-<h1 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h1><p>There is only one line for each test case. If the judge can be found, print the ID of the judge, and the least number of rounds after which the judge can be uniquely determined. If the judge can not be found, or the outcomes of the M rounds of game are inconsistent, print the corresponding message.</p>
-<h1 id="Sample"><a href="#Sample" class="headerlink" title="Sample"></a>Sample</h1><h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><pre><code>3 3
-0&lt;1
-1&lt;2
-2&lt;0
-3 5
-0&lt;1
-0&gt;1
-1&lt;2
-1&gt;2
-0&lt;2
-4 4
-0&lt;1
-0&gt;1
-2&lt;3
-2&gt;3
-1 0
-</code></pre><h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><pre><code>Can not determine
-Player 1 can be determined to be the judge after 4 lines
-Impossible
-Player 0 can be determined to be the judge after 0 lines
-</code></pre><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>题目意思是一共n个人，分成3组，每组分别只出剪刀石头布。n个人中只有1个裁判，但是裁判可以任意出剪刀石头布。现在给m条提示，每条表示两个人之间的输赢情况。问是否能确定裁判是谁。</p>
-<p>因为数据并不大，可以枚举n个人，每次假设i为裁判，则所有包含i的信息直接忽略，其他的信息使用种类并查集分类看是否有冲突，如果有冲突则记录从哪里开始冲突。</p>
-<h1 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h1><pre><code>#include &lt;iostream&gt;
-#include &lt;cstdio&gt;
-#include &lt;cstring&gt;
-using namespace std;
+<h1 id="运行python程序"><a href="#运行python程序" class="headerlink" title="运行python程序"></a>运行python程序</h1><h2 id="直接使用python命令行"><a href="#直接使用python命令行" class="headerlink" title="直接使用python命令行"></a>直接使用python命令行</h2><pre><code>$python    
+&gt;&gt;&gt;print(‘Hello World!’);            
+Hello world!
+</code></pre><h2 id="写一个-py结尾的python程序"><a href="#写一个-py结尾的python程序" class="headerlink" title="写一个.py结尾的python程序"></a>写一个.py结尾的python程序</h2><pre><code>$echo &quot;print(&apos;Hello World!&apos;)&quot; &gt;&gt; hello.py
+$python hello.py
+Hello World!
+</code></pre><h2 id="使用可执行脚本的方式运行程序"><a href="#使用可执行脚本的方式运行程序" class="headerlink" title="使用可执行脚本的方式运行程序"></a>使用可执行脚本的方式运行程序</h2><h3 id="编辑helloScript-py，输入以下代码"><a href="#编辑helloScript-py，输入以下代码" class="headerlink" title="编辑helloScript.py，输入以下代码"></a>编辑helloScript.py，输入以下代码</h3><pre><code>#!/usr/bin/python
+print(&apos;Hello World!&apos;)
+</code></pre><h3 id="修改helloScript-py权限"><a href="#修改helloScript-py权限" class="headerlink" title="修改helloScript.py权限"></a>修改helloScript.py权限</h3><pre><code>chmod 755 helloScript.py
+</code></pre><h3 id="运行程序"><a href="#运行程序" class="headerlink" title="运行程序"></a>运行程序</h3><pre><code>./helloScript.py
+Hello World!
+</code></pre><p><br><br></p>
+<h1 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h1><h2 id="常用数据类型"><a href="#常用数据类型" class="headerlink" title="常用数据类型"></a>常用数据类型</h2><table>
+<thead>
+<tr>
+<th>变量</th>
+<th>数据类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a = 10</td>
+<td>int 整形</td>
+</tr>
+<tr>
+<td>a = 1.3</td>
+<td>float 单精度浮点数</td>
+</tr>
+<tr>
+<td>a = True</td>
+<td>布尔型（True / False）</td>
+</tr>
+<tr>
+<td>a = ‘Hello!’</td>
+<td>字符串</td>
+</tr>
+</tbody>
+</table>
+<h2 id="查看数据类型"><a href="#查看数据类型" class="headerlink" title="查看数据类型"></a>查看数据类型</h2><pre><code>&gt;&gt;&gt;a = 1.3
+&gt;&gt;&gt;print a,type(a)
+1.3 &lt;type &apos;float&apos;&gt;
+</code></pre><h2 id="sequence-序列"><a href="#sequence-序列" class="headerlink" title="sequence 序列"></a>sequence 序列</h2><h3 id="tuple-（定值表、元组）"><a href="#tuple-（定值表、元组）" class="headerlink" title="tuple （定值表、元组）"></a>tuple （定值表、元组）</h3><pre><code>&gt;&gt;&gt;s1 = (2, 1.3, &apos;love&apos;, 5.6, 9, 12, False)   # s1是一个tuple
+</code></pre><h3 id="list-（表）"><a href="#list-（表）" class="headerlink" title="list （表）"></a>list （表）</h3><pre><code>&gt;&gt;&gt;s2 = [True, 5, &apos;smile&apos;]    # s2是一个list
+</code></pre><h3 id="tuple-和-list-的区别"><a href="#tuple-和-list-的区别" class="headerlink" title="tuple 和 list 的区别"></a>tuple 和 list 的区别</h3><p>一旦建立，tuple的各个元素不可再变更，而list的各个元素可以再变更。</p>
+<h3 id="元素引用方式"><a href="#元素引用方式" class="headerlink" title="元素引用方式"></a>元素引用方式</h3><pre><code>&gt;&gt;&gt;print s1[0]              # 下标0
+&gt;&gt;&gt;print s3[1][2]           # 二维行下标1，列下标2
+&gt;&gt;&gt;print s1[:5]             # 从开始到下标4 （下标5的元素 不包括在内）
+&gt;&gt;&gt;print s1[2:]             # 从下标2到最后
+&gt;&gt;&gt;print s1[0:5:2]          # 从下标0到下标4 (下标5不包括在内)，每隔2取一个元素 （下标为0，2，4的元素）
+&gt;&gt;&gt;print s1[2:0:-1]         # 从下标2到下标1
+&gt;&gt;&gt;print s1[-1]             # 序列最后一个元素
+&gt;&gt;&gt;print s1[-3]             # 序列倒数第三个元素
+</code></pre><p>以上引用方式同样适用于字符串，字符串是特殊的元组。</p>
+<p><br><br></p>
+<h1 id="基本运算"><a href="#基本运算" class="headerlink" title="基本运算"></a>基本运算</h1><h2 id="数学运算"><a href="#数学运算" class="headerlink" title="数学运算"></a>数学运算</h2><table>
+<thead>
+<tr>
+<th>符号</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+</td>
+<td>加法</td>
+</tr>
+<tr>
+<td>-</td>
+<td>减法</td>
+</tr>
+<tr>
+<td>*</td>
+<td>乘法</td>
+</tr>
+<tr>
+<td>/</td>
+<td>除法</td>
+</tr>
+<tr>
+<td>**</td>
+<td>乘方</td>
+</tr>
+<tr>
+<td>%</td>
+<td>求余</td>
+</tr>
+</tbody>
+</table>
+<h2 id="判断"><a href="#判断" class="headerlink" title="判断"></a>判断</h2><p>判断是真还是假，返回True / False</p>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>意义</th>
+<th>返回值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5 == 6</td>
+<td>5 与 6 相等</td>
+<td>False</td>
+</tr>
+<tr>
+<td>8.0 != 8.0</td>
+<td>8.0 与 8.0 不等</td>
+<td>False</td>
+</tr>
+<tr>
+<td>3 &lt; 3 , 3 &lt;= 3</td>
+<td>3 小于 3 , 3 小于等于 3</td>
+<td>False , True</td>
+</tr>
+<tr>
+<td>4 &gt; 5 , 4 &gt;= 0</td>
+<td>4 大于 5 , 4 小于等于 0</td>
+<td>False , False</td>
+</tr>
+<tr>
+<td>5 in [1, 3, 5]</td>
+<td>5 是 [1, 3, 5] 的一个元素</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+<h2 id="逻辑运算"><a href="#逻辑运算" class="headerlink" title="逻辑运算"></a>逻辑运算</h2><table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>意义</th>
+<th>返回值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>True and True, True and False</td>
+<td>逻辑与</td>
+<td>True , False</td>
+</tr>
+<tr>
+<td>True or False</td>
+<td>逻辑或</td>
+<td>True</td>
+</tr>
+<tr>
+<td>not True</td>
+<td>逻辑非</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+<p><br><br></p>
+<h1 id="选择语句"><a href="#选择语句" class="headerlink" title="选择语句"></a>选择语句</h1><h2 id="if-语句"><a href="#if-语句" class="headerlink" title="if 语句"></a>if 语句</h2><pre><code>i = 1
+x = 1
+if i &gt; 0:
+    x = x + 1
+print x
+</code></pre><p>程序输出 2</p>
+<h2 id="缩进"><a href="#缩进" class="headerlink" title="缩进"></a>缩进</h2><p> python 中没有括号{}，在 if 语句中如果 if 后面跟了多个语句，则通过缩进的方式确定当前选择结构下的语句内容，具体看例子：</p>
+<pre><code> i = 1
+ x = 0
+ y = 0
+ if i &gt; 2:
+    x = 1
+    y = 2
+print x, y
+</code></pre><p>程序输出 0 0，说明 x = 1 和 y = 2 两句确实包含在 if 语句中。</p>
+<h2 id="多重选择语句"><a href="#多重选择语句" class="headerlink" title="多重选择语句"></a>多重选择语句</h2><pre><code>i = 1
 
-#define N 505
-#define M 2005
+if i &gt; 0:
+    print &apos;positive i&apos;
+    i = i + 1
+elif i == 0:
+    print &apos;i is 0&apos;
+    i = i * 10
+else:
+    print &apos;negative i&apos;
+    i = i - 1
 
-struct node{
-    int u,v,d;
-    node(){}
-    node(int uu,int vv,int dd):u(uu),v(vv),d(dd){}
-}a[M];
+print &apos;new i:&apos;,i
+</code></pre><p>这里有三个块，分别属于if，elif，else引领。同时 if 中也可以嵌套 if。</p>
+<pre><code>i  = 5
+if i &gt; 1:
+    print &apos;i bigger than 1&apos;
+    print &apos;good&apos;
+    if i &gt; 2:
+        print &apos;i bigger than 2&apos;
+        print &apos;even better&apos;
+</code></pre><p><br><br></p>
+<h1 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h1><p>前面在 if 中说到了缩进机制，缩进机制同样适用于循环语句。</p>
+<h2 id="for-循环"><a href="#for-循环" class="headerlink" title="for 循环"></a>for 循环</h2><p>在讲 for 循环前先说一个函数 range(x)，返回 [0,1,2,3,4] 序列。</p>
+<h3 id="基本格式"><a href="#基本格式" class="headerlink" title="基本格式"></a>基本格式</h3><pre><code>for 元素 in 序列: 
+    statement
+</code></pre><h3 id="具体用法"><a href="#具体用法" class="headerlink" title="具体用法"></a>具体用法</h3><pre><code>for a in [3,4.4,&apos;life&apos;]:
+    print a
+for a in range(10):
+    print a**2
+</code></pre><h2 id="while-循环"><a href="#while-循环" class="headerlink" title="while 循环"></a>while 循环</h2><h3 id="基本格式-1"><a href="#基本格式-1" class="headerlink" title="基本格式"></a>基本格式</h3><pre><code>while 条件:
+    statement
+</code></pre><h3 id="具体用法-1"><a href="#具体用法-1" class="headerlink" title="具体用法"></a>具体用法</h3><pre><code>i = 0
+while i &lt; 10:
+    print i
+    i = i + 1
+</code></pre><h2 id="中断循环"><a href="#中断循环" class="headerlink" title="中断循环"></a>中断循环</h2><p>continue, break 与 C 用法类似</p>
+<pre><code>for i in range(10):
+    if i == 2: 
+        continue
+    if i == 3:
+        break;
+    print i
+</code></pre><p><br><br></p>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="函数定义"><a href="#函数定义" class="headerlink" title="函数定义"></a>函数定义</h2><pre><code>def square_sum(a,b):
+    c = a**2 + b**2
+    return c
+</code></pre><ul>
+<li>return可以返回多个值，以逗号分隔。相当于返回一个 tuple（定值表）。return a,b,c 相当于 return (a,b,c)</li>
+<li>return并不是必须的，当没有return, 或者return后面没有返回值时，函数将自动返回None。None是Python中的一个特别的数据类型，用来表示什么都没有，相当于C中的NULL。None多用于关键字参数传递的默认值。</li>
+</ul>
+<h2 id="参数传递"><a href="#参数传递" class="headerlink" title="参数传递"></a>参数传递</h2><pre><code>a = 1
 
-int n,m;
-int f[N],r[N];
+def change_integer(a):
+    a = a + 1
+    return a
 
-int _find(int x){
-    if (f[x]==-1){
-        return x;
-    }else{
-        int fx=f[x];
-        f[x]=_find(f[x]);
-        r[x]=(r[x]+r[fx])%3;
-        return f[x];
-    }
-}
+print change_integer(a)      #注意观察结果
+print a      #注意观察结果
 
-bool _union(int u,int v,int d){
-    int x=_find(u);
-    int y=_find(v);
+b = [1,2,3]
 
-    if (x==y){
-        if (((r[u]-r[v]+3)%3)==d){
-            return true;
-        }else{
-            return false;
-        }
-    }else{
-        f[x]=y;
-        r[x]=(-r[u]+r[v]+d+3)%3;
-        return true;
-    }
-}
+def change_list(b):
+    b[0] = b[0] + 1
+    return b
 
-int main(){
-    while (scanf(&quot;%d%d&quot;,&amp;n,&amp;m)!=EOF){
-        int u,v,d;
-        char c;
-        for (int i=0;i&lt;m;i++){
-            scanf(&quot;%d%c%d&quot;,&amp;u,&amp;c,&amp;v);
-            if (c==&apos;&lt;&apos;){
-                d=2;
-            }else if (c==&apos;=&apos;){
-                d=0;
-            }else{
-                d=1;
-            }
-            a[i]=node(u,v,d);
-        }
+print change_list(b)      #注意观察结果
+print b      #注意观察结果
+</code></pre><ul>
+<li><p>第一个例子，我们将一个<strong>整数变量传递给函数</strong>，函数对它进行操作，但<strong>原整数变量a不发生变化</strong>。</p>
+</li>
+<li><p>第二个例子，我们<strong>将一个表传递给函数</strong>，函数进行操作，<strong>原来的表b发生变化</strong>。</p>
+</li>
+</ul>
 
-        bool flag;
-        int cnt=0;
-        int mx=0;
-        int num=0;
-        for (int i=0;i&lt;n;i++){
-            flag=true;
-            memset(f,-1,sizeof(f));
-            memset(r,0,sizeof(r));
-            for (int j=0;j&lt;m;j++){
-                u=a[j].u;
-                v=a[j].v;
-                d=a[j].d;
-
-                if (u==i || v==i)
-                    continue;
-
-                flag=_union(u,v,d);
-                if (flag==false){
-                    mx=max(mx,j+1);
-                    break;
-                }
-            }
-            if (flag){
-                cnt++;
-                num=i;
-            }
-        }
-
-        if (cnt&gt;1){
-            printf(&quot;Can not determine\n&quot;);
-        }else if (cnt==0){
-            printf(&quot;Impossible\n&quot;);
-        }else{
-            printf(&quot;Player %d can be determined to be the judge after %d lines\n&quot;,num,mx);
-        }
-    }
-
-    return 0;
-}
-</code></pre>
-      
-    </div>
-
-    <div>
-      
+          
         
       
     </div>
 
     <div>
       
-        
+    </div>
 
+    <div>
       
     </div>
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/ACM/" rel="tag">#ACM</a>
-          
-            <a href="/tags/并查集/" rel="tag">#并查集</a>
-          
-            <a href="/tags/POJ/" rel="tag">#POJ</a>
-          
-        </div>
+
       
 
       
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/07/23/POJ-1984-Navigation-Nightmare-并查集/" rel="next" title="POJ 1984 Navigation Nightmare 并查集">
-                <i class="fa fa-chevron-left"></i> POJ 1984 Navigation Nightmare 并查集
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/07/23/ZOJ-3761-Connections-in-Galaxy-War-并查集/" rel="prev" title="ZOJ 3761 Connections in Galaxy War 并查集">
-                ZOJ 3761 Connections in Galaxy War 并查集 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
       
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
+    
+      
 
-    <div class="post-spread">
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/04/git学习笔记/" itemprop="url">
+                  git学习笔记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-04T11:56:25+08:00" content="2016-07-04">
+              2016-07-04
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h1><p>不能在命令行里直接创建github项目，需要在github上创建新项目</p>
+<h1 id="上传项目"><a href="#上传项目" class="headerlink" title="上传项目"></a>上传项目</h1><p>按照官方文档，本地上传项目到github有以下步骤</p>
+<pre><code>Here are the instructions from github:
+touch README.md
+git init
+git add README.md
+git commit -m &quot;first commit&quot;
+git remote add origin https://github.com/tqisjim/google-oauth.git
+git push -u origin master
+Here&apos;s what actually worked:
+touch README.md
+git init
+git add README.md
+git commit -m &quot;first commit&quot;
+git remote add origin https://github.com/tqisjim/google-oauth.git
+git clone origin master
+After cloning, then the push command succeeds by     prompting for a username and password
+
+From: http://stackoverflow.com/questions/15437719/git-push-error-origin-does-not-appear-to-be-a-git-repository
+</code></pre>
+          
+        
       
     </div>
-  </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
+
 
 
           </div>
@@ -508,10 +710,6 @@ int main(){
 
 
           
-  <div class="comments" id="comments">
-    
-  </div>
-
 
         </div>
         
@@ -531,17 +729,8 @@ int main(){
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -584,17 +773,6 @@ int main(){
 
       </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Input"><span class="nav-number">2.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Output"><span class="nav-number">3.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Sample"><span class="nav-number">4.</span> <span class="nav-text">Sample</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Input"><span class="nav-number">4.1.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Output"><span class="nav-number">4.2.</span> <span class="nav-text">Sample Output</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#思路"><span class="nav-number">5.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AC代码"><span class="nav-number">6.</span> <span class="nav-text">AC代码</span></a></li></ol></div>
-            
-          </div>
-        </section>
       
 
     </div>
@@ -698,10 +876,6 @@ int main(){
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
-
 
   
 

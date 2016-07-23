@@ -268,6 +268,397 @@
             
               
                 
+                <a class="post-title-link" href="/2016/07/24/POJ-1287-Networking-最小生成树/" itemprop="url">
+                  POJ 1287 Networking 最小生成树
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-24T00:54:07+08:00" content="2016-07-24">
+              2016-07-24
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>Time Limit:1000MS     Memory Limit:10000KB     64bit IO Format:%lld &amp; %llu</p>
+</blockquote>
+<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>You are assigned to design network connections between certain points in a wide area. You are given a set of points in the area, and a set of possible routes for the cables that may connect pairs of points. For each possible route between two points, you are given the length of the cable that is needed to connect the points over that route. Note that there may exist many possible routes between two given points. It is assumed that the given possible routes connect (directly or indirectly) each two points in the area.<br>Your task is to design the network for the area, so that there is a connection (direct or indirect) between every two points (i.e., all the points are interconnected, but not necessarily by a direct cable), and that the total length of the used cable is minimal.</p>
+<h1 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h1><p>The input file consists of a number of data sets. Each data set defines one required network. The first line of the set contains two integers: the first defines the number P of the given points, and the second the number R of given routes between the points. The following R lines define the given routes between the points, each giving three integer numbers: the first two numbers identify the points, and the third gives the length of the route. The numbers are separated with white spaces. A data set giving only one number P=0 denotes the end of the input. The data sets are separated with an empty line.<br>The maximal number of points is 50. The maximal length of a given route is 100. The number of possible routes is unlimited. The nodes are identified with integers between 1 and P (inclusive). The routes between two points i and j may be given as i j or as j i. </p>
+<h1 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h1><p>For each data set, print one number on a separate line that gives the total length of the cable used for the entire designed network.</p>
+<h1 id="Sample"><a href="#Sample" class="headerlink" title="Sample"></a>Sample</h1><h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><pre><code>1 0
+
+2 3
+1 2 37
+2 1 17
+1 2 68
+
+3 7
+1 2 19
+2 3 11
+3 1 7
+1 3 5
+2 3 89
+3 1 91
+1 2 32
+
+5 7
+1 2 5
+2 3 7
+2 4 8
+4 5 11
+3 5 10
+1 5 6
+4 2 12
+
+0
+</code></pre><h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><pre><code>0
+17
+16
+26
+</code></pre><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>模板题</p>
+<h1 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h1><pre><code>#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+#define N 55
+
+struct Edge{
+    int u,v,d;
+    Edge(){}
+    Edge(int uu,int vv,int dd):u(uu),v(vv),d(dd){}
+
+    bool operator&lt;(const Edge &amp;a)const{
+        return d&lt;a.d;
+    }
+};
+
+vector&lt;Edge&gt; edges;
+int n,m;
+int f[N];
+
+int _find(int x){
+    if (f[x]==-1){
+        return x;
+    }else{
+        return f[x]=_find(f[x]);
+    }
+}
+
+int kruskal(){
+    memset(f,-1,sizeof(f));
+    sort(edges.begin(),edges.end());
+    int ans=0;
+
+    int cnt=n;
+    for (int i=0;i&lt;edges.size();i++){
+        int u=edges[i].u;
+        int v=edges[i].v;
+        int d=edges[i].d;
+        int x=_find(u);
+        int y=_find(v);
+        if (x!=y){
+            f[x]=y;
+            ans+=d;
+            cnt--;
+            if (cnt==1)
+                return ans;
+        }
+    }
+    return 0;
+}
+
+int main(){
+    while (scanf(&quot;%d&quot;,&amp;n)!=EOF){
+        if (n==0)
+            break;
+        scanf(&quot;%d&quot;,&amp;m);
+        edges.clear();
+        for (int i=0;i&lt;m;i++){
+            int u,v,d;
+            scanf(&quot;%d%d%d&quot;,&amp;u,&amp;v,&amp;d);
+            edges.push_back(Edge(u,v,d));
+        }
+        printf(&quot;%d\n&quot;,kruskal());
+    }
+
+    return 0;
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/24/POJ-1251-Jungle-Roads-最小生成树/" itemprop="url">
+                  POJ 1251 Jungle Roads 最小生成树
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-24T00:45:01+08:00" content="2016-07-24">
+              2016-07-24
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>Time Limit:1000MS     Memory Limit:10000KB     64bit IO Format:%lld &amp; %llu</p>
+</blockquote>
+<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p><img src="http://poj.org/images/1251_1.jpg" alt="image"><br>The Head Elder of the tropical island of Lagrishan has a problem. A burst of foreign aid money was spent on extra roads between villages some years ago. But the jungle overtakes roads relentlessly, so the large road network is too expensive to maintain. The Council of Elders must choose to stop maintaining some roads. The map above on the left shows all the roads in use now and the cost in aacms per month to maintain them. Of course there needs to be some way to get between all the villages on maintained roads, even if the route is not as short as before. The Chief Elder would like to tell the Council of Elders what would be the smallest amount they could spend in aacms per month to maintain roads that would connect all the villages. The villages are labeled A through I in the maps above. The map on the right shows the roads that could be maintained most cheaply, for 216 aacms per month. Your task is to write a program that will solve such problems. </p>
+<h1 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h1><p>The input consists of one to 100 data sets, followed by a final line containing only 0. Each data set starts with a line containing only a number n, which is the number of villages, 1 &lt; n &lt; 27, and the villages are labeled with the first n letters of the alphabet, capitalized. Each data set is completed with n-1 lines that start with village labels in alphabetical order. There is no line for the last village. Each line for a village starts with the village label followed by a number, k, of roads from this village to villages with labels later in the alphabet. If k is greater than 0, the line continues with data for each of the k roads. The data for each road is the village label for the other end of the road followed by the monthly maintenance cost in aacms for the road. Maintenance costs will be positive integers less than 100. All data fields in the row are separated by single blanks. The road network will always allow travel between all the villages. The network will never have more than 75 roads. No village will have more than 15 roads going to other villages (before or after in the alphabet). In the sample input below, the first data set goes with the map above. </p>
+<h1 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h1><p>The output is one integer per line for each data set: the minimum cost in aacms per month to maintain a road system that connect all the villages. Caution: A brute force solution that examines every possible set of roads will not finish within the one minute time limit. </p>
+<h1 id="Sample"><a href="#Sample" class="headerlink" title="Sample"></a>Sample</h1><h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><pre><code>9
+A 2 B 12 I 25
+B 3 C 10 H 40 I 8
+C 2 D 18 G 55
+D 1 E 44
+E 2 F 60 G 38
+F 0
+G 1 H 35
+H 1 I 35
+3
+A 2 B 10 C 40
+B 1 C 20
+0
+</code></pre><h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><pre><code>216
+30
+</code></pre><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>模板题</p>
+<h1 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h1><pre><code>#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+#define N 30
+#define PB push_back
+
+struct Edge{
+    int u,v,d;
+    Edge(){}
+    Edge(int uu,int vv,int dd):u(uu),v(vv),d(dd){}
+
+    bool operator&lt;(const Edge &amp;a)const{
+        return d&lt;a.d;
+    }
+};
+
+vector&lt;Edge&gt; edges;
+char stu[10],stv[10];
+int n,m;
+int f[N];
+
+int _find(int x){
+    if (f[x]==-1){
+        return x;
+    }else{
+        return f[x]=_find(f[x]);
+    }
+}
+
+int main(){
+    while (scanf(&quot;%d&quot;,&amp;n)!=EOF){
+        if (n==0)
+            break;
+        edges.clear();
+        memset(f,-1,sizeof(f));
+
+        for (int i=1;i&lt;n;i++){
+            int u,v,d;
+            scanf(&quot;%s%d&quot;,stu,&amp;m);
+            u=stu[0]-&apos;A&apos;;
+            for (int j=0;j&lt;m;j++){
+                scanf(&quot;%s%d&quot;,stv,&amp;d);
+                v=stv[0]-&apos;A&apos;;
+                edges.PB(Edge(u,v,d));
+            }
+        }
+
+        sort(edges.begin(),edges.end());
+
+        int cnt=n;
+        int ans=0;
+        for (int i=0;i&lt;edges.size();i++){
+            int u,v,d;
+            u=edges[i].u;
+            v=edges[i].v;
+            d=edges[i].d;
+
+            int x=_find(u);
+            int y=_find(v);
+            if (x!=y){
+                f[x]=y;
+                ans+=d;
+                cnt--;
+                if (cnt==1)
+                    break;
+            }
+        }
+            printf(&quot;%d\n&quot;,ans);
+    }
+
+    return 0;
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/23/POJ-1308-Is-It-A-Tree-并查集/" itemprop="url">
                   POJ 1308 Is It A Tree? 并查集
                 </a>
@@ -1772,356 +2163,11 @@ int main(){
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/19/Mac启用自带FTP服务/" itemprop="url">
-                  Mac启用自带FTP服务
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-19T11:07:48+08:00" content="2016-07-19">
-              2016-07-19
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>转自：<a href="http://blog.sina.com.cn/s/blog_4fa20e8c0102vd4q.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_4fa20e8c0102vd4q.html</a></p>
-</blockquote>
-<p>系统自带的的FTP<br>通过命令行来开启关闭，如下所示： </p>
-<p>开启 FTP Server </p>
-<pre><code>sudo -s launchctl load -w /System/Library/LaunchDaemons/ftp.plist 
-</code></pre><p>关闭 FTP Server </p>
-<pre><code>sudo -s launchctl unload -w /System/Library/LaunchDaemons/ftp.plist 
-</code></pre><p>登录格式为 ftp://用户名@ip<br>然后输入你在Mac上的用户名和密码就可以了</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/18/POJ-1417-True-Liars-并查集/" itemprop="url">
-                  POJ 1417 True Liars 并查集
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-18T19:02:59+08:00" content="2016-07-18">
-              2016-07-18
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>Time Limit:1000MS Memory Limit:10000KB 64bit IO Format:%I64d &amp; %I64u</p>
-</blockquote>
-<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>After having drifted about in a small boat for a couple of days, Akira Crusoe Maeda was finally cast ashore on a foggy island. Though he was exhausted and despaired, he was still fortunate to remember a legend of the foggy island, which he had heard from patriarchs in his childhood. This must be the island in the legend. In the legend, two tribes have inhabited the island, one is divine and the other is devilish, once members of the divine tribe bless you, your future is bright and promising, and your soul will eventually go to Heaven, in contrast, once members of the devilish tribe curse you, your future is bleak and hopeless, and your soul will eventually fall down to Hell. </p>
-<p>In order to prevent the worst-case scenario, Akira should distinguish the devilish from the divine. But how? They looked exactly alike and he could not distinguish one from the other solely by their appearances. He still had his last hope, however. The members of the divine tribe are truth-tellers, that is, they always tell the truth and those of the devilish tribe are liars, that is, they always tell a lie. </p>
-<p>He asked some of them whether or not some are divine. They knew one another very much and always responded to him “faithfully” according to their individual natures (i.e., they always tell the truth or always a lie). He did not dare to ask any other forms of questions, since the legend says that a devilish member would curse a person forever when he did not like the question. He had another piece of useful informationf the legend tells the populations of both tribes. These numbers in the legend are trustworthy since everyone living on this island is immortal and none have ever been born at least these millennia. </p>
-<p>You are a good computer programmer and so requested to help Akira by writing a program that classifies the inhabitants according to their answers to his inquiries. </p>
-<h1 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h1><p>The input consists of multiple data sets, each in the following format : </p>
-<pre><code>n p1 p2 
-xl yl a1 
-x2 y2 a2 
-... 
-xi yi ai
-... 
-xn yn an 
-</code></pre><p>The first line has three non-negative integers n, p1, and p2. n is the number of questions Akira asked. pl and p2 are the populations of the divine and devilish tribes, respectively, in the legend. Each of the following n lines has two integers xi, yi and one word ai. xi and yi are the identification numbers of inhabitants, each of which is between 1 and p1 + p2, inclusive. ai is either yes, if the inhabitant xi said that the inhabitant yi was a member of the divine tribe, or no, otherwise. Note that xi and yi can be the same number since “are you a member of the divine tribe?” is a valid question. Note also that two lines may have the same x’s and y’s since Akira was very upset and might have asked the same question to the same one more than once. </p>
-<p>You may assume that n is less than 1000 and that p1 and p2 are less than 300. A line with three zeros, i.e., 0 0 0, represents the end of the input. You can assume that each data set is consistent and no contradictory answers are included. </p>
-<h1 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h1><p>For each data set, if it includes sufficient information to classify all the inhabitants, print the identification numbers of all the divine ones in ascending order, one in a line. In addition, following the output numbers, print end in a line. Otherwise, i.e., if a given data set does not include sufficient information to identify all the divine members, print no in a line.</p>
-<h1 id="Sample"><a href="#Sample" class="headerlink" title="Sample"></a>Sample</h1><h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><pre><code>2 1 1
-1 2 no
-2 1 no
-3 2 1
-1 1 yes
-2 2 yes
-3 3 yes
-2 2 1
-1 2 yes
-2 3 no
-5 4 3
-1 2 yes
-1 3 no
-4 5 yes
-5 6 yes
-6 7 no
-0 0 0
-</code></pre><h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><pre><code>no
-no
-1
-2
-end
-3
-4
-5
-6
-end
-</code></pre><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>当A认为B为yes，如果A为好人，则B也为好人；如果A为坏人，则B也是坏人，因为A说谎。同理，当A认为B为no，如果A为坏人，则B为好人；当A为好人，则B为坏人。说明yes的情况下，A、B为同一类人；在no的情况下，A、B为不同类人，使用带权并查集将所有人分成若干集合，每个集合里又分成两个子集，但是两个子集不知道是好人还是坏人。最后通过分组背包得出是否能够刚好分出p1个好人，其中ans[i][j]表示前i组中j个好人的分组可能组合数，当ans[组数][p1]=1时才有唯一方案。</p>
-<h1 id="未AC代码"><a href="#未AC代码" class="headerlink" title="未AC代码"></a>未AC代码</h1><pre><code>#include &lt;iostream&gt;
-#include &lt;cstdio&gt;
-#include &lt;vector&gt;
-#include &lt;cstring&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-
-#define N 605
-#define PB push_back
-
-int n,p1,p2,nn;
-int f[N],r[N];
-int ans[N][N];
-
-int _find(int x){
-    if (f[x]==x)
-        return x;
-    int t=f[x];
-    f[x]=_find(f[x]);
-    r[x]=(r[x]+r[t])%2;
-    return f[x];
-}
-
-int main(){
-    while (~scanf(&quot;%d%d%d&quot;,&amp;n,&amp;p1,&amp;p2)){
-        vector&lt;int&gt; cnt[N][2];
-        nn=p1+p2;
-        for (int i=1;i&lt;=nn;i++){
-            f[i]=i;
-            r[i]=0;
-        }
-        if (!(n || p1 || p2))
-            break;
-
-        for (int i=0;i&lt;n;i++){
-            int a,b;
-            char st[10];
-            scanf(&quot;%d%d%s&quot;,&amp;a,&amp;b,st);
-
-            int flag;
-            flag=(st[0]==&apos;y&apos;?0:1);
-
-            int x=_find(a);
-            int y=_find(b);
-            if (x&gt;y)
-                swap(x,y);
-            if (x!=y){
-                f[x]=y;
-                r[x]=(r[a]+r[b]+flag)%2;
-            }
-        }
-
-
-        for (int i=1;i&lt;=nn;i++){
-            int x=_find(i);
-            cnt[x][r[i]].PB(i);
-        }
-
-        vector&lt;int&gt; grp;
-        for (int i=1;i&lt;=nn;i++){
-            if (cnt[i][0].size()&gt;0 || cnt[i][1].size()&gt;0){
-                grp.PB(i);
-            }
-        }
-
-        memset(ans,0,sizeof(ans));
-        ans[0][0]=1;
-        for (int i=1;i&lt;=grp.size();i++){
-            for (int v=p1;v&gt;=0;v--){
-                ans[i][v]=ans[i-1][v];
-                for (int j=0;j&lt;2;j++){
-                    if (cnt[grp[i-1]][j].size()&gt;0 &amp;&amp; cnt[grp[i-1]][j].size()&lt;=v){
-                        ans[i][v]+=ans[i-1][v-cnt[grp[i-1]][j].size()];
-                    }
-                }
-            }
-        }
-
-        vector&lt;int&gt; num;
-        if (ans[grp.size()][p1]==1){
-            int v=p1;
-            for (int i=grp.size();i&gt;0;i--){
-                for (int j=0;j&lt;2;j++){
-                    if (cnt[grp[i-1]][j].size()&gt;0 &amp;&amp; cnt[grp[i-1]][j].size()&lt;=v &amp;&amp; ans[i-1][v-cnt[grp[i-1]][j].size()]==1){
-                        for (int k=0;k&lt;cnt[grp[i-1]][j].size();k++){
-                            num.PB(cnt[grp[i-1]][j][k]);
-                        }
-                        v-=cnt[grp[i-1]][j].size();
-                        break;
-                    }
-                }
-            }
-            sort(num.begin(),num.end());
-            for (int i=0;i&lt;num.size();i++){
-                printf(&quot;%d\n&quot;,num[i]);
-            }
-            printf(&quot;end\n&quot;);
-        }else{
-            printf(&quot;no\n&quot;);
-        }
-    }
-
-    return 0;
-}
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2162,7 +2208,7 @@ int main(){
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
