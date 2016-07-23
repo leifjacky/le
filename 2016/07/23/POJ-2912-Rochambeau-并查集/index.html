@@ -94,7 +94,7 @@ DescriptionN children are playing Rochambeau (scissors-rock-cloth) game with you
 <meta property="og:description" content="Time Limit:5000MS     Memory Limit:65536KB     64bit IO Format:%lld &amp;amp; %llu
 
 DescriptionN children are playing Rochambeau (scissors-rock-cloth) game with you. One of them is the judge. The rest ch">
-<meta property="og:updated_time" content="2016-07-23T15:25:19.000Z">
+<meta property="og:updated_time" content="2016-07-23T15:46:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="POJ 2912 Rochambeau 并查集">
 <meta name="twitter:description" content="Time Limit:5000MS     Memory Limit:65536KB     64bit IO Format:%lld &amp;amp; %llu
@@ -318,8 +318,23 @@ DescriptionN children are playing Rochambeau (scissors-rock-cloth) game with you
 <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>N children are playing Rochambeau (scissors-rock-cloth) game with you. One of them is the judge. The rest children are divided into three groups (it is possible that some group is empty). You don’t know who is the judge, or how the children are grouped. Then the children start playing Rochambeau game for M rounds. Each round two children are arbitrarily selected to play Rochambeau for one once, and you will be told the outcome while not knowing which gesture the children presented. It is known that the children in the same group would present the same gesture (hence, two children in the same group always get draw when playing) and different groups for different gestures. The judge would present gesture randomly each time, hence no one knows what gesture the judge would present. Can you guess who is the judge after after the game ends? If you can, after how many rounds can you find out the judge at the earliest?</p>
 <h1 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h1><p>Input contains multiple test cases. Each test case starts with two integers N and M (1 ≤ N ≤ 500, 0 ≤ M ≤ 2,000) in one line, which are the number of children and the number of rounds. Following are M lines, each line contains two integers in [0, N) separated by one symbol. The two integers are the IDs of the two children selected to play Rochambeau for this round. The symbol may be “=”, “&gt;” or “&lt;”, referring to a draw, that first child wins and that second child wins respectively.</p>
 <h1 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h1><p>There is only one line for each test case. If the judge can be found, print the ID of the judge, and the least number of rounds after which the judge can be uniquely determined. If the judge can not be found, or the outcomes of the M rounds of game are inconsistent, print the corresponding message.</p>
-<h1 id="Sample"><a href="#Sample" class="headerlink" title="Sample"></a>Sample</h1><h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><p>  3 3<br>  0<1 0="" 3="" 5="" 1<2="" 2<0="" 0<1="">1<br>  1<2 1="">2<br>  0<2 0="" 4="" 0<1="">1<br>  2<3 2="">3<br>  1 0</3></2></2></1></p>
-<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><pre><code>Can not determine
+<h1 id="Sample"><a href="#Sample" class="headerlink" title="Sample"></a>Sample</h1><h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><pre><code>3 3
+0&lt;1
+1&lt;2
+2&lt;0
+3 5
+0&lt;1
+0&gt;1
+1&lt;2
+1&gt;2
+0&lt;2
+4 4
+0&lt;1
+0&gt;1
+2&lt;3
+2&gt;3
+1 0
+</code></pre><h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><pre><code>Can not determine
 Player 1 can be determined to be the judge after 4 lines
 Impossible
 Player 0 can be determined to be the judge after 0 lines
