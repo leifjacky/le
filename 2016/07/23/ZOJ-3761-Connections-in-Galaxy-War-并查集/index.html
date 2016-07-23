@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="git," />
+  <meta name="keywords" content="ACM,并查集,ZOJ," />
 
 
 
@@ -84,37 +84,16 @@
 
 
 
-<meta name="description" content="创建项目不能在命令行里直接创建github项目，需要在github上创建新项目
-上传项目按照官方文档，本地上传项目到github有以下步骤
-Here are the instructions from github:
-touch README.md
-git init
-git add README.md
-git commit -m &amp;quot;first commit&amp;quot;
-git remot">
+<meta name="description" content="DescriptionIn order to strengthen the defense ability, many stars in galaxy allied together and built many bidirectional tunnels to exchange messages. However, when the Galaxy War began, some tunnels">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git学习笔记">
-<meta property="og:url" content="http://yecj.me/2016/07/04/git学习笔记/index.html">
+<meta property="og:title" content="ZOJ 3761 Connections in Galaxy War 并查集">
+<meta property="og:url" content="http://yecj.me/2016/07/23/ZOJ-3761-Connections-in-Galaxy-War-并查集/index.html">
 <meta property="og:site_name" content="Miraky">
-<meta property="og:description" content="创建项目不能在命令行里直接创建github项目，需要在github上创建新项目
-上传项目按照官方文档，本地上传项目到github有以下步骤
-Here are the instructions from github:
-touch README.md
-git init
-git add README.md
-git commit -m &amp;quot;first commit&amp;quot;
-git remot">
-<meta property="og:updated_time" content="2016-07-05T03:52:17.000Z">
+<meta property="og:description" content="DescriptionIn order to strengthen the defense ability, many stars in galaxy allied together and built many bidirectional tunnels to exchange messages. However, when the Galaxy War began, some tunnels">
+<meta property="og:updated_time" content="2016-07-23T15:35:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git学习笔记">
-<meta name="twitter:description" content="创建项目不能在命令行里直接创建github项目，需要在github上创建新项目
-上传项目按照官方文档，本地上传项目到github有以下步骤
-Here are the instructions from github:
-touch README.md
-git init
-git add README.md
-git commit -m &amp;quot;first commit&amp;quot;
-git remot">
+<meta name="twitter:title" content="ZOJ 3761 Connections in Galaxy War 并查集">
+<meta name="twitter:description" content="DescriptionIn order to strengthen the defense ability, many stars in galaxy allied together and built many bidirectional tunnels to exchange messages. However, when the Galaxy War began, some tunnels">
 
 
 
@@ -135,9 +114,9 @@ git remot">
 
 
 
-  <link rel="canonical" href="http://yecj.me/2016/07/04/git学习笔记/"/>
+  <link rel="canonical" href="http://yecj.me/2016/07/23/ZOJ-3761-Connections-in-Galaxy-War-并查集/"/>
 
-  <title> git学习笔记 | Miraky </title>
+  <title> ZOJ 3761 Connections in Galaxy War 并查集 | Miraky </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -287,7 +266,7 @@ git remot">
             
             
               
-                git学习笔记
+                ZOJ 3761 Connections in Galaxy War 并查集
               
             
           </h1>
@@ -299,8 +278,8 @@ git remot">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-04T11:56:25+08:00" content="2016-07-04">
-              2016-07-04
+            <time itemprop="dateCreated" datetime="2016-07-23T23:34:18+08:00" content="2016-07-23">
+              2016-07-23
             </time>
           </span>
 
@@ -327,26 +306,40 @@ git remot">
       
 
       
-        <h1 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h1><p>不能在命令行里直接创建github项目，需要在github上创建新项目</p>
-<h1 id="上传项目"><a href="#上传项目" class="headerlink" title="上传项目"></a>上传项目</h1><p>按照官方文档，本地上传项目到github有以下步骤</p>
-<pre><code>Here are the instructions from github:
-touch README.md
-git init
-git add README.md
-git commit -m &quot;first commit&quot;
-git remote add origin https://github.com/tqisjim/google-oauth.git
-git push -u origin master
-Here&apos;s what actually worked:
-touch README.md
-git init
-git add README.md
-git commit -m &quot;first commit&quot;
-git remote add origin https://github.com/tqisjim/google-oauth.git
-git clone origin master
-After cloning, then the push command succeeds by     prompting for a username and password
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>In order to strengthen the defense ability, many stars in galaxy allied together and built many bidirectional tunnels to exchange messages. However, when the Galaxy War began, some tunnels were destroyed by the monsters from another dimension. Then many problems were raised when some of the stars wanted to seek help from the others.</p>
+<p>In the galaxy, the stars are numbered from 0 to N-1 and their power was marked by a non-negative integer pi. When the star A wanted to seek help, it would send the message to the star with the largest power which was connected with star A directly or indirectly. In addition, this star should be more powerful than the star A. If there were more than one star which had the same largest power, then the one with the smallest serial number was chosen. And therefore, sometimes star A couldn’t find such star for help.</p>
+<p>Given the information of the war and the queries about some particular stars, for each query, please find out whether this star could seek another star for help and which star should be chosen.</p>
+<h1 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h1><p>There are no more than 20 cases. Process to the end of file.</p>
+<p>For each cases, the first line contains an integer N (1 &lt;= N &lt;= 10000), which is the number of stars. The second line contains N integers p0, p1, … , pn-1 (0 &lt;= pi &lt;= 1000000000), representing the power of the i-th star. Then the third line is a single integer M (0 &lt;= M &lt;= 20000), that is the number of tunnels built before the war. Then M lines follows. Each line has two integers a, b (0 &lt;= a, b &lt;= N - 1, a != b), which means star a and star b has a connection tunnel. It’s guaranteed that each connection will only be described once.</p>
+<p>In the (M + 2)-th line is an integer Q (0 &lt;= Q &lt;= 50000) which is the number of the information and queries. In the following Q lines, each line will be written in one of next two formats.</p>
+<ul>
+<li><p>“destroy a b” - the connection between star a and star b was destroyed by the monsters. It’s guaranteed that the connection between star a and star b was available before the monsters’ attack.</p>
+</li>
+<li><p>“query a” - star a wanted to know which star it should turn to for help</p>
+</li>
+</ul>
+<p>There is a blank line between consecutive cases.</p>
+<h1 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h1><p>For each query in the input, if there is no star that star a can turn to for help, then output “-1”; otherwise, output the serial number of the chosen star.</p>
+<p>Print a blank line between consecutive cases.</p>
+<h1 id="Sample"><a href="#Sample" class="headerlink" title="Sample"></a>Sample</h1><h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><pre><code>2
+10 20
+1
+0 1
+5
+query 0
+query 1
+destroy 0 1
+query 0
+query 1
+</code></pre><h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><pre><code>1
+-1
+-1
+-1
+</code></pre><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>因为操作中只包含删除和询问，所以可以先将指令存起来，建立除destroy操作以外的并查集，接着逆向进行操作，得出每次操作的答案，最后再按顺序输出。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><blockquote>
+<p>由于ZOJ这几天崩了，所以不能测试代码是否能AC<br>这里就不贴了</p>
+</blockquote>
 
-From: http://stackoverflow.com/questions/15437719/git-push-error-origin-does-not-appear-to-be-a-git-repository
-</code></pre>
       
     </div>
 
@@ -367,7 +360,11 @@ From: http://stackoverflow.com/questions/15437719/git-push-error-origin-does-not
       
         <div class="post-tags">
           
-            <a href="/tags/git/" rel="tag">#git</a>
+            <a href="/tags/ACM/" rel="tag">#ACM</a>
+          
+            <a href="/tags/并查集/" rel="tag">#并查集</a>
+          
+            <a href="/tags/ZOJ/" rel="tag">#ZOJ</a>
           
         </div>
       
@@ -376,12 +373,16 @@ From: http://stackoverflow.com/questions/15437719/git-push-error-origin-does-not
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/07/23/POJ-2912-Rochambeau-并查集/" rel="next" title="POJ 2912 Rochambeau 并查集">
+                <i class="fa fa-chevron-left"></i> POJ 2912 Rochambeau 并查集
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/07/05/python基础/" rel="prev" title="python基础">
-                python基础 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/07/23/HDU-1272-小希的迷宫-并查集/" rel="prev" title="HDU 1272 小希的迷宫 并查集">
+                HDU 1272 小希的迷宫 并查集 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -489,7 +490,7 @@ From: http://stackoverflow.com/questions/15437719/git-push-error-origin-does-not
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#创建项目"><span class="nav-number">1.</span> <span class="nav-text">创建项目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#上传项目"><span class="nav-number">2.</span> <span class="nav-text">上传项目</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Input"><span class="nav-number">2.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Output"><span class="nav-number">3.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Sample"><span class="nav-number">4.</span> <span class="nav-text">Sample</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Input"><span class="nav-number">4.1.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Output"><span class="nav-number">4.2.</span> <span class="nav-text">Sample Output</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#思路"><span class="nav-number">5.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码"><span class="nav-number">6.</span> <span class="nav-text">代码</span></a></li></ol></div>
             
           </div>
         </section>

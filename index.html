@@ -268,6 +268,980 @@
             
               
                 
+                <a class="post-title-link" href="/2016/07/23/POJ-1308-Is-It-A-Tree-并查集/" itemprop="url">
+                  POJ 1308 Is It A Tree? 并查集
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-23T23:42:48+08:00" content="2016-07-23">
+              2016-07-23
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>Time Limit:1000MS     Memory Limit:10000KB     64bit IO Format:%lld &amp; %llu</p>
+</blockquote>
+<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>A tree is a well-known data structure that is either empty (null, void, nothing) or is a set of one or more nodes connected by directed edges between nodes satisfying the following properties. </p>
+<p>There is exactly one node, called the root, to which no directed edges point.<br>Every node except the root has exactly one edge pointing to it.<br>There is a unique sequence of directed edges from the root to each node.<br>For example, consider the illustrations below, in which nodes are represented by circles and edges are represented by lines with arrowheads. The first two of these are trees, but the last is not. </p>
+<p>In this problem you will be given several descriptions of collections of nodes connected by directed edges. For each of these you are to determine if the collection satisfies the definition of a tree or not.</p>
+<h1 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h1><p>The input will consist of a sequence of descriptions (test cases) followed by a pair of negative integers. Each test case will consist of a sequence of edge descriptions followed by a pair of zeroes Each edge description will consist of a pair of integers; the first integer identifies the node from which the edge begins, and the second integer identifies the node to which the edge is directed. Node numbers will always be greater than zero.</p>
+<h1 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h1><p>For each test case display the line “Case k is a tree.” or the line “Case k is not a tree.”, where k corresponds to the test case number (they are sequentially numbered starting with 1).</p>
+<h1 id="Sample"><a href="#Sample" class="headerlink" title="Sample"></a>Sample</h1><h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><pre><code>6 8  5 3  5 2  6 4
+5 6  0 0
+
+8 1  7 3  6 2  8 9  7 5
+7 4  7 8  7 6  0 0
+
+3 8  6 8  6 4
+5 3  5 6  5 2  0 0
+-1 -1
+</code></pre><h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><pre><code>Case 1 is a tree.
+Case 2 is a tree.
+Case 3 is not a tree.
+</code></pre><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>跟HDU 1272 小希的迷宫类似，只不过这次变成了有向图。可是数据太弱。3 8 6 8 0 0这种本来不为树，但是一开始交的代码没有判断居然也能过。判断是否为树的方法其实还要加上，树上每点的入度不能大于1.</p>
+<h1 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h1><pre><code>#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+#define N 100005
+
+int u,v;
+int f[N],vis[N],cnt,in[N];
+bool flag;
+
+int _find(int x){
+    if (f[x]==-1){
+        return x;
+    }else{
+        return f[x]=_find(f[x]);
+    }
+}
+
+bool _union(int u,int v){
+    int x=_find(u);
+    int y=_find(v);
+
+    if (x==y){
+        return false;
+    }else{
+        f[y]=x;
+        return true;
+    }
+}
+
+int main(){
+    int kase=0;
+    memset(in,0,sizeof(in));
+    memset(f,-1,sizeof(f));
+    memset(vis,0,sizeof(vis));
+    cnt=0;
+    flag=true;
+    while (scanf(&quot;%d%d&quot;,&amp;u,&amp;v)){
+        if (u&lt;=-1 &amp;&amp; v&lt;=-1){
+            break;
+        }else if (u==0 &amp;&amp; v==0){
+            for (int i=0;i&lt;N;i++){
+                if (vis[i] &amp;&amp; _find(i)==i)
+                    cnt++;
+            }
+
+            if (flag &amp;&amp; cnt&lt;=1){
+                printf(&quot;Case %d is a tree.\n&quot;,++kase);
+            }else{
+                printf(&quot;Case %d is not a tree.\n&quot;,++kase);
+            }
+            memset(f,-1,sizeof(f));
+            memset(vis,0,sizeof(vis));
+            memset(in,0,sizeof(in));
+            cnt=0;
+            flag=true;
+        }else{
+            if (vis[u]==0){
+                vis[u]=1;
+            }
+            if (vis[v]==0){
+                vis[v]=1;
+            }
+            in[v]++;
+            if (in[v]&gt;1)
+                flag=false;
+
+            if (flag){
+                flag=_union(u,v);
+            }
+        }
+    }
+
+    return 0;
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/23/HDU-1272-小希的迷宫-并查集/" itemprop="url">
+                  HDU 1272 小希的迷宫 并查集
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-23T23:38:01+08:00" content="2016-07-23">
+              2016-07-23
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>Time Limit:1000MS     Memory Limit:32768KB     64bit IO Format:%I64d &amp; %I64u</p>
+</blockquote>
+<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>上次Gardon的迷宫城堡小希玩了很久（见Problem B），现在她也想设计一个迷宫让Gardon来走。但是她设计迷宫的思路不一样，首先她认为所有的通道都应该是双向连通的，就是说如果有一个通道连通了房间A和B，那么既可以通过它从房间A走到房间B，也可以通过它从房间B走到房间A，为了提高难度，小希希望任意两个房间有且仅有一条路径可以相通（除非走了回头路）。小希现在把她的设计图给你，让你帮忙判断她的设计图是否符合她的设计思路。比如下面的例子，前两个是符合条件的，但是最后一个却有两种方法从5到达8。 </p>
+<h1 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h1><p>输入包含多组数据，每组数据是一个以0 0结尾的整数对列表，表示了一条通道连接的两个房间的编号。房间的编号至少为1，且不超过100000。每两组数据之间有一个空行。<br>整个文件以两个-1结尾。 </p>
+<h1 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h1><p>对于输入的每一组数据，输出仅包括一行。如果该迷宫符合小希的思路，那么输出”Yes”，否则输出”No”。 </p>
+<h1 id="Sample"><a href="#Sample" class="headerlink" title="Sample"></a>Sample</h1><h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><pre><code>6 8  5 3  5 2  6 4
+5 6  0 0
+
+8 1  7 3  6 2  8 9  7 5
+7 4  7 8  7 6  0 0
+
+3 8  6 8  6 4
+5 3  5 6  5 2  0 0
+
+-1 -1 
+</code></pre><h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><pre><code>Yes
+Yes
+No 
+</code></pre><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>模板题，注意最后判断是否只有一个连通分量。另外，最后生成的数顶点个数可以为0。就在这里卡了很久。</p>
+<h1 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h1><pre><code>#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+#define N 100005
+
+int u,v;
+int f[N],vis[N],cnt;
+bool flag;
+
+int _find(int x){
+    if (f[x]==-1){
+        return x;
+    }else{
+        return f[x]=_find(f[x]);
+    }
+}
+
+bool _union(int u,int v){
+    int x=_find(u);
+    int y=_find(v);
+
+    if (x==y){
+        return false;
+    }else{
+        f[x]=y;
+        cnt--;
+        return true;
+    }
+}
+
+int main(){
+    memset(f,-1,sizeof(f));
+    memset(vis,0,sizeof(vis));
+    cnt=0;
+    flag=true;
+    while (scanf(&quot;%d%d&quot;,&amp;u,&amp;v)){
+        if (u==-1 &amp;&amp; v==-1){
+            break;
+        }else if (u==0 &amp;&amp; v==0){
+            if (flag &amp;&amp; cnt&lt;=1){
+                printf(&quot;Yes\n&quot;);
+            }else{
+                printf(&quot;No\n&quot;);
+            }
+            memset(f,-1,sizeof(f));
+            memset(vis,0,sizeof(vis));
+            cnt=0;
+            flag=true;
+        }else{
+            if (vis[u]==0){
+                vis[u]=1;
+                cnt++;
+            }
+            if (vis[v]==0){
+                vis[v]=1;
+                cnt++;
+            }
+
+            if (flag){
+                flag=_union(u,v);
+            }
+        }
+    }
+
+    return 0;
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/23/ZOJ-3761-Connections-in-Galaxy-War-并查集/" itemprop="url">
+                  ZOJ 3761 Connections in Galaxy War 并查集
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-23T23:34:18+08:00" content="2016-07-23">
+              2016-07-23
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>In order to strengthen the defense ability, many stars in galaxy allied together and built many bidirectional tunnels to exchange messages. However, when the Galaxy War began, some tunnels were destroyed by the monsters from another dimension. Then many problems were raised when some of the stars wanted to seek help from the others.</p>
+<p>In the galaxy, the stars are numbered from 0 to N-1 and their power was marked by a non-negative integer pi. When the star A wanted to seek help, it would send the message to the star with the largest power which was connected with star A directly or indirectly. In addition, this star should be more powerful than the star A. If there were more than one star which had the same largest power, then the one with the smallest serial number was chosen. And therefore, sometimes star A couldn’t find such star for help.</p>
+<p>Given the information of the war and the queries about some particular stars, for each query, please find out whether this star could seek another star for help and which star should be chosen.</p>
+<h1 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h1><p>There are no more than 20 cases. Process to the end of file.</p>
+<p>For each cases, the first line contains an integer N (1 &lt;= N &lt;= 10000), which is the number of stars. The second line contains N integers p0, p1, … , pn-1 (0 &lt;= pi &lt;= 1000000000), representing the power of the i-th star. Then the third line is a single integer M (0 &lt;= M &lt;= 20000), that is the number of tunnels built before the war. Then M lines follows. Each line has two integers a, b (0 &lt;= a, b &lt;= N - 1, a != b), which means star a and star b has a connection tunnel. It’s guaranteed that each connection will only be described once.</p>
+<p>In the (M + 2)-th line is an integer Q (0 &lt;= Q &lt;= 50000) which is the number of the information and queries. In the following Q lines, each line will be written in one of next two formats.</p>
+<ul>
+<li><p>“destroy a b” - the connection between star a and star b was destroyed by the monsters. It’s guaranteed that the connection between star a and star b was available before the monsters’ attack.</p>
+</li>
+<li><p>“query a” - star a wanted to know which star it should turn to for help</p>
+</li>
+</ul>
+<p>There is a blank line between consecutive cases.</p>
+<h1 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h1><p>For each query in the input, if there is no star that star a can turn to for help, then output “-1”; otherwise, output the serial number of the chosen star.</p>
+<p>Print a blank line between consecutive cases.</p>
+<h1 id="Sample"><a href="#Sample" class="headerlink" title="Sample"></a>Sample</h1><h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><pre><code>2
+10 20
+1
+0 1
+5
+query 0
+query 1
+destroy 0 1
+query 0
+query 1
+</code></pre><h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><pre><code>1
+-1
+-1
+-1
+</code></pre><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>因为操作中只包含删除和询问，所以可以先将指令存起来，建立除destroy操作以外的并查集，接着逆向进行操作，得出每次操作的答案，最后再按顺序输出。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><blockquote>
+<p>由于ZOJ这几天崩了，所以不能测试代码是否能AC<br>这里就不贴了</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/23/POJ-2912-Rochambeau-并查集/" itemprop="url">
+                  POJ 2912 Rochambeau 并查集
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-23T23:25:03+08:00" content="2016-07-23">
+              2016-07-23
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>Time Limit:5000MS     Memory Limit:65536KB     64bit IO Format:%lld &amp; %llu</p>
+</blockquote>
+<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>N children are playing Rochambeau (scissors-rock-cloth) game with you. One of them is the judge. The rest children are divided into three groups (it is possible that some group is empty). You don’t know who is the judge, or how the children are grouped. Then the children start playing Rochambeau game for M rounds. Each round two children are arbitrarily selected to play Rochambeau for one once, and you will be told the outcome while not knowing which gesture the children presented. It is known that the children in the same group would present the same gesture (hence, two children in the same group always get draw when playing) and different groups for different gestures. The judge would present gesture randomly each time, hence no one knows what gesture the judge would present. Can you guess who is the judge after after the game ends? If you can, after how many rounds can you find out the judge at the earliest?</p>
+<h1 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h1><p>Input contains multiple test cases. Each test case starts with two integers N and M (1 ≤ N ≤ 500, 0 ≤ M ≤ 2,000) in one line, which are the number of children and the number of rounds. Following are M lines, each line contains two integers in [0, N) separated by one symbol. The two integers are the IDs of the two children selected to play Rochambeau for this round. The symbol may be “=”, “&gt;” or “&lt;”, referring to a draw, that first child wins and that second child wins respectively.</p>
+<h1 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h1><p>There is only one line for each test case. If the judge can be found, print the ID of the judge, and the least number of rounds after which the judge can be uniquely determined. If the judge can not be found, or the outcomes of the M rounds of game are inconsistent, print the corresponding message.</p>
+<h1 id="Sample"><a href="#Sample" class="headerlink" title="Sample"></a>Sample</h1><h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><p>  3 3<br>  0<1 0="" 3="" 5="" 1<2="" 2<0="" 0<1="">1<br>  1<2 1="">2<br>  0<2 0="" 4="" 0<1="">1<br>  2<3 2="">3<br>  1 0</3></2></2></1></p>
+<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><pre><code>Can not determine
+Player 1 can be determined to be the judge after 4 lines
+Impossible
+Player 0 can be determined to be the judge after 0 lines
+</code></pre><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>题目意思是一共n个人，分成3组，每组分别只出剪刀石头布。n个人中只有1个裁判，但是裁判可以任意出剪刀石头布。现在给m条提示，每条表示两个人之间的输赢情况。问是否能确定裁判是谁。</p>
+<p>因为数据并不大，可以枚举n个人，每次假设i为裁判，则所有包含i的信息直接忽略，其他的信息使用种类并查集分类看是否有冲突，如果有冲突则记录从哪里开始冲突。</p>
+<h1 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h1><pre><code>#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+#define N 505
+#define M 2005
+
+struct node{
+    int u,v,d;
+    node(){}
+    node(int uu,int vv,int dd):u(uu),v(vv),d(dd){}
+}a[M];
+
+int n,m;
+int f[N],r[N];
+
+int _find(int x){
+    if (f[x]==-1){
+        return x;
+    }else{
+        int fx=f[x];
+        f[x]=_find(f[x]);
+        r[x]=(r[x]+r[fx])%3;
+        return f[x];
+    }
+}
+
+bool _union(int u,int v,int d){
+    int x=_find(u);
+    int y=_find(v);
+
+    if (x==y){
+        if (((r[u]-r[v]+3)%3)==d){
+            return true;
+        }else{
+            return false;
+        }
+    }else{
+        f[x]=y;
+        r[x]=(-r[u]+r[v]+d+3)%3;
+        return true;
+    }
+}
+
+int main(){
+    while (scanf(&quot;%d%d&quot;,&amp;n,&amp;m)!=EOF){
+        int u,v,d;
+        char c;
+        for (int i=0;i&lt;m;i++){
+            scanf(&quot;%d%c%d&quot;,&amp;u,&amp;c,&amp;v);
+            if (c==&apos;&lt;&apos;){
+                d=2;
+            }else if (c==&apos;=&apos;){
+                d=0;
+            }else{
+                d=1;
+            }
+            a[i]=node(u,v,d);
+        }
+
+        bool flag;
+        int cnt=0;
+        int mx=0;
+        int num=0;
+        for (int i=0;i&lt;n;i++){
+            flag=true;
+            memset(f,-1,sizeof(f));
+            memset(r,0,sizeof(r));
+            for (int j=0;j&lt;m;j++){
+                u=a[j].u;
+                v=a[j].v;
+                d=a[j].d;
+
+                if (u==i || v==i)
+                    continue;
+
+                flag=_union(u,v,d);
+                if (flag==false){
+                    mx=max(mx,j+1);
+                    break;
+                }
+            }
+            if (flag){
+                cnt++;
+                num=i;
+            }
+        }
+
+        if (cnt&gt;1){
+            printf(&quot;Can not determine\n&quot;);
+        }else if (cnt==0){
+            printf(&quot;Impossible\n&quot;);
+        }else{
+            printf(&quot;Player %d can be determined to be the judge after %d lines\n&quot;,num,mx);
+        }
+    }
+
+    return 0;
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/23/POJ-1984-Navigation-Nightmare-并查集/" itemprop="url">
+                  POJ 1984 Navigation Nightmare 并查集
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-23T23:08:29+08:00" content="2016-07-23">
+              2016-07-23
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>Time Limit:2000MS     Memory Limit:30000KB     64bit IO Format:%lld &amp; %llu</p>
+</blockquote>
+<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>Farmer John’s pastoral neighborhood has N farms (2 &lt;= N &lt;= 40,000), usually numbered/labeled 1..N. A series of M (1 &lt;= M &lt; 40,000) vertical and horizontal roads each of varying lengths (1 &lt;= length &lt;= 1000) connect the farms. A map of these farms might look something like the illustration below in which farms are labeled F1..F7 for clarity and lengths between connected farms are shown as (n):</p>
+<pre><code> F1 --- (13) ---- F6 --- (9) ----- F3
+
+ |                                 |
+
+(3)                                |
+
+ |                                (7)
+
+F4 --- (20) -------- F2            |
+
+ |                                 |
+
+(2)                               F5
+
+ | 
+
+F7 
+</code></pre><p>Being an ASCII diagram, it is not precisely to scale, of course.</p>
+<p>Each farm can connect directly to at most four other farms via roads that lead exactly north, south, east, and/or west. Moreover, farms are only located at the endpoints of roads, and some farm can be found at every endpoint of every road. No two roads cross, and precisely one path (sequence of roads) links every pair of farms.</p>
+<p>FJ lost his paper copy of the farm map and he wants to reconstruct it from backup information on his computer. This data contains lines like the following, one for every road:</p>
+<p>There is a road of length 10 running north from Farm #23 to Farm #17<br>There is a road of length 7 running east from Farm #1 to Farm #17<br>…</p>
+<p>As FJ is retrieving this data, he is occasionally interrupted by questions such as the following that he receives from his navigationally-challenged neighbor, farmer Bob:</p>
+<p>What is the Manhattan distance between farms #1 and #23?</p>
+<p>FJ answers Bob, when he can (sometimes he doesn’t yet have enough data yet). In the example above, the answer would be 17, since Bob wants to know the “Manhattan” distance between the pair of farms.<br>The Manhattan distance between two points (x1,y1) and (x2,y2) is just |x1-x2| + |y1-y2| (which is the distance a taxicab in a large city must travel over city streets in a perfect grid to connect two x,y points).</p>
+<p>When Bob asks about a particular pair of farms, FJ might not yet have enough information to deduce the distance between them; in this case, FJ apologizes profusely and replies with “-1”.</p>
+<h1 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h1><ul>
+<li>Line 1: Two space-separated integers: N and M</li>
+<li>Lines 2..M+1: Each line contains four space-separated entities, F1, F2, L, and D that describe a road. F1 and F2 are numbers of two farms connected by a road, L is its length, and D is a character that is either ‘N’, ‘E’, ‘S’, or ‘W’ giving the direction of the road from F1 to F2.</li>
+<li>Line M+2: A single integer, K (1 &lt;= K &lt;= 10,000), the number of FB’s queries</li>
+<li>Lines M+3..M+K+2: Each line corresponds to a query from Farmer Bob and contains three space-separated integers: F1, F2, and I. F1 and F2 are numbers of the two farms in the query and I is the index (1 &lt;= I &lt;= M) in the data after which Bob asks the query. Data index 1 is on line 2 of the input data, and so on.</li>
+</ul>
+<h1 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h1><ul>
+<li>Lines 1..K: One integer per line, the response to each of Bob’s queries.  Each line should contain either a distance measurement or -1, if it is impossible to determine the appropriate distance.</li>
+</ul>
+<h1 id="Sample"><a href="#Sample" class="headerlink" title="Sample"></a>Sample</h1><h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><pre><code>7 6
+1 6 13 E
+6 3 9 E
+3 5 7 S
+4 1 3 N
+2 4 20 W
+4 7 2 S
+3
+1 6 1
+1 4 3
+2 6 6
+</code></pre><h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><pre><code>13
+-1
+10
+</code></pre><h1 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h1><p>At time 1, FJ knows the distance between 1 and 6 is 13.<br>At time 3, the distance between 1 and 4 is still unknown.<br>At the end, location 6 is 3 units west and 7 north of 2, so the distance is 10.</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>并查集，将每个地点的坐标代替普通的并查集中的点，r[x]表示点x与点f[x]的相对位置，那么只要两个地点属于同一集合，就可以通过r[x]算出他们之间的相对关系。</p>
+<h1 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h1><pre><code>#include &lt;map&gt;
+#include &lt;cstring&gt;
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+#define N 40005
+#define K 10005
+#define PB push_back
+
+char dir[]=&quot;NESW&quot;;
+int vx[]={-1,0,1,0};
+int vy[]={0,1,0,-1};
+
+struct order{
+    int u,v,l,d;
+}a[N];
+
+struct query{
+    int u,v,q,id,ans;
+}b[K];
+
+struct node{
+    int x,y;
+    node(){}
+    node(int xx,int yy):x(xx),y(yy){}
+}r[N];
+
+int n,m,k;
+int f[N];
+
+bool cmp(query a,query b){
+    return a.q&lt;b.q;
+}
+
+bool cmp2(query a,query b){
+    return a.id&lt;b.id;
+}
+
+int _find(int x){
+    if (f[x]==-1){
+        return x;
+    }else{
+        int fx=f[x];
+        f[x]=_find(f[x]);
+        r[x].x+=r[fx].x;
+        r[x].y+=r[fx].y;
+    }
+    return f[x];
+}
+
+void _union(int i){
+    int u,v,l,d;
+    u=a[i].u;
+    v=a[i].v;
+    l=a[i].l;
+    d=a[i].d;
+
+    int x=_find(u);
+    int y=_find(v);
+    int tx=l*vx[d];
+    int ty=l*vy[d];
+
+    if (x!=y){
+        f[x]=y;
+        r[x].x=tx+r[v].x-r[u].x;
+        r[x].y=ty+r[v].y-r[u].y;
+    }
+}
+
+int main(){
+    while (scanf(&quot;%d%d&quot;,&amp;n,&amp;m)!=EOF){
+        memset(f,-1,sizeof(f));
+        for (int i=0;i&lt;=n;i++){
+            r[i].x=r[i].y=0;
+        }
+        for (int i=0;i&lt;m;i++){
+            char c;
+            scanf(&quot;%d%d%d %c&quot;,&amp;a[i].u,&amp;a[i].v,&amp;a[i].l,&amp;c);
+            for (int j=0;j&lt;4;j++){
+                if (c==dir[j]){
+                    a[i].d=j;
+                    break;
+                }
+            }
+        }
+
+        scanf(&quot;%d&quot;,&amp;k);
+        for (int i=0;i&lt;k;i++){
+            scanf(&quot;%d%d%d&quot;,&amp;b[i].u,&amp;b[i].v,&amp;b[i].q);
+            b[i].id=i;
+        }
+
+        sort(b,b+k,cmp);
+
+        int cnt=0;
+        for (int i=0;i&lt;k;i++){
+            for (int j=cnt;j&lt;b[i].q;j++){
+                _union(j);
+            }
+            cnt=b[i].q;
+
+            int u=b[i].u;
+            int v=b[i].v;
+            int x=_find(u);
+            int y=_find(v);
+            if (x!=y){
+                b[i].ans=-1;
+            }else{
+                b[i].ans=abs(r[u].x-r[v].x)+abs(r[u].y-r[v].y);
+            }
+        }
+
+        sort(b,b+k,cmp2);
+
+        for (int i=0;i&lt;k;i++){
+            printf(&quot;%d\n&quot;,b[i].ans);
+        }
+    }
+
+    return 0;
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/22/POJ-2492-A-Bug-s-Life-并查集/" itemprop="url">
                   POJ 2492 A Bug's Life 并查集
                 </a>
@@ -1128,1116 +2102,6 @@ int main(){
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/14/fedora13更新源/" itemprop="url">
-                  fedora13更新源
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-14T10:39:48+08:00" content="2016-07-14">
-              2016-07-14
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>今天上linux暑期课的时候需要配置yum源，发现默认的源已经无法使用，所以需要更新为其他源。</p>
-<p>在网上找了好久试了163、sohu、sjtu的源均不行，遂打开sjtu源查看，发现只剩下一个README文件。</p>
-<pre><code>ATTENTION
-======================================
-The contents of this directory have been moved to our archives available at:
-
-http://archives.fedoraproject.org/pub/archive/fedora/
-
-If you are having troubles finding something there please stop by #fedora-admin on irc.freenode.net
-</code></pre><p>原来由于fedora13版本太老，大家都不维护了，能用的只剩下这个官方源了，估计是官方源也迁移过。</p>
-<p>接下来打开/etc/yum.repo.d/</p>
-<pre><code># cd /etc/yum.repo.d/
-</code></pre><p>用vim编辑.repo文件，或者先删除当前目录所有文件，再新建.repo文件，将参考repo复制。</p>
-<p>将原来的baseurl分别替换成：</p>
-<ul>
-<li><a href="http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/13/Fedora/i386/os/" target="_blank" rel="external">http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/13/Fedora/i386/os/</a></li>
-<li><a href="http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/13/Everything/i386/os/" target="_blank" rel="external">http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/13/Everything/i386/os/</a></li>
-<li><a href="http://archives.fedoraproject.org/pub/archive/fedora/linux/updates/13/i386/" target="_blank" rel="external">http://archives.fedoraproject.org/pub/archive/fedora/linux/updates/13/i386/</a></li>
-</ul>
-<p>将原来的gpgkey替换成：</p>
-<ul>
-<li>file:///RPM-GPG-KEY-fedora</li>
-</ul>
-<p>参考repo（由于一开始想使用sjtu的源，所以名称还没改过来）：</p>
-<pre><code>[Fedora-ftp.sjtu.edu.cn]
-name=Fedora 13 – i386
-baseurl=http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/13/Fedora/i386/os/
-enabled=1
-gpgcheck=0
-gpgkey=file:///RPM-GPG-KEY-fedora
-[Everything-ftp.sjtu.edu.cn]
-name=Everything 13 – i386
-baseurl=http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/13/Everything/i386/os/
-enabled=1
-gpgcheck=0
-gpgkey=file:///RPM-GPG-KEY-fedora
-[updates-ftp.sjtu.edu.cn]
-name=Fedora updates
-baseurl=http://archives.fedoraproject.org/pub/archive/fedora/linux/updates/13/i386/
-enabled=1
-gpgcheck=0
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/09/linux暑期实践1-字符界面与常用命令/" itemprop="url">
-                  linux暑期实践1-字符界面与常用命令
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-09T16:05:46+08:00" content="2016-07-09">
-              2016-07-09
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="man-帮助命令"><a href="#man-帮助命令" class="headerlink" title="man 帮助命令"></a>man 帮助命令</h1><h2 id="命令语法"><a href="#命令语法" class="headerlink" title="命令语法"></a>命令语法</h2><pre><code>man [选项] 命令名称
--M， -P， -a， -d， -f， -p， -w
-</code></pre><h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><pre><code>$ man ls
-
-LS(1)                            User Commands                           LS(1)
-
-NAME
-   ls - list directory contents
-
-SYNOPSIS
-   ls [OPTION]... [FILE]...
-
-DESCRIPTION
-   List  information  about  the FILEs (the current directory by default).  Sort entries
-   alphabetically if none of -cftuvSUX nor --sort.
-
-   Mandatory arguments to long options are mandatory for short options too.
-...
-</code></pre><p><br><br></p>
-<h1 id="help-帮助命令"><a href="#help-帮助命令" class="headerlink" title="help 帮助命令"></a>help 帮助命令</h1><h2 id="命令语法："><a href="#命令语法：" class="headerlink" title="命令语法："></a>命令语法：</h2><pre><code>[命令]  --help
-</code></pre><h2 id="应用-1"><a href="#应用-1" class="headerlink" title="应用"></a>应用</h2><pre><code>$ ls --help
-
-Usage: ls [OPTION]... [FILE]...
-List information about the FILEs (the current directory by default).
-Sort entries alphabetically if none of -cftuvSUX nor --sort.
-
-Mandatory arguments to long options are mandatory for short options too.
--a, --all                  do not ignore entries starting with .
--A, --almost-all           do not list implied . and ..
-  --author               with -l, print the author of each file
--b, --escape               print octal escapes for nongraphic characters
-  --block-size=SIZE      use SIZE-byte blocks.  See SIZE format below
-</code></pre><p><br><br></p>
-<h1 id="info-帮助命令"><a href="#info-帮助命令" class="headerlink" title="info 帮助命令"></a>info 帮助命令</h1><h2 id="命令语法：-1"><a href="#命令语法：-1" class="headerlink" title="命令语法："></a>命令语法：</h2><pre><code>info [选项] 命令名称
-</code></pre><h2 id="应用-2"><a href="#应用-2" class="headerlink" title="应用"></a>应用</h2><pre><code>$ info ls
-
-File: coreutils.info,  Node: ls invocation,  Next: dir invocation,  Up: Directory listing
-
-10.1 `ls&apos;: List directory contents
-==================================
-
-The `ls&apos; program lists information about files (of any type, including
-directories).  Options and file arguments can be intermixed
-arbitrarily, as usual.
-</code></pre><p><br><br></p>
-<h1 id="help、man和info工具的区别"><a href="#help、man和info工具的区别" class="headerlink" title="help、man和info工具的区别"></a>help、man和info工具的区别</h1><ul>
-<li>“–help”是一个工具选项，大部分的GNU工具都具备这个选项，“–help”选项可以用来显示一些工具的信息</li>
-<li>Man工具可以显示系统手册页中的内容，这些内容大多数都是对命令的解释信息。通过查看系统文档中的man页可以得到程序的更多相关主题信息和Linux的更多特性。</li>
-<li>Info工具是一个基于菜单的超文本系统，由GNU项目开发并由Linux发布。info工具包括一些关于Linux shell、工具、GNU项目开发程序的说明文档。</li>
-</ul>
-<p><br><br></p>
-<h1 id="pwd-输出当前工作目录的绝对路径"><a href="#pwd-输出当前工作目录的绝对路径" class="headerlink" title="pwd 输出当前工作目录的绝对路径"></a>pwd 输出当前工作目录的绝对路径</h1><h2 id="命令语法-1"><a href="#命令语法-1" class="headerlink" title="命令语法"></a>命令语法</h2><pre><code>pwd
-</code></pre><h2 id="应用-3"><a href="#应用-3" class="headerlink" title="应用"></a>应用</h2><pre><code>[Yecaijia_2014150087@localhost codeInPPT]$ pwd
-/home/Yecaijia_2014150087/Documents/codeInPPT
-</code></pre><p><br><br></p>
-<h1 id="cd-change-directory-更改工作目录"><a href="#cd-change-directory-更改工作目录" class="headerlink" title="cd change directory 更改工作目录"></a>cd change directory 更改工作目录</h1><h2 id="命令语法-2"><a href="#命令语法-2" class="headerlink" title="命令语法"></a>命令语法</h2><pre><code>cd [目录名]
-</code></pre><h2 id="应用-4"><a href="#应用-4" class="headerlink" title="应用"></a>应用</h2><pre><code>[Yecaijia_2014150087@localhost codeInPPT]$ cd   &lt;!-- 回到用户home下 --&gt;
-[Yecaijia_2014150087@localhost ~]$
-[Yecaijia_2014150087@localhost ~]$ cd Documents/
-[Yecaijia_2014150087@localhost Documents]$
-</code></pre><p><br><br></p>
-<h1 id="ls-打印指定目录里的文件和文件夹清单"><a href="#ls-打印指定目录里的文件和文件夹清单" class="headerlink" title="ls 打印指定目录里的文件和文件夹清单"></a>ls 打印指定目录里的文件和文件夹清单</h1><h2 id="命令语法-3"><a href="#命令语法-3" class="headerlink" title="命令语法"></a>命令语法</h2><pre><code>ls [选项] [目录或文件]
-
-主要选项：
--a：列出目录下的所有的文件，包括以.开头的隐含文件
--A：显示除了”.”和”..”外的所有文件
--b：把文件名中不可输出的字符用反斜杠加字符编号的形式列出
--c：输出文件的i节点的修改时间，并以此排序
--d：将目录象文件一样显示，而不是显示其下的文件
--F：在每个文件名后附上一个字符以说明该文件的类型
-      *:可执行的普通文件   /: 目录    @:符号连接
-      |:表示FIFO         =:  套接字（sockets)
--i：输出文件的i节点索引信息
--l：列出文件的详细信息
-</code></pre><h2 id="应用-5"><a href="#应用-5" class="headerlink" title="应用"></a>应用</h2><p>ls 缺省：</p>
-<pre><code>[Yecaijia_2014150087@localhost codeInPPT]$ ls
-code_c1_p20_1    code_c1_p20_2    code_c2_p18    code_c2_p21    code_c4_p17      code_c4_p17.c
-code_c1_p20_1.c  code_c1_p20_2.c  code_c2_p18.c  code_c2_p21.c  code_c4_p17_2.c
-
---------------------------------------------
-[Yecaijia_2014150087@localhost codeInPPT]$ ls -la
-total 72
-drwxrwxr-x. 2 Yecaijia_2014150087 Yecaijia_2014150087 4096 Apr 11 04:37 .
-drwxr-xr-x. 3 Yecaijia_2014150087 Yecaijia_2014150087 4096 Apr 10 01:21 ..
--rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4829 Apr 10 01:39 code_c1_p20_1
--rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087  242 Apr 10 01:37 code_c1_p20_1.c
--rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4865 Apr 10 01:39 code_c1_p20_2
--rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087  311 Apr 10 01:38 code_c1_p20_2.c
--rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4863 Apr 10 03:08 code_c2_p18
--rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087  328 Apr 10 03:07 code_c2_p18.c
--rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4739 Apr 10 03:22 code_c2_p21
--rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087   99 Apr 10 03:21 code_c2_p21.c
--rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4854 Apr 10 23:15 code_c4_p17
--rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087   33 Apr 10 23:14 code_c4_p17_2.c
--rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087  140 Apr 10 23:15 code_c4_p17.c
-
---------------------------------------------
-[Yecaijia_2014150087@localhost codeInPPT]$ ls -Fla
-total 72
-drwxrwxr-x. 2 Yecaijia_2014150087 Yecaijia_2014150087 4096 Apr 11 04:37 ./
-drwxr-xr-x. 3 Yecaijia_2014150087 Yecaijia_2014150087 4096 Apr 10 01:21 ../
--rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4829 Apr 10 01:39 code_c1_p20_1*
--rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087  242 Apr 10 01:37 code_c1_p20_1.c
--rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4865 Apr 10 01:39 code_c1_p20_2*
--rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087  311 Apr 10 01:38 code_c1_p20_2.c
--rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4863 Apr 10 03:08 code_c2_p18*
--rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087  328 Apr 10 03:07 code_c2_p18.c
--rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4739 Apr 10 03:22 code_c2_p21*
--rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087   99 Apr 10 03:21 code_c2_p21.c
--rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4854 Apr 10 23:15 code_c4_p17*
--rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087   33 Apr 10 23:14 code_c4_p17_2.c
--rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087  140 Apr 10 23:15 code_c4_p17.c
-
---------------------------------------------
-[Yecaijia_2014150087@localhost codeInPPT]$ ls -ila
-total 72
-262087 drwxrwxr-x. 2 Yecaijia_2014150087 Yecaijia_2014150087 4096 Apr 11 04:37 .
-261655 drwxr-xr-x. 3 Yecaijia_2014150087 Yecaijia_2014150087 4096 Apr 10 01:21 ..
-262098 -rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4829 Apr 10 01:39 code_c1_p20_1
-262097 -rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087  242 Apr 10 01:37 code_c1_p20_1.c
-262096 -rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4865 Apr 10 01:39 code_c1_p20_2
-262091 -rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087  311 Apr 10 01:38 code_c1_p20_2.c
-262099 -rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4863 Apr 10 03:08 code_c2_p18
-262102 -rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087  328 Apr 10 03:07 code_c2_p18.c
-262100 -rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4739 Apr 10 03:22 code_c2_p21
-262103 -rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087   99 Apr 10 03:21 code_c2_p21.c
-262104 -rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4854 Apr 10 23:15 code_c4_p17
-262105 -rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087   33 Apr 10 23:14 code_c4_p17_2.c
-262107 -rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087  140 Apr 10 23:15 code_c4_p17.c
-</code></pre><h2 id="ls-信息"><a href="#ls-信息" class="headerlink" title="ls 信息"></a>ls 信息</h2><table>
-<thead>
-<tr>
-<th>文件属性</th>
-<th>硬链接数/子目录数</th>
-<th>文件拥有者</th>
-<th>文件拥有者所在组</th>
-<th>文件大小</th>
-<th>创建月份</th>
-<th>创建日期</th>
-<th>创建时间</th>
-<th>文件名</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-rw-rw-r–.</td>
-<td>1</td>
-<td>Yecaijia_2014150087</td>
-<td>Yecaijia_2014150087</td>
-<td>140</td>
-<td>Apr</td>
-<td>10</td>
-<td>23:15</td>
-<td>code_c4_p17.c</td>
-</tr>
-</tbody>
-</table>
-<p>第一个符号：<br>符号 | 意义</p>
-<ul>
-<li>| -<br>d | 目录</li>
-<li>| 常规文件<br>b | 块类型特殊文件<br>c | 字符型特殊文件<br>s | 套接字<br>l | 链接<br>p | 管道</li>
-</ul>
-<p>文件读写属性：<br>（rwx) | (rwx) | (rwx)</p>
-<ul>
-<li>| - | -<br>owner | group | others</li>
-<li>r 表示允许读（查看文件中的数据）</li>
-<li>w 表示允许写（修改文件以及删除）</li>
-<li>x 表示允许“执行”（运行程序）</li>
-</ul>
-<p><br><br></p>
-<h1 id="touch-文件新建、修改文件时间"><a href="#touch-文件新建、修改文件时间" class="headerlink" title="touch 文件新建、修改文件时间"></a>touch 文件新建、修改文件时间</h1><h2 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h2><pre><code>touch [选项] 文件
-
-主要选项：
--a   或--time=atime或--time=access或--time=use 　只更改存取时间。
--c   或--no-create 　不建立任何文档。
--d 　使用指定的日期时间，而非现在的时间。
--f 　此参数将忽略不予处理，仅负责解决BSD版本touch指令的兼容性问题。
--m   或--time=mtime或--time=modify 　只更改变动时间。
--r 　把指定文档或目录的日期时间，统统设成和参考文档或目录的日期时间相同。
--t 　使用指定的日期时间，而非现在的时间。
-</code></pre><h2 id="应用-6"><a href="#应用-6" class="headerlink" title="应用"></a>应用</h2><h3 id="创建不存在的文件"><a href="#创建不存在的文件" class="headerlink" title="创建不存在的文件"></a>创建不存在的文件</h3><pre><code>touch README.md
---------------------------------------------
-[leif@localhost Documents]$ ls
-[leif@localhost Documents]$ touch README.md
-[leif@localhost Documents]$ ls
-README.md
-</code></pre><h3 id="更改file2的时间，使它与file1相同"><a href="#更改file2的时间，使它与file1相同" class="headerlink" title="更改file2的时间，使它与file1相同"></a>更改file2的时间，使它与file1相同</h3><pre><code>touch -r file1 file2
---------------------------------------------
-[leif@localhost Documents]$ ls -la
-total 8
-drwxr-xr-x.  2 leif leif 4096 Apr 11 05:27 .
-drwx------. 22 leif leif 4096 Apr  2 20:58 ..
--rw-rw-r--.  1 leif leif    0 Apr 11 05:26 file1
--rw-rw-r--.  1 leif leif    0 Apr 11 05:27 file2
--rw-rw-r--.  1 leif leif    0 Apr 11 05:25 README.md
-[leif@localhost Documents]$ touch -r file1 file2
-[leif@localhost Documents]$ ls -la
-total 8
-drwxr-xr-x.  2 leif leif 4096 Apr 11 05:27 .
-drwx------. 22 leif leif 4096 Apr  2 20:58 ..
--rw-rw-r--.  1 leif leif    0 Apr 11 05:26 file1
--rw-rw-r--.  1 leif leif    0 Apr 11 05:26 file2
--rw-rw-r--.  1 leif leif    0 Apr 11 05:25 README.md
-</code></pre><h3 id="将文件file1的时间记录改为2000年5月6日18点3分。"><a href="#将文件file1的时间记录改为2000年5月6日18点3分。" class="headerlink" title="将文件file1的时间记录改为2000年5月6日18点3分。"></a>将文件file1的时间记录改为2000年5月6日18点3分。</h3><pre><code>touch -c -t 200005061803.00 file1
---------------------------------------------
-[leif@localhost Documents]$ ls -la
-total 8
-drwxr-xr-x.  2 leif leif 4096 Apr 11 05:27 .
-drwx------. 22 leif leif 4096 Apr  2 20:58 ..
--rw-rw-r--.  1 leif leif    0 Apr 11 05:26 file1
--rw-rw-r--.  1 leif leif    0 Apr 11 05:26 file2
--rw-rw-r--.  1 leif leif    0 Apr 11 05:25 README.md
-[leif@localhost Documents]$ touch -c -t 200005061803.00 file1
-[leif@localhost Documents]$ ls -la
-total 8
-drwxr-xr-x.  2 leif leif 4096 Apr 11 05:27 .
-drwx------. 22 leif leif 4096 Apr  2 20:58 ..
--rw-rw-r--.  1 leif leif    0 May  6  2000 file1
--rw-rw-r--.  1 leif leif    0 Apr 11 05:26 file2
--rw-rw-r--.  1 leif leif    0 Apr 11 05:25 README.md
-</code></pre><p><br><br></p>
-<h1 id="cat-读取文件内容并且打印到标准输出"><a href="#cat-读取文件内容并且打印到标准输出" class="headerlink" title="cat 读取文件内容并且打印到标准输出"></a>cat 读取文件内容并且打印到标准输出</h1><h2 id="命令格式-1"><a href="#命令格式-1" class="headerlink" title="命令格式"></a>命令格式</h2><pre><code>cat [选项] 文件名
-主要选项：
--n：由1开始对所有输出的行数编号
--b：同-n,对于空白行不编号
--s：当遇到有连续两行以上的空白行，就代换为一行的空白行
--E：在行尾显示$符号
-</code></pre><h2 id="应用-7"><a href="#应用-7" class="headerlink" title="应用"></a>应用</h2><pre><code>[leif@localhost Documents]$ cat README.md
-test
-test
-
-
-test
-test
-
-test
---------------------------------------------
-[leif@localhost Documents]$ cat -n README.md
- 1  test
- 2  test
- 3
- 4
- 5  test
- 6  test
- 7
- 8  test
---------------------------------------------
- [leif@localhost Documents]$ cat -b README.md
- 1  test
- 2  test
-
-
- 3  test
- 4  test
-
- 5  test
- --------------------------------------------
- [leif@localhost Documents]$ cat -s README.md
- test
- test
-
- test
- test
-
- test
---------------------------------------------
-[leif@localhost Documents]$ cat -E README.md
-test$
-test$
-$
-$
-test$
-test$
-$
-test$
-</code></pre><p><br><br></p>
-<h1 id="more-分页显示文件内容"><a href="#more-分页显示文件内容" class="headerlink" title="more 分页显示文件内容"></a>more 分页显示文件内容</h1><h2 id="命令格式-2"><a href="#命令格式-2" class="headerlink" title="命令格式"></a>命令格式</h2><pre><code>more [选项] 文件名
-
-主要选项：
--num：一次显示的行数
-+num：从第num行开始显示
--d：提示使用者，在画面下方显示 [Press space to continue, q to quit.] ，如果使用者按错键，则会显示 [Press h for instructions.]
-</code></pre><h2 id="应用-8"><a href="#应用-8" class="headerlink" title="应用"></a>应用</h2><pre><code>[leif@localhost Documents]$ more README.md
-test
-test
-
-
-test
-test
-
-test
-</code></pre><p><br><br></p>
-<h1 id="less-回卷显示文件内容"><a href="#less-回卷显示文件内容" class="headerlink" title="less 回卷显示文件内容"></a>less 回卷显示文件内容</h1><h2 id="命令格式-3"><a href="#命令格式-3" class="headerlink" title="命令格式"></a>命令格式</h2><pre><code>less [选项] 文件名
-</code></pre><ul>
-<li>与more类似，不过会在新的页面显示</li>
-</ul>
-<p><br><br></p>
-<h1 id="head-显示文件前若干行"><a href="#head-显示文件前若干行" class="headerlink" title="head 显示文件前若干行"></a>head 显示文件前若干行</h1><h2 id="命令格式-4"><a href="#命令格式-4" class="headerlink" title="命令格式"></a>命令格式</h2><pre><code>head [选项] 文件名
-
-主要选项：
--q 隐藏文件名
--v 显示文件名
--c&lt;字节&gt; 显示字节数
--n&lt;行数&gt; 显示的行数
-</code></pre><h2 id="应用-9"><a href="#应用-9" class="headerlink" title="应用"></a>应用</h2><pre><code>[leif@localhost Documents]$ head -v README.md
-==&gt; README.md &lt;==
-test
-test
-
-
-test
-test
-
-test
---------------------------------------------
-[leif@localhost Documents]$ head -n3 README.md
-test
-test
-
---------------------------------------------
-[leif@localhost Documents]$ head -c3 README.md
-tes
-</code></pre><p><br><br></p>
-<h1 id="tail-显示文件后若干行"><a href="#tail-显示文件后若干行" class="headerlink" title="tail 显示文件后若干行"></a>tail 显示文件后若干行</h1><h2 id="命令格式-5"><a href="#命令格式-5" class="headerlink" title="命令格式"></a>命令格式</h2><pre><code>tail [选项] 文件名
-主要选项：
--f 循环读取
--q 不显示处理信息
--v 显示详细的处理信息
--c&lt;数目&gt; 显示的字节数
--n&lt;行数&gt; 显示行数
---pid=PID 与-f合用,表示在进程ID,PID死掉之后结束.
--q, --quiet, --silent 从不输出给出文件名的首部
--s, --sleep-interval=S 与-f合用,表示在每次反复的间隔休眠S秒
-</code></pre><h2 id="应用-10"><a href="#应用-10" class="headerlink" title="应用"></a>应用</h2><pre><code>[leif@localhost Documents]$ tail -n4 README.md
-test
-test
-
-test
-</code></pre><p><br><br></p>
-<h1 id="grep-过滤、搜索命令"><a href="#grep-过滤、搜索命令" class="headerlink" title="grep 过滤、搜索命令"></a>grep 过滤、搜索命令</h1><h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><pre><code>grep [option] pattern file
-
-主要选项：
--a   --text   #不要忽略二进制的数据。   
--A&lt;显示行数&gt;   --after-context=&lt;显示行数&gt;   #除了显示符合范本样式的那一列之外，并显示该行之后的内容。   
--b   --byte-offset   #在显示符合样式的那一行之前，标示出该行第一个字符的编号。   
--B&lt;显示行数&gt;   --before-context=&lt;显示行数&gt;   #除了显示符合样式的那一行之外，并显示该行之前的内容。   
--c    --count   #计算符合样式的列数。   
--C&lt;显示行数&gt;    --context=&lt;显示行数&gt;或-&lt;显示行数&gt;   #除了显示符合样式的那一行之外，并显示该行之前后的内容。   
--d &lt;动作&gt;      --directories=&lt;动作&gt;   #当指定要查找的是目录而非文件时，必须使用这项参数，否则grep指令将回报信息并停止动作。   
--e&lt;范本样式&gt;  --regexp=&lt;范本样式&gt;   #指定字符串做为查找文件内容的样式。   
--E      --extended-regexp   #将样式为延伸的普通表示法来使用。   
--f&lt;规则文件&gt;  --file=&lt;规则文件&gt;   #指定规则文件，其内容含有一个或多个规则样式，让grep查找符合规则条件的文件内容，格式为每行一个规则样式。   
--F   --fixed-regexp   #将样式视为固定字符串的列表。   
--G   --basic-regexp   #将样式视为普通的表示法来使用。   
--h   --no-filename   #在显示符合样式的那一行之前，不标示该行所属的文件名称。   
--H   --with-filename   #在显示符合样式的那一行之前，表示该行所属的文件名称。   
--i    --ignore-case   #忽略字符大小写的差别。   
--l    --file-with-matches   #列出文件内容符合指定的样式的文件名称。   
--L   --files-without-match   #列出文件内容不符合指定的样式的文件名称。   
--n   --line-number   #在显示符合样式的那一行之前，标示出该行的列数编号。   
--q   --quiet或--silent   #不显示任何信息。   
--r   --recursive   #此参数的效果和指定“-d recurse”参数相同。   
--s   --no-messages   #不显示错误信息。   
--v   --revert-match   #显示不包含匹配文本的所有行。   
--V   --version   #显示版本信息。   
--w   --word-regexp   #只显示全字符合的列。   
--x    --line-regexp   #只显示全列符合的列。   
--y   #此参数的效果和指定“-i”参数相同。
-</code></pre><h2 id="pattern"><a href="#pattern" class="headerlink" title="pattern"></a>pattern</h2><h3 id="grep的规则表达式"><a href="#grep的规则表达式" class="headerlink" title="grep的规则表达式:"></a>grep的规则表达式:</h3><table>
-<thead>
-<tr>
-<th>符号</th>
-<th>意义</th>
-<th>例子</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>^</td>
-<td>#锚定行的开始</td>
-<td>‘^grep’匹配所有以grep开头的行。    </td>
-</tr>
-<tr>
-<td>$</td>
-<td>#锚定行的结束</td>
-<td>‘grep$’匹配所有以grep结尾的行。    </td>
-</tr>
-<tr>
-<td>.</td>
-<td>#匹配一个非换行符的字符</td>
-<td>‘gr.p’匹配gr后接一个任意字符，然后是p。    </td>
-</tr>
-<tr>
-<td>*</td>
-<td>#匹配零个或多个先前字符</td>
-<td>‘*grep’匹配所有一个或多个空格后紧跟grep的行。    </td>
-</tr>
-<tr>
-<td>.*</td>
-<td>#一起用代表任意字符。</td>
-<td></td>
-</tr>
-<tr>
-<td>[]</td>
-<td>#匹配一个指定范围内的字符</td>
-<td>‘[Gg]rep’匹配Grep和grep。    </td>
-</tr>
-<tr>
-<td>[^]</td>
-<td>#匹配一个不在指定范围内的字符</td>
-<td>‘[^A-FH-Z]rep’匹配不包含A-R和T-Z的一个字母开头，紧跟rep的行。    </td>
-</tr>
-<tr>
-<td>(..)</td>
-<td>#标记匹配字符</td>
-<td>‘(love)‘，love被标记为1。    </td>
-</tr>
-<tr>
-<td>\&lt;</td>
-<td>#锚定单词的开始</td>
-<td>‘\&lt;grep’匹配包含以grep开头的单词的行。    </td>
-</tr>
-<tr>
-<td>></td>
-<td>#锚定单词的结束</td>
-<td>如’grep>‘匹配包含以grep结尾的单词的行。    </td>
-</tr>
-<tr>
-<td>x{m}</td>
-<td>#重复字符x，m次</td>
-<td>‘0{5}‘匹配包含5个o的行。    </td>
-</tr>
-<tr>
-<td>x{m,}</td>
-<td>#重复字符x,至少m次</td>
-<td>‘o{5,}‘匹配至少有5个o的行。    </td>
-</tr>
-<tr>
-<td>x{m,n}</td>
-<td>#重复字符x，至少m次，不多于n次</td>
-<td>‘o{5,10}‘匹配5–10个o的行。   </td>
-</tr>
-<tr>
-<td>\w</td>
-<td>#匹配文字和数字字符，也就是[A-Za-z0-9]</td>
-<td>‘G\w*p’匹配以G后跟零个或多个文字或数字字符，然后是p。   </td>
-</tr>
-<tr>
-<td>\W</td>
-<td>#\w的反置形式，匹配一个或多个非单词字符，如点号句号等。</td>
-<td></td>
-</tr>
-<tr>
-<td>\b</td>
-<td>#单词锁定符</td>
-<td>‘\bgrep\b’只匹配grep。  </td>
-</tr>
-</tbody>
-</table>
-<h3 id="POSIX字符"><a href="#POSIX字符" class="headerlink" title="POSIX字符:"></a>POSIX字符:</h3><p>为了在不同国家的字符编码中保持一至，POSIX(The Portable Operating System Interface)增加了特殊的字符类，如[:alnum:]是[A-Za-z0-9]的另一个写法。要把它们放到[]号内才能成为正则表达式，如[A- Za-z0-9]或[[:alnum:]]。在linux下的grep除fgrep外，都支持POSIX的字符类。<br>表达式 | 意义</p>
-<ul>
-<li>| -<br>[:alnum:] | #文字数字字符<br>[:alpha:] | #文字字符<br>[:digit:] | #数字字符<br>[:graph:] | #非空字符（非空格、控制字符）<br>[:lower:] | #小写字符<br>[:cntrl:] | #控制字符<br>[:print:] | #非空字符（包括空格）<br>[:punct:] | #标点符号<br>[:space:] | #所有空白字符（新行，空格，制表符）<br>[:upper:] | #大写字符<br>[:xdigit:] | #十六进制数字（0-9，a-f，A-F）  </li>
-</ul>
-<h2 id="应用-11"><a href="#应用-11" class="headerlink" title="应用"></a>应用</h2><h3 id="在文件中查找包含相应字串行"><a href="#在文件中查找包含相应字串行" class="headerlink" title="在文件中查找包含相应字串行"></a>在文件中查找包含相应字串行</h3><pre><code>[leif@localhost Documents]$ grep &quot;Hello&quot; README.md
-Hello
-[leif@localhost Documents]$ grep Hello README.md
-Hello
-</code></pre><h3 id="在文件中查找包含相应字串行并打印相应的行号"><a href="#在文件中查找包含相应字串行并打印相应的行号" class="headerlink" title="在文件中查找包含相应字串行并打印相应的行号"></a>在文件中查找包含相应字串行并打印相应的行号</h3><pre><code>[leif@localhost Documents]$ grep -ni Hello README.md
-10:Hello
-</code></pre><h3 id="在文件中查找不包含相应字串的行"><a href="#在文件中查找不包含相应字串的行" class="headerlink" title="在文件中查找不包含相应字串的行"></a>在文件中查找不包含相应字串的行</h3><pre><code>[leif@localhost Documents]$ grep -vi Hello README.md
-test
-test
-
-
-test
-test
-
-test
-</code></pre><h3 id="查询系统是否安装了gcc"><a href="#查询系统是否安装了gcc" class="headerlink" title="查询系统是否安装了gcc"></a>查询系统是否安装了gcc</h3><pre><code>[leif@localhost Documents]$ rpm -qa | grep gcc
-libgcc-4.4.4-2.fc13.i686
-gcc-c++-4.4.4-2.fc13.i686
-gcc-gfortran-4.4.4-2.fc13.i686
-gcc-4.4.4-2.fc13.i686
-</code></pre><p><br><br></p>
-<h1 id="find-搜索指定目录的文件"><a href="#find-搜索指定目录的文件" class="headerlink" title="find 搜索指定目录的文件"></a>find 搜索指定目录的文件</h1><h2 id="命令格式-6"><a href="#命令格式-6" class="headerlink" title="命令格式"></a>命令格式</h2><pre><code>find [path] [options] [expression]
-常用参数:
--name: 搜索指定文件名字的文件,支持通配符
--atime n: 搜索过去n天之内访问过的文件
--ctime n: 搜索过去n天之内修改过的文件
--group gname: 搜索指定组属的文件
-</code></pre><h2 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h2><table>
-<thead>
-<tr>
-<th>符号</th>
-<th>意义</th>
-<th>例子</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>*</td>
-<td>0到多个</td>
-<td>/etc/g<em>  /tmp/my</em>1</td>
-</tr>
-<tr>
-<td>?</td>
-<td>单个字符</td>
-<td>file?</td>
-</tr>
-<tr>
-<td>[]</td>
-<td>与[]内任一字符相匹配</td>
-<td>file[12]</td>
-</tr>
-<tr>
-<td>[!]</td>
-<td>不与括弧中的任何字符匹配</td>
-<td>rm file[!9]</td>
-</tr>
-</tbody>
-</table>
-<pre><code>Bash对与通配符相关的字符（*、？、[、]、！）进行特殊的处理，当你需要将包含这些字符的参数输入到命令中时，需要用单引号把这些字符括起来
-$echo ‘[fo]*’ &gt; file1
-$echo \[fo\]\* &gt; file1
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/08/Python-图片转字符画/" itemprop="url">
-                  Python 图片转字符画
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-08T23:59:40+08:00" content="2016-07-08">
-              2016-07-08
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>系统需要先安装python、pillow</p>
-<p>Mac下安装pillow可以参照《Mac下安装pillow》<br><a href="http://yecj.me/2016/07/08/Mac下安装pillow/">http://yecj.me/2016/07/08/Mac下安装pillow/</a></p>
-</blockquote>
-<h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><p>原图：</p>
-<p><img src="https://raw.githubusercontent.com/leifjacky/leifjacky.github.io/master/images/inArticles/Img2CharOrigin.jpg" alt="origin"></p>
-<p>效果图：</p>
-<p><img src="https://raw.githubusercontent.com/leifjacky/leifjacky.github.io/master/images/inArticles/Img2CharFinal.png" alt="origin"></p>
-<p><br><br></p>
-<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><h2 id="将RGB图转换成灰度图"><a href="#将RGB图转换成灰度图" class="headerlink" title="将RGB图转换成灰度图"></a>将RGB图转换成灰度图</h2><pre><code>灰度值 ＝ 0.2126 * r + 0.7152 * g + 0.0722 * b
-</code></pre><p>每个像素点都有一个0-255的值，值越大，说明该点越黑色；值越大，该点越偏白色。所以我们可以根据灰度值，通过不同像素密度的字符代替每个像素点，来“表示”原图。</p>
-<h2 id="编写灰度值字符串"><a href="#编写灰度值字符串" class="headerlink" title="编写灰度值字符串"></a>编写灰度值字符串</h2><p>观察原图，注意到我们实际需要保留的是黑色的部分，也就是灰度值小的部分，可以得到以下字符串：</p>
-<pre><code>ascii_char = list(&quot;$@B%8&amp;WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~&lt;&gt;i!lI;:,\&quot;^`&apos;. &quot;)
-</code></pre><p>下标小的部分字符像素密度越大，对应灰度值小的部分；下标大的部分字符像素密度越大，对应灰度值大的部分。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre><code>from PIL import Image   # 从pillow导入必要的库
-import ArgumentParser   # 命令行参数处理相关库
-
-parser = argparse.ArgumentParser()     # 命令行参数处理
-
-parser.add_argument(&apos;file&apos;)     # 输入文件
-parser.add_argument(&apos;-o&apos;, &apos;--output&apos;)   # 输出文件
-parser.add_argument(&apos;--width&apos;, type = int, default = 80)    # 输出宽度，默认80
-parser.add_argument(&apos;--height&apos;, type = int, default = 40)   # 输出高度，默认40
-
-args = parser.parse_args()      # 获取参数
-
-IMG = args.file
-WIDTH = args.width
-HEIGHT = args.height
-OUTPUT = args.output
-
-ascii_char = list(&quot;$@B%8&amp;WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~&lt;&gt;i!lI;:,\&quot;^`&apos;. &quot;)    # 灰度值字符串
-
-# 函数：根据灰度值返回字符串
-def get_char(r, b, g, alpha = 255):
-    if alpha == 0:
-        return &apos; &apos;
-    length = len(ascii_char)
-    gray = int(0.2126 * r + 0.7152 * g + 0.0722 * b)
-
-    unit = (float(alpha) + 1)/length
-
-    return ascii_char[int(gray/unit)]
-
-if __name__ == &apos;__main__&apos;:
-    im = Image.open(IMG)    # 打开图片
-    im = im.resize((WIDTH,HEIGHT), Image.NEAREST)   # 改变图片大小
-
-    txt = &quot;&quot;
-
-    for i in range(HEIGHT):
-        for j in range(WIDTH):
-            txt += get_char(*im.getpixel((j, i)))
-        txt += &apos;\n&apos;
-
-    print txt
-
-    if OUTPUT:
-        with open(OUTPUT, &apos;w&apos;) as f:
-            f.write(txt)
-    else:
-        with open(&quot;output.txt&quot;, &apos;w&apos;) as f:
-            f.write(txt)
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/08/github-readme-md-添加图片/" itemprop="url">
-                  github readme.md 添加图片
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-08T22:53:05+08:00" content="2016-07-08">
-              2016-07-08
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>原文链接： <a href="http://blog.chinaunix.net/uid-26495963-id-3367377.html" target="_blank" rel="external">http://blog.chinaunix.net/uid-26495963-id-3367377.html</a></p>
-</blockquote>
-<p>简要：</p>
-<pre><code>将图片放在仓库里面，在文件里链接它，最后 push 到 github 上。
-</code></pre><p>github 图片链接格式：</p>
-<pre><code>http://github.com/yourname/your-repository/raw/master/images-folder/xxx.png
-</code></pre><p>要自己设定的：yourname, your-repository, your-folder, xxx.png。</p>
-<pre><code>yourname            --- 你的帐号
-your-respository --- 你的 project 名
-images-folder      --- 你存放图片的文件夹，如果是直接放在 project 的项目根目录的話，就可以省略這個
-xxx.png                --- 你的图片名
-</code></pre><p>然后在 README.md 里添加：</p>
-<p>例如：我在我的 dotvim 文件夹下一个 screenshots 目录，在该目录里有一个 vim-screenshot.jpg 截图。那么添加链接的方式如下</p>
-<pre><code>![image](https://github.com/ButBueatiful/dotvim/raw/master/screenshots/vim-screenshot.jpg)
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/08/Mac下安装pillow/" itemprop="url">
-                  Mac下安装pillow
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-08T09:30:23+08:00" content="2016-07-08">
-              2016-07-08
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="安装pip"><a href="#安装pip" class="headerlink" title="安装pip"></a>安装pip</h1><pre><code>sudo easy_install pip
-</code></pre><h1 id="安装pillow"><a href="#安装pillow" class="headerlink" title="安装pillow"></a>安装pillow</h1><pre><code>sudo pip install pillow
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2283,7 +2147,7 @@ xxx.png                --- 你的图片名
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -2293,7 +2157,7 @@ xxx.png                --- 你的图片名
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

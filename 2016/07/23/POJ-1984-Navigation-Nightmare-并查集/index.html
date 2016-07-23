@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="git," />
+  <meta name="keywords" content="ACM,并查集,POJ," />
 
 
 
@@ -84,37 +84,22 @@
 
 
 
-<meta name="description" content="创建项目不能在命令行里直接创建github项目，需要在github上创建新项目
-上传项目按照官方文档，本地上传项目到github有以下步骤
-Here are the instructions from github:
-touch README.md
-git init
-git add README.md
-git commit -m &amp;quot;first commit&amp;quot;
-git remot">
+<meta name="description" content="Time Limit:2000MS     Memory Limit:30000KB     64bit IO Format:%lld &amp;amp; %llu
+
+DescriptionFarmer John’s pastoral neighborhood has N farms (2 &amp;lt;= N &amp;lt;= 40,000), usually numbered/labeled 1..N. A s">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git学习笔记">
-<meta property="og:url" content="http://yecj.me/2016/07/04/git学习笔记/index.html">
+<meta property="og:title" content="POJ 1984 Navigation Nightmare 并查集">
+<meta property="og:url" content="http://yecj.me/2016/07/23/POJ-1984-Navigation-Nightmare-并查集/index.html">
 <meta property="og:site_name" content="Miraky">
-<meta property="og:description" content="创建项目不能在命令行里直接创建github项目，需要在github上创建新项目
-上传项目按照官方文档，本地上传项目到github有以下步骤
-Here are the instructions from github:
-touch README.md
-git init
-git add README.md
-git commit -m &amp;quot;first commit&amp;quot;
-git remot">
-<meta property="og:updated_time" content="2016-07-05T03:52:17.000Z">
+<meta property="og:description" content="Time Limit:2000MS     Memory Limit:30000KB     64bit IO Format:%lld &amp;amp; %llu
+
+DescriptionFarmer John’s pastoral neighborhood has N farms (2 &amp;lt;= N &amp;lt;= 40,000), usually numbered/labeled 1..N. A s">
+<meta property="og:updated_time" content="2016-07-23T15:09:15.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git学习笔记">
-<meta name="twitter:description" content="创建项目不能在命令行里直接创建github项目，需要在github上创建新项目
-上传项目按照官方文档，本地上传项目到github有以下步骤
-Here are the instructions from github:
-touch README.md
-git init
-git add README.md
-git commit -m &amp;quot;first commit&amp;quot;
-git remot">
+<meta name="twitter:title" content="POJ 1984 Navigation Nightmare 并查集">
+<meta name="twitter:description" content="Time Limit:2000MS     Memory Limit:30000KB     64bit IO Format:%lld &amp;amp; %llu
+
+DescriptionFarmer John’s pastoral neighborhood has N farms (2 &amp;lt;= N &amp;lt;= 40,000), usually numbered/labeled 1..N. A s">
 
 
 
@@ -135,9 +120,9 @@ git remot">
 
 
 
-  <link rel="canonical" href="http://yecj.me/2016/07/04/git学习笔记/"/>
+  <link rel="canonical" href="http://yecj.me/2016/07/23/POJ-1984-Navigation-Nightmare-并查集/"/>
 
-  <title> git学习笔记 | Miraky </title>
+  <title> POJ 1984 Navigation Nightmare 并查集 | Miraky </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -287,7 +272,7 @@ git remot">
             
             
               
-                git学习笔记
+                POJ 1984 Navigation Nightmare 并查集
               
             
           </h1>
@@ -299,8 +284,8 @@ git remot">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-04T11:56:25+08:00" content="2016-07-04">
-              2016-07-04
+            <time itemprop="dateCreated" datetime="2016-07-23T23:08:29+08:00" content="2016-07-23">
+              2016-07-23
             </time>
           </span>
 
@@ -327,25 +312,184 @@ git remot">
       
 
       
-        <h1 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h1><p>不能在命令行里直接创建github项目，需要在github上创建新项目</p>
-<h1 id="上传项目"><a href="#上传项目" class="headerlink" title="上传项目"></a>上传项目</h1><p>按照官方文档，本地上传项目到github有以下步骤</p>
-<pre><code>Here are the instructions from github:
-touch README.md
-git init
-git add README.md
-git commit -m &quot;first commit&quot;
-git remote add origin https://github.com/tqisjim/google-oauth.git
-git push -u origin master
-Here&apos;s what actually worked:
-touch README.md
-git init
-git add README.md
-git commit -m &quot;first commit&quot;
-git remote add origin https://github.com/tqisjim/google-oauth.git
-git clone origin master
-After cloning, then the push command succeeds by     prompting for a username and password
+        <blockquote>
+<p>Time Limit:2000MS     Memory Limit:30000KB     64bit IO Format:%lld &amp; %llu</p>
+</blockquote>
+<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>Farmer John’s pastoral neighborhood has N farms (2 &lt;= N &lt;= 40,000), usually numbered/labeled 1..N. A series of M (1 &lt;= M &lt; 40,000) vertical and horizontal roads each of varying lengths (1 &lt;= length &lt;= 1000) connect the farms. A map of these farms might look something like the illustration below in which farms are labeled F1..F7 for clarity and lengths between connected farms are shown as (n):</p>
+<pre><code> F1 --- (13) ---- F6 --- (9) ----- F3
 
-From: http://stackoverflow.com/questions/15437719/git-push-error-origin-does-not-appear-to-be-a-git-repository
+ |                                 |
+
+(3)                                |
+
+ |                                (7)
+
+F4 --- (20) -------- F2            |
+
+ |                                 |
+
+(2)                               F5
+
+ | 
+
+F7 
+</code></pre><p>Being an ASCII diagram, it is not precisely to scale, of course.</p>
+<p>Each farm can connect directly to at most four other farms via roads that lead exactly north, south, east, and/or west. Moreover, farms are only located at the endpoints of roads, and some farm can be found at every endpoint of every road. No two roads cross, and precisely one path (sequence of roads) links every pair of farms.</p>
+<p>FJ lost his paper copy of the farm map and he wants to reconstruct it from backup information on his computer. This data contains lines like the following, one for every road:</p>
+<p>There is a road of length 10 running north from Farm #23 to Farm #17<br>There is a road of length 7 running east from Farm #1 to Farm #17<br>…</p>
+<p>As FJ is retrieving this data, he is occasionally interrupted by questions such as the following that he receives from his navigationally-challenged neighbor, farmer Bob:</p>
+<p>What is the Manhattan distance between farms #1 and #23?</p>
+<p>FJ answers Bob, when he can (sometimes he doesn’t yet have enough data yet). In the example above, the answer would be 17, since Bob wants to know the “Manhattan” distance between the pair of farms.<br>The Manhattan distance between two points (x1,y1) and (x2,y2) is just |x1-x2| + |y1-y2| (which is the distance a taxicab in a large city must travel over city streets in a perfect grid to connect two x,y points).</p>
+<p>When Bob asks about a particular pair of farms, FJ might not yet have enough information to deduce the distance between them; in this case, FJ apologizes profusely and replies with “-1”.</p>
+<h1 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h1><ul>
+<li>Line 1: Two space-separated integers: N and M</li>
+<li>Lines 2..M+1: Each line contains four space-separated entities, F1, F2, L, and D that describe a road. F1 and F2 are numbers of two farms connected by a road, L is its length, and D is a character that is either ‘N’, ‘E’, ‘S’, or ‘W’ giving the direction of the road from F1 to F2.</li>
+<li>Line M+2: A single integer, K (1 &lt;= K &lt;= 10,000), the number of FB’s queries</li>
+<li>Lines M+3..M+K+2: Each line corresponds to a query from Farmer Bob and contains three space-separated integers: F1, F2, and I. F1 and F2 are numbers of the two farms in the query and I is the index (1 &lt;= I &lt;= M) in the data after which Bob asks the query. Data index 1 is on line 2 of the input data, and so on.</li>
+</ul>
+<h1 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h1><ul>
+<li>Lines 1..K: One integer per line, the response to each of Bob’s queries.  Each line should contain either a distance measurement or -1, if it is impossible to determine the appropriate distance.</li>
+</ul>
+<h1 id="Sample"><a href="#Sample" class="headerlink" title="Sample"></a>Sample</h1><h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><pre><code>7 6
+1 6 13 E
+6 3 9 E
+3 5 7 S
+4 1 3 N
+2 4 20 W
+4 7 2 S
+3
+1 6 1
+1 4 3
+2 6 6
+</code></pre><h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><pre><code>13
+-1
+10
+</code></pre><h1 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h1><p>At time 1, FJ knows the distance between 1 and 6 is 13.<br>At time 3, the distance between 1 and 4 is still unknown.<br>At the end, location 6 is 3 units west and 7 north of 2, so the distance is 10.</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>并查集，将每个地点的坐标代替普通的并查集中的点，r[x]表示点x与点f[x]的相对位置，那么只要两个地点属于同一集合，就可以通过r[x]算出他们之间的相对关系。</p>
+<h1 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h1><pre><code>#include &lt;map&gt;
+#include &lt;cstring&gt;
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+#define N 40005
+#define K 10005
+#define PB push_back
+
+char dir[]=&quot;NESW&quot;;
+int vx[]={-1,0,1,0};
+int vy[]={0,1,0,-1};
+
+struct order{
+    int u,v,l,d;
+}a[N];
+
+struct query{
+    int u,v,q,id,ans;
+}b[K];
+
+struct node{
+    int x,y;
+    node(){}
+    node(int xx,int yy):x(xx),y(yy){}
+}r[N];
+
+int n,m,k;
+int f[N];
+
+bool cmp(query a,query b){
+    return a.q&lt;b.q;
+}
+
+bool cmp2(query a,query b){
+    return a.id&lt;b.id;
+}
+
+int _find(int x){
+    if (f[x]==-1){
+        return x;
+    }else{
+        int fx=f[x];
+        f[x]=_find(f[x]);
+        r[x].x+=r[fx].x;
+        r[x].y+=r[fx].y;
+    }
+    return f[x];
+}
+
+void _union(int i){
+    int u,v,l,d;
+    u=a[i].u;
+    v=a[i].v;
+    l=a[i].l;
+    d=a[i].d;
+
+    int x=_find(u);
+    int y=_find(v);
+    int tx=l*vx[d];
+    int ty=l*vy[d];
+
+    if (x!=y){
+        f[x]=y;
+        r[x].x=tx+r[v].x-r[u].x;
+        r[x].y=ty+r[v].y-r[u].y;
+    }
+}
+
+int main(){
+    while (scanf(&quot;%d%d&quot;,&amp;n,&amp;m)!=EOF){
+        memset(f,-1,sizeof(f));
+        for (int i=0;i&lt;=n;i++){
+            r[i].x=r[i].y=0;
+        }
+        for (int i=0;i&lt;m;i++){
+            char c;
+            scanf(&quot;%d%d%d %c&quot;,&amp;a[i].u,&amp;a[i].v,&amp;a[i].l,&amp;c);
+            for (int j=0;j&lt;4;j++){
+                if (c==dir[j]){
+                    a[i].d=j;
+                    break;
+                }
+            }
+        }
+
+        scanf(&quot;%d&quot;,&amp;k);
+        for (int i=0;i&lt;k;i++){
+            scanf(&quot;%d%d%d&quot;,&amp;b[i].u,&amp;b[i].v,&amp;b[i].q);
+            b[i].id=i;
+        }
+
+        sort(b,b+k,cmp);
+
+        int cnt=0;
+        for (int i=0;i&lt;k;i++){
+            for (int j=cnt;j&lt;b[i].q;j++){
+                _union(j);
+            }
+            cnt=b[i].q;
+
+            int u=b[i].u;
+            int v=b[i].v;
+            int x=_find(u);
+            int y=_find(v);
+            if (x!=y){
+                b[i].ans=-1;
+            }else{
+                b[i].ans=abs(r[u].x-r[v].x)+abs(r[u].y-r[v].y);
+            }
+        }
+
+        sort(b,b+k,cmp2);
+
+        for (int i=0;i&lt;k;i++){
+            printf(&quot;%d\n&quot;,b[i].ans);
+        }
+    }
+
+    return 0;
+}
 </code></pre>
       
     </div>
@@ -367,7 +511,11 @@ From: http://stackoverflow.com/questions/15437719/git-push-error-origin-does-not
       
         <div class="post-tags">
           
-            <a href="/tags/git/" rel="tag">#git</a>
+            <a href="/tags/ACM/" rel="tag">#ACM</a>
+          
+            <a href="/tags/并查集/" rel="tag">#并查集</a>
+          
+            <a href="/tags/POJ/" rel="tag">#POJ</a>
           
         </div>
       
@@ -376,12 +524,16 @@ From: http://stackoverflow.com/questions/15437719/git-push-error-origin-does-not
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/07/22/POJ-2492-A-Bug-s-Life-并查集/" rel="next" title="POJ 2492 A Bug's Life 并查集">
+                <i class="fa fa-chevron-left"></i> POJ 2492 A Bug's Life 并查集
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/07/05/python基础/" rel="prev" title="python基础">
-                python基础 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/07/23/POJ-2912-Rochambeau-并查集/" rel="prev" title="POJ 2912 Rochambeau 并查集">
+                POJ 2912 Rochambeau 并查集 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -489,7 +641,7 @@ From: http://stackoverflow.com/questions/15437719/git-push-error-origin-does-not
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#创建项目"><span class="nav-number">1.</span> <span class="nav-text">创建项目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#上传项目"><span class="nav-number">2.</span> <span class="nav-text">上传项目</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Input"><span class="nav-number">2.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Output"><span class="nav-number">3.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Sample"><span class="nav-number">4.</span> <span class="nav-text">Sample</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Input"><span class="nav-number">4.1.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Output"><span class="nav-number">4.2.</span> <span class="nav-text">Sample Output</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hint"><span class="nav-number">5.</span> <span class="nav-text">Hint</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#思路"><span class="nav-number">6.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AC代码"><span class="nav-number">7.</span> <span class="nav-text">AC代码</span></a></li></ol></div>
             
           </div>
         </section>

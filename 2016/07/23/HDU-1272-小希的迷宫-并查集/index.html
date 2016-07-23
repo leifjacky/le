@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="git," />
+  <meta name="keywords" content="ACM,并查集,HDU," />
 
 
 
@@ -84,37 +84,22 @@
 
 
 
-<meta name="description" content="创建项目不能在命令行里直接创建github项目，需要在github上创建新项目
-上传项目按照官方文档，本地上传项目到github有以下步骤
-Here are the instructions from github:
-touch README.md
-git init
-git add README.md
-git commit -m &amp;quot;first commit&amp;quot;
-git remot">
+<meta name="description" content="Time Limit:1000MS     Memory Limit:32768KB     64bit IO Format:%I64d &amp;amp; %I64u
+
+Description上次Gardon的迷宫城堡小希玩了很久（见Problem B），现在她也想设计一个迷宫让Gardon来走。但是她设计迷宫的思路不一样，首先她认为所有的通道都应该是双向连通的，就是说如果有一个通道连通了房间A和B，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git学习笔记">
-<meta property="og:url" content="http://yecj.me/2016/07/04/git学习笔记/index.html">
+<meta property="og:title" content="HDU 1272 小希的迷宫 并查集">
+<meta property="og:url" content="http://yecj.me/2016/07/23/HDU-1272-小希的迷宫-并查集/index.html">
 <meta property="og:site_name" content="Miraky">
-<meta property="og:description" content="创建项目不能在命令行里直接创建github项目，需要在github上创建新项目
-上传项目按照官方文档，本地上传项目到github有以下步骤
-Here are the instructions from github:
-touch README.md
-git init
-git add README.md
-git commit -m &amp;quot;first commit&amp;quot;
-git remot">
-<meta property="og:updated_time" content="2016-07-05T03:52:17.000Z">
+<meta property="og:description" content="Time Limit:1000MS     Memory Limit:32768KB     64bit IO Format:%I64d &amp;amp; %I64u
+
+Description上次Gardon的迷宫城堡小希玩了很久（见Problem B），现在她也想设计一个迷宫让Gardon来走。但是她设计迷宫的思路不一样，首先她认为所有的通道都应该是双向连通的，就是说如果有一个通道连通了房间A和B，">
+<meta property="og:updated_time" content="2016-07-23T15:38:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git学习笔记">
-<meta name="twitter:description" content="创建项目不能在命令行里直接创建github项目，需要在github上创建新项目
-上传项目按照官方文档，本地上传项目到github有以下步骤
-Here are the instructions from github:
-touch README.md
-git init
-git add README.md
-git commit -m &amp;quot;first commit&amp;quot;
-git remot">
+<meta name="twitter:title" content="HDU 1272 小希的迷宫 并查集">
+<meta name="twitter:description" content="Time Limit:1000MS     Memory Limit:32768KB     64bit IO Format:%I64d &amp;amp; %I64u
+
+Description上次Gardon的迷宫城堡小希玩了很久（见Problem B），现在她也想设计一个迷宫让Gardon来走。但是她设计迷宫的思路不一样，首先她认为所有的通道都应该是双向连通的，就是说如果有一个通道连通了房间A和B，">
 
 
 
@@ -135,9 +120,9 @@ git remot">
 
 
 
-  <link rel="canonical" href="http://yecj.me/2016/07/04/git学习笔记/"/>
+  <link rel="canonical" href="http://yecj.me/2016/07/23/HDU-1272-小希的迷宫-并查集/"/>
 
-  <title> git学习笔记 | Miraky </title>
+  <title> HDU 1272 小希的迷宫 并查集 | Miraky </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -287,7 +272,7 @@ git remot">
             
             
               
-                git学习笔记
+                HDU 1272 小希的迷宫 并查集
               
             
           </h1>
@@ -299,8 +284,8 @@ git remot">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-04T11:56:25+08:00" content="2016-07-04">
-              2016-07-04
+            <time itemprop="dateCreated" datetime="2016-07-23T23:38:01+08:00" content="2016-07-23">
+              2016-07-23
             </time>
           </span>
 
@@ -327,25 +312,94 @@ git remot">
       
 
       
-        <h1 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h1><p>不能在命令行里直接创建github项目，需要在github上创建新项目</p>
-<h1 id="上传项目"><a href="#上传项目" class="headerlink" title="上传项目"></a>上传项目</h1><p>按照官方文档，本地上传项目到github有以下步骤</p>
-<pre><code>Here are the instructions from github:
-touch README.md
-git init
-git add README.md
-git commit -m &quot;first commit&quot;
-git remote add origin https://github.com/tqisjim/google-oauth.git
-git push -u origin master
-Here&apos;s what actually worked:
-touch README.md
-git init
-git add README.md
-git commit -m &quot;first commit&quot;
-git remote add origin https://github.com/tqisjim/google-oauth.git
-git clone origin master
-After cloning, then the push command succeeds by     prompting for a username and password
+        <blockquote>
+<p>Time Limit:1000MS     Memory Limit:32768KB     64bit IO Format:%I64d &amp; %I64u</p>
+</blockquote>
+<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>上次Gardon的迷宫城堡小希玩了很久（见Problem B），现在她也想设计一个迷宫让Gardon来走。但是她设计迷宫的思路不一样，首先她认为所有的通道都应该是双向连通的，就是说如果有一个通道连通了房间A和B，那么既可以通过它从房间A走到房间B，也可以通过它从房间B走到房间A，为了提高难度，小希希望任意两个房间有且仅有一条路径可以相通（除非走了回头路）。小希现在把她的设计图给你，让你帮忙判断她的设计图是否符合她的设计思路。比如下面的例子，前两个是符合条件的，但是最后一个却有两种方法从5到达8。 </p>
+<h1 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h1><p>输入包含多组数据，每组数据是一个以0 0结尾的整数对列表，表示了一条通道连接的两个房间的编号。房间的编号至少为1，且不超过100000。每两组数据之间有一个空行。<br>整个文件以两个-1结尾。 </p>
+<h1 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h1><p>对于输入的每一组数据，输出仅包括一行。如果该迷宫符合小希的思路，那么输出”Yes”，否则输出”No”。 </p>
+<h1 id="Sample"><a href="#Sample" class="headerlink" title="Sample"></a>Sample</h1><h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><pre><code>6 8  5 3  5 2  6 4
+5 6  0 0
 
-From: http://stackoverflow.com/questions/15437719/git-push-error-origin-does-not-appear-to-be-a-git-repository
+8 1  7 3  6 2  8 9  7 5
+7 4  7 8  7 6  0 0
+
+3 8  6 8  6 4
+5 3  5 6  5 2  0 0
+
+-1 -1 
+</code></pre><h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><pre><code>Yes
+Yes
+No 
+</code></pre><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>模板题，注意最后判断是否只有一个连通分量。另外，最后生成的数顶点个数可以为0。就在这里卡了很久。</p>
+<h1 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h1><pre><code>#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+#define N 100005
+
+int u,v;
+int f[N],vis[N],cnt;
+bool flag;
+
+int _find(int x){
+    if (f[x]==-1){
+        return x;
+    }else{
+        return f[x]=_find(f[x]);
+    }
+}
+
+bool _union(int u,int v){
+    int x=_find(u);
+    int y=_find(v);
+
+    if (x==y){
+        return false;
+    }else{
+        f[x]=y;
+        cnt--;
+        return true;
+    }
+}
+
+int main(){
+    memset(f,-1,sizeof(f));
+    memset(vis,0,sizeof(vis));
+    cnt=0;
+    flag=true;
+    while (scanf(&quot;%d%d&quot;,&amp;u,&amp;v)){
+        if (u==-1 &amp;&amp; v==-1){
+            break;
+        }else if (u==0 &amp;&amp; v==0){
+            if (flag &amp;&amp; cnt&lt;=1){
+                printf(&quot;Yes\n&quot;);
+            }else{
+                printf(&quot;No\n&quot;);
+            }
+            memset(f,-1,sizeof(f));
+            memset(vis,0,sizeof(vis));
+            cnt=0;
+            flag=true;
+        }else{
+            if (vis[u]==0){
+                vis[u]=1;
+                cnt++;
+            }
+            if (vis[v]==0){
+                vis[v]=1;
+                cnt++;
+            }
+
+            if (flag){
+                flag=_union(u,v);
+            }
+        }
+    }
+
+    return 0;
+}
 </code></pre>
       
     </div>
@@ -367,7 +421,11 @@ From: http://stackoverflow.com/questions/15437719/git-push-error-origin-does-not
       
         <div class="post-tags">
           
-            <a href="/tags/git/" rel="tag">#git</a>
+            <a href="/tags/ACM/" rel="tag">#ACM</a>
+          
+            <a href="/tags/并查集/" rel="tag">#并查集</a>
+          
+            <a href="/tags/HDU/" rel="tag">#HDU</a>
           
         </div>
       
@@ -376,12 +434,16 @@ From: http://stackoverflow.com/questions/15437719/git-push-error-origin-does-not
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/07/23/ZOJ-3761-Connections-in-Galaxy-War-并查集/" rel="next" title="ZOJ 3761 Connections in Galaxy War 并查集">
+                <i class="fa fa-chevron-left"></i> ZOJ 3761 Connections in Galaxy War 并查集
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/07/05/python基础/" rel="prev" title="python基础">
-                python基础 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/07/23/POJ-1308-Is-It-A-Tree-并查集/" rel="prev" title="POJ 1308 Is It A Tree? 并查集">
+                POJ 1308 Is It A Tree? 并查集 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -489,7 +551,7 @@ From: http://stackoverflow.com/questions/15437719/git-push-error-origin-does-not
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#创建项目"><span class="nav-number">1.</span> <span class="nav-text">创建项目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#上传项目"><span class="nav-number">2.</span> <span class="nav-text">上传项目</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Input"><span class="nav-number">2.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Output"><span class="nav-number">3.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Sample"><span class="nav-number">4.</span> <span class="nav-text">Sample</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Input"><span class="nav-number">4.1.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Output"><span class="nav-number">4.2.</span> <span class="nav-text">Sample Output</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#思路"><span class="nav-number">5.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AC代码"><span class="nav-number">6.</span> <span class="nav-text">AC代码</span></a></li></ol></div>
             
           </div>
         </section>
