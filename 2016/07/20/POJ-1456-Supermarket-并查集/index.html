@@ -49,13 +49,25 @@
   
 
   
+    
+      
+    
 
+    
+  
+
+  
+    
+      
+    
+
+    
   
 
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -94,7 +106,7 @@ DescriptionA supermarket has a set Prod of products on sale. It earns a profit p
 <meta property="og:description" content="Time Limit:2000MS     Memory Limit:65536KB     64bit IO Format:%lld &amp;amp; %llu
 
 DescriptionA supermarket has a set Prod of products on sale. It earns a profit px for each product x∈Prod sold by a dea">
-<meta property="og:updated_time" content="2016-07-20T14:32:14.000Z">
+<meta property="og:updated_time" content="2016-07-24T09:00:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="POJ 1456 Supermarket 并查集">
 <meta name="twitter:description" content="Time Limit:2000MS     Memory Limit:65536KB     64bit IO Format:%lld &amp;amp; %llu
@@ -130,6 +142,16 @@ DescriptionA supermarket has a set Prod of products on sale. It earns a profit p
   
 
 
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?7650320e34a9ace0e660d0147d338d4b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -334,57 +356,7 @@ DescriptionA supermarket has a set Prod of products on sale. It earns a profit p
 185
 </code></pre><h1 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h1><p>The sample input contains two product sets. The first set encodes the products from table 1. The second set is for 7 products. The profit of an optimal schedule for these products is 185.</p>
 <h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>将物品按照价格从高到低排序，接着价格从高到低，为每个物品找到一个在截止日期前的最晚销售时间，这可以通过顺序查找找到，更快的方法是使用并查集，f[x]记录本来在x时间销售的物品的最晚销售时间，一旦有物品在x日子销售，则f[x]=x-1。</p>
-<h1 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h1><pre><code>#include &lt;iostream&gt;
-#include &lt;cstdio&gt;
-#include &lt;vector&gt;
-#include &lt;cstring&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-
-#define N 10005
-#define PB push_back
-
-int n;
-struct node{
-    node(){}
-    node(int pp,int dd):p(pp),d(dd){}
-    int p,d;
-}a[N];
-int f[N];
-
-int _find(int x){
-    if (f[x]==-1)
-        return x;
-    else
-        return f[x]=_find(f[x]);
-}
-
-bool cmp(node a,node b){
-    return a.p&gt;b.p;
-}
-
-int main(){
-    while (~scanf(&quot;%d&quot;,&amp;n)){
-        memset(f,-1,sizeof(f));
-        for (int i=1;i&lt;=n;i++){
-            scanf(&quot;%d%d&quot;,&amp;a[i].p,&amp;a[i].d);
-        }
-        sort(a+1,a+n+1,cmp);
-
-        int ans=0;
-        for (int i=1;i&lt;=n;i++){
-            int x=_find(a[i].d);
-            if (x&gt;0){
-                ans+=a[i].p;
-                f[x]=x-1;
-            }
-        }
-        printf(&quot;%d\n&quot;,ans);
-    }
-
-    return 0;
-}
-</code></pre>
+<h1 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> N 10005</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> PB push_back</span></div><div class="line"></div><div class="line"><span class="keyword">int</span> n;</div><div class="line"><span class="keyword">struct</span> node&#123;</div><div class="line">    node()&#123;&#125;</div><div class="line">    node(<span class="keyword">int</span> pp,<span class="keyword">int</span> dd):p(pp),d(dd)&#123;&#125;</div><div class="line">    <span class="keyword">int</span> p,d;</div><div class="line">&#125;a[N];</div><div class="line"><span class="keyword">int</span> f[N];</div><div class="line"></div><div class="line"><span class="keyword">int</span> <span class="number">_f</span>ind(<span class="keyword">int</span> x)&#123;</div><div class="line">    <span class="keyword">if</span> (f[x]==<span class="number">-1</span>)</div><div class="line">        <span class="keyword">return</span> x;</div><div class="line">    <span class="keyword">else</span></div><div class="line">        <span class="keyword">return</span> f[x]=<span class="number">_f</span>ind(f[x]);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(node a,node b)</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> a.p&gt;b.p;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">while</span> (~<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n))&#123;</div><div class="line">        <span class="built_in">memset</span>(f,<span class="number">-1</span>,<span class="keyword">sizeof</span>(f));</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</div><div class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;a[i].p,&amp;a[i].d);</div><div class="line">        &#125;</div><div class="line">        sort(a+<span class="number">1</span>,a+n+<span class="number">1</span>,cmp);</div><div class="line"></div><div class="line">        <span class="keyword">int</span> ans=<span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</div><div class="line">            <span class="keyword">int</span> x=<span class="number">_f</span>ind(a[i].d);</div><div class="line">            <span class="keyword">if</span> (x&gt;<span class="number">0</span>)&#123;</div><div class="line">                ans+=a[i].p;</div><div class="line">                f[x]=x<span class="number">-1</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
 

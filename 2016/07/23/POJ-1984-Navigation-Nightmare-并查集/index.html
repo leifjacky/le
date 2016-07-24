@@ -49,13 +49,25 @@
   
 
   
+    
+      
+    
 
+    
+  
+
+  
+    
+      
+    
+
+    
   
 
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -94,7 +106,7 @@ DescriptionFarmer John’s pastoral neighborhood has N farms (2 &amp;lt;= N &amp
 <meta property="og:description" content="Time Limit:2000MS     Memory Limit:30000KB     64bit IO Format:%lld &amp;amp; %llu
 
 DescriptionFarmer John’s pastoral neighborhood has N farms (2 &amp;lt;= N &amp;lt;= 40,000), usually numbered/labeled 1..N. A s">
-<meta property="og:updated_time" content="2016-07-23T15:09:15.000Z">
+<meta property="og:updated_time" content="2016-07-24T09:01:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="POJ 1984 Navigation Nightmare 并查集">
 <meta name="twitter:description" content="Time Limit:2000MS     Memory Limit:30000KB     64bit IO Format:%lld &amp;amp; %llu
@@ -130,6 +142,16 @@ DescriptionFarmer John’s pastoral neighborhood has N farms (2 &amp;lt;= N &amp
   
 
 
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?7650320e34a9ace0e660d0147d338d4b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -373,131 +395,7 @@ F7
 10
 </code></pre><h1 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h1><p>At time 1, FJ knows the distance between 1 and 6 is 13.<br>At time 3, the distance between 1 and 4 is still unknown.<br>At the end, location 6 is 3 units west and 7 north of 2, so the distance is 10.</p>
 <h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>并查集，将每个地点的坐标代替普通的并查集中的点，r[x]表示点x与点f[x]的相对位置，那么只要两个地点属于同一集合，就可以通过r[x]算出他们之间的相对关系。</p>
-<h1 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h1><pre><code>#include &lt;map&gt;
-#include &lt;cstring&gt;
-#include &lt;iostream&gt;
-#include &lt;cstdio&gt;
-#include &lt;algorithm&gt;
-#include &lt;vector&gt;
-using namespace std;
-
-#define N 40005
-#define K 10005
-#define PB push_back
-
-char dir[]=&quot;NESW&quot;;
-int vx[]={-1,0,1,0};
-int vy[]={0,1,0,-1};
-
-struct order{
-    int u,v,l,d;
-}a[N];
-
-struct query{
-    int u,v,q,id,ans;
-}b[K];
-
-struct node{
-    int x,y;
-    node(){}
-    node(int xx,int yy):x(xx),y(yy){}
-}r[N];
-
-int n,m,k;
-int f[N];
-
-bool cmp(query a,query b){
-    return a.q&lt;b.q;
-}
-
-bool cmp2(query a,query b){
-    return a.id&lt;b.id;
-}
-
-int _find(int x){
-    if (f[x]==-1){
-        return x;
-    }else{
-        int fx=f[x];
-        f[x]=_find(f[x]);
-        r[x].x+=r[fx].x;
-        r[x].y+=r[fx].y;
-    }
-    return f[x];
-}
-
-void _union(int i){
-    int u,v,l,d;
-    u=a[i].u;
-    v=a[i].v;
-    l=a[i].l;
-    d=a[i].d;
-
-    int x=_find(u);
-    int y=_find(v);
-    int tx=l*vx[d];
-    int ty=l*vy[d];
-
-    if (x!=y){
-        f[x]=y;
-        r[x].x=tx+r[v].x-r[u].x;
-        r[x].y=ty+r[v].y-r[u].y;
-    }
-}
-
-int main(){
-    while (scanf(&quot;%d%d&quot;,&amp;n,&amp;m)!=EOF){
-        memset(f,-1,sizeof(f));
-        for (int i=0;i&lt;=n;i++){
-            r[i].x=r[i].y=0;
-        }
-        for (int i=0;i&lt;m;i++){
-            char c;
-            scanf(&quot;%d%d%d %c&quot;,&amp;a[i].u,&amp;a[i].v,&amp;a[i].l,&amp;c);
-            for (int j=0;j&lt;4;j++){
-                if (c==dir[j]){
-                    a[i].d=j;
-                    break;
-                }
-            }
-        }
-
-        scanf(&quot;%d&quot;,&amp;k);
-        for (int i=0;i&lt;k;i++){
-            scanf(&quot;%d%d%d&quot;,&amp;b[i].u,&amp;b[i].v,&amp;b[i].q);
-            b[i].id=i;
-        }
-
-        sort(b,b+k,cmp);
-
-        int cnt=0;
-        for (int i=0;i&lt;k;i++){
-            for (int j=cnt;j&lt;b[i].q;j++){
-                _union(j);
-            }
-            cnt=b[i].q;
-
-            int u=b[i].u;
-            int v=b[i].v;
-            int x=_find(u);
-            int y=_find(v);
-            if (x!=y){
-                b[i].ans=-1;
-            }else{
-                b[i].ans=abs(r[u].x-r[v].x)+abs(r[u].y-r[v].y);
-            }
-        }
-
-        sort(b,b+k,cmp2);
-
-        for (int i=0;i&lt;k;i++){
-            printf(&quot;%d\n&quot;,b[i].ans);
-        }
-    }
-
-    return 0;
-}
-</code></pre>
+<h1 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> N 40005</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> K 10005</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> PB push_back</span></div><div class="line"></div><div class="line"><span class="keyword">char</span> dir[]=<span class="string">"NESW"</span>;</div><div class="line"><span class="keyword">int</span> vx[]=&#123;<span class="number">-1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>&#125;;</div><div class="line"><span class="keyword">int</span> vy[]=&#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">-1</span>&#125;;</div><div class="line"></div><div class="line"><span class="keyword">struct</span> order&#123;</div><div class="line">    <span class="keyword">int</span> u,v,l,d;</div><div class="line">&#125;a[N];</div><div class="line"></div><div class="line"><span class="keyword">struct</span> query&#123;</div><div class="line">    <span class="keyword">int</span> u,v,q,id,ans;</div><div class="line">&#125;b[K];</div><div class="line"></div><div class="line"><span class="keyword">struct</span> node&#123;</div><div class="line">    <span class="keyword">int</span> x,y;</div><div class="line">    node()&#123;&#125;</div><div class="line">    node(<span class="keyword">int</span> xx,<span class="keyword">int</span> yy):x(xx),y(yy)&#123;&#125;</div><div class="line">&#125;r[N];</div><div class="line"></div><div class="line"><span class="keyword">int</span> n,m,k;</div><div class="line"><span class="keyword">int</span> f[N];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(query a,query b)</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> a.q&lt;b.q;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp2</span><span class="params">(query a,query b)</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> a.id&lt;b.id;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">int</span> <span class="number">_f</span>ind(<span class="keyword">int</span> x)&#123;</div><div class="line">    <span class="keyword">if</span> (f[x]==<span class="number">-1</span>)&#123;</div><div class="line">        <span class="keyword">return</span> x;</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">int</span> fx=f[x];</div><div class="line">        f[x]=<span class="number">_f</span>ind(f[x]);</div><div class="line">        r[x].x+=r[fx].x;</div><div class="line">        r[x].y+=r[fx].y;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> f[x];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">void</span> <span class="number">_u</span>nion(<span class="keyword">int</span> i)&#123;</div><div class="line">    <span class="keyword">int</span> u,v,l,d;</div><div class="line">    u=a[i].u;</div><div class="line">    v=a[i].v;</div><div class="line">    l=a[i].l;</div><div class="line">    d=a[i].d;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> x=<span class="number">_f</span>ind(u);</div><div class="line">    <span class="keyword">int</span> y=<span class="number">_f</span>ind(v);</div><div class="line">    <span class="keyword">int</span> tx=l*vx[d];</div><div class="line">    <span class="keyword">int</span> ty=l*vy[d];</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (x!=y)&#123;</div><div class="line">        f[x]=y;</div><div class="line">        r[x].x=tx+r[v].x-r[u].x;</div><div class="line">        r[x].y=ty+r[v].y-r[u].y;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">while</span> (<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m)!=EOF)&#123;</div><div class="line">        <span class="built_in">memset</span>(f,<span class="number">-1</span>,<span class="keyword">sizeof</span>(f));</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n;i++)&#123;</div><div class="line">            r[i].x=r[i].y=<span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;i++)&#123;</div><div class="line">            <span class="keyword">char</span> c;</div><div class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d%d %c"</span>,&amp;a[i].u,&amp;a[i].v,&amp;a[i].l,&amp;c);</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="number">4</span>;j++)&#123;</div><div class="line">                <span class="keyword">if</span> (c==dir[j])&#123;</div><div class="line">                    a[i].d=j;</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;k);</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;k;i++)&#123;</div><div class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;b[i].u,&amp;b[i].v,&amp;b[i].q);</div><div class="line">            b[i].id=i;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        sort(b,b+k,cmp);</div><div class="line"></div><div class="line">        <span class="keyword">int</span> cnt=<span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;k;i++)&#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j=cnt;j&lt;b[i].q;j++)&#123;</div><div class="line">                <span class="number">_u</span>nion(j);</div><div class="line">            &#125;</div><div class="line">            cnt=b[i].q;</div><div class="line"></div><div class="line">            <span class="keyword">int</span> u=b[i].u;</div><div class="line">            <span class="keyword">int</span> v=b[i].v;</div><div class="line">            <span class="keyword">int</span> x=<span class="number">_f</span>ind(u);</div><div class="line">            <span class="keyword">int</span> y=<span class="number">_f</span>ind(v);</div><div class="line">            <span class="keyword">if</span> (x!=y)&#123;</div><div class="line">                b[i].ans=<span class="number">-1</span>;</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                b[i].ans=<span class="built_in">abs</span>(r[u].x-r[v].x)+<span class="built_in">abs</span>(r[u].y-r[v].y);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        sort(b,b+k,cmp2);</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;k;i++)&#123;</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,b[i].ans);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
 

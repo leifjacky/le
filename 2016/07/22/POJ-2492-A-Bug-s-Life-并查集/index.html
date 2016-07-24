@@ -49,13 +49,25 @@
   
 
   
+    
+      
+    
 
+    
+  
+
+  
+    
+      
+    
+
+    
   
 
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -94,7 +106,7 @@ DescriptionBackgroundProfessor Hopper is researching the sexual behavior of a ra
 <meta property="og:description" content="Time Limit:10000MS     Memory Limit:65536KB     64bit IO Format:%lld &amp;amp; %llu
 
 DescriptionBackgroundProfessor Hopper is researching the sexual behavior of a rare species of bugs. He assumes that th">
-<meta property="og:updated_time" content="2016-07-22T02:42:59.000Z">
+<meta property="og:updated_time" content="2016-07-24T09:01:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="POJ 2492 A Bug's Life 并查集">
 <meta name="twitter:description" content="Time Limit:10000MS     Memory Limit:65536KB     64bit IO Format:%lld &amp;amp; %llu
@@ -130,6 +142,16 @@ DescriptionBackgroundProfessor Hopper is researching the sexual behavior of a ra
   
 
 
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?7650320e34a9ace0e660d0147d338d4b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -341,70 +363,7 @@ Scenario #2:
 No suspicious bugs found!
 </code></pre><h1 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h1><p>Huge input,scanf is recommended.</p>
 <h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>并查集数组f[x]判断bug是否是同在同一集合，r[x]表示x与f[x]的关系，那么x,y在同一集合的情况下x,y之间的关系可以用r[x]^r[y]表示。</p>
-<h1 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h1><pre><code>#include &lt;iostream&gt;
-#include &lt;cstdio&gt;
-#include &lt;cstring&gt;
-using namespace std;
-
-#define N 2005
-#define PB push_back
-
-int n,m;
-int f[N],r[N];
-
-int _find(int x){
-    if (f[x]==-1){
-        return x;
-    }else{
-        int fx=f[x];
-        f[x]=_find(f[x]);
-        r[x]=r[x]^r[fx];
-    }
-    return f[x];
-}
-
-bool _union(int u,int v){
-    int x=_find(u);
-    int y=_find(v);
-
-    if (x==y){
-        if ((r[u]^r[v])==1)
-            return false;
-        else
-            return true;
-    }else{
-        f[x]=y;
-        r[x]=r[u]^r[v]^1;
-        return false;
-    }
-}
-
-int main(){
-    int T,kase=0;
-    scanf(&quot;%d&quot;,&amp;T);
-    while (T--){
-        bool flag=false;
-        memset(f,-1,sizeof(f));
-        memset(r,0,sizeof(r));
-        scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
-        for (int i=0;i&lt;m;i++){
-            int u,v;
-            scanf(&quot;%d%d&quot;,&amp;u,&amp;v);
-            if (!flag){
-                flag=_union(u,v);
-            }
-        }
-        printf(&quot;Scenario #%d:\n&quot;,++kase);
-        if (flag){
-            printf(&quot;Suspicious bugs found!\n\n&quot;);
-        }else{
-            printf(&quot;No suspicious bugs found!\n\n&quot;);
-        }
-    }
-
-    return 0;
-}
-</code></pre>
+<h1 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> N 2005</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> PB push_back</span></div><div class="line"></div><div class="line"><span class="keyword">int</span> n,m;</div><div class="line"><span class="keyword">int</span> f[N],r[N];</div><div class="line"></div><div class="line"><span class="keyword">int</span> <span class="number">_f</span>ind(<span class="keyword">int</span> x)&#123;</div><div class="line">    <span class="keyword">if</span> (f[x]==<span class="number">-1</span>)&#123;</div><div class="line">        <span class="keyword">return</span> x;</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">int</span> fx=f[x];</div><div class="line">        f[x]=<span class="number">_f</span>ind(f[x]);</div><div class="line">        r[x]=r[x]^r[fx];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> f[x];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">bool</span> <span class="number">_u</span>nion(<span class="keyword">int</span> u,<span class="keyword">int</span> v)&#123;</div><div class="line">    <span class="keyword">int</span> x=<span class="number">_f</span>ind(u);</div><div class="line">    <span class="keyword">int</span> y=<span class="number">_f</span>ind(v);</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> (x==y)&#123;</div><div class="line">        <span class="keyword">if</span> ((r[u]^r[v])==<span class="number">1</span>)</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        <span class="keyword">else</span></div><div class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        f[x]=y;</div><div class="line">        r[x]=r[u]^r[v]^<span class="number">1</span>;</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> T,kase=<span class="number">0</span>;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</div><div class="line">    <span class="keyword">while</span> (T--)&#123;</div><div class="line">        <span class="keyword">bool</span> flag=<span class="literal">false</span>;</div><div class="line">        <span class="built_in">memset</span>(f,<span class="number">-1</span>,<span class="keyword">sizeof</span>(f));</div><div class="line">        <span class="built_in">memset</span>(r,<span class="number">0</span>,<span class="keyword">sizeof</span>(r));</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;i++)&#123;</div><div class="line">            <span class="keyword">int</span> u,v;</div><div class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;u,&amp;v);</div><div class="line">            <span class="keyword">if</span> (!flag)&#123;</div><div class="line">                flag=<span class="number">_u</span>nion(u,v);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"Scenario #%d:\n"</span>,++kase);</div><div class="line">        <span class="keyword">if</span> (flag)&#123;</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"Suspicious bugs found!\n\n"</span>);</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"No suspicious bugs found!\n\n"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
 

@@ -49,13 +49,25 @@
   
 
   
+    
+      
+    
 
+    
+  
+
+  
+    
+      
+    
+
+    
   
 
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -94,7 +106,7 @@ DescriptionA tree is a well-known data structure that is either empty (null, voi
 <meta property="og:description" content="Time Limit:1000MS     Memory Limit:10000KB     64bit IO Format:%lld &amp;amp; %llu
 
 DescriptionA tree is a well-known data structure that is either empty (null, void, nothing) or is a set of one or more">
-<meta property="og:updated_time" content="2016-07-23T15:43:07.000Z">
+<meta property="og:updated_time" content="2016-07-24T09:01:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="POJ 1308 Is It A Tree? 并查集">
 <meta name="twitter:description" content="Time Limit:1000MS     Memory Limit:10000KB     64bit IO Format:%lld &amp;amp; %llu
@@ -130,6 +142,16 @@ DescriptionA tree is a well-known data structure that is either empty (null, voi
   
 
 
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?7650320e34a9ace0e660d0147d338d4b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -340,83 +362,7 @@ DescriptionA tree is a well-known data structure that is either empty (null, voi
 Case 2 is a tree.
 Case 3 is not a tree.
 </code></pre><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>跟HDU 1272 小希的迷宫类似，只不过这次变成了有向图。可是数据太弱。3 8 6 8 0 0这种本来不为树，但是一开始交的代码没有判断居然也能过。判断是否为树的方法其实还要加上，树上每点的入度不能大于1.</p>
-<h1 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h1><pre><code>#include &lt;iostream&gt;
-#include &lt;cstdio&gt;
-#include &lt;cstring&gt;
-using namespace std;
-
-#define N 100005
-
-int u,v;
-int f[N],vis[N],cnt,in[N];
-bool flag;
-
-int _find(int x){
-    if (f[x]==-1){
-        return x;
-    }else{
-        return f[x]=_find(f[x]);
-    }
-}
-
-bool _union(int u,int v){
-    int x=_find(u);
-    int y=_find(v);
-
-    if (x==y){
-        return false;
-    }else{
-        f[y]=x;
-        return true;
-    }
-}
-
-int main(){
-    int kase=0;
-    memset(in,0,sizeof(in));
-    memset(f,-1,sizeof(f));
-    memset(vis,0,sizeof(vis));
-    cnt=0;
-    flag=true;
-    while (scanf(&quot;%d%d&quot;,&amp;u,&amp;v)){
-        if (u&lt;=-1 &amp;&amp; v&lt;=-1){
-            break;
-        }else if (u==0 &amp;&amp; v==0){
-            for (int i=0;i&lt;N;i++){
-                if (vis[i] &amp;&amp; _find(i)==i)
-                    cnt++;
-            }
-
-            if (flag &amp;&amp; cnt&lt;=1){
-                printf(&quot;Case %d is a tree.\n&quot;,++kase);
-            }else{
-                printf(&quot;Case %d is not a tree.\n&quot;,++kase);
-            }
-            memset(f,-1,sizeof(f));
-            memset(vis,0,sizeof(vis));
-            memset(in,0,sizeof(in));
-            cnt=0;
-            flag=true;
-        }else{
-            if (vis[u]==0){
-                vis[u]=1;
-            }
-            if (vis[v]==0){
-                vis[v]=1;
-            }
-            in[v]++;
-            if (in[v]&gt;1)
-                flag=false;
-
-            if (flag){
-                flag=_union(u,v);
-            }
-        }
-    }
-
-    return 0;
-}
-</code></pre>
+<h1 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100005</span></div><div class="line"></div><div class="line"><span class="keyword">int</span> u,v;</div><div class="line"><span class="keyword">int</span> f[N],vis[N],cnt,in[N];</div><div class="line"><span class="keyword">bool</span> flag;</div><div class="line"></div><div class="line"><span class="keyword">int</span> <span class="number">_f</span>ind(<span class="keyword">int</span> x)&#123;</div><div class="line">    <span class="keyword">if</span> (f[x]==<span class="number">-1</span>)&#123;</div><div class="line">        <span class="keyword">return</span> x;</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">return</span> f[x]=<span class="number">_f</span>ind(f[x]);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">bool</span> <span class="number">_u</span>nion(<span class="keyword">int</span> u,<span class="keyword">int</span> v)&#123;</div><div class="line">    <span class="keyword">int</span> x=<span class="number">_f</span>ind(u);</div><div class="line">    <span class="keyword">int</span> y=<span class="number">_f</span>ind(v);</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (x==y)&#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        f[y]=x;</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> kase=<span class="number">0</span>;</div><div class="line">    <span class="built_in">memset</span>(in,<span class="number">0</span>,<span class="keyword">sizeof</span>(in));</div><div class="line">    <span class="built_in">memset</span>(f,<span class="number">-1</span>,<span class="keyword">sizeof</span>(f));</div><div class="line">    <span class="built_in">memset</span>(vis,<span class="number">0</span>,<span class="keyword">sizeof</span>(vis));</div><div class="line">    cnt=<span class="number">0</span>;</div><div class="line">    flag=<span class="literal">true</span>;</div><div class="line">    <span class="keyword">while</span> (<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;u,&amp;v))&#123;</div><div class="line">        <span class="keyword">if</span> (u&lt;=<span class="number">-1</span> &amp;&amp; v&lt;=<span class="number">-1</span>)&#123;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> (u==<span class="number">0</span> &amp;&amp; v==<span class="number">0</span>)&#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)&#123;</div><div class="line">                <span class="keyword">if</span> (vis[i] &amp;&amp; <span class="number">_f</span>ind(i)==i)</div><div class="line">                    cnt++;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (flag &amp;&amp; cnt&lt;=<span class="number">1</span>)&#123;</div><div class="line">                <span class="built_in">printf</span>(<span class="string">"Case %d is a tree.\n"</span>,++kase);</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                <span class="built_in">printf</span>(<span class="string">"Case %d is not a tree.\n"</span>,++kase);</div><div class="line">            &#125;</div><div class="line">            <span class="built_in">memset</span>(f,<span class="number">-1</span>,<span class="keyword">sizeof</span>(f));</div><div class="line">            <span class="built_in">memset</span>(vis,<span class="number">0</span>,<span class="keyword">sizeof</span>(vis));</div><div class="line">            <span class="built_in">memset</span>(in,<span class="number">0</span>,<span class="keyword">sizeof</span>(in));</div><div class="line">            cnt=<span class="number">0</span>;</div><div class="line">            flag=<span class="literal">true</span>;</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            <span class="keyword">if</span> (vis[u]==<span class="number">0</span>)&#123;</div><div class="line">                vis[u]=<span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (vis[v]==<span class="number">0</span>)&#123;</div><div class="line">                vis[v]=<span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">            in[v]++;</div><div class="line">            <span class="keyword">if</span> (in[v]&gt;<span class="number">1</span>)</div><div class="line">                flag=<span class="literal">false</span>;</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (flag)&#123;</div><div class="line">                flag=<span class="number">_u</span>nion(u,v);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
 

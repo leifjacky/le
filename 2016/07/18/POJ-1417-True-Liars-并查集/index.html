@@ -49,13 +49,25 @@
   
 
   
+    
+      
+    
 
+    
+  
+
+  
+    
+      
+    
+
+    
   
 
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -94,7 +106,7 @@ DescriptionAfter having drifted about in a small boat for a couple of days, Akir
 <meta property="og:description" content="Time Limit:1000MS Memory Limit:10000KB 64bit IO Format:%I64d &amp;amp; %I64u
 
 DescriptionAfter having drifted about in a small boat for a couple of days, Akira Crusoe Maeda was finally cast ashore on a f">
-<meta property="og:updated_time" content="2016-07-20T03:59:10.000Z">
+<meta property="og:updated_time" content="2016-07-24T09:00:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="POJ 1417 True Liars 并查集">
 <meta name="twitter:description" content="Time Limit:1000MS Memory Limit:10000KB 64bit IO Format:%I64d &amp;amp; %I64u
@@ -130,6 +142,16 @@ DescriptionAfter having drifted about in a small boat for a couple of days, Akir
   
 
 
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?7650320e34a9ace0e660d0147d338d4b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -365,111 +387,7 @@ end
 6
 end
 </code></pre><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>当A认为B为yes，如果A为好人，则B也为好人；如果A为坏人，则B也是坏人，因为A说谎。同理，当A认为B为no，如果A为坏人，则B为好人；当A为好人，则B为坏人。说明yes的情况下，A、B为同一类人；在no的情况下，A、B为不同类人，使用带权并查集将所有人分成若干集合，每个集合里又分成两个子集，但是两个子集不知道是好人还是坏人。最后通过分组背包得出是否能够刚好分出p1个好人，其中ans[i][j]表示前i组中j个好人的分组可能组合数，当ans[组数][p1]=1时才有唯一方案。</p>
-<h1 id="未AC代码"><a href="#未AC代码" class="headerlink" title="未AC代码"></a>未AC代码</h1><pre><code>#include &lt;iostream&gt;
-#include &lt;cstdio&gt;
-#include &lt;vector&gt;
-#include &lt;cstring&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-
-#define N 605
-#define PB push_back
-
-int n,p1,p2,nn;
-int f[N],r[N];
-int ans[N][N];
-
-int _find(int x){
-    if (f[x]==x)
-        return x;
-    int t=f[x];
-    f[x]=_find(f[x]);
-    r[x]=(r[x]+r[t])%2;
-    return f[x];
-}
-
-int main(){
-    while (~scanf(&quot;%d%d%d&quot;,&amp;n,&amp;p1,&amp;p2)){
-        vector&lt;int&gt; cnt[N][2];
-        nn=p1+p2;
-        for (int i=1;i&lt;=nn;i++){
-            f[i]=i;
-            r[i]=0;
-        }
-        if (!(n || p1 || p2))
-            break;
-
-        for (int i=0;i&lt;n;i++){
-            int a,b;
-            char st[10];
-            scanf(&quot;%d%d%s&quot;,&amp;a,&amp;b,st);
-
-            int flag;
-            flag=(st[0]==&apos;y&apos;?0:1);
-
-            int x=_find(a);
-            int y=_find(b);
-            if (x&gt;y)
-                swap(x,y);
-            if (x!=y){
-                f[x]=y;
-                r[x]=(r[a]+r[b]+flag)%2;
-            }
-        }
-
-
-        for (int i=1;i&lt;=nn;i++){
-            int x=_find(i);
-            cnt[x][r[i]].PB(i);
-        }
-
-        vector&lt;int&gt; grp;
-        for (int i=1;i&lt;=nn;i++){
-            if (cnt[i][0].size()&gt;0 || cnt[i][1].size()&gt;0){
-                grp.PB(i);
-            }
-        }
-
-        memset(ans,0,sizeof(ans));
-        ans[0][0]=1;
-        for (int i=1;i&lt;=grp.size();i++){
-            for (int v=p1;v&gt;=0;v--){
-                ans[i][v]=ans[i-1][v];
-                for (int j=0;j&lt;2;j++){
-                    if (cnt[grp[i-1]][j].size()&gt;0 &amp;&amp; cnt[grp[i-1]][j].size()&lt;=v){
-                        ans[i][v]+=ans[i-1][v-cnt[grp[i-1]][j].size()];
-                    }
-                }
-            }
-        }
-
-        vector&lt;int&gt; num;
-        if (ans[grp.size()][p1]==1){
-            int v=p1;
-            for (int i=grp.size();i&gt;0;i--){
-                for (int j=0;j&lt;2;j++){
-                    if (cnt[grp[i-1]][j].size()&gt;0 &amp;&amp; cnt[grp[i-1]][j].size()&lt;=v &amp;&amp; ans[i-1][v-cnt[grp[i-1]][j].size()]==1){
-                        for (int k=0;k&lt;cnt[grp[i-1]][j].size();k++){
-                            num.PB(cnt[grp[i-1]][j][k]);
-                        }
-                        v-=cnt[grp[i-1]][j].size();
-                        break;
-                    }
-                }
-            }
-            sort(num.begin(),num.end());
-            for (int i=0;i&lt;num.size();i++){
-                printf(&quot;%d\n&quot;,num[i]);
-            }
-            printf(&quot;end\n&quot;);
-        }else{
-            printf(&quot;no\n&quot;);
-        }
-    }
-
-    return 0;
-}
-</code></pre>
+<h1 id="未AC代码"><a href="#未AC代码" class="headerlink" title="未AC代码"></a>未AC代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> N 605</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> PB push_back</span></div><div class="line"></div><div class="line"><span class="keyword">int</span> n,p1,p2,nn;</div><div class="line"><span class="keyword">int</span> f[N],r[N];</div><div class="line"><span class="keyword">int</span> ans[N][N];</div><div class="line"></div><div class="line"><span class="keyword">int</span> <span class="number">_f</span>ind(<span class="keyword">int</span> x)&#123;</div><div class="line">    <span class="keyword">if</span> (f[x]==x)</div><div class="line">        <span class="keyword">return</span> x;</div><div class="line">    <span class="keyword">int</span> t=f[x];</div><div class="line">    f[x]=<span class="number">_f</span>ind(f[x]);</div><div class="line">    r[x]=(r[x]+r[t])%<span class="number">2</span>;</div><div class="line">    <span class="keyword">return</span> f[x];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">while</span> (~<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;n,&amp;p1,&amp;p2))&#123;</div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; cnt[N][<span class="number">2</span>];</div><div class="line">        nn=p1+p2;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=nn;i++)&#123;</div><div class="line">            f[i]=i;</div><div class="line">            r[i]=<span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (!(n || p1 || p2))</div><div class="line">            <span class="keyword">break</span>;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</div><div class="line">            <span class="keyword">int</span> a,b;</div><div class="line">            <span class="keyword">char</span> st[<span class="number">10</span>];</div><div class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d%s"</span>,&amp;a,&amp;b,st);</div><div class="line"></div><div class="line">            <span class="keyword">int</span> flag;</div><div class="line">            flag=(st[<span class="number">0</span>]==<span class="string">'y'</span>?<span class="number">0</span>:<span class="number">1</span>);</div><div class="line"></div><div class="line">            <span class="keyword">int</span> x=<span class="number">_f</span>ind(a);</div><div class="line">            <span class="keyword">int</span> y=<span class="number">_f</span>ind(b);</div><div class="line">            <span class="keyword">if</span> (x&gt;y)</div><div class="line">                swap(x,y);</div><div class="line">            <span class="keyword">if</span> (x!=y)&#123;</div><div class="line">                f[x]=y;</div><div class="line">                r[x]=(r[a]+r[b]+flag)%<span class="number">2</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=nn;i++)&#123;</div><div class="line">            <span class="keyword">int</span> x=<span class="number">_f</span>ind(i);</div><div class="line">            cnt[x][r[i]].PB(i);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; grp;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=nn;i++)&#123;</div><div class="line">            <span class="keyword">if</span> (cnt[i][<span class="number">0</span>].size()&gt;<span class="number">0</span> || cnt[i][<span class="number">1</span>].size()&gt;<span class="number">0</span>)&#123;</div><div class="line">                grp.PB(i);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="built_in">memset</span>(ans,<span class="number">0</span>,<span class="keyword">sizeof</span>(ans));</div><div class="line">        ans[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=grp.size();i++)&#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> v=p1;v&gt;=<span class="number">0</span>;v--)&#123;</div><div class="line">                ans[i][v]=ans[i<span class="number">-1</span>][v];</div><div class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="number">2</span>;j++)&#123;</div><div class="line">                    <span class="keyword">if</span> (cnt[grp[i<span class="number">-1</span>]][j].size()&gt;<span class="number">0</span> &amp;&amp; cnt[grp[i<span class="number">-1</span>]][j].size()&lt;=v)&#123;</div><div class="line">                        ans[i][v]+=ans[i<span class="number">-1</span>][v-cnt[grp[i<span class="number">-1</span>]][j].size()];</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; num;</div><div class="line">        <span class="keyword">if</span> (ans[grp.size()][p1]==<span class="number">1</span>)&#123;</div><div class="line">            <span class="keyword">int</span> v=p1;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i=grp.size();i&gt;<span class="number">0</span>;i--)&#123;</div><div class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="number">2</span>;j++)&#123;</div><div class="line">                    <span class="keyword">if</span> (cnt[grp[i<span class="number">-1</span>]][j].size()&gt;<span class="number">0</span> &amp;&amp; cnt[grp[i<span class="number">-1</span>]][j].size()&lt;=v &amp;&amp; ans[i<span class="number">-1</span>][v-cnt[grp[i<span class="number">-1</span>]][j].size()]==<span class="number">1</span>)&#123;</div><div class="line">                        <span class="keyword">for</span> (<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;cnt[grp[i<span class="number">-1</span>]][j].size();k++)&#123;</div><div class="line">                            num.PB(cnt[grp[i<span class="number">-1</span>]][j][k]);</div><div class="line">                        &#125;</div><div class="line">                        v-=cnt[grp[i<span class="number">-1</span>]][j].size();</div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            sort(num.begin(),num.end());</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;num.size();i++)&#123;</div><div class="line">                <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,num[i]);</div><div class="line">            &#125;</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"end\n"</span>);</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"no\n"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
 
