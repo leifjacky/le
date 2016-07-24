@@ -319,115 +319,17 @@
       
         
           
-            <blockquote>
-<p>Time Limit:1000MS     Memory Limit:65536KB     64bit IO Format:%lld &amp; %llu</p>
-</blockquote>
-<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>Now and then you play the following game with your friend. Your friend writes down a sequence consisting of zeroes and ones. You choose a continuous subsequence (for example the subsequence from the third to the fifth digit inclusively) and ask him, whether this subsequence contains even or odd number of ones. Your friend answers your question and you can ask him about another subsequence and so on. Your task is to guess the entire sequence of numbers. </p>
-<p>You suspect some of your friend’s answers may not be correct and you want to convict him of falsehood. Thus you have decided to write a program to help you in this matter. The program will receive a series of your questions together with the answers you have received from your friend. The aim of this program is to find the first answer which is provably wrong, i.e. that there exists a sequence satisfying answers to all the previous questions, but no such sequence satisfies this answer.</p>
-<h1 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h1><p>The first line of input contains one number, which is the length of the sequence of zeroes and ones. This length is less or equal to 1000000000. In the second line, there is one positive integer which is the number of questions asked and answers to them. The number of questions and answers is less or equal to 5000. The remaining lines specify questions and answers. Each line contains one question and the answer to this question: two integers (the position of the first and last digit in the chosen subsequence) and one word which is either <strong>even</strong> or <strong>odd</strong> (the answer, i.e. the parity of the number of ones in the chosen subsequence, where <strong>even</strong> means an even number of ones and <strong>odd</strong> means an odd number).</p>
-<h1 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h1><p>There is only one line in output containing one integer X. Number X says that there exists a sequence of zeroes and ones satisfying first X parity conditions, but there exists none satisfying X+1 conditions. If there exists a sequence of zeroes and ones satisfying all the given conditions, then number X should be the number of all the questions asked.</p>
-<h1 id="Sample"><a href="#Sample" class="headerlink" title="Sample"></a>Sample</h1><h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><pre><code>10
-5
-1 2 even
-3 4 odd
-5 6 even
-1 6 even
-7 10 odd
-</code></pre><h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><pre><code>3
-</code></pre><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>使用种类并查集，r[x]表示(x,r[x]]区间的奇偶情况。<br>对于每次询问p q d,如果p、q同一组，则通过判断r[p]^r[q]与d是否相等判断是否正确。如果不同组，则合并。</p>
-<h1 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h1><pre><code>#include &lt;iostream&gt;
-#include &lt;cstdio&gt;
-#include &lt;algorithm&gt;
-#include &lt;vector&gt;
-#include &lt;cstring&gt;
-#include &lt;map&gt;
-using namespace std;
-
-#define N 20005
-
-struct code{
-    int x,y,d;
-}a[N];
-
-int l,n;
-int cnt;
-map&lt;int,int&gt; m;
-int b[N],f[N],r[N];
-
-int _find(int x){
-    if (f[x]==x){
-        return x;
-    }else{
-        int fx=f[x];
-        f[x]=_find(f[x]);
-        r[x]=r[x]^r[fx];
-        return f[x];
-    }
-}
-
-int main(){
-    while (~scanf(&quot;%d%d&quot;,&amp;l,&amp;n)){
-        cnt=0;
-        m.clear();
-        for (int i=0;i&lt;n;i++){
-            char st[5];
-            scanf(&quot;%d%d%s&quot;,&amp;a[i].x,&amp;a[i].y,st);
-            if (st[0]==&apos;e&apos;)
-                a[i].d=0;
-            else
-                a[i].d=1;
-
-            a[i].x--;
-
-            if (m[a[i].x]==0){
-                m[a[i].x]=1;
-                b[cnt++]=a[i].x;
-            }
-            if (m[a[i].y]==0){
-                m[a[i].y]=1;
-                b[cnt++]=a[i].y;
-            }
-        }
-
-        sort(b,b+cnt);
-        for (int i=0;i&lt;cnt;i++){
-            m[b[i]]=i;
-            f[i]=i;
-            r[i]=0;
-        }
-
-        int ans=0;
-        for (int i=0;i&lt;n;i++){
-            int p,q,d;
-            p=m[a[i].x];
-            q=m[a[i].y];
-            d=a[i].d;
-
-            int x=_find(p);
-            int y=_find(q);
-            if (x&gt;y){
-                swap(x,y);
-            }
-            if (x==y){
-                if (d==(r[p]^r[q]))
-                    ans++;
-                else{
-                    break;
-                }
-            }else{
-                f[x]=y;
-                r[x]=r[p]^d^r[q];
-                ans++;
-            }
-        }
-        printf(&quot;%d\n&quot;,ans);
-    }
-
-
-    return 0;
-}
-</code></pre>
           
+Time Limit:1000MS     Memory Limit:65536KB     64bit IO Format:%lld &amp; %llu
+
+DescriptionNow and then you play the following game with your friend. Your friend writes down a sequence consisting of zeroes and ones. You choose a continuous subsequence (for example the subsequence from the third to 
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/07/20/POJ-1733-Parity-game-并查集/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -526,73 +428,17 @@ int main(){
       
         
           
-            <blockquote>
-<p>Time Limit:2000MS     Memory Limit:65536KB     64bit IO Format:%lld &amp; %llu</p>
-</blockquote>
-<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>A supermarket has a set Prod of products on sale. It earns a profit px for each product x∈Prod sold by a deadline dx that is measured as an integral number of time units starting from the moment the sale begins. Each product takes precisely one unit of time for being sold. A selling schedule is an ordered subset of products Sell ≤ Prod such that the selling of each product x∈Sell, according to the ordering of Sell, completes before the deadline dx or just when dx expires. The profit of the selling schedule is Profit(Sell)=Σ x∈Sellpx. An optimal selling schedule is a schedule with a maximum profit.<br>For example, consider the products Prod={a,b,c,d} with (pa,da)=(50,2), (pb,db)=(10,1), (pc,dc)=(20,2), and (pd,dd)=(30,1). The possible selling schedules are listed in table 1. For instance, the schedule Sell={d,a} shows that the selling of product d starts at time 0 and ends at time 1, while the selling of product a starts at time 1 and ends at time 2. Each of these products is sold by its deadline. Sell is the optimal schedule and its profit is 80. </p>
-<p>Write a program that reads sets of products from an input text file and computes the profit of an optimal selling schedule for each set of products. </p>
-<h1 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h1><p>A set of products starts with an integer 0 &lt;= n &lt;= 10000, which is the number of products in the set, and continues with n pairs pi di of integers, 1 &lt;= pi &lt;= 10000 and 1 &lt;= di &lt;= 10000, that designate the profit and the selling deadline of the i-th product. White spaces can occur freely in input. Input data terminate with an end of file and are guaranteed correct.</p>
-<h1 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h1><p>For each set of products, the program prints on the standard output the profit of an optimal selling schedule for the set. Each result is printed from the beginning of a separate line.</p>
-<h1 id="Sample"><a href="#Sample" class="headerlink" title="Sample"></a>Sample</h1><h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><pre><code>4  50 2  10 1   20 2   30 1
-
-7  20 1   2 1   10 3  100 2   8 2
-   5 20  50 10
-</code></pre><h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><pre><code>80
-185
-</code></pre><h1 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h1><p>The sample input contains two product sets. The first set encodes the products from table 1. The second set is for 7 products. The profit of an optimal schedule for these products is 185.</p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>将物品按照价格从高到低排序，接着价格从高到低，为每个物品找到一个在截止日期前的最晚销售时间，这可以通过顺序查找找到，更快的方法是使用并查集，f[x]记录本来在x时间销售的物品的最晚销售时间，一旦有物品在x日子销售，则f[x]=x-1。</p>
-<h1 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h1><pre><code>#include &lt;iostream&gt;
-#include &lt;cstdio&gt;
-#include &lt;vector&gt;
-#include &lt;cstring&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-
-#define N 10005
-#define PB push_back
-
-int n;
-struct node{
-    node(){}
-    node(int pp,int dd):p(pp),d(dd){}
-    int p,d;
-}a[N];
-int f[N];
-
-int _find(int x){
-    if (f[x]==-1)
-        return x;
-    else
-        return f[x]=_find(f[x]);
-}
-
-bool cmp(node a,node b){
-    return a.p&gt;b.p;
-}
-
-int main(){
-    while (~scanf(&quot;%d&quot;,&amp;n)){
-        memset(f,-1,sizeof(f));
-        for (int i=1;i&lt;=n;i++){
-            scanf(&quot;%d%d&quot;,&amp;a[i].p,&amp;a[i].d);
-        }
-        sort(a+1,a+n+1,cmp);
-
-        int ans=0;
-        for (int i=1;i&lt;=n;i++){
-            int x=_find(a[i].d);
-            if (x&gt;0){
-                ans+=a[i].p;
-                f[x]=x-1;
-            }
-        }
-        printf(&quot;%d\n&quot;,ans);
-    }
-
-    return 0;
-}
-</code></pre>
           
+Time Limit:2000MS     Memory Limit:65536KB     64bit IO Format:%lld &amp; %llu
+
+DescriptionA supermarket has a set Prod of products on sale. It earns a profit px for each product x∈Prod sold by a deadline dx that is measured as an integral number of time units starting from the moment the sale begi
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/07/20/POJ-1456-Supermarket-并查集/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -691,17 +537,23 @@ int main(){
       
         
           
-            <blockquote>
-<p>转自：<a href="http://blog.sina.com.cn/s/blog_4fa20e8c0102vd4q.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_4fa20e8c0102vd4q.html</a></p>
-</blockquote>
-<p>系统自带的的FTP<br>通过命令行来开启关闭，如下所示： </p>
-<p>开启 FTP Server </p>
-<pre><code>sudo -s launchctl load -w /System/Library/LaunchDaemons/ftp.plist 
-</code></pre><p>关闭 FTP Server </p>
-<pre><code>sudo -s launchctl unload -w /System/Library/LaunchDaemons/ftp.plist 
-</code></pre><p>登录格式为 ftp://用户名@ip<br>然后输入你在Mac上的用户名和密码就可以了</p>
+          
+转自：http://blog.sina.com.cn/s/blog_4fa20e8c0102vd4q.html
+
+系统自带的的FTP通过命令行来开启关闭，如下所示： 
+开启 FTP Server 
+sudo -s launchctl load -w /System/Library/LaunchDaemons/ftp.plist 
+关闭 FTP Server 
+sudo -s launchctl unload -w /System/Library/LaunchDaemons/ftp.plist 
+登录格式为 ftp://用户名@ip然后输入你在Mac上的用户名和密码就可以了
 
           
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/07/19/Mac启用自带FTP服务/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -800,158 +652,17 @@ int main(){
       
         
           
-            <blockquote>
-<p>Time Limit:1000MS Memory Limit:10000KB 64bit IO Format:%I64d &amp; %I64u</p>
-</blockquote>
-<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>After having drifted about in a small boat for a couple of days, Akira Crusoe Maeda was finally cast ashore on a foggy island. Though he was exhausted and despaired, he was still fortunate to remember a legend of the foggy island, which he had heard from patriarchs in his childhood. This must be the island in the legend. In the legend, two tribes have inhabited the island, one is divine and the other is devilish, once members of the divine tribe bless you, your future is bright and promising, and your soul will eventually go to Heaven, in contrast, once members of the devilish tribe curse you, your future is bleak and hopeless, and your soul will eventually fall down to Hell. </p>
-<p>In order to prevent the worst-case scenario, Akira should distinguish the devilish from the divine. But how? They looked exactly alike and he could not distinguish one from the other solely by their appearances. He still had his last hope, however. The members of the divine tribe are truth-tellers, that is, they always tell the truth and those of the devilish tribe are liars, that is, they always tell a lie. </p>
-<p>He asked some of them whether or not some are divine. They knew one another very much and always responded to him “faithfully” according to their individual natures (i.e., they always tell the truth or always a lie). He did not dare to ask any other forms of questions, since the legend says that a devilish member would curse a person forever when he did not like the question. He had another piece of useful informationf the legend tells the populations of both tribes. These numbers in the legend are trustworthy since everyone living on this island is immortal and none have ever been born at least these millennia. </p>
-<p>You are a good computer programmer and so requested to help Akira by writing a program that classifies the inhabitants according to their answers to his inquiries. </p>
-<h1 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h1><p>The input consists of multiple data sets, each in the following format : </p>
-<pre><code>n p1 p2 
-xl yl a1 
-x2 y2 a2 
-... 
-xi yi ai
-... 
-xn yn an 
-</code></pre><p>The first line has three non-negative integers n, p1, and p2. n is the number of questions Akira asked. pl and p2 are the populations of the divine and devilish tribes, respectively, in the legend. Each of the following n lines has two integers xi, yi and one word ai. xi and yi are the identification numbers of inhabitants, each of which is between 1 and p1 + p2, inclusive. ai is either yes, if the inhabitant xi said that the inhabitant yi was a member of the divine tribe, or no, otherwise. Note that xi and yi can be the same number since “are you a member of the divine tribe?” is a valid question. Note also that two lines may have the same x’s and y’s since Akira was very upset and might have asked the same question to the same one more than once. </p>
-<p>You may assume that n is less than 1000 and that p1 and p2 are less than 300. A line with three zeros, i.e., 0 0 0, represents the end of the input. You can assume that each data set is consistent and no contradictory answers are included. </p>
-<h1 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h1><p>For each data set, if it includes sufficient information to classify all the inhabitants, print the identification numbers of all the divine ones in ascending order, one in a line. In addition, following the output numbers, print end in a line. Otherwise, i.e., if a given data set does not include sufficient information to identify all the divine members, print no in a line.</p>
-<h1 id="Sample"><a href="#Sample" class="headerlink" title="Sample"></a>Sample</h1><h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><pre><code>2 1 1
-1 2 no
-2 1 no
-3 2 1
-1 1 yes
-2 2 yes
-3 3 yes
-2 2 1
-1 2 yes
-2 3 no
-5 4 3
-1 2 yes
-1 3 no
-4 5 yes
-5 6 yes
-6 7 no
-0 0 0
-</code></pre><h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><pre><code>no
-no
-1
-2
-end
-3
-4
-5
-6
-end
-</code></pre><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>当A认为B为yes，如果A为好人，则B也为好人；如果A为坏人，则B也是坏人，因为A说谎。同理，当A认为B为no，如果A为坏人，则B为好人；当A为好人，则B为坏人。说明yes的情况下，A、B为同一类人；在no的情况下，A、B为不同类人，使用带权并查集将所有人分成若干集合，每个集合里又分成两个子集，但是两个子集不知道是好人还是坏人。最后通过分组背包得出是否能够刚好分出p1个好人，其中ans[i][j]表示前i组中j个好人的分组可能组合数，当ans[组数][p1]=1时才有唯一方案。</p>
-<h1 id="未AC代码"><a href="#未AC代码" class="headerlink" title="未AC代码"></a>未AC代码</h1><pre><code>#include &lt;iostream&gt;
-#include &lt;cstdio&gt;
-#include &lt;vector&gt;
-#include &lt;cstring&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-
-#define N 605
-#define PB push_back
-
-int n,p1,p2,nn;
-int f[N],r[N];
-int ans[N][N];
-
-int _find(int x){
-    if (f[x]==x)
-        return x;
-    int t=f[x];
-    f[x]=_find(f[x]);
-    r[x]=(r[x]+r[t])%2;
-    return f[x];
-}
-
-int main(){
-    while (~scanf(&quot;%d%d%d&quot;,&amp;n,&amp;p1,&amp;p2)){
-        vector&lt;int&gt; cnt[N][2];
-        nn=p1+p2;
-        for (int i=1;i&lt;=nn;i++){
-            f[i]=i;
-            r[i]=0;
-        }
-        if (!(n || p1 || p2))
-            break;
-
-        for (int i=0;i&lt;n;i++){
-            int a,b;
-            char st[10];
-            scanf(&quot;%d%d%s&quot;,&amp;a,&amp;b,st);
-
-            int flag;
-            flag=(st[0]==&apos;y&apos;?0:1);
-
-            int x=_find(a);
-            int y=_find(b);
-            if (x&gt;y)
-                swap(x,y);
-            if (x!=y){
-                f[x]=y;
-                r[x]=(r[a]+r[b]+flag)%2;
-            }
-        }
-
-
-        for (int i=1;i&lt;=nn;i++){
-            int x=_find(i);
-            cnt[x][r[i]].PB(i);
-        }
-
-        vector&lt;int&gt; grp;
-        for (int i=1;i&lt;=nn;i++){
-            if (cnt[i][0].size()&gt;0 || cnt[i][1].size()&gt;0){
-                grp.PB(i);
-            }
-        }
-
-        memset(ans,0,sizeof(ans));
-        ans[0][0]=1;
-        for (int i=1;i&lt;=grp.size();i++){
-            for (int v=p1;v&gt;=0;v--){
-                ans[i][v]=ans[i-1][v];
-                for (int j=0;j&lt;2;j++){
-                    if (cnt[grp[i-1]][j].size()&gt;0 &amp;&amp; cnt[grp[i-1]][j].size()&lt;=v){
-                        ans[i][v]+=ans[i-1][v-cnt[grp[i-1]][j].size()];
-                    }
-                }
-            }
-        }
-
-        vector&lt;int&gt; num;
-        if (ans[grp.size()][p1]==1){
-            int v=p1;
-            for (int i=grp.size();i&gt;0;i--){
-                for (int j=0;j&lt;2;j++){
-                    if (cnt[grp[i-1]][j].size()&gt;0 &amp;&amp; cnt[grp[i-1]][j].size()&lt;=v &amp;&amp; ans[i-1][v-cnt[grp[i-1]][j].size()]==1){
-                        for (int k=0;k&lt;cnt[grp[i-1]][j].size();k++){
-                            num.PB(cnt[grp[i-1]][j][k]);
-                        }
-                        v-=cnt[grp[i-1]][j].size();
-                        break;
-                    }
-                }
-            }
-            sort(num.begin(),num.end());
-            for (int i=0;i&lt;num.size();i++){
-                printf(&quot;%d\n&quot;,num[i]);
-            }
-            printf(&quot;end\n&quot;);
-        }else{
-            printf(&quot;no\n&quot;);
-        }
-    }
-
-    return 0;
-}
-</code></pre>
           
+Time Limit:1000MS Memory Limit:10000KB 64bit IO Format:%I64d &amp; %I64u
+
+DescriptionAfter having drifted about in a small boat for a couple of days, Akira Crusoe Maeda was finally cast ashore on a foggy island. Though he was exhausted and despaired, he was still fortunate to remember a legend of t
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/07/18/POJ-1417-True-Liars-并查集/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1050,49 +761,22 @@ int main(){
       
         
           
-            <p>今天上linux暑期课的时候需要配置yum源，发现默认的源已经无法使用，所以需要更新为其他源。</p>
-<p>在网上找了好久试了163、sohu、sjtu的源均不行，遂打开sjtu源查看，发现只剩下一个README文件。</p>
-<pre><code>ATTENTION
+          今天上linux暑期课的时候需要配置yum源，发现默认的源已经无法使用，所以需要更新为其他源。
+在网上找了好久试了163、sohu、sjtu的源均不行，遂打开sjtu源查看，发现只剩下一个README文件。
+ATTENTION
 ======================================
 The contents of this directory have been moved to our archives available at:
 
 http://archives.fedoraproject.org/pub/archive/fedora/
 
-If you are having troubles finding something there please stop by #fedora-admin on irc.freenode.net
-</code></pre><p>原来由于fedora13版本太老，大家都不维护了，能用的只剩下这个官方源了，估计是官方源也迁移过。</p>
-<p>接下来打开/etc/yum.repo.d/</p>
-<pre><code># cd /etc/yum.repo.d/
-</code></pre><p>用vim编辑.repo文件，或者先删除当前目录所有文件，再新建.repo文件，将参考repo复制。</p>
-<p>将原来的baseurl分别替换成：</p>
-<ul>
-<li><a href="http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/13/Fedora/i386/os/" target="_blank" rel="external">http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/13/Fedora/i386/os/</a></li>
-<li><a href="http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/13/Everything/i386/os/" target="_blank" rel="external">http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/13/Everything/i386/os/</a></li>
-<li><a href="http://archives.fedoraproject.org/pub/archive/fedora/linux/updates/13/i386/" target="_blank" rel="external">http://archives.fedoraproject.org/pub/archive/fedora/linux/updates/13/i386/</a></li>
-</ul>
-<p>将原来的gpgkey替换成：</p>
-<ul>
-<li>file:///RPM-GPG-KEY-fedora</li>
-</ul>
-<p>参考repo（由于一开始想使用sjtu的源，所以名称还没改过来）：</p>
-<pre><code>[Fedora-ftp.sjtu.edu.cn]
-name=Fedora 13 – i386
-baseurl=http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/13/Fedora/i386/os/
-enabled=1
-gpgcheck=0
-gpgkey=file:///RPM-GPG-KEY-fedora
-[Everything-ftp.sjtu.edu.cn]
-name=Everything 13 – i386
-baseurl=http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/13/Everything/i386/os/
-enabled=1
-gpgcheck=0
-gpgkey=file:///RPM-GPG-KEY-fedora
-[updates-ftp.sjtu.edu.cn]
-name=Fedora updates
-baseurl=http://archives.fedoraproject.org/pub/archive/fedora/linux/updates/13/i386/
-enabled=1
-gpgcheck=0
-</code></pre>
-          
+If you are hav
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/07/14/fedora13更新源/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1191,9 +875,9 @@ gpgcheck=0
       
         
           
-            <h1 id="man-帮助命令"><a href="#man-帮助命令" class="headerlink" title="man 帮助命令"></a>man 帮助命令</h1><h2 id="命令语法"><a href="#命令语法" class="headerlink" title="命令语法"></a>命令语法</h2><pre><code>man [选项] 命令名称
+          man 帮助命令命令语法man [选项] 命令名称
 -M， -P， -a， -d， -f， -p， -w
-</code></pre><h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><pre><code>$ man ls
+应用$ man ls
 
 LS(1)                            User Commands                           LS(1)
 
@@ -1204,519 +888,14 @@ SYNOPSIS
    ls [OPTION]... [FILE]...
 
 DESCRIPTION
-   List  information  about  the FILEs (the current directory by default).  Sort entries
-   alphabetically if none of -cftuvSUX nor --sort.
+   List  information  about  the FILEs (the current directory by de
+          ...
 
-   Mandatory arguments to long options are mandatory for short options too.
-...
-</code></pre><p><br><br></p>
-<h1 id="help-帮助命令"><a href="#help-帮助命令" class="headerlink" title="help 帮助命令"></a>help 帮助命令</h1><h2 id="命令语法："><a href="#命令语法：" class="headerlink" title="命令语法："></a>命令语法：</h2><pre><code>[命令]  --help
-</code></pre><h2 id="应用-1"><a href="#应用-1" class="headerlink" title="应用"></a>应用</h2><pre><code>$ ls --help
-
-Usage: ls [OPTION]... [FILE]...
-List information about the FILEs (the current directory by default).
-Sort entries alphabetically if none of -cftuvSUX nor --sort.
-
-Mandatory arguments to long options are mandatory for short options too.
--a, --all                  do not ignore entries starting with .
--A, --almost-all           do not list implied . and ..
-  --author               with -l, print the author of each file
--b, --escape               print octal escapes for nongraphic characters
-  --block-size=SIZE      use SIZE-byte blocks.  See SIZE format below
-</code></pre><p><br><br></p>
-<h1 id="info-帮助命令"><a href="#info-帮助命令" class="headerlink" title="info 帮助命令"></a>info 帮助命令</h1><h2 id="命令语法：-1"><a href="#命令语法：-1" class="headerlink" title="命令语法："></a>命令语法：</h2><pre><code>info [选项] 命令名称
-</code></pre><h2 id="应用-2"><a href="#应用-2" class="headerlink" title="应用"></a>应用</h2><pre><code>$ info ls
-
-File: coreutils.info,  Node: ls invocation,  Next: dir invocation,  Up: Directory listing
-
-10.1 `ls&apos;: List directory contents
-==================================
-
-The `ls&apos; program lists information about files (of any type, including
-directories).  Options and file arguments can be intermixed
-arbitrarily, as usual.
-</code></pre><p><br><br></p>
-<h1 id="help、man和info工具的区别"><a href="#help、man和info工具的区别" class="headerlink" title="help、man和info工具的区别"></a>help、man和info工具的区别</h1><ul>
-<li>“–help”是一个工具选项，大部分的GNU工具都具备这个选项，“–help”选项可以用来显示一些工具的信息</li>
-<li>Man工具可以显示系统手册页中的内容，这些内容大多数都是对命令的解释信息。通过查看系统文档中的man页可以得到程序的更多相关主题信息和Linux的更多特性。</li>
-<li>Info工具是一个基于菜单的超文本系统，由GNU项目开发并由Linux发布。info工具包括一些关于Linux shell、工具、GNU项目开发程序的说明文档。</li>
-</ul>
-<p><br><br></p>
-<h1 id="pwd-输出当前工作目录的绝对路径"><a href="#pwd-输出当前工作目录的绝对路径" class="headerlink" title="pwd 输出当前工作目录的绝对路径"></a>pwd 输出当前工作目录的绝对路径</h1><h2 id="命令语法-1"><a href="#命令语法-1" class="headerlink" title="命令语法"></a>命令语法</h2><pre><code>pwd
-</code></pre><h2 id="应用-3"><a href="#应用-3" class="headerlink" title="应用"></a>应用</h2><pre><code>[Yecaijia_2014150087@localhost codeInPPT]$ pwd
-/home/Yecaijia_2014150087/Documents/codeInPPT
-</code></pre><p><br><br></p>
-<h1 id="cd-change-directory-更改工作目录"><a href="#cd-change-directory-更改工作目录" class="headerlink" title="cd change directory 更改工作目录"></a>cd change directory 更改工作目录</h1><h2 id="命令语法-2"><a href="#命令语法-2" class="headerlink" title="命令语法"></a>命令语法</h2><pre><code>cd [目录名]
-</code></pre><h2 id="应用-4"><a href="#应用-4" class="headerlink" title="应用"></a>应用</h2><pre><code>[Yecaijia_2014150087@localhost codeInPPT]$ cd   &lt;!-- 回到用户home下 --&gt;
-[Yecaijia_2014150087@localhost ~]$
-[Yecaijia_2014150087@localhost ~]$ cd Documents/
-[Yecaijia_2014150087@localhost Documents]$
-</code></pre><p><br><br></p>
-<h1 id="ls-打印指定目录里的文件和文件夹清单"><a href="#ls-打印指定目录里的文件和文件夹清单" class="headerlink" title="ls 打印指定目录里的文件和文件夹清单"></a>ls 打印指定目录里的文件和文件夹清单</h1><h2 id="命令语法-3"><a href="#命令语法-3" class="headerlink" title="命令语法"></a>命令语法</h2><pre><code>ls [选项] [目录或文件]
-
-主要选项：
--a：列出目录下的所有的文件，包括以.开头的隐含文件
--A：显示除了”.”和”..”外的所有文件
--b：把文件名中不可输出的字符用反斜杠加字符编号的形式列出
--c：输出文件的i节点的修改时间，并以此排序
--d：将目录象文件一样显示，而不是显示其下的文件
--F：在每个文件名后附上一个字符以说明该文件的类型
-      *:可执行的普通文件   /: 目录    @:符号连接
-      |:表示FIFO         =:  套接字（sockets)
--i：输出文件的i节点索引信息
--l：列出文件的详细信息
-</code></pre><h2 id="应用-5"><a href="#应用-5" class="headerlink" title="应用"></a>应用</h2><p>ls 缺省：</p>
-<pre><code>[Yecaijia_2014150087@localhost codeInPPT]$ ls
-code_c1_p20_1    code_c1_p20_2    code_c2_p18    code_c2_p21    code_c4_p17      code_c4_p17.c
-code_c1_p20_1.c  code_c1_p20_2.c  code_c2_p18.c  code_c2_p21.c  code_c4_p17_2.c
-
---------------------------------------------
-[Yecaijia_2014150087@localhost codeInPPT]$ ls -la
-total 72
-drwxrwxr-x. 2 Yecaijia_2014150087 Yecaijia_2014150087 4096 Apr 11 04:37 .
-drwxr-xr-x. 3 Yecaijia_2014150087 Yecaijia_2014150087 4096 Apr 10 01:21 ..
--rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4829 Apr 10 01:39 code_c1_p20_1
--rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087  242 Apr 10 01:37 code_c1_p20_1.c
--rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4865 Apr 10 01:39 code_c1_p20_2
--rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087  311 Apr 10 01:38 code_c1_p20_2.c
--rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4863 Apr 10 03:08 code_c2_p18
--rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087  328 Apr 10 03:07 code_c2_p18.c
--rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4739 Apr 10 03:22 code_c2_p21
--rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087   99 Apr 10 03:21 code_c2_p21.c
--rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4854 Apr 10 23:15 code_c4_p17
--rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087   33 Apr 10 23:14 code_c4_p17_2.c
--rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087  140 Apr 10 23:15 code_c4_p17.c
-
---------------------------------------------
-[Yecaijia_2014150087@localhost codeInPPT]$ ls -Fla
-total 72
-drwxrwxr-x. 2 Yecaijia_2014150087 Yecaijia_2014150087 4096 Apr 11 04:37 ./
-drwxr-xr-x. 3 Yecaijia_2014150087 Yecaijia_2014150087 4096 Apr 10 01:21 ../
--rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4829 Apr 10 01:39 code_c1_p20_1*
--rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087  242 Apr 10 01:37 code_c1_p20_1.c
--rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4865 Apr 10 01:39 code_c1_p20_2*
--rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087  311 Apr 10 01:38 code_c1_p20_2.c
--rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4863 Apr 10 03:08 code_c2_p18*
--rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087  328 Apr 10 03:07 code_c2_p18.c
--rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4739 Apr 10 03:22 code_c2_p21*
--rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087   99 Apr 10 03:21 code_c2_p21.c
--rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4854 Apr 10 23:15 code_c4_p17*
--rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087   33 Apr 10 23:14 code_c4_p17_2.c
--rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087  140 Apr 10 23:15 code_c4_p17.c
-
---------------------------------------------
-[Yecaijia_2014150087@localhost codeInPPT]$ ls -ila
-total 72
-262087 drwxrwxr-x. 2 Yecaijia_2014150087 Yecaijia_2014150087 4096 Apr 11 04:37 .
-261655 drwxr-xr-x. 3 Yecaijia_2014150087 Yecaijia_2014150087 4096 Apr 10 01:21 ..
-262098 -rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4829 Apr 10 01:39 code_c1_p20_1
-262097 -rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087  242 Apr 10 01:37 code_c1_p20_1.c
-262096 -rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4865 Apr 10 01:39 code_c1_p20_2
-262091 -rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087  311 Apr 10 01:38 code_c1_p20_2.c
-262099 -rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4863 Apr 10 03:08 code_c2_p18
-262102 -rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087  328 Apr 10 03:07 code_c2_p18.c
-262100 -rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4739 Apr 10 03:22 code_c2_p21
-262103 -rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087   99 Apr 10 03:21 code_c2_p21.c
-262104 -rwxrwxr-x. 1 Yecaijia_2014150087 Yecaijia_2014150087 4854 Apr 10 23:15 code_c4_p17
-262105 -rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087   33 Apr 10 23:14 code_c4_p17_2.c
-262107 -rw-rw-r--. 1 Yecaijia_2014150087 Yecaijia_2014150087  140 Apr 10 23:15 code_c4_p17.c
-</code></pre><h2 id="ls-信息"><a href="#ls-信息" class="headerlink" title="ls 信息"></a>ls 信息</h2><table>
-<thead>
-<tr>
-<th>文件属性</th>
-<th>硬链接数/子目录数</th>
-<th>文件拥有者</th>
-<th>文件拥有者所在组</th>
-<th>文件大小</th>
-<th>创建月份</th>
-<th>创建日期</th>
-<th>创建时间</th>
-<th>文件名</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-rw-rw-r–.</td>
-<td>1</td>
-<td>Yecaijia_2014150087</td>
-<td>Yecaijia_2014150087</td>
-<td>140</td>
-<td>Apr</td>
-<td>10</td>
-<td>23:15</td>
-<td>code_c4_p17.c</td>
-</tr>
-</tbody>
-</table>
-<p>第一个符号：<br>符号 | 意义</p>
-<ul>
-<li>| -<br>d | 目录</li>
-<li>| 常规文件<br>b | 块类型特殊文件<br>c | 字符型特殊文件<br>s | 套接字<br>l | 链接<br>p | 管道</li>
-</ul>
-<p>文件读写属性：<br>（rwx) | (rwx) | (rwx)</p>
-<ul>
-<li>| - | -<br>owner | group | others</li>
-<li>r 表示允许读（查看文件中的数据）</li>
-<li>w 表示允许写（修改文件以及删除）</li>
-<li>x 表示允许“执行”（运行程序）</li>
-</ul>
-<p><br><br></p>
-<h1 id="touch-文件新建、修改文件时间"><a href="#touch-文件新建、修改文件时间" class="headerlink" title="touch 文件新建、修改文件时间"></a>touch 文件新建、修改文件时间</h1><h2 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h2><pre><code>touch [选项] 文件
-
-主要选项：
--a   或--time=atime或--time=access或--time=use 　只更改存取时间。
--c   或--no-create 　不建立任何文档。
--d 　使用指定的日期时间，而非现在的时间。
--f 　此参数将忽略不予处理，仅负责解决BSD版本touch指令的兼容性问题。
--m   或--time=mtime或--time=modify 　只更改变动时间。
--r 　把指定文档或目录的日期时间，统统设成和参考文档或目录的日期时间相同。
--t 　使用指定的日期时间，而非现在的时间。
-</code></pre><h2 id="应用-6"><a href="#应用-6" class="headerlink" title="应用"></a>应用</h2><h3 id="创建不存在的文件"><a href="#创建不存在的文件" class="headerlink" title="创建不存在的文件"></a>创建不存在的文件</h3><pre><code>touch README.md
---------------------------------------------
-[leif@localhost Documents]$ ls
-[leif@localhost Documents]$ touch README.md
-[leif@localhost Documents]$ ls
-README.md
-</code></pre><h3 id="更改file2的时间，使它与file1相同"><a href="#更改file2的时间，使它与file1相同" class="headerlink" title="更改file2的时间，使它与file1相同"></a>更改file2的时间，使它与file1相同</h3><pre><code>touch -r file1 file2
---------------------------------------------
-[leif@localhost Documents]$ ls -la
-total 8
-drwxr-xr-x.  2 leif leif 4096 Apr 11 05:27 .
-drwx------. 22 leif leif 4096 Apr  2 20:58 ..
--rw-rw-r--.  1 leif leif    0 Apr 11 05:26 file1
--rw-rw-r--.  1 leif leif    0 Apr 11 05:27 file2
--rw-rw-r--.  1 leif leif    0 Apr 11 05:25 README.md
-[leif@localhost Documents]$ touch -r file1 file2
-[leif@localhost Documents]$ ls -la
-total 8
-drwxr-xr-x.  2 leif leif 4096 Apr 11 05:27 .
-drwx------. 22 leif leif 4096 Apr  2 20:58 ..
--rw-rw-r--.  1 leif leif    0 Apr 11 05:26 file1
--rw-rw-r--.  1 leif leif    0 Apr 11 05:26 file2
--rw-rw-r--.  1 leif leif    0 Apr 11 05:25 README.md
-</code></pre><h3 id="将文件file1的时间记录改为2000年5月6日18点3分。"><a href="#将文件file1的时间记录改为2000年5月6日18点3分。" class="headerlink" title="将文件file1的时间记录改为2000年5月6日18点3分。"></a>将文件file1的时间记录改为2000年5月6日18点3分。</h3><pre><code>touch -c -t 200005061803.00 file1
---------------------------------------------
-[leif@localhost Documents]$ ls -la
-total 8
-drwxr-xr-x.  2 leif leif 4096 Apr 11 05:27 .
-drwx------. 22 leif leif 4096 Apr  2 20:58 ..
--rw-rw-r--.  1 leif leif    0 Apr 11 05:26 file1
--rw-rw-r--.  1 leif leif    0 Apr 11 05:26 file2
--rw-rw-r--.  1 leif leif    0 Apr 11 05:25 README.md
-[leif@localhost Documents]$ touch -c -t 200005061803.00 file1
-[leif@localhost Documents]$ ls -la
-total 8
-drwxr-xr-x.  2 leif leif 4096 Apr 11 05:27 .
-drwx------. 22 leif leif 4096 Apr  2 20:58 ..
--rw-rw-r--.  1 leif leif    0 May  6  2000 file1
--rw-rw-r--.  1 leif leif    0 Apr 11 05:26 file2
--rw-rw-r--.  1 leif leif    0 Apr 11 05:25 README.md
-</code></pre><p><br><br></p>
-<h1 id="cat-读取文件内容并且打印到标准输出"><a href="#cat-读取文件内容并且打印到标准输出" class="headerlink" title="cat 读取文件内容并且打印到标准输出"></a>cat 读取文件内容并且打印到标准输出</h1><h2 id="命令格式-1"><a href="#命令格式-1" class="headerlink" title="命令格式"></a>命令格式</h2><pre><code>cat [选项] 文件名
-主要选项：
--n：由1开始对所有输出的行数编号
--b：同-n,对于空白行不编号
--s：当遇到有连续两行以上的空白行，就代换为一行的空白行
--E：在行尾显示$符号
-</code></pre><h2 id="应用-7"><a href="#应用-7" class="headerlink" title="应用"></a>应用</h2><pre><code>[leif@localhost Documents]$ cat README.md
-test
-test
-
-
-test
-test
-
-test
---------------------------------------------
-[leif@localhost Documents]$ cat -n README.md
- 1  test
- 2  test
- 3
- 4
- 5  test
- 6  test
- 7
- 8  test
---------------------------------------------
- [leif@localhost Documents]$ cat -b README.md
- 1  test
- 2  test
-
-
- 3  test
- 4  test
-
- 5  test
- --------------------------------------------
- [leif@localhost Documents]$ cat -s README.md
- test
- test
-
- test
- test
-
- test
---------------------------------------------
-[leif@localhost Documents]$ cat -E README.md
-test$
-test$
-$
-$
-test$
-test$
-$
-test$
-</code></pre><p><br><br></p>
-<h1 id="more-分页显示文件内容"><a href="#more-分页显示文件内容" class="headerlink" title="more 分页显示文件内容"></a>more 分页显示文件内容</h1><h2 id="命令格式-2"><a href="#命令格式-2" class="headerlink" title="命令格式"></a>命令格式</h2><pre><code>more [选项] 文件名
-
-主要选项：
--num：一次显示的行数
-+num：从第num行开始显示
--d：提示使用者，在画面下方显示 [Press space to continue, q to quit.] ，如果使用者按错键，则会显示 [Press h for instructions.]
-</code></pre><h2 id="应用-8"><a href="#应用-8" class="headerlink" title="应用"></a>应用</h2><pre><code>[leif@localhost Documents]$ more README.md
-test
-test
-
-
-test
-test
-
-test
-</code></pre><p><br><br></p>
-<h1 id="less-回卷显示文件内容"><a href="#less-回卷显示文件内容" class="headerlink" title="less 回卷显示文件内容"></a>less 回卷显示文件内容</h1><h2 id="命令格式-3"><a href="#命令格式-3" class="headerlink" title="命令格式"></a>命令格式</h2><pre><code>less [选项] 文件名
-</code></pre><ul>
-<li>与more类似，不过会在新的页面显示</li>
-</ul>
-<p><br><br></p>
-<h1 id="head-显示文件前若干行"><a href="#head-显示文件前若干行" class="headerlink" title="head 显示文件前若干行"></a>head 显示文件前若干行</h1><h2 id="命令格式-4"><a href="#命令格式-4" class="headerlink" title="命令格式"></a>命令格式</h2><pre><code>head [选项] 文件名
-
-主要选项：
--q 隐藏文件名
--v 显示文件名
--c&lt;字节&gt; 显示字节数
--n&lt;行数&gt; 显示的行数
-</code></pre><h2 id="应用-9"><a href="#应用-9" class="headerlink" title="应用"></a>应用</h2><pre><code>[leif@localhost Documents]$ head -v README.md
-==&gt; README.md &lt;==
-test
-test
-
-
-test
-test
-
-test
---------------------------------------------
-[leif@localhost Documents]$ head -n3 README.md
-test
-test
-
---------------------------------------------
-[leif@localhost Documents]$ head -c3 README.md
-tes
-</code></pre><p><br><br></p>
-<h1 id="tail-显示文件后若干行"><a href="#tail-显示文件后若干行" class="headerlink" title="tail 显示文件后若干行"></a>tail 显示文件后若干行</h1><h2 id="命令格式-5"><a href="#命令格式-5" class="headerlink" title="命令格式"></a>命令格式</h2><pre><code>tail [选项] 文件名
-主要选项：
--f 循环读取
--q 不显示处理信息
--v 显示详细的处理信息
--c&lt;数目&gt; 显示的字节数
--n&lt;行数&gt; 显示行数
---pid=PID 与-f合用,表示在进程ID,PID死掉之后结束.
--q, --quiet, --silent 从不输出给出文件名的首部
--s, --sleep-interval=S 与-f合用,表示在每次反复的间隔休眠S秒
-</code></pre><h2 id="应用-10"><a href="#应用-10" class="headerlink" title="应用"></a>应用</h2><pre><code>[leif@localhost Documents]$ tail -n4 README.md
-test
-test
-
-test
-</code></pre><p><br><br></p>
-<h1 id="grep-过滤、搜索命令"><a href="#grep-过滤、搜索命令" class="headerlink" title="grep 过滤、搜索命令"></a>grep 过滤、搜索命令</h1><h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><pre><code>grep [option] pattern file
-
-主要选项：
--a   --text   #不要忽略二进制的数据。   
--A&lt;显示行数&gt;   --after-context=&lt;显示行数&gt;   #除了显示符合范本样式的那一列之外，并显示该行之后的内容。   
--b   --byte-offset   #在显示符合样式的那一行之前，标示出该行第一个字符的编号。   
--B&lt;显示行数&gt;   --before-context=&lt;显示行数&gt;   #除了显示符合样式的那一行之外，并显示该行之前的内容。   
--c    --count   #计算符合样式的列数。   
--C&lt;显示行数&gt;    --context=&lt;显示行数&gt;或-&lt;显示行数&gt;   #除了显示符合样式的那一行之外，并显示该行之前后的内容。   
--d &lt;动作&gt;      --directories=&lt;动作&gt;   #当指定要查找的是目录而非文件时，必须使用这项参数，否则grep指令将回报信息并停止动作。   
--e&lt;范本样式&gt;  --regexp=&lt;范本样式&gt;   #指定字符串做为查找文件内容的样式。   
--E      --extended-regexp   #将样式为延伸的普通表示法来使用。   
--f&lt;规则文件&gt;  --file=&lt;规则文件&gt;   #指定规则文件，其内容含有一个或多个规则样式，让grep查找符合规则条件的文件内容，格式为每行一个规则样式。   
--F   --fixed-regexp   #将样式视为固定字符串的列表。   
--G   --basic-regexp   #将样式视为普通的表示法来使用。   
--h   --no-filename   #在显示符合样式的那一行之前，不标示该行所属的文件名称。   
--H   --with-filename   #在显示符合样式的那一行之前，表示该行所属的文件名称。   
--i    --ignore-case   #忽略字符大小写的差别。   
--l    --file-with-matches   #列出文件内容符合指定的样式的文件名称。   
--L   --files-without-match   #列出文件内容不符合指定的样式的文件名称。   
--n   --line-number   #在显示符合样式的那一行之前，标示出该行的列数编号。   
--q   --quiet或--silent   #不显示任何信息。   
--r   --recursive   #此参数的效果和指定“-d recurse”参数相同。   
--s   --no-messages   #不显示错误信息。   
--v   --revert-match   #显示不包含匹配文本的所有行。   
--V   --version   #显示版本信息。   
--w   --word-regexp   #只显示全字符合的列。   
--x    --line-regexp   #只显示全列符合的列。   
--y   #此参数的效果和指定“-i”参数相同。
-</code></pre><h2 id="pattern"><a href="#pattern" class="headerlink" title="pattern"></a>pattern</h2><h3 id="grep的规则表达式"><a href="#grep的规则表达式" class="headerlink" title="grep的规则表达式:"></a>grep的规则表达式:</h3><table>
-<thead>
-<tr>
-<th>符号</th>
-<th>意义</th>
-<th>例子</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>^</td>
-<td>#锚定行的开始</td>
-<td>‘^grep’匹配所有以grep开头的行。    </td>
-</tr>
-<tr>
-<td>$</td>
-<td>#锚定行的结束</td>
-<td>‘grep$’匹配所有以grep结尾的行。    </td>
-</tr>
-<tr>
-<td>.</td>
-<td>#匹配一个非换行符的字符</td>
-<td>‘gr.p’匹配gr后接一个任意字符，然后是p。    </td>
-</tr>
-<tr>
-<td>*</td>
-<td>#匹配零个或多个先前字符</td>
-<td>‘*grep’匹配所有一个或多个空格后紧跟grep的行。    </td>
-</tr>
-<tr>
-<td>.*</td>
-<td>#一起用代表任意字符。</td>
-<td></td>
-</tr>
-<tr>
-<td>[]</td>
-<td>#匹配一个指定范围内的字符</td>
-<td>‘[Gg]rep’匹配Grep和grep。    </td>
-</tr>
-<tr>
-<td>[^]</td>
-<td>#匹配一个不在指定范围内的字符</td>
-<td>‘[^A-FH-Z]rep’匹配不包含A-R和T-Z的一个字母开头，紧跟rep的行。    </td>
-</tr>
-<tr>
-<td>(..)</td>
-<td>#标记匹配字符</td>
-<td>‘(love)‘，love被标记为1。    </td>
-</tr>
-<tr>
-<td>\&lt;</td>
-<td>#锚定单词的开始</td>
-<td>‘\&lt;grep’匹配包含以grep开头的单词的行。    </td>
-</tr>
-<tr>
-<td>></td>
-<td>#锚定单词的结束</td>
-<td>如’grep>‘匹配包含以grep结尾的单词的行。    </td>
-</tr>
-<tr>
-<td>x{m}</td>
-<td>#重复字符x，m次</td>
-<td>‘0{5}‘匹配包含5个o的行。    </td>
-</tr>
-<tr>
-<td>x{m,}</td>
-<td>#重复字符x,至少m次</td>
-<td>‘o{5,}‘匹配至少有5个o的行。    </td>
-</tr>
-<tr>
-<td>x{m,n}</td>
-<td>#重复字符x，至少m次，不多于n次</td>
-<td>‘o{5,10}‘匹配5–10个o的行。   </td>
-</tr>
-<tr>
-<td>\w</td>
-<td>#匹配文字和数字字符，也就是[A-Za-z0-9]</td>
-<td>‘G\w*p’匹配以G后跟零个或多个文字或数字字符，然后是p。   </td>
-</tr>
-<tr>
-<td>\W</td>
-<td>#\w的反置形式，匹配一个或多个非单词字符，如点号句号等。</td>
-<td></td>
-</tr>
-<tr>
-<td>\b</td>
-<td>#单词锁定符</td>
-<td>‘\bgrep\b’只匹配grep。  </td>
-</tr>
-</tbody>
-</table>
-<h3 id="POSIX字符"><a href="#POSIX字符" class="headerlink" title="POSIX字符:"></a>POSIX字符:</h3><p>为了在不同国家的字符编码中保持一至，POSIX(The Portable Operating System Interface)增加了特殊的字符类，如[:alnum:]是[A-Za-z0-9]的另一个写法。要把它们放到[]号内才能成为正则表达式，如[A- Za-z0-9]或[[:alnum:]]。在linux下的grep除fgrep外，都支持POSIX的字符类。<br>表达式 | 意义</p>
-<ul>
-<li>| -<br>[:alnum:] | #文字数字字符<br>[:alpha:] | #文字字符<br>[:digit:] | #数字字符<br>[:graph:] | #非空字符（非空格、控制字符）<br>[:lower:] | #小写字符<br>[:cntrl:] | #控制字符<br>[:print:] | #非空字符（包括空格）<br>[:punct:] | #标点符号<br>[:space:] | #所有空白字符（新行，空格，制表符）<br>[:upper:] | #大写字符<br>[:xdigit:] | #十六进制数字（0-9，a-f，A-F）  </li>
-</ul>
-<h2 id="应用-11"><a href="#应用-11" class="headerlink" title="应用"></a>应用</h2><h3 id="在文件中查找包含相应字串行"><a href="#在文件中查找包含相应字串行" class="headerlink" title="在文件中查找包含相应字串行"></a>在文件中查找包含相应字串行</h3><pre><code>[leif@localhost Documents]$ grep &quot;Hello&quot; README.md
-Hello
-[leif@localhost Documents]$ grep Hello README.md
-Hello
-</code></pre><h3 id="在文件中查找包含相应字串行并打印相应的行号"><a href="#在文件中查找包含相应字串行并打印相应的行号" class="headerlink" title="在文件中查找包含相应字串行并打印相应的行号"></a>在文件中查找包含相应字串行并打印相应的行号</h3><pre><code>[leif@localhost Documents]$ grep -ni Hello README.md
-10:Hello
-</code></pre><h3 id="在文件中查找不包含相应字串的行"><a href="#在文件中查找不包含相应字串的行" class="headerlink" title="在文件中查找不包含相应字串的行"></a>在文件中查找不包含相应字串的行</h3><pre><code>[leif@localhost Documents]$ grep -vi Hello README.md
-test
-test
-
-
-test
-test
-
-test
-</code></pre><h3 id="查询系统是否安装了gcc"><a href="#查询系统是否安装了gcc" class="headerlink" title="查询系统是否安装了gcc"></a>查询系统是否安装了gcc</h3><pre><code>[leif@localhost Documents]$ rpm -qa | grep gcc
-libgcc-4.4.4-2.fc13.i686
-gcc-c++-4.4.4-2.fc13.i686
-gcc-gfortran-4.4.4-2.fc13.i686
-gcc-4.4.4-2.fc13.i686
-</code></pre><p><br><br></p>
-<h1 id="find-搜索指定目录的文件"><a href="#find-搜索指定目录的文件" class="headerlink" title="find 搜索指定目录的文件"></a>find 搜索指定目录的文件</h1><h2 id="命令格式-6"><a href="#命令格式-6" class="headerlink" title="命令格式"></a>命令格式</h2><pre><code>find [path] [options] [expression]
-常用参数:
--name: 搜索指定文件名字的文件,支持通配符
--atime n: 搜索过去n天之内访问过的文件
--ctime n: 搜索过去n天之内修改过的文件
--group gname: 搜索指定组属的文件
-</code></pre><h2 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h2><table>
-<thead>
-<tr>
-<th>符号</th>
-<th>意义</th>
-<th>例子</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>*</td>
-<td>0到多个</td>
-<td>/etc/g<em>  /tmp/my</em>1</td>
-</tr>
-<tr>
-<td>?</td>
-<td>单个字符</td>
-<td>file?</td>
-</tr>
-<tr>
-<td>[]</td>
-<td>与[]内任一字符相匹配</td>
-<td>file[12]</td>
-</tr>
-<tr>
-<td>[!]</td>
-<td>不与括弧中的任何字符匹配</td>
-<td>rm file[!9]</td>
-</tr>
-</tbody>
-</table>
-<pre><code>Bash对与通配符相关的字符（*、？、[、]、！）进行特殊的处理，当你需要将包含这些字符的参数输入到命令中时，需要用单引号把这些字符括起来
-$echo ‘[fo]*’ &gt; file1
-$echo \[fo\]\* &gt; file1
-</code></pre>
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/07/09/linux暑期实践1-字符界面与常用命令/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1815,71 +994,26 @@ $echo \[fo\]\* &gt; file1
       
         
           
-            <blockquote>
-<p>系统需要先安装python、pillow</p>
-<p>Mac下安装pillow可以参照《Mac下安装pillow》<br><a href="http://yecj.me/2016/07/08/Mac下安装pillow/">http://yecj.me/2016/07/08/Mac下安装pillow/</a></p>
-</blockquote>
-<h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><p>原图：</p>
-<p><img src="https://raw.githubusercontent.com/leifjacky/leifjacky.github.io/master/images/inArticles/Img2CharOrigin.jpg" alt="origin"></p>
-<p>效果图：</p>
-<p><img src="https://raw.githubusercontent.com/leifjacky/leifjacky.github.io/master/images/inArticles/Img2CharFinal.png" alt="origin"></p>
-<p><br><br></p>
-<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><h2 id="将RGB图转换成灰度图"><a href="#将RGB图转换成灰度图" class="headerlink" title="将RGB图转换成灰度图"></a>将RGB图转换成灰度图</h2><pre><code>灰度值 ＝ 0.2126 * r + 0.7152 * g + 0.0722 * b
-</code></pre><p>每个像素点都有一个0-255的值，值越大，说明该点越黑色；值越大，该点越偏白色。所以我们可以根据灰度值，通过不同像素密度的字符代替每个像素点，来“表示”原图。</p>
-<h2 id="编写灰度值字符串"><a href="#编写灰度值字符串" class="headerlink" title="编写灰度值字符串"></a>编写灰度值字符串</h2><p>观察原图，注意到我们实际需要保留的是黑色的部分，也就是灰度值小的部分，可以得到以下字符串：</p>
-<pre><code>ascii_char = list(&quot;$@B%8&amp;WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~&lt;&gt;i!lI;:,\&quot;^`&apos;. &quot;)
-</code></pre><p>下标小的部分字符像素密度越大，对应灰度值小的部分；下标大的部分字符像素密度越大，对应灰度值大的部分。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre><code>from PIL import Image   # 从pillow导入必要的库
-import ArgumentParser   # 命令行参数处理相关库
-
-parser = argparse.ArgumentParser()     # 命令行参数处理
-
-parser.add_argument(&apos;file&apos;)     # 输入文件
-parser.add_argument(&apos;-o&apos;, &apos;--output&apos;)   # 输出文件
-parser.add_argument(&apos;--width&apos;, type = int, default = 80)    # 输出宽度，默认80
-parser.add_argument(&apos;--height&apos;, type = int, default = 40)   # 输出高度，默认40
-
-args = parser.parse_args()      # 获取参数
-
-IMG = args.file
-WIDTH = args.width
-HEIGHT = args.height
-OUTPUT = args.output
-
-ascii_char = list(&quot;$@B%8&amp;WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~&lt;&gt;i!lI;:,\&quot;^`&apos;. &quot;)    # 灰度值字符串
-
-# 函数：根据灰度值返回字符串
-def get_char(r, b, g, alpha = 255):
-    if alpha == 0:
-        return &apos; &apos;
-    length = len(ascii_char)
-    gray = int(0.2126 * r + 0.7152 * g + 0.0722 * b)
-
-    unit = (float(alpha) + 1)/length
-
-    return ascii_char[int(gray/unit)]
-
-if __name__ == &apos;__main__&apos;:
-    im = Image.open(IMG)    # 打开图片
-    im = im.resize((WIDTH,HEIGHT), Image.NEAREST)   # 改变图片大小
-
-    txt = &quot;&quot;
-
-    for i in range(HEIGHT):
-        for j in range(WIDTH):
-            txt += get_char(*im.getpixel((j, i)))
-        txt += &apos;\n&apos;
-
-    print txt
-
-    if OUTPUT:
-        with open(OUTPUT, &apos;w&apos;) as f:
-            f.write(txt)
-    else:
-        with open(&quot;output.txt&quot;, &apos;w&apos;) as f:
-            f.write(txt)
-</code></pre>
           
+系统需要先安装python、pillow
+Mac下安装pillow可以参照《Mac下安装pillow》http://yecj.me/2016/07/08/Mac下安装pillow/
+
+效果原图：
+
+效果图：
+
+
+原理将RGB图转换成灰度图灰度值 ＝ 0.2126 * r + 0.7152 * g + 0.0722 * b
+每个像素点都有一个0-255的值，值越大，说明该点越黑色；值越大，该点越偏白色。所以我们可以根据灰度值，通过不同像素密度的字符代替每个像素点，来“表示”原图。
+编写灰度值字符串观察原图，注意到我们实际需要保留的是黑色的部分，也就是灰度值小的部分，可以得到以下字符串：
+asc
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/07/08/Python-图片转字符画/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1978,23 +1112,23 @@ if __name__ == &apos;__main__&apos;:
       
         
           
-            <blockquote>
-<p>原文链接： <a href="http://blog.chinaunix.net/uid-26495963-id-3367377.html" target="_blank" rel="external">http://blog.chinaunix.net/uid-26495963-id-3367377.html</a></p>
-</blockquote>
-<p>简要：</p>
-<pre><code>将图片放在仓库里面，在文件里链接它，最后 push 到 github 上。
-</code></pre><p>github 图片链接格式：</p>
-<pre><code>http://github.com/yourname/your-repository/raw/master/images-folder/xxx.png
-</code></pre><p>要自己设定的：yourname, your-repository, your-folder, xxx.png。</p>
-<pre><code>yourname            --- 你的帐号
-your-respository --- 你的 project 名
-images-folder      --- 你存放图片的文件夹，如果是直接放在 project 的项目根目录的話，就可以省略這個
-xxx.png                --- 你的图片名
-</code></pre><p>然后在 README.md 里添加：</p>
-<p>例如：我在我的 dotvim 文件夹下一个 screenshots 目录，在该目录里有一个 vim-screenshot.jpg 截图。那么添加链接的方式如下</p>
-<pre><code>![image](https://github.com/ButBueatiful/dotvim/raw/master/screenshots/vim-screenshot.jpg)
-</code></pre>
           
+原文链接： http://blog.chinaunix.net/uid-26495963-id-3367377.html
+
+简要：
+将图片放在仓库里面，在文件里链接它，最后 push 到 github 上。
+github 图片链接格式：
+http://github.com/yourname/your-repository/raw/master/images-folder/xxx.png
+要自己设定的：yourname, your-repository, your-folder, xxx.png。
+yourname            --- 你的帐号
+your-respository --
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/07/08/github-readme-md-添加图片/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -2093,10 +1227,16 @@ xxx.png                --- 你的图片名
       
         
           
-            <h1 id="安装pip"><a href="#安装pip" class="headerlink" title="安装pip"></a>安装pip</h1><pre><code>sudo easy_install pip
-</code></pre><h1 id="安装pillow"><a href="#安装pillow" class="headerlink" title="安装pillow"></a>安装pillow</h1><pre><code>sudo pip install pillow
-</code></pre>
+          安装pipsudo easy_install pip
+安装pillowsudo pip install pillow
+
           
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/07/08/Mac下安装pillow/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -2195,175 +1335,33 @@ xxx.png                --- 你的图片名
       
         
           
-            <blockquote>
-<p>本文基于实验楼教程编写</p>
-</blockquote>
-<h1 id="特殊方法与多范式"><a href="#特殊方法与多范式" class="headerlink" title="特殊方法与多范式"></a>特殊方法与多范式</h1><h2 id="特殊方法"><a href="#特殊方法" class="headerlink" title="特殊方法"></a>特殊方法</h2><p><strong>特殊方法名的前后各有两个下划线。</strong></p>
-<ul>
-<li>可以通过dir()来查看对象所拥有的特殊方法，比如dir(1)</li>
-</ul>
-<h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><pre><code>&apos;abc&apos; + &apos;xyz&apos;               # 连接字符串
+          
+本文基于实验楼教程编写
+
+特殊方法与多范式特殊方法特殊方法名的前后各有两个下划线。
+
+可以通过dir()来查看对象所拥有的特殊方法，比如dir(1)
+
+运算符&apos;abc&apos; + &apos;xyz&apos;               # 连接字符串
 
 # equal
 
 &apos;abc&apos;.__add__(&apos;xyz&apos;)
-</code></pre><h3 id="内置函数"><a href="#内置函数" class="headerlink" title="内置函数"></a>内置函数</h3><pre><code>len([1, 2, 3])    #返回表中元素的总数
+内置函数len([1, 2, 3])    #返回表中元素的总数
 
 # equals
 
 [1, 2, 3].__len__len()
-</code></pre><h3 id="表-list-元素引用"><a href="#表-list-元素引用" class="headerlink" title="表(list)元素引用"></a>表(list)元素引用</h3><pre><code>li = [1, 2, 3, 4, 5, 6]
+表(list)元素引用li = [1, 2, 3, 4, 5, 6]
 
-li[3]        # 获取li下标为3的元素
+li[3]     
+          ...
 
-# equals
-
-li.__getitem__(3)
-</code></pre><h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p>函数也是对象，实际上，任何一个有<strong>call</strong>()特殊方法的对象都被当作是函数。</p>
-<pre><code>class SampleMore(object):
-    def \_\_call\_\_(self, a):
-        return a + 5
-
-add = SampleMore()     # A function object
-print(add(2))          # Call function    
-map(add, [2, 4, 5])    # Pass around function object
-</code></pre><ul>
-<li>add为SampleMore类的一个对象，当被调用时，add执行加5的操作。add还可以作为函数对象，被传递给map()函数。</li>
-</ul>
-<h1 id="上下文管理器"><a href="#上下文管理器" class="headerlink" title="上下文管理器"></a>上下文管理器</h1><p>语法形式：</p>
-<pre><code>with ... as ...
-</code></pre><h2 id="关闭文件"><a href="#关闭文件" class="headerlink" title="关闭文件"></a>关闭文件</h2><p>上下文管理器可以在不需要文件的时候，自动关闭文件。</p>
-<pre><code># without context manager
-f = open(&quot;new.txt&quot;, &quot;w&quot;)
-print(f.closed)               # whether the file is open
-f.write(&quot;Hello World!&quot;)
-f.close()
-print(f.closed)
-
-# with context manager
-with open(&quot;new.txt&quot;, &quot;w&quot;) as f:
-    print(f.closed)
-    f.write(&quot;Hello World!&quot;)
-print(f.closed)
-</code></pre><ul>
-<li>第二段程序中，<strong>上下文管理器有隶属于它的程序块</strong>。当隶属的程序块执行结束的时候(也就是不再缩进)，上下文管理器自动关闭了文件 (我们通过f.closed来查询文件是否关闭)。我们相当于使用缩进规定了文件对象f的使用范围。</li>
-<li>上面的上下文管理器基于f对象的__exit__()特殊方法。</li>
-<li>使用上下文管理器的语法时，我们实际上要求Python在进入程序块之前调用对象的__enter__()方法，在结束程序块的时候调用__exit__()方法。</li>
-</ul>
-<h2 id="自定义上下文管理器"><a href="#自定义上下文管理器" class="headerlink" title="自定义上下文管理器"></a>自定义上下文管理器</h2><p>任何定义了__enter__()和__exit__()方法的对象都可以用于上下文管理器。</p>
-<pre><code># customized object
-
-class VOW(object):
-    def __init__(self, text):
-        self.text = text
-    def __enter__(self):
-        self.text = &quot;I say: &quot; + self.text    # add prefix
-        return self                          # note: return an object
-    def __exit__(self,exc_type,exc_value,traceback):
-        self.text = self.text + &quot;!&quot;          # add suffix
-
-
-with VOW(&quot;I&apos;m fine&quot;) as myvow:
-    print(myvow.text)
-
-print(myvow.text)
-</code></pre><ul>
-<li>__enter__()返回一个对象。上下文管理器会使用这一对象作为as所指的变量，也就是myvow。</li>
-<li>__exit__()中有四个参数。当程序块中出现异常(exception)，__exit__()的参数中exc_type, exc_value, traceback用于描述异常。我们可以根据这三个参数进行相应的处理。<strong>如果正常运行结束，这三个参数都是None。</strong></li>
-</ul>
-<h1 id="对象的属性"><a href="#对象的属性" class="headerlink" title="对象的属性"></a>对象的属性</h1><h2 id="属性的-dict-系统"><a href="#属性的-dict-系统" class="headerlink" title="属性的__dict__系统"></a>属性的__dict__系统</h2><ul>
-<li>对象的属性可能来自于其类定义，叫做类属性(class attribute)。类属性可能来自类定义自身，也可能根据类定义继承来的。</li>
-<li>一个对象的属性还可能是该对象实例定义的，叫做对象属性(object attribute)。</li>
-</ul>
-<p>对象的属性储存在对象的<strong>dict</strong>属性中。<strong>dict</strong>为一个词典，键为属性名，对应的值为属性本身。</p>
-<pre><code>class bird(object):
-    feather = True
-
-class chicken(bird):
-    fly = False
-    def __init__(self, age):
-        self.age = age
-
-summer = chicken(2)
-
-print(bird.__dict__)
-print(chicken.__dict__)
-print(summer.__dict__)
-</code></pre><p>输出结果：</p>
-<pre><code>print(bird.__dict__)
-{&apos;__dict__&apos;: &lt;attribute &apos;__dict__&apos; of &apos;bird&apos; objects&gt;, &apos;__module__&apos;: &apos;__main__&apos;, &apos;__weakref__&apos;: &lt;attribute &apos;__weakref__&apos; of &apos;bird&apos; objects&gt;, &apos;feather&apos;: True, &apos;__doc__&apos;: None}
-
-print(chicken.__dict__)
-{&apos;fly&apos;: False, &apos;__module__&apos;: &apos;__main__&apos;, &apos;__doc__&apos;: None, &apos;__init__&apos;: &lt;function __init__ at 0x2b91db476d70&gt;}
-
-print(summer.__dict__)
-{&apos;age&apos;: 2}
-</code></pre><ul>
-<li>Python中的属性是分层定义的，比如这里分为object/bird/chicken/summer这四层。当我们需要调用某个属性的时候，Python会一层层向上遍历，直到找到那个属性。<strong>(某个属性可能出现再不同的层被重复定义，Python向上的过程中，会选取先遇到的那一个，也就是比较低层的属性定义)。</strong></li>
-</ul>
-<p>当我们有一个summer对象的时候，分别查询summer对象、chicken类、bird类以及object类的属性，就可以知道summer对象所有的__dict__，就可以找到通过对象summer可以调用和修改的所有属性了。下面两种属性修改方法等效：</p>
-<pre><code>summer.__dict__[&apos;age&apos;] = 3
-print(summer.__dict__[&apos;age&apos;])
-
-summer.age = 5
-print(summer.age)  
-</code></pre><ul>
-<li>上面的情况中，我们已经知道了summer对象的类为chicken，而chicken类的父类为bird。如果只有一个对象，而不知道它的类以及其他信息的时候，我们<strong>可以利用<strong>class</strong>属性找到对象的类，然后调用类的<strong>base</strong>属性来查询父类</strong>。</li>
-</ul>
-<h2 id="属性的特性"><a href="#属性的特性" class="headerlink" title="属性的特性"></a>属性的特性</h2><p>使用情况：</p>
-<p>同一个对象的不同属性之间可能存在依赖关系。当某个属性被修改时，我们希望依赖于该属性的其他属性也同时变化。这时，我们不能通过__dict__的方式来静态的储存属性。</p>
-<p>Python提供了多种即时生成属性的方法。其中一种称为特性(property)。特性是特殊的属性。比如我们为chicken类增加一个特性adult。当对象的age超过1时，adult为True；否则为False：</p>
-<pre><code>class bird(object):
-    feather = True
-
-class chicken(bird):
-    fly = False
-    def __init__(self, age):
-        self.age = age
-    def getAdult(self):
-        if self.age &gt; 1.0: return True
-        else: return False
-    adult = property(getAdult)   # property is built-in
-
-summer = chicken(2)
-
-print(summer.adult)
-summer.age = 0.5
-print(summer.adult)
-</code></pre><ul>
-<li>上面的num为一个数字，而neg为一个特性，用来表示数字的负数。</li>
-<li>当一个数字确定的时候，它的负数总是确定的；而当我们修改一个数的负数时，它本身的值也应该变化。setNeg()的作用是设置本身的值为-neg。</li>
-<li>也应该变化。这两点由getNeg和setNeg来实现。而delNeg表示的是，如果删除特性neg，那么应该执行的操作是删除属性value。</li>
-<li>property()的最后一个参数(“I’m negative”)为特性negative的说明文档。</li>
-</ul>
-<h2 id="特殊方法-getattr"><a href="#特殊方法-getattr" class="headerlink" title="特殊方法__getattr__"></a>特殊方法__getattr__</h2><p>我们可以用__getattr__(self, name)来查询即时生成的属性。当我们查询一个属性时，如果通过__dict__方法无法找到该属性，那么Python会调用对象的__getattr__方法，来即时生成该属性。比如:</p>
-<pre><code>class bird(object):
-    feather = True
-
-class chicken(bird):
-    fly = False
-    def __init__(self, age):
-        self.age = age
-    def __getattr__(self, name):
-        if name == &apos;adult&apos;:
-            if self.age &gt; 1.0: return True
-            else: return False
-        else: raise AttributeError(name)
-
-summer = chicken(2)
-
-print(summer.adult)
-summer.age = 0.5
-print(summer.adult)
-
-print(summer.male)
-</code></pre><ul>
-<li>__setattr__(self, name, value)和__delattr__(self, name)可用于修改和删除属性。它们的应用面更广，可用于任意属性。</li>
-<li>Python中还有一个__getattribute__特殊方法，用于查询任意属性。__getattr_<em>只能用来查询不在\</em>_dict__系统中的属性。</li>
-</ul>
-<h2 id="即时生成属性的其他方式"><a href="#即时生成属性的其他方式" class="headerlink" title="即时生成属性的其他方式"></a>即时生成属性的其他方式</h2><p>即时生成属性还可以使用其他的方式，比如descriptor ( descriptor类实际上是property()函数的底层，property()实际上创建了一个该类的对象 ) 。</p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/07/07/python深入/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
