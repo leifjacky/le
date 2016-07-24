@@ -268,6 +268,164 @@
             
               
                 
+                <a class="post-title-link" href="/2016/07/20/POJ-1456-Supermarket-并查集/" itemprop="url">
+                  POJ 1456 Supermarket 并查集
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-20T11:52:54+08:00" content="2016-07-20">
+              2016-07-20
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>Time Limit:2000MS     Memory Limit:65536KB     64bit IO Format:%lld &amp; %llu</p>
+</blockquote>
+<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>A supermarket has a set Prod of products on sale. It earns a profit px for each product x∈Prod sold by a deadline dx that is measured as an integral number of time units starting from the moment the sale begins. Each product takes precisely one unit of time for being sold. A selling schedule is an ordered subset of products Sell ≤ Prod such that the selling of each product x∈Sell, according to the ordering of Sell, completes before the deadline dx or just when dx expires. The profit of the selling schedule is Profit(Sell)=Σ x∈Sellpx. An optimal selling schedule is a schedule with a maximum profit.<br>For example, consider the products Prod={a,b,c,d} with (pa,da)=(50,2), (pb,db)=(10,1), (pc,dc)=(20,2), and (pd,dd)=(30,1). The possible selling schedules are listed in table 1. For instance, the schedule Sell={d,a} shows that the selling of product d starts at time 0 and ends at time 1, while the selling of product a starts at time 1 and ends at time 2. Each of these products is sold by its deadline. Sell is the optimal schedule and its profit is 80. </p>
+<p>Write a program that reads sets of products from an input text file and computes the profit of an optimal selling schedule for each set of products. </p>
+<h1 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h1><p>A set of products starts with an integer 0 &lt;= n &lt;= 10000, which is the number of products in the set, and continues with n pairs pi di of integers, 1 &lt;= pi &lt;= 10000 and 1 &lt;= di &lt;= 10000, that designate the profit and the selling deadline of the i-th product. White spaces can occur freely in input. Input data terminate with an end of file and are guaranteed correct.</p>
+<h1 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h1><p>For each set of products, the program prints on the standard output the profit of an optimal selling schedule for the set. Each result is printed from the beginning of a separate line.</p>
+<h1 id="Sample"><a href="#Sample" class="headerlink" title="Sample"></a>Sample</h1><h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><pre><code>4  50 2  10 1   20 2   30 1
+
+7  20 1   2 1   10 3  100 2   8 2
+   5 20  50 10
+</code></pre><h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><pre><code>80
+185
+</code></pre><h1 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h1><p>The sample input contains two product sets. The first set encodes the products from table 1. The second set is for 7 products. The profit of an optimal schedule for these products is 185.</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>将物品按照价格从高到低排序，接着价格从高到低，为每个物品找到一个在截止日期前的最晚销售时间，这可以通过顺序查找找到，更快的方法是使用并查集，f[x]记录本来在x时间销售的物品的最晚销售时间，一旦有物品在x日子销售，则f[x]=x-1。</p>
+<h1 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h1><pre><code>#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;vector&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+#define N 10005
+#define PB push_back
+
+int n;
+struct node{
+    node(){}
+    node(int pp,int dd):p(pp),d(dd){}
+    int p,d;
+}a[N];
+int f[N];
+
+int _find(int x){
+    if (f[x]==-1)
+        return x;
+    else
+        return f[x]=_find(f[x]);
+}
+
+bool cmp(node a,node b){
+    return a.p&gt;b.p;
+}
+
+int main(){
+    while (~scanf(&quot;%d&quot;,&amp;n)){
+        memset(f,-1,sizeof(f));
+        for (int i=1;i&lt;=n;i++){
+            scanf(&quot;%d%d&quot;,&amp;a[i].p,&amp;a[i].d);
+        }
+        sort(a+1,a+n+1,cmp);
+
+        int ans=0;
+        for (int i=1;i&lt;=n;i++){
+            int x=_find(a[i].d);
+            if (x&gt;0){
+                ans+=a[i].p;
+                f[x]=x-1;
+            }
+        }
+        printf(&quot;%d\n&quot;,ans);
+    }
+
+    return 0;
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/19/Mac启用自带FTP服务/" itemprop="url">
                   Mac启用自带FTP服务
                 </a>
@@ -2411,167 +2569,6 @@ print x
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/06/python面向对象基础/" itemprop="url">
-                  python面向对象基础
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-06T11:44:22+08:00" content="2016-07-06">
-              2016-07-06
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>本文基于实验楼教程重新编写</p>
-</blockquote>
-<h1 id="面向对象基本概念"><a href="#面向对象基本概念" class="headerlink" title="面向对象基本概念"></a>面向对象基本概念</h1><h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><h3 id="类定义"><a href="#类定义" class="headerlink" title="类定义"></a>类定义</h3><pre><code>class Bird(object):
-    have_feather = True
-    way_of_reproduction  = &apos;egg&apos;        
-</code></pre><h3 id="类引用"><a href="#类引用" class="headerlink" title="类引用"></a>类引用</h3><pre><code>summer = Bird()
-print summer.way_of_reproduction
-</code></pre><h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><pre><code>class Bird(object):
-    have_feather = True
-    way_of_reproduction = &apos;egg&apos;
-    def move(self, dx, dy):
-        position = [0,0]
-        position[0] = position[0] + dx
-        position[1] = position[1] + dy
-        return position
-
-summer = Bird()
-print &apos;after move:&apos;,summer.move(5,8)
-</code></pre><ul>
-<li>move的参数中有一个self，它是为了方便我们引用对象自身。方法的第一个参数必须是self，无论是否用到。self相当于java中的this。</li>
-</ul>
-<h2 id="子类，继承"><a href="#子类，继承" class="headerlink" title="子类，继承"></a>子类，继承</h2><pre><code>class Chicken(Bird):
-    way_of_move = &apos;walk&apos;
-    possible_in_KFC = True
-
-class Oriole(Bird):
-    way_of_move = &apos;fly&apos;
-    possible_in_KFC = False
-
-summer = Chicken()
-print summer.have_feather
-print summer.move(5,8)
-</code></pre><h2 id="self调用类的其他信息"><a href="#self调用类的其他信息" class="headerlink" title="self调用类的其他信息"></a>self调用类的其他信息</h2><pre><code>class Human(object):
-    laugh = &apos;hahahaha&apos;
-    def show_laugh(self):
-        print self.laugh
-    def laugh_100th(self):
-        for i in range(100):
-            self.show_laugh()
-
-li_lei = Human()          
-li_lei.laugh_100th()
-</code></pre><h2 id="初始化方法-init"><a href="#初始化方法-init" class="headerlink" title="初始化方法__init__()"></a>初始化方法__init__()</h2><pre><code>class happyBird(Bird):
-    def __init__(self,more_words):
-        print &apos;We are happy birds.&apos;,more_words
-
-summer = happyBird(&apos;Happy,Happy!&apos;)
-</code></pre><p><br><br></p>
-<h1 id="list的特殊使用"><a href="#list的特殊使用" class="headerlink" title="list的特殊使用"></a>list的特殊使用</h1><h2 id="查看类或对象的所有属性"><a href="#查看类或对象的所有属性" class="headerlink" title="查看类或对象的所有属性"></a>查看类或对象的所有属性</h2><pre><code>&gt;&gt;&gt;print dir(list)
-</code></pre><h2 id="查看类的说明文档"><a href="#查看类的说明文档" class="headerlink" title="查看类的说明文档"></a>查看类的说明文档</h2><pre><code>&gt;&gt;&gt;print help(list)
-</code></pre><h2 id="运算符是特殊方法"><a href="#运算符是特殊方法" class="headerlink" title="运算符是特殊方法"></a>运算符是特殊方法</h2><p>使用dir(list)的时候，能看到一个属性，是<strong>add()</strong>。从形式上看是<strong>特殊方法（下划线，下划线）</strong>。这个方法定义了”+”运算符对于list对象的意义，两个list的对象相加时，会进行的操作。</p>
-<pre><code>&gt;&gt;&gt;print [1,2,3] + [5,6,9]
-</code></pre><ul>
-<li>运算符，比如+, -, &gt;, &lt;, 以及下标引用[start:end]等等，从根本上都是定义在类内部的方法。</li>
-</ul>
-<p>list没有定义’-‘运算符。现在可以继承list类，添加对’-‘的定义：</p>
-<pre><code>class superList(list):
-    def __sub__(self, b):
-        a = self[:]     # 这里，self是supeList的对象。由于superList继承于list，它可以利用和list[:]相同的引用方法来表示整个对象。
-        b = b[:]        
-        while len(b) &gt; 0:
-            element_b = b.pop()
-            if element_b in a:
-                a.remove(element_b)
-        return a
-
-print superList([1,2,3]) - superList([3,4])
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2617,7 +2614,7 @@ print superList([1,2,3]) - superList([3,4])
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">23</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -2627,7 +2624,7 @@ print superList([1,2,3]) - superList([3,4])
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

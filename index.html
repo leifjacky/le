@@ -268,6 +268,122 @@
             
               
                 
+                <a class="post-title-link" href="/2016/07/24/SS自定义代理规则user-rule设置方法/" itemprop="url">
+                  SS自定义代理规则user-rule设置方法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-24T09:47:06+08:00" content="2016-07-24">
+              2016-07-24
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>转载自：<a href="http://blog.e9china.net/tufan/shadowsockszidingyidailiguizeuser-ruleshezhifangfa.html" target="_blank" rel="external">http://blog.e9china.net/tufan/shadowsockszidingyidailiguizeuser-ruleshezhifangfa.html</a></p>
+</blockquote>
+<p>为了防止带有Shadowsocks文字的文章被和谐，所以以后标题都会以SS命名！</p>
+<p>Sandy在XCODE中上传APP的APPLE市场的时候老是卡在UP那个环节，所以想通过SS去跑。结果成功了！</p>
+<p>最新版本的shadowsocks支持用户自定义代理规则，更新到最新的版本的shadowsocks后， 在shadowsocks文件夹内会有一个user-rule.txt文档，如果用户需要添加自定义代理规则，只需要编辑user-rule.txt文件。</p>
+<p>自定义代理规则的设置语法与GFWlist相同，即<a href="https://adblockplus.org/en/filter-cheatsheet" target="_blank" rel="external">adblockplus过滤规则</a>。简要描述如下：</p>
+<blockquote>
+<p>1. 通配符支持，如 *.example.com/* 实际书写时可省略* 如.example.com/ 意即*.example.com/*</p>
+<p>2. 正则表达式支持，以\开始和结束， 如 \[\w]+:\/\/example.com\</p>
+<p>3. 例外规则 @@，如 @@*.example.com/* 满足@@后规则的地址不使用代理</p>
+<p>4. 匹配地址开始和结尾 |，如 |<a href="http://example.com、example.com|分别表示以http://example.com开始和以example.com结束的地址" target="_blank" rel="external">http://example.com、example.com|分别表示以http://example.com开始和以example.com结束的地址</a></p>
+<p>5. || 标记，如 ||example.com 则<a href="http://example.com、https://example.com、ftp://example.com等地址均满足条件" target="_blank" rel="external">http://example.com、https://example.com、ftp://example.com等地址均满足条件</a></p>
+<p>6. 注释 ! 如 ! Comment</p>
+</blockquote>
+<p>例如你要添加www.ip138.com、ip.cn两个网站到自定义代理规则，编辑user-rule.txt文件，在文件最后加入：</p>
+<blockquote>
+<p>!测试user-rule生效<br>||ip138.com<br>||ip.cn</p>
+</blockquote>
+<p>备注：user-rule.txt一行只能有一条代理规则。</p>
+<p>user-rule.txt中的规则并不能直接被shadowsocks使用，如要添加到user-rule.txt中的规则生效，你还要执行下面重要的一步：更新本地的PAC，更新后user-rule.txt中的自定义规则会添加到PAC.txt文件内。（备注：每次编辑完user-rule.txt后，均需执行“从GFWList更新本地PAC”，使本次规则也生效。）</p>
+<p><img src="quiver-image-url/E9CB7D6D62E9390FE923905994DB0800.jpg" alt="更新PAC" title="更新PAC"></p>
+<p>此时你再打开<a href="http://www.ip138.com或者http://ip.cn时，都会通过shadowsocks访问。" target="_blank" rel="external">http://www.ip138.com或者http://ip.cn时，都会通过shadowsocks访问。</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/24/POJ-1287-Networking-最小生成树/" itemprop="url">
                   POJ 1287 Networking 最小生成树
                 </a>
@@ -2005,164 +2121,6 @@ int main(){
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/20/POJ-1456-Supermarket-并查集/" itemprop="url">
-                  POJ 1456 Supermarket 并查集
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-20T11:52:54+08:00" content="2016-07-20">
-              2016-07-20
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>Time Limit:2000MS     Memory Limit:65536KB     64bit IO Format:%lld &amp; %llu</p>
-</blockquote>
-<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>A supermarket has a set Prod of products on sale. It earns a profit px for each product x∈Prod sold by a deadline dx that is measured as an integral number of time units starting from the moment the sale begins. Each product takes precisely one unit of time for being sold. A selling schedule is an ordered subset of products Sell ≤ Prod such that the selling of each product x∈Sell, according to the ordering of Sell, completes before the deadline dx or just when dx expires. The profit of the selling schedule is Profit(Sell)=Σ x∈Sellpx. An optimal selling schedule is a schedule with a maximum profit.<br>For example, consider the products Prod={a,b,c,d} with (pa,da)=(50,2), (pb,db)=(10,1), (pc,dc)=(20,2), and (pd,dd)=(30,1). The possible selling schedules are listed in table 1. For instance, the schedule Sell={d,a} shows that the selling of product d starts at time 0 and ends at time 1, while the selling of product a starts at time 1 and ends at time 2. Each of these products is sold by its deadline. Sell is the optimal schedule and its profit is 80. </p>
-<p>Write a program that reads sets of products from an input text file and computes the profit of an optimal selling schedule for each set of products. </p>
-<h1 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h1><p>A set of products starts with an integer 0 &lt;= n &lt;= 10000, which is the number of products in the set, and continues with n pairs pi di of integers, 1 &lt;= pi &lt;= 10000 and 1 &lt;= di &lt;= 10000, that designate the profit and the selling deadline of the i-th product. White spaces can occur freely in input. Input data terminate with an end of file and are guaranteed correct.</p>
-<h1 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h1><p>For each set of products, the program prints on the standard output the profit of an optimal selling schedule for the set. Each result is printed from the beginning of a separate line.</p>
-<h1 id="Sample"><a href="#Sample" class="headerlink" title="Sample"></a>Sample</h1><h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><pre><code>4  50 2  10 1   20 2   30 1
-
-7  20 1   2 1   10 3  100 2   8 2
-   5 20  50 10
-</code></pre><h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><pre><code>80
-185
-</code></pre><h1 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h1><p>The sample input contains two product sets. The first set encodes the products from table 1. The second set is for 7 products. The profit of an optimal schedule for these products is 185.</p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>将物品按照价格从高到低排序，接着价格从高到低，为每个物品找到一个在截止日期前的最晚销售时间，这可以通过顺序查找找到，更快的方法是使用并查集，f[x]记录本来在x时间销售的物品的最晚销售时间，一旦有物品在x日子销售，则f[x]=x-1。</p>
-<h1 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h1><pre><code>#include &lt;iostream&gt;
-#include &lt;cstdio&gt;
-#include &lt;vector&gt;
-#include &lt;cstring&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-
-#define N 10005
-#define PB push_back
-
-int n;
-struct node{
-    node(){}
-    node(int pp,int dd):p(pp),d(dd){}
-    int p,d;
-}a[N];
-int f[N];
-
-int _find(int x){
-    if (f[x]==-1)
-        return x;
-    else
-        return f[x]=_find(f[x]);
-}
-
-bool cmp(node a,node b){
-    return a.p&gt;b.p;
-}
-
-int main(){
-    while (~scanf(&quot;%d&quot;,&amp;n)){
-        memset(f,-1,sizeof(f));
-        for (int i=1;i&lt;=n;i++){
-            scanf(&quot;%d%d&quot;,&amp;a[i].p,&amp;a[i].d);
-        }
-        sort(a+1,a+n+1,cmp);
-
-        int ans=0;
-        for (int i=1;i&lt;=n;i++){
-            int x=_find(a[i].d);
-            if (x&gt;0){
-                ans+=a[i].p;
-                f[x]=x-1;
-            }
-        }
-        printf(&quot;%d\n&quot;,ans);
-    }
-
-    return 0;
-}
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2208,7 +2166,7 @@ int main(){
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">23</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -2218,7 +2176,7 @@ int main(){
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
