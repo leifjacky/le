@@ -96,22 +96,22 @@
 
 
 
-<meta name="description" content="Time Limit:1000MS     Memory Limit:10000KB     64bit IO Format:%lld &amp;amp; %llu
+<meta name="description" content="Time Limit:1000MS     Memory Limit:30000KB     64bit IO Format:%lld &amp;amp; %llu
 
-DescriptionYou are assigned to design network connections between certain points in a wide area. You are given a set of">
+DescriptionYou are a member of the space station engineering team, and are assigned a task in the construction process">
 <meta property="og:type" content="article">
-<meta property="og:title" content="POJ 1287 Networking 最小生成树">
-<meta property="og:url" content="http://yecj.me/2016/07/24/POJ-1287-Networking-最小生成树/index.html">
+<meta property="og:title" content="POJ 2031 Building a Space Station 最小生成树">
+<meta property="og:url" content="http://yecj.me/2016/07/25/POJ-2031-Building-a-Space-Station-最小生成树/index.html">
 <meta property="og:site_name" content="Miraky">
-<meta property="og:description" content="Time Limit:1000MS     Memory Limit:10000KB     64bit IO Format:%lld &amp;amp; %llu
+<meta property="og:description" content="Time Limit:1000MS     Memory Limit:30000KB     64bit IO Format:%lld &amp;amp; %llu
 
-DescriptionYou are assigned to design network connections between certain points in a wide area. You are given a set of">
-<meta property="og:updated_time" content="2016-07-24T08:58:45.000Z">
+DescriptionYou are a member of the space station engineering team, and are assigned a task in the construction process">
+<meta property="og:updated_time" content="2016-07-25T10:47:11.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="POJ 1287 Networking 最小生成树">
-<meta name="twitter:description" content="Time Limit:1000MS     Memory Limit:10000KB     64bit IO Format:%lld &amp;amp; %llu
+<meta name="twitter:title" content="POJ 2031 Building a Space Station 最小生成树">
+<meta name="twitter:description" content="Time Limit:1000MS     Memory Limit:30000KB     64bit IO Format:%lld &amp;amp; %llu
 
-DescriptionYou are assigned to design network connections between certain points in a wide area. You are given a set of">
+DescriptionYou are a member of the space station engineering team, and are assigned a task in the construction process">
 
 
 
@@ -132,9 +132,9 @@ DescriptionYou are assigned to design network connections between certain points
 
 
 
-  <link rel="canonical" href="http://yecj.me/2016/07/24/POJ-1287-Networking-最小生成树/"/>
+  <link rel="canonical" href="http://yecj.me/2016/07/25/POJ-2031-Building-a-Space-Station-最小生成树/"/>
 
-  <title> POJ 1287 Networking 最小生成树 | Miraky </title>
+  <title> POJ 2031 Building a Space Station 最小生成树 | Miraky </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -294,7 +294,7 @@ DescriptionYou are assigned to design network connections between certain points
             
             
               
-                POJ 1287 Networking 最小生成树
+                POJ 2031 Building a Space Station 最小生成树
               
             
           </h1>
@@ -306,8 +306,8 @@ DescriptionYou are assigned to design network connections between certain points
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-24T00:54:07+08:00" content="2016-07-24">
-              2016-07-24
+            <time itemprop="dateCreated" datetime="2016-07-25T18:46:42+08:00" content="2016-07-25">
+              2016-07-25
             </time>
           </span>
 
@@ -317,8 +317,8 @@ DescriptionYou are assigned to design network connections between certain points
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/07/24/POJ-1287-Networking-最小生成树/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/24/POJ-1287-Networking-最小生成树/" itemprop="commentsCount"></span>
+                <a href="/2016/07/25/POJ-2031-Building-a-Space-Station-最小生成树/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/25/POJ-2031-Building-a-Space-Station-最小生成树/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -342,43 +342,43 @@ DescriptionYou are assigned to design network connections between certain points
 
       
         <blockquote>
-<p>Time Limit:1000MS     Memory Limit:10000KB     64bit IO Format:%lld &amp; %llu</p>
+<p>Time Limit:1000MS     Memory Limit:30000KB     64bit IO Format:%lld &amp; %llu</p>
 </blockquote>
-<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>You are assigned to design network connections between certain points in a wide area. You are given a set of points in the area, and a set of possible routes for the cables that may connect pairs of points. For each possible route between two points, you are given the length of the cable that is needed to connect the points over that route. Note that there may exist many possible routes between two given points. It is assumed that the given possible routes connect (directly or indirectly) each two points in the area.<br>Your task is to design the network for the area, so that there is a connection (direct or indirect) between every two points (i.e., all the points are interconnected, but not necessarily by a direct cable), and that the total length of the used cable is minimal.</p>
-<h1 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h1><p>The input file consists of a number of data sets. Each data set defines one required network. The first line of the set contains two integers: the first defines the number P of the given points, and the second the number R of given routes between the points. The following R lines define the given routes between the points, each giving three integer numbers: the first two numbers identify the points, and the third gives the length of the route. The numbers are separated with white spaces. A data set giving only one number P=0 denotes the end of the input. The data sets are separated with an empty line.<br>The maximal number of points is 50. The maximal length of a given route is 100. The number of possible routes is unlimited. The nodes are identified with integers between 1 and P (inclusive). The routes between two points i and j may be given as i j or as j i. </p>
-<h1 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h1><p>For each data set, print one number on a separate line that gives the total length of the cable used for the entire designed network.</p>
-<h1 id="Sample"><a href="#Sample" class="headerlink" title="Sample"></a>Sample</h1><h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><pre><code>1 0
-
-2 3
-1 2 37
-2 1 17
-1 2 68
-
-3 7
-1 2 19
-2 3 11
-3 1 7
-1 3 5
-2 3 89
-3 1 91
-1 2 32
-
-5 7
-1 2 5
-2 3 7
-2 4 8
-4 5 11
-3 5 10
-1 5 6
-4 2 12
-
+<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>You are a member of the space station engineering team, and are assigned a task in the construction process of the station. You are expected to write a computer program to complete the task.<br>The space station is made up with a number of units, called cells. All cells are sphere-shaped, but their sizes are not necessarily uniform. Each cell is fixed at its predetermined position shortly after the station is successfully put into its orbit. It is quite strange that two cells may be touching each other, or even may be overlapping. In an extreme case, a cell may be totally enclosing another one. I do not know how such arrangements are possible. </p>
+<p>All the cells must be connected, since crew members should be able to walk from any cell to any other cell. They can walk from a cell A to another cell B, if, (1) A and B are touching each other or overlapping, (2) A and B are connected by a `corridor’, or (3) there is a cell C such that walking from A to C, and also from B to C are both possible. Note that the condition (3) should be interpreted transitively. </p>
+<p>You are expected to design a configuration, namely, which pairs of cells are to be connected with corridors. There is some freedom in the corridor configuration. For example, if there are three cells A, B and C, not touching nor overlapping each other, at least three plans are possible in order to connect all three cells. The first is to build corridors A-B and A-C, the second B-C and B-A, the third C-A and C-B. The cost of building a corridor is proportional to its length. Therefore, you should choose a plan with the shortest total length of the corridors. </p>
+<p>You can ignore the width of a corridor. A corridor is built between points on two cells’ surfaces. It can be made arbitrarily long, but of course the shortest one is chosen. Even if two corridors A-B and C-D intersect in space, they are not considered to form a connection path between (for example) A and C. In other words, you may consider that two corridors never intersect. </p>
+<h1 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h1><p>The input consists of multiple data sets. Each data set is given in the following format. </p>
+<pre><code>n 
+x1 y1 z1 r1 
+x2 y2 z2 r2 
+... 
+xn yn zn rn 
+</code></pre><p>The first line of a data set contains an integer n, which is the number of cells. n is positive, and does not exceed 100. </p>
+<p>The following n lines are descriptions of cells. Four values in a line are x-, y- and z-coordinates of the center, and radius (called r in the rest of the problem) of the sphere, in this order. Each value is given by a decimal fraction, with 3 digits after the decimal point. Values are separated by a space character. </p>
+<p>Each of x, y, z and r is positive and is less than 100.0. </p>
+<p>The end of the input is indicated by a line containing a zero. </p>
+<h1 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h1><p>For each data set, the shortest total length of the corridors should be printed, each in a separate line. The printed values should have 3 digits after the decimal point. They may not have an error greater than 0.001. </p>
+<p>Note that if no corridors are necessary, that is, if all the cells are connected without corridors, the shortest total length of the corridors is 0.000. </p>
+<h1 id="Sample"><a href="#Sample" class="headerlink" title="Sample"></a>Sample</h1><h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><pre><code>3
+10.000 10.000 50.000 10.000
+40.000 10.000 50.000 10.000
+40.000 40.000 50.000 10.000
+2
+30.000 30.000 30.000 20.000
+40.000 40.000 40.000 20.000
+5
+5.729 15.143 3.996 25.837
+6.013 14.372 4.818 10.671
+80.115 63.292 84.477 15.120
+64.095 80.924 70.029 14.881
+39.472 85.116 71.369 5.553
 0
-</code></pre><h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><pre><code>0
-17
-16
-26
-</code></pre><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>模板题</p>
-<h1 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> N 55</span></div><div class="line"></div><div class="line"><span class="keyword">struct</span> Edge&#123;</div><div class="line">    <span class="keyword">int</span> u,v,d;</div><div class="line">    Edge()&#123;&#125;</div><div class="line">    Edge(<span class="keyword">int</span> uu,<span class="keyword">int</span> vv,<span class="keyword">int</span> dd):u(uu),v(vv),d(dd)&#123;&#125;</div><div class="line">    </div><div class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span>&lt;(<span class="keyword">const</span> Edge &amp;a)<span class="keyword">const</span>&#123;</div><div class="line">        <span class="keyword">return</span> d&lt;a.d;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">vector</span>&lt;Edge&gt; edges;</div><div class="line"><span class="keyword">int</span> n,m;</div><div class="line"><span class="keyword">int</span> f[N];</div><div class="line"></div><div class="line"><span class="keyword">int</span> <span class="number">_f</span>ind(<span class="keyword">int</span> x)&#123;</div><div class="line">    <span class="keyword">if</span> (f[x]==<span class="number">-1</span>)&#123;</div><div class="line">        <span class="keyword">return</span> x;</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">return</span> f[x]=<span class="number">_f</span>ind(f[x]);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">kruskal</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="built_in">memset</span>(f,<span class="number">-1</span>,<span class="keyword">sizeof</span>(f));</div><div class="line">    sort(edges.begin(),edges.end());</div><div class="line">    <span class="keyword">int</span> ans=<span class="number">0</span>;</div><div class="line">    </div><div class="line">    <span class="keyword">int</span> cnt=n;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;edges.size();i++)&#123;</div><div class="line">        <span class="keyword">int</span> u=edges[i].u;</div><div class="line">        <span class="keyword">int</span> v=edges[i].v;</div><div class="line">        <span class="keyword">int</span> d=edges[i].d;</div><div class="line">        <span class="keyword">int</span> x=<span class="number">_f</span>ind(u);</div><div class="line">        <span class="keyword">int</span> y=<span class="number">_f</span>ind(v);</div><div class="line">        <span class="keyword">if</span> (x!=y)&#123;</div><div class="line">            f[x]=y;</div><div class="line">            ans+=d;</div><div class="line">            cnt--;</div><div class="line">            <span class="keyword">if</span> (cnt==<span class="number">1</span>)</div><div class="line">                <span class="keyword">return</span> ans;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">while</span> (<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n)!=EOF)&#123;</div><div class="line">        <span class="keyword">if</span> (n==<span class="number">0</span>)</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;m);</div><div class="line">        edges.clear();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;i++)&#123;</div><div class="line">            <span class="keyword">int</span> u,v,d;</div><div class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;u,&amp;v,&amp;d);</div><div class="line">            edges.push_back(Edge(u,v,d));</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,kruskal());</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</code></pre><h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><pre><code>20.000
+0.000
+73.834
+</code></pre><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>对任意点对u与v之间建边，如果圆心距减去半径之和小于0”dis-(r1+r2)”，则边长为0，否则边长等于dis-(r1+r2)<br>G++交的时候double输出要用%f不能用%lf，被这里坑了很久。</p>
+<h1 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> N 105</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> eps 13-6</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> PB push_back</span></div><div class="line"></div><div class="line"><span class="keyword">struct</span> Edge&#123;</div><div class="line">    <span class="keyword">int</span> u,v;</div><div class="line">    <span class="keyword">double</span> d;</div><div class="line">    Edge()&#123;&#125;</div><div class="line">    Edge(<span class="keyword">int</span> uu,<span class="keyword">int</span> vv,<span class="keyword">double</span> dd):u(uu),v(vv),d(dd)&#123;&#125;</div><div class="line">    </div><div class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span>&lt;(<span class="keyword">const</span> Edge &amp;a)<span class="keyword">const</span>&#123;</div><div class="line">        <span class="keyword">return</span> d&lt;a.d;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">vector</span>&lt;Edge&gt; edges;</div><div class="line"></div><div class="line"><span class="keyword">struct</span> Node&#123;</div><div class="line">    <span class="keyword">double</span> x,y,z,r;</div><div class="line">&#125;a[N];</div><div class="line"></div><div class="line"><span class="keyword">int</span> n;</div><div class="line"><span class="keyword">int</span> f[N];</div><div class="line"></div><div class="line"><span class="keyword">double</span> <span class="number">_</span>getdis(<span class="keyword">int</span> u,<span class="keyword">int</span> v)&#123;</div><div class="line">    <span class="keyword">double</span> x1=a[u].x,y1=a[u].y,z1=a[u].z,r1=a[u].r;</div><div class="line">    <span class="keyword">double</span> x2=a[v].x,y2=a[v].y,z2=a[v].z,r2=a[v].r;</div><div class="line">    <span class="keyword">double</span> x=x1-x2,y=y1-y2,z=z1-z2;</div><div class="line">    <span class="keyword">return</span> max(<span class="number">0.0</span>,<span class="built_in">sqrt</span>(x*x+y*y+z*z)-r1-r2);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">int</span> <span class="number">_f</span>ind(<span class="keyword">int</span> x)&#123;</div><div class="line">    <span class="keyword">if</span> (f[x]==<span class="number">-1</span>)&#123;</div><div class="line">        <span class="keyword">return</span> x;</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">return</span> f[x]=<span class="number">_f</span>ind(f[x]);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">double</span> <span class="title">kruskal</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="built_in">memset</span>(f,<span class="number">-1</span>,<span class="keyword">sizeof</span>(f));</div><div class="line">    sort(edges.begin(),edges.end());</div><div class="line">    <span class="keyword">int</span> cnt=n;</div><div class="line">    <span class="keyword">double</span> ans=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;edges.size();i++)&#123;</div><div class="line">        <span class="keyword">int</span> u,v;</div><div class="line">        u=edges[i].u;</div><div class="line">        v=edges[i].v;</div><div class="line">        <span class="keyword">double</span> d=edges[i].d;</div><div class="line">        </div><div class="line">        <span class="keyword">int</span> x=<span class="number">_f</span>ind(u);</div><div class="line">        <span class="keyword">int</span> y=<span class="number">_f</span>ind(v);</div><div class="line">        <span class="keyword">if</span> (x!=y)&#123;</div><div class="line">            ans+=d;</div><div class="line">            f[x]=y;</div><div class="line">            cnt--;</div><div class="line">            <span class="keyword">if</span> (cnt==<span class="number">1</span>)&#123;</div><div class="line">                <span class="keyword">return</span> ans;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">while</span> (<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n)!=EOF)&#123;</div><div class="line">        <span class="keyword">if</span> (n==<span class="number">0</span>)</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        </div><div class="line">        edges.clear();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</div><div class="line">            <span class="built_in">scanf</span>(<span class="string">"%lf%lf%lf%lf"</span>,&amp;a[i].x,&amp;a[i].y,&amp;a[i].z,&amp;a[i].r);</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;n;j++)&#123;</div><div class="line">                edges.PB(Edge(i,j,<span class="number">_</span>getdis(i,j)));</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%.3f\n"</span>,kruskal());</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -412,17 +412,13 @@ DescriptionYou are assigned to design network connections between certain points
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/07/24/POJ-1251-Jungle-Roads-最小生成树/" rel="next" title="POJ 1251 Jungle Roads 最小生成树">
-                <i class="fa fa-chevron-left"></i> POJ 1251 Jungle Roads 最小生成树
+              <a href="/2016/07/24/hexo-Next主题设置多说-DISQUS/" rel="next" title="hexo Next主题设置多说 DISQUS">
+                <i class="fa fa-chevron-left"></i> hexo Next主题设置多说 DISQUS
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/07/24/SS自定义代理规则user-rule设置方法/" rel="prev" title="SS自定义代理规则user-rule设置方法">
-                SS自定义代理规则user-rule设置方法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -448,8 +444,8 @@ DescriptionYou are assigned to design network connections between certain points
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/07/24/POJ-1287-Networking-最小生成树/"
-           data-title="POJ 1287 Networking 最小生成树" data-url="http://yecj.me/2016/07/24/POJ-1287-Networking-最小生成树/">
+      <div class="ds-thread" data-thread-key="2016/07/25/POJ-2031-Building-a-Space-Station-最小生成树/"
+           data-title="POJ 2031 Building a Space Station 最小生成树" data-url="http://yecj.me/2016/07/25/POJ-2031-Building-a-Space-Station-最小生成树/">
       </div>
     
   </div>
