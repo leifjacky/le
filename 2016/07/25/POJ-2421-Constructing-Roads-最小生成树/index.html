@@ -80,7 +80,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="git," />
+  <meta name="keywords" content="ACM,最小生成树,POJ," />
 
 
 
@@ -96,37 +96,22 @@
 
 
 
-<meta name="description" content="创建项目不能在命令行里直接创建github项目，需要在github上创建新项目
-上传项目按照官方文档，本地上传项目到github有以下步骤
-Here are the instructions from github:
-touch README.md
-git init
-git add README.md
-git commit -m &amp;quot;first commit&amp;quot;
-git remot">
+<meta name="description" content="Time Limit:2000MS     Memory Limit:65536KB     64bit IO Format:%lld &amp;amp; %llu
+
+DescriptionThere are N villages, which are numbered from 1 to N, and you should build some roads such that every two vi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git学习笔记">
-<meta property="og:url" content="http://yecj.me/2016/07/04/git学习笔记/index.html">
+<meta property="og:title" content="POJ 2421 Constructing Roads 最小生成树">
+<meta property="og:url" content="http://yecj.me/2016/07/25/POJ-2421-Constructing-Roads-最小生成树/index.html">
 <meta property="og:site_name" content="Miraky">
-<meta property="og:description" content="创建项目不能在命令行里直接创建github项目，需要在github上创建新项目
-上传项目按照官方文档，本地上传项目到github有以下步骤
-Here are the instructions from github:
-touch README.md
-git init
-git add README.md
-git commit -m &amp;quot;first commit&amp;quot;
-git remot">
-<meta property="og:updated_time" content="2016-07-05T03:52:17.000Z">
+<meta property="og:description" content="Time Limit:2000MS     Memory Limit:65536KB     64bit IO Format:%lld &amp;amp; %llu
+
+DescriptionThere are N villages, which are numbered from 1 to N, and you should build some roads such that every two vi">
+<meta property="og:updated_time" content="2016-07-25T12:39:11.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git学习笔记">
-<meta name="twitter:description" content="创建项目不能在命令行里直接创建github项目，需要在github上创建新项目
-上传项目按照官方文档，本地上传项目到github有以下步骤
-Here are the instructions from github:
-touch README.md
-git init
-git add README.md
-git commit -m &amp;quot;first commit&amp;quot;
-git remot">
+<meta name="twitter:title" content="POJ 2421 Constructing Roads 最小生成树">
+<meta name="twitter:description" content="Time Limit:2000MS     Memory Limit:65536KB     64bit IO Format:%lld &amp;amp; %llu
+
+DescriptionThere are N villages, which are numbered from 1 to N, and you should build some roads such that every two vi">
 
 
 
@@ -147,9 +132,9 @@ git remot">
 
 
 
-  <link rel="canonical" href="http://yecj.me/2016/07/04/git学习笔记/"/>
+  <link rel="canonical" href="http://yecj.me/2016/07/25/POJ-2421-Constructing-Roads-最小生成树/"/>
 
-  <title> git学习笔记 | Miraky </title>
+  <title> POJ 2421 Constructing Roads 最小生成树 | Miraky </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -309,7 +294,7 @@ git remot">
             
             
               
-                git学习笔记
+                POJ 2421 Constructing Roads 最小生成树
               
             
           </h1>
@@ -321,8 +306,8 @@ git remot">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-04T11:56:25+08:00" content="2016-07-04">
-              2016-07-04
+            <time itemprop="dateCreated" datetime="2016-07-25T20:38:52+08:00" content="2016-07-25">
+              2016-07-25
             </time>
           </span>
 
@@ -332,8 +317,8 @@ git remot">
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/07/04/git学习笔记/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/04/git学习笔记/" itemprop="commentsCount"></span>
+                <a href="/2016/07/25/POJ-2421-Constructing-Roads-最小生成树/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/25/POJ-2421-Constructing-Roads-最小生成树/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -356,26 +341,23 @@ git remot">
       
 
       
-        <h1 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h1><p>不能在命令行里直接创建github项目，需要在github上创建新项目</p>
-<h1 id="上传项目"><a href="#上传项目" class="headerlink" title="上传项目"></a>上传项目</h1><p>按照官方文档，本地上传项目到github有以下步骤</p>
-<pre><code>Here are the instructions from github:
-touch README.md
-git init
-git add README.md
-git commit -m &quot;first commit&quot;
-git remote add origin https://github.com/tqisjim/google-oauth.git
-git push -u origin master
-Here&apos;s what actually worked:
-touch README.md
-git init
-git add README.md
-git commit -m &quot;first commit&quot;
-git remote add origin https://github.com/tqisjim/google-oauth.git
-git clone origin master
-After cloning, then the push command succeeds by     prompting for a username and password
-
-From: http://stackoverflow.com/questions/15437719/git-push-error-origin-does-not-appear-to-be-a-git-repository
-</code></pre>
+        <blockquote>
+<p>Time Limit:2000MS     Memory Limit:65536KB     64bit IO Format:%lld &amp; %llu</p>
+</blockquote>
+<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>There are N villages, which are numbered from 1 to N, and you should build some roads such that every two villages can connect to each other. We say two village A and B are connected, if and only if there is a road between A and B, or there exists a village C such that there is a road between A and C, and C and B are connected. </p>
+<p>We know that there are already some roads between some villages and your job is the build some roads such that all the villages are connect and the length of all the roads built is minimum.</p>
+<h1 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h1><p>The first line is an integer N (3 &lt;= N &lt;= 100), which is the number of villages. Then come N lines, the i-th of which contains N integers, and the j-th of these N integers is the distance (the distance should be an integer within [1, 1000]) between village i and village j. </p>
+<p>Then there is an integer Q (0 &lt;= Q &lt;= N * (N + 1) / 2). Then come Q lines, each line contains two integers a and b (1 &lt;= a &lt; b &lt;= N), which means the road between village a and village b has been built.</p>
+<h1 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h1><p>You should output a line contains an integer, which is the length of all the roads to be built such that all the villages are connected, and this value is minimum.</p>
+<h1 id="Sample"><a href="#Sample" class="headerlink" title="Sample"></a>Sample</h1><h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><pre><code>3
+0 990 692
+990 0 179
+692 179 0
+1
+1 2
+</code></pre><h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><pre><code>179
+</code></pre><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>模板题</p>
+<h1 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> N 105</span></div><div class="line"></div><div class="line"><span class="keyword">struct</span> Edge&#123;</div><div class="line">    <span class="keyword">int</span> u,v,d;</div><div class="line">    Edge()&#123;&#125;</div><div class="line">    Edge(<span class="keyword">int</span> uu,<span class="keyword">int</span> vv,<span class="keyword">int</span> dd):u(uu),v(vv),d(dd)&#123;&#125;</div><div class="line">    </div><div class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span>&lt;(<span class="keyword">const</span> Edge &amp;a)<span class="keyword">const</span>&#123;</div><div class="line">        <span class="keyword">return</span> d&lt;a.d;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">int</span> g[N][N];</div><div class="line"><span class="keyword">int</span> n;</div><div class="line"><span class="built_in">vector</span>&lt;Edge&gt; edges;</div><div class="line"><span class="keyword">int</span> f[N],cnt,ans;</div><div class="line"></div><div class="line"><span class="keyword">int</span> <span class="number">_f</span>ind(<span class="keyword">int</span> x)&#123;</div><div class="line">    <span class="keyword">if</span> (f[x]==<span class="number">-1</span>)</div><div class="line">        <span class="keyword">return</span> x;</div><div class="line">    <span class="keyword">else</span></div><div class="line">        <span class="keyword">return</span> f[x]=<span class="number">_f</span>ind(f[x]);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">void</span> <span class="number">_u</span>nion(<span class="keyword">int</span> u,<span class="keyword">int</span> v)&#123;</div><div class="line">    <span class="keyword">int</span> x=<span class="number">_f</span>ind(u);</div><div class="line">    <span class="keyword">int</span> y=<span class="number">_f</span>ind(v);</div><div class="line">    <span class="keyword">if</span> (x!=y)&#123;</div><div class="line">        f[x]=y;</div><div class="line">        cnt--;</div><div class="line">        ans+=g[u][v];</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">while</span> (<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n)!=EOF)&#123;</div><div class="line">        edges.clear();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)&#123;</div><div class="line">                <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;g[i][j]);</div><div class="line">                edges.push_back(Edge(i,j,g[i][j]));</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">int</span> m,u,v;</div><div class="line">        <span class="built_in">memset</span>(f,<span class="number">-1</span>,<span class="keyword">sizeof</span>(f));</div><div class="line">        sort(edges.begin(),edges.end());</div><div class="line">        cnt=n;</div><div class="line">        ans=<span class="number">0</span>;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;m);</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;i++)&#123;</div><div class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;u,&amp;v);</div><div class="line">            <span class="number">_u</span>nion(u,v);</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        ans=<span class="number">0</span>;</div><div class="line">        <span class="keyword">if</span> (cnt==<span class="number">1</span>)&#123;</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</div><div class="line">            <span class="keyword">continue</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;edges.size();i++)&#123;</div><div class="line">            u=edges[i].u;</div><div class="line">            v=edges[i].v;</div><div class="line">            <span class="number">_u</span>nion(u,v);</div><div class="line">            <span class="keyword">if</span> (cnt==<span class="number">1</span>)&#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -396,7 +378,11 @@ From: http://stackoverflow.com/questions/15437719/git-push-error-origin-does-not
       
         <div class="post-tags">
           
-            <a href="/tags/git/" rel="tag">#git</a>
+            <a href="/tags/ACM/" rel="tag">#ACM</a>
+          
+            <a href="/tags/最小生成树/" rel="tag">#最小生成树</a>
+          
+            <a href="/tags/POJ/" rel="tag">#POJ</a>
           
         </div>
       
@@ -405,13 +391,13 @@ From: http://stackoverflow.com/questions/15437719/git-push-error-origin-does-not
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/07/25/POJ-2031-Building-a-Space-Station-最小生成树/" rel="next" title="POJ 2031 Building a Space Station 最小生成树">
+                <i class="fa fa-chevron-left"></i> POJ 2031 Building a Space Station 最小生成树
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/07/05/python基础/" rel="prev" title="python基础">
-                python基础 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -437,8 +423,8 @@ From: http://stackoverflow.com/questions/15437719/git-push-error-origin-does-not
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/07/04/git学习笔记/"
-           data-title="git学习笔记" data-url="http://yecj.me/2016/07/04/git学习笔记/">
+      <div class="ds-thread" data-thread-key="2016/07/25/POJ-2421-Constructing-Roads-最小生成树/"
+           data-title="POJ 2421 Constructing Roads 最小生成树" data-url="http://yecj.me/2016/07/25/POJ-2421-Constructing-Roads-最小生成树/">
       </div>
     
   </div>
@@ -522,7 +508,7 @@ From: http://stackoverflow.com/questions/15437719/git-push-error-origin-does-not
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#创建项目"><span class="nav-number">1.</span> <span class="nav-text">创建项目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#上传项目"><span class="nav-number">2.</span> <span class="nav-text">上传项目</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Input"><span class="nav-number">2.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Output"><span class="nav-number">3.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Sample"><span class="nav-number">4.</span> <span class="nav-text">Sample</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Input"><span class="nav-number">4.1.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Output"><span class="nav-number">4.2.</span> <span class="nav-text">Sample Output</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#思路"><span class="nav-number">5.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AC代码"><span class="nav-number">6.</span> <span class="nav-text">AC代码</span></a></li></ol></div>
             
           </div>
         </section>
