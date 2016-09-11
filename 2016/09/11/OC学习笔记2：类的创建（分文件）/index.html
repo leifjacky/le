@@ -80,7 +80,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="git," />
+  <meta name="keywords" content="OC," />
 
 
 
@@ -96,37 +96,19 @@
 
 
 
-<meta name="description" content="创建项目不能在命令行里直接创建github项目，需要在github上创建新项目
-上传项目按照官方文档，本地上传项目到github有以下步骤
-Here are the instructions from github:
-touch README.md
-git init
-git add README.md
-git commit -m &amp;quot;first commit&amp;quot;
-git remot">
+<meta name="description" content="目录结构：1234567OC3_分文件创建类  |- Person.h  |- Person.m  |- OC3_分文件创建类      |- main.m  |- Products      |- ...
+1234567891011121314151617181920212223242526272829////  Person.h//  OC3_份文件创建类////  Created by Le">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git学习笔记">
-<meta property="og:url" content="http://yecj.me/2016/07/04/git学习笔记/index.html">
+<meta property="og:title" content="OC学习笔记2：类的创建（分文件）">
+<meta property="og:url" content="http://yecj.me/2016/09/11/OC学习笔记2：类的创建（分文件）/index.html">
 <meta property="og:site_name" content="Miraky">
-<meta property="og:description" content="创建项目不能在命令行里直接创建github项目，需要在github上创建新项目
-上传项目按照官方文档，本地上传项目到github有以下步骤
-Here are the instructions from github:
-touch README.md
-git init
-git add README.md
-git commit -m &amp;quot;first commit&amp;quot;
-git remot">
-<meta property="og:updated_time" content="2016-07-05T03:52:17.000Z">
+<meta property="og:description" content="目录结构：1234567OC3_分文件创建类  |- Person.h  |- Person.m  |- OC3_分文件创建类      |- main.m  |- Products      |- ...
+1234567891011121314151617181920212223242526272829////  Person.h//  OC3_份文件创建类////  Created by Le">
+<meta property="og:updated_time" content="2016-09-11T02:47:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git学习笔记">
-<meta name="twitter:description" content="创建项目不能在命令行里直接创建github项目，需要在github上创建新项目
-上传项目按照官方文档，本地上传项目到github有以下步骤
-Here are the instructions from github:
-touch README.md
-git init
-git add README.md
-git commit -m &amp;quot;first commit&amp;quot;
-git remot">
+<meta name="twitter:title" content="OC学习笔记2：类的创建（分文件）">
+<meta name="twitter:description" content="目录结构：1234567OC3_分文件创建类  |- Person.h  |- Person.m  |- OC3_分文件创建类      |- main.m  |- Products      |- ...
+1234567891011121314151617181920212223242526272829////  Person.h//  OC3_份文件创建类////  Created by Le">
 
 
 
@@ -147,9 +129,9 @@ git remot">
 
 
 
-  <link rel="canonical" href="http://yecj.me/2016/07/04/git学习笔记/"/>
+  <link rel="canonical" href="http://yecj.me/2016/09/11/OC学习笔记2：类的创建（分文件）/"/>
 
-  <title> git学习笔记 | Miraky </title>
+  <title> OC学习笔记2：类的创建（分文件） | Miraky </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -309,7 +291,7 @@ git remot">
             
             
               
-                git学习笔记
+                OC学习笔记2：类的创建（分文件）
               
             
           </h1>
@@ -321,8 +303,8 @@ git remot">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-04T11:56:25+08:00" content="2016-07-04">
-              2016-07-04
+            <time itemprop="dateCreated" datetime="2016-09-11T10:47:33+08:00" content="2016-09-11">
+              2016-09-11
             </time>
           </span>
 
@@ -332,8 +314,8 @@ git remot">
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/07/04/git学习笔记/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/04/git学习笔记/" itemprop="commentsCount"></span>
+                <a href="/2016/09/11/OC学习笔记2：类的创建（分文件）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/11/OC学习笔记2：类的创建（分文件）/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -356,26 +338,11 @@ git remot">
       
 
       
-        <h1 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h1><p>不能在命令行里直接创建github项目，需要在github上创建新项目</p>
-<h1 id="上传项目"><a href="#上传项目" class="headerlink" title="上传项目"></a>上传项目</h1><p>按照官方文档，本地上传项目到github有以下步骤</p>
-<pre><code>Here are the instructions from github:
-touch README.md
-git init
-git add README.md
-git commit -m &quot;first commit&quot;
-git remote add origin https://github.com/tqisjim/google-oauth.git
-git push -u origin master
-Here&apos;s what actually worked:
-touch README.md
-git init
-git add README.md
-git commit -m &quot;first commit&quot;
-git remote add origin https://github.com/tqisjim/google-oauth.git
-git clone origin master
-After cloning, then the push command succeeds by     prompting for a username and password
+        <p>目录结构：<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">OC3_分文件创建类</div><div class="line">  |- Person.h</div><div class="line">  |- Person.m</div><div class="line">  |- OC3_分文件创建类</div><div class="line">      |- main.m</div><div class="line">  |- Products</div><div class="line">      |- ...</div></pre></td></tr></table></figure></p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  Person.h</span></div><div class="line"><span class="comment">//  OC3_份文件创建类</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  Created by Leif on 9/11/16.</span></div><div class="line"><span class="comment">//  Copyright © 2016 Leif. All rights reserved.</span></div><div class="line"><span class="comment">//</span></div><div class="line"></div><div class="line"><span class="meta">#import <span class="meta-string">&lt;Foundation/Foundation.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="comment">// 定义声明Peroson类</span></div><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Person</span> : <span class="title">NSObject</span></span>&#123;</div><div class="line">    <span class="built_in">NSString</span> *_name;</div><div class="line">    <span class="built_in">NSInteger</span> _age;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">id</span>)init;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)setName:(<span class="built_in">NSString</span> *)name;</div><div class="line">- (<span class="keyword">void</span>)setAge:(<span class="built_in">NSInteger</span>)age;</div><div class="line">- (<span class="keyword">void</span>)setName:(<span class="built_in">NSString</span> *)name andAge:(<span class="built_in">NSInteger</span>)age;</div><div class="line"></div><div class="line">- (<span class="built_in">NSString</span> *)getName;</div><div class="line">- (<span class="built_in">NSInteger</span>)getAge;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)print;</div><div class="line"></div><div class="line">+ (<span class="keyword">void</span>)testPerson;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  Person.m</span></div><div class="line"><span class="comment">//  OC3_份文件创建类</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  Created by Leif on 9/11/16.</span></div><div class="line"><span class="comment">//  Copyright © 2016 Leif. All rights reserved.</span></div><div class="line"><span class="comment">//</span></div><div class="line"></div><div class="line"><span class="meta">#import <span class="meta-string">"Person.h"</span></span></div><div class="line"></div><div class="line"><span class="comment">// 实现Person类</span></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Person</span></span></div><div class="line"></div><div class="line">- (<span class="keyword">id</span>)init&#123;</div><div class="line">    <span class="keyword">self</span> = [<span class="keyword">super</span> init];</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>)&#123; <span class="comment">// 判断父类构造方法是否初始化成功</span></div><div class="line">        _name = <span class="string">@"COMPS"</span>;</div><div class="line">        _age = <span class="number">12</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)setName:(<span class="built_in">NSString</span> *)name&#123;</div><div class="line">    _name=name;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)setAge:(<span class="built_in">NSInteger</span>)age&#123;</div><div class="line">    _age=age;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)setName:(<span class="built_in">NSString</span> *)name andAge:(<span class="built_in">NSInteger</span>)age&#123;</div><div class="line">    _name=name;</div><div class="line">    _age=age;</div><div class="line">    </div><div class="line">    <span class="comment">// 实例变量访问方式</span></div><div class="line">    <span class="comment">// 1、直接访问</span></div><div class="line">    <span class="comment">//    _name=name;</span></div><div class="line">    <span class="comment">//    _age=age;</span></div><div class="line">    <span class="comment">// 2、间接访问</span></div><div class="line">    <span class="comment">//    [self setName:name];</span></div><div class="line">    <span class="comment">//    [self setAge:age];</span></div><div class="line">    <span class="comment">// 3、通过指针访问</span></div><div class="line">    <span class="comment">//    self-&gt;_name=name;</span></div><div class="line">    <span class="comment">//    self-&gt;_age=age;</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="built_in">NSString</span> *)getName&#123;</div><div class="line">    <span class="keyword">return</span> _name;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="built_in">NSInteger</span>)getAge&#123;</div><div class="line">    <span class="keyword">return</span> _age;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)print&#123;</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"name = %@ , age = %li"</span>,_name,_age);</div><div class="line">&#125;</div><div class="line"></div><div class="line">+ (<span class="keyword">void</span>)testPerson&#123;</div><div class="line">    <span class="comment">// alloc在内存中申请空间生成Person的实例，*person指针指向该实例</span></div><div class="line">    Person *person = [[Person alloc] init];</div><div class="line">    [person setName:<span class="string">@"Caicai"</span> andAge:<span class="number">21</span>];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"name = %@ , age = %li"</span>,[person getName],[person getAge]);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  main.m</span></div><div class="line"><span class="comment">//  OC3_份文件创建类</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  Created by Leif on 9/11/16.</span></div><div class="line"><span class="comment">//  Copyright © 2016 Leif. All rights reserved.</span></div><div class="line"><span class="comment">//</span></div><div class="line"></div><div class="line"><span class="comment">// 1、OC使用#import包含头文件</span></div><div class="line"><span class="comment">// 2、C语言防止头文件重复包含，需要用预编译指令；OC不需要考虑</span></div><div class="line"><span class="comment">//    #ifndef XXX.h</span></div><div class="line"><span class="comment">//    #define XXX.h</span></div><div class="line"><span class="comment">//    #endif</span></div><div class="line"><span class="comment">// 3、OC语言完全兼容C语言</span></div><div class="line"></div><div class="line"><span class="meta">#import <span class="meta-string">&lt;Foundation/Foundation.h&gt;</span></span></div><div class="line"><span class="meta">#import <span class="meta-string">"Person.h"</span></span></div><div class="line"></div><div class="line"><span class="keyword">int</span> main(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[]) &#123;</div><div class="line">    <span class="keyword">@autoreleasepool</span> &#123;</div><div class="line">        [Person testPerson];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
-From: http://stackoverflow.com/questions/15437719/git-push-error-origin-does-not-appear-to-be-a-git-repository
-</code></pre>
       
     </div>
 
@@ -396,7 +363,7 @@ From: http://stackoverflow.com/questions/15437719/git-push-error-origin-does-not
       
         <div class="post-tags">
           
-            <a href="/tags/git/" rel="tag">#git</a>
+            <a href="/tags/OC/" rel="tag">#OC</a>
           
         </div>
       
@@ -405,13 +372,13 @@ From: http://stackoverflow.com/questions/15437719/git-push-error-origin-does-not
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/09/11/OC学习笔记1：类的创建/" rel="next" title="OC学习笔记1：类的创建">
+                <i class="fa fa-chevron-left"></i> OC学习笔记1：类的创建
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/07/05/python基础/" rel="prev" title="python基础">
-                python基础 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -437,8 +404,8 @@ From: http://stackoverflow.com/questions/15437719/git-push-error-origin-does-not
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/07/04/git学习笔记/"
-           data-title="git学习笔记" data-url="http://yecj.me/2016/07/04/git学习笔记/">
+      <div class="ds-thread" data-thread-key="2016/09/11/OC学习笔记2：类的创建（分文件）/"
+           data-title="OC学习笔记2：类的创建（分文件）" data-url="http://yecj.me/2016/09/11/OC学习笔记2：类的创建（分文件）/">
       </div>
     
   </div>
@@ -522,7 +489,7 @@ From: http://stackoverflow.com/questions/15437719/git-push-error-origin-does-not
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#创建项目"><span class="nav-number">1.</span> <span class="nav-text">创建项目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#上传项目"><span class="nav-number">2.</span> <span class="nav-text">上传项目</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>
