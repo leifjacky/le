@@ -1,0 +1,771 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="swift," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+<meta property="og:type" content="article">
+<meta property="og:title" content="learn Swift">
+<meta property="og:url" content="http://yecj.me/2016/09/11/learn-Swift/index.html">
+<meta property="og:site_name" content="Miraky">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+<meta property="og:updated_time" content="2016-09-11T12:11:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="learn Swift">
+<meta name="twitter:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yecj.me/2016/09/11/learn-Swift/"/>
+
+  <title> learn Swift | Miraky </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?7650320e34a9ace0e660d0147d338d4b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Miraky</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'aHp7sjm9BxK2nt1DbxJg','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                learn Swift
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-11T20:11:01+08:00" content="2016-09-11">
+              2016-09-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/11/learn-Swift/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/11/learn-Swift/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div><div class="line">264</div><div class="line">265</div><div class="line">266</div><div class="line">267</div><div class="line">268</div><div class="line">269</div><div class="line">270</div><div class="line">271</div><div class="line">272</div><div class="line">273</div><div class="line">274</div><div class="line">275</div><div class="line">276</div><div class="line">277</div><div class="line">278</div><div class="line">279</div><div class="line">280</div><div class="line">281</div><div class="line">282</div><div class="line">283</div><div class="line">284</div><div class="line">285</div><div class="line">286</div><div class="line">287</div><div class="line">288</div><div class="line">289</div><div class="line">290</div><div class="line">291</div><div class="line">292</div><div class="line">293</div><div class="line">294</div><div class="line">295</div><div class="line">296</div><div class="line">297</div><div class="line">298</div><div class="line">299</div><div class="line">300</div><div class="line">301</div><div class="line">302</div><div class="line">303</div><div class="line">304</div><div class="line">305</div><div class="line">306</div><div class="line">307</div><div class="line">308</div><div class="line">309</div><div class="line">310</div><div class="line">311</div><div class="line">312</div><div class="line">313</div><div class="line">314</div><div class="line">315</div><div class="line">316</div><div class="line">317</div><div class="line">318</div><div class="line">319</div><div class="line">320</div><div class="line">321</div><div class="line">322</div><div class="line">323</div><div class="line">324</div><div class="line">325</div><div class="line">326</div><div class="line">327</div><div class="line">328</div><div class="line">329</div><div class="line">330</div><div class="line">331</div><div class="line">332</div><div class="line">333</div><div class="line">334</div><div class="line">335</div><div class="line">336</div><div class="line">337</div><div class="line">338</div><div class="line">339</div><div class="line">340</div><div class="line">341</div><div class="line">342</div><div class="line">343</div><div class="line">344</div><div class="line">345</div><div class="line">346</div><div class="line">347</div><div class="line">348</div><div class="line">349</div><div class="line">350</div><div class="line">351</div><div class="line">352</div><div class="line">353</div><div class="line">354</div><div class="line">355</div><div class="line">356</div><div class="line">357</div><div class="line">358</div><div class="line">359</div><div class="line">360</div><div class="line">361</div><div class="line">362</div><div class="line">363</div><div class="line">364</div><div class="line">365</div><div class="line">366</div><div class="line">367</div><div class="line">368</div><div class="line">369</div><div class="line">370</div><div class="line">371</div><div class="line">372</div><div class="line">373</div><div class="line">374</div><div class="line">375</div><div class="line">376</div><div class="line">377</div><div class="line">378</div><div class="line">379</div><div class="line">380</div><div class="line">381</div><div class="line">382</div><div class="line">383</div><div class="line">384</div><div class="line">385</div><div class="line">386</div><div class="line">387</div><div class="line">388</div><div class="line">389</div><div class="line">390</div><div class="line">391</div><div class="line">392</div><div class="line">393</div><div class="line">394</div><div class="line">395</div><div class="line">396</div><div class="line">397</div><div class="line">398</div><div class="line">399</div><div class="line">400</div><div class="line">401</div><div class="line">402</div><div class="line">403</div><div class="line">404</div><div class="line">405</div><div class="line">406</div><div class="line">407</div><div class="line">408</div><div class="line">409</div><div class="line">410</div><div class="line">411</div><div class="line">412</div><div class="line">413</div><div class="line">414</div><div class="line">415</div><div class="line">416</div><div class="line">417</div><div class="line">418</div><div class="line">419</div><div class="line">420</div><div class="line">421</div><div class="line">422</div><div class="line">423</div><div class="line">424</div><div class="line">425</div><div class="line">426</div><div class="line">427</div><div class="line">428</div><div class="line">429</div><div class="line">430</div><div class="line">431</div><div class="line">432</div><div class="line">433</div><div class="line">434</div><div class="line">435</div><div class="line">436</div><div class="line">437</div><div class="line">438</div><div class="line">439</div><div class="line">440</div><div class="line">441</div><div class="line">442</div><div class="line">443</div><div class="line">444</div><div class="line">445</div><div class="line">446</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//: Playground - noun: a place where people can play</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="comment">// 1.6.1 变量和常量</span></div><div class="line"><span class="keyword">let</span> foundationTime = <span class="number">2012</span>   <span class="comment">// 常量声明</span></div><div class="line"><span class="keyword">var</span> schoolInfo = <span class="string">"POSTS &amp; TELECOM PRESS"</span>    <span class="comment">// 变量声明</span></div><div class="line"></div><div class="line"><span class="comment">// 使用 "," 分隔多个值</span></div><div class="line"><span class="keyword">var</span> schoolName = <span class="string">"Shenzhen University"</span>, schoolUrl = <span class="string">"http://www.szu.edu.cn"</span></div><div class="line"><span class="keyword">let</span> year = <span class="number">2012</span>, month = <span class="number">1</span>, day = <span class="number">1</span></div><div class="line"></div><div class="line"><span class="comment">// 使用 ":" 指定类型</span></div><div class="line"><span class="keyword">var</span> count1 : <span class="type">Int</span> = <span class="number">10</span></div><div class="line"><span class="keyword">var</span> count2 = <span class="number">10</span></div><div class="line"><span class="comment">// 编译器会一直认为10是Int型，所以count2和count1等价</span></div><div class="line"></div><div class="line"><span class="comment">// 变量在没有指定类型的情况下必须初始化</span></div><div class="line"><span class="comment">// var count3   // 不合法</span></div><div class="line"><span class="keyword">var</span> count4 : <span class="type">Int</span></div><div class="line"><span class="comment">// 常量必须初始化</span></div><div class="line"><span class="comment">// let pages1   // 不合法</span></div><div class="line"><span class="keyword">let</span> pages2 : <span class="type">Int</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> pages3 = <span class="number">10</span></div><div class="line"><span class="keyword">let</span> pages4 : <span class="type">Int</span> = <span class="number">10</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> value = <span class="string">"abc"</span></div><div class="line"><span class="comment">// value = 20   // 不合法，value类型已为字符串</span></div><div class="line"></div><div class="line"><span class="comment">// print 控制台输出</span></div><div class="line"><span class="built_in">print</span>(<span class="string">"This is line one"</span>)</div><div class="line"></div><div class="line"><span class="comment">// 指定分隔符separator，分隔多个输出参数</span></div><div class="line"><span class="built_in">print</span>(<span class="string">"CP"</span>, <span class="string">"is"</span>, <span class="string">"my"</span>, <span class="string">"girlfriend"</span>, separator:<span class="string">" "</span>)</div><div class="line"></div><div class="line"><span class="comment">// 分隔符输出多个参数，带后缀，不换行</span></div><div class="line"><span class="built_in">print</span>(<span class="string">"Swift"</span>, <span class="string">"is"</span>, <span class="string">"Open"</span>, <span class="string">"Source"</span>, separator:<span class="string">"-"</span>, terminator:<span class="string">"!"</span>)</div><div class="line"></div><div class="line"><span class="comment">// 自定义，写入到流文件</span></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">MyStreamer</span>: <span class="title">OutputStreamType</span></span>&#123;</div><div class="line">    <span class="comment">// 获取文件句柄</span></div><div class="line">    <span class="built_in">lazy</span> <span class="keyword">var</span> fileHandle: <span class="type">NSFileHandle</span>? = &#123;</div><div class="line">        <span class="keyword">let</span> fileHandle = <span class="type">NSFileHandle</span>(forWritingAtPath: <span class="keyword">self</span>.logPath)</div><div class="line">        <span class="keyword">return</span> fileHandle</div><div class="line">    &#125;()</div><div class="line">    </div><div class="line">    <span class="comment">// 定义文件路径</span></div><div class="line">    <span class="built_in">lazy</span> <span class="keyword">var</span> logPath: <span class="type">String</span> = &#123;</div><div class="line">        <span class="keyword">let</span> path: <span class="type">NSString</span> = <span class="type">NSSearchPathForDirectoriesInDomains</span>(<span class="type">NSSearchPathDirectory</span>.<span class="type">DocumentDirectory</span>, <span class="type">NSSearchPathDomainMask</span>.<span class="type">AllDomainsMask</span>, <span class="literal">true</span>).first!</div><div class="line">        <span class="keyword">let</span> filePath = (path <span class="keyword">as</span> <span class="type">NSString</span>).stringByAppendingPathComponent(<span class="string">"log.txt"</span>)</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> !<span class="type">NSFileManager</span>.defaultManager().fileExistsAtPath(filePath)&#123;</div><div class="line">            <span class="type">NSFileManager</span>.defaultManager().createFileAtPath(filePath, contents: <span class="literal">nil</span>, attributes: <span class="literal">nil</span>)</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">print</span>(filePath)</div><div class="line">        <span class="keyword">return</span> filePath</div><div class="line">    &#125;()</div><div class="line">    </div><div class="line">    <span class="comment">// 追加写到文件</span></div><div class="line">    <span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">write</span><span class="params">(string: String)</span></span>&#123;</div><div class="line">        fileHandle?.seekToEndOfFile()</div><div class="line">        fileHandle?.writeData(string.dataUsingEncoding(<span class="type">NSUTF8StringEncoding</span>)!)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> myStream = <span class="type">MyStreamer</span>()</div><div class="line"><span class="built_in">print</span>(<span class="string">"First of all"</span>, toStream: &amp;myStream)</div><div class="line"><span class="built_in">print</span>(<span class="string">"Then after"</span>, toStream: &amp;myStream)</div><div class="line"><span class="built_in">print</span>(<span class="string">"And, finally"</span>, toStream: &amp;myStream)</div><div class="line"></div><div class="line"><span class="comment">// 1.6.2 基本数据类型及转换</span></div><div class="line"><span class="comment">// 1.整型</span></div><div class="line"><span class="comment">// 整型 Int8, Int16, Int32, Int64</span></div><div class="line"><span class="comment">// 无符号整型 UInt8, UInt16, UInt32, UInt64</span></div><div class="line"><span class="comment">// 有时候只需要使用Int，它根据机器字长调整位数</span></div><div class="line"><span class="keyword">let</span> minIntValue = <span class="type">Int32</span>.<span class="built_in">min</span></div><div class="line"><span class="keyword">let</span> maxIntValue = <span class="type">Int32</span>.<span class="built_in">max</span></div><div class="line"><span class="built_in">print</span>(minIntValue)</div><div class="line"><span class="built_in">print</span>(maxIntValue)</div><div class="line"></div><div class="line"><span class="comment">// 2.浮点型</span></div><div class="line"><span class="comment">// Float, Double 32位，64位浮点</span></div><div class="line"><span class="keyword">let</span> pi1 : <span class="type">Double</span> = <span class="number">3.1415926</span></div><div class="line"><span class="keyword">let</span> pi2 : <span class="type">Float</span> = <span class="number">3.14</span></div><div class="line"><span class="built_in">print</span>(pi1)</div><div class="line"><span class="built_in">print</span>(pi2)</div><div class="line"></div><div class="line"><span class="comment">// 扩展Double</span></div><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">Double</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">format</span><span class="params">(f: String)</span></span> -&gt; <span class="type">String</span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="type">NSString</span>(format: <span class="string">"%\(f)f"</span>, <span class="keyword">self</span>) <span class="keyword">as</span> <span class="type">String</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//输出固定位数Double</span></div><div class="line"><span class="keyword">let</span> pi3 : <span class="type">Double</span> = <span class="number">3.1415926</span></div><div class="line"><span class="built_in">print</span>(pi3.format(<span class="string">".1"</span>))</div><div class="line"></div><div class="line"><span class="comment">// 3.布尔型</span></div><div class="line"><span class="keyword">let</span> bjwgwonoIsBest = <span class="literal">true</span></div><div class="line"><span class="keyword">let</span> catIsDog = <span class="literal">false</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> ngwoeghIsBestSchool:<span class="type">Bool</span> = <span class="literal">true</span></div><div class="line"><span class="keyword">if</span> ngwoeghIsBestSchool&#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"gweognlhwelglfCPCPCPCPCPCP"</span>)</div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 例子</span></div><div class="line"><span class="comment">/*</span></div><div class="line">let m = 20</div><div class="line">if m&#123;   // 编译不通过，m不是Bool类型</div><div class="line">    print("m = \(m)");</div><div class="line">&#125;</div><div class="line">*/</div><div class="line"></div><div class="line"><span class="keyword">let</span> m = <span class="number">20</span></div><div class="line"><span class="keyword">if</span> m == <span class="number">20</span>&#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"m = \(m)"</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 4.字符和字符串</span></div><div class="line"><span class="keyword">var</span> charValue1:<span class="type">Character</span> = <span class="string">"a"</span></div><div class="line"><span class="keyword">var</span> strValue1:<span class="type">String</span> = <span class="string">"abcd"</span></div><div class="line"><span class="keyword">var</span> strValue3 = <span class="string">"a"</span> <span class="comment">// 虽然只有一个字符，但默认为字符串</span></div><div class="line"><span class="keyword">var</span> charValue3:<span class="type">Character</span> = <span class="string">"上"</span>  <span class="comment">// 中文为一个字符</span></div><div class="line"><span class="keyword">var</span> charValue4 = charValue3 <span class="comment">// 此时charValue4类型与charValue3一样为Character类型</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> emptyString1 = <span class="string">""</span></div><div class="line"><span class="keyword">var</span> emptyString2 = <span class="type">String</span>() <span class="comment">// 两句同为空字符串</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> emptyString1.isEmpty&#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"emptyString1 is empty 1"</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">if</span> emptyString1 == <span class="string">""</span>&#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"emptyString1 is empty 2"</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> str1 = <span class="string">"abc"</span></div><div class="line"><span class="keyword">var</span> str2 = <span class="type">String</span>(<span class="string">"abc"</span>) <span class="comment">// 两句等价</span></div><div class="line"></div><div class="line"><span class="comment">// 枚举字符串</span></div><div class="line"><span class="keyword">let</span> charSet = <span class="string">"GetEveryCharacterFromThisSentence"</span></div><div class="line"><span class="keyword">for</span> <span class="built_in">c</span> <span class="keyword">in</span> charSet.characters&#123;</div><div class="line">    <span class="built_in">print</span>(<span class="built_in">c</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 5.元组类型</span></div><div class="line"><span class="keyword">let</span> product = (<span class="number">2015</span>, <span class="string">"iPhone 7 Plus"</span>, <span class="number">6088</span>) <span class="comment">// 元组中的元素类型可以不同</span></div><div class="line"><span class="built_in">print</span>(product)</div><div class="line"></div><div class="line"><span class="comment">// 获取元组中的每一个元素，使用 "_" 作为占位符</span></div><div class="line"><span class="keyword">let</span> product1 = (<span class="number">2015</span>, <span class="string">"Macbook Pro"</span>, <span class="number">6088</span>)</div><div class="line"><span class="keyword">var</span> (_year, _name, _price) = product1   <span class="comment">// 分别将product1中的三个值赋值给_year, _name, _price</span></div><div class="line"><span class="built_in">print</span>(<span class="string">"year=\(_year) name=\(_name) price=\(_price)"</span>)</div><div class="line"></div><div class="line"><span class="keyword">let</span> (<span class="number">_</span>,name1,<span class="number">_</span>) = product1</div><div class="line"><span class="built_in">print</span>(<span class="string">"name1=\(name1)"</span>)</div><div class="line"></div><div class="line"><span class="comment">// 初始化时可以为每个元素命名</span></div><div class="line"><span class="keyword">let</span> product2 = (year:<span class="number">2015</span>, name:<span class="string">"Mac Pro"</span>, price:(<span class="number">12888</span>))</div><div class="line"><span class="built_in">print</span>(product2.year)</div><div class="line"><span class="built_in">print</span>(product2.name)</div><div class="line"><span class="built_in">print</span>(product2.price)</div><div class="line"></div><div class="line"><span class="comment">// 6.可选类型</span></div><div class="line"><span class="comment">// 有时候会遇到不确定是否有值的情况</span></div><div class="line"><span class="comment">// var stringValue: String</span></div><div class="line"><span class="comment">// print(stringValue)  // Variable 'stringValue' used before being initialized</span></div><div class="line"></div><div class="line"><span class="comment">// 解决方法，类型后面加"?"，表示可选类型，允许没有值</span></div><div class="line"><span class="keyword">var</span> stringValue:<span class="type">String</span>?</div><div class="line"><span class="keyword">if</span> (stringValue != <span class="literal">nil</span>)&#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"stringValue 存在值"</span>)</div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"stringValue 不存在值"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 每次都进行判断很麻烦，当确定可选类型一定有值，直接在变量名后面加"!"，表示强制输出</span></div><div class="line"><span class="keyword">var</span> stringValue1 : <span class="type">String</span>?</div><div class="line"><span class="built_in">print</span>(stringValue1)</div><div class="line"><span class="comment">// print(stringValue1!) // 错误，stringValue1没有值</span></div><div class="line"><span class="keyword">if</span> (stringValue1 != <span class="literal">nil</span>)&#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"stringValue1 存在值"</span>)</div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"stringValue1 不存在值"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 在变量名后面加"!"也很麻烦，也可直接在声明类型后加"!"</span></div><div class="line"><span class="keyword">var</span> numStr:<span class="type">String</span> = <span class="string">"123"</span></div><div class="line"><span class="keyword">var</span> value1:<span class="type">Int</span>? = <span class="type">Int</span>(numStr)</div><div class="line"><span class="built_in">print</span>(value1)</div><div class="line"></div><div class="line"><span class="keyword">var</span> value2:<span class="type">Int</span>! = <span class="type">Int</span>(numStr)</div><div class="line"><span class="built_in">print</span>(value2)</div><div class="line"></div><div class="line"><span class="keyword">var</span> value3:<span class="type">Int</span>? = <span class="type">Int</span>(numStr)</div><div class="line"><span class="comment">// print(value3+6)  // 错误，必须加"!"</span></div><div class="line"></div><div class="line"><span class="comment">// 7.数值可读性</span></div><div class="line"><span class="keyword">let</span> readability1 = <span class="number">10_000_000_000</span></div><div class="line"><span class="keyword">let</span> readability2 = <span class="number">1_000_000.000_000_1</span></div><div class="line"><span class="keyword">var</span> readability3 : <span class="type">Int</span> = <span class="number">1_00_00_000_000</span></div><div class="line"></div><div class="line"><span class="comment">// 8.类型别名</span></div><div class="line"><span class="comment">// typealias 类型别名 = 原始类型</span></div><div class="line"><span class="keyword">typealias</span> <span class="type">NewInt</span> = <span class="type">Int32</span></div><div class="line"><span class="keyword">var</span> new_value:<span class="type">NewInt</span> = <span class="number">123</span></div><div class="line"></div><div class="line"><span class="comment">// 9.数据类型转换</span></div><div class="line"><span class="comment">// 整形转浮点</span></div><div class="line"><span class="keyword">var</span> j:<span class="type">Int</span> = <span class="number">3</span></div><div class="line"><span class="type">Double</span>(j) <span class="comment">// 3.0</span></div><div class="line"><span class="type">Float</span>(j) <span class="comment">// 3.0</span></div><div class="line"><span class="string">"\(j)"</span>  <span class="comment">// 3</span></div><div class="line"></div><div class="line"><span class="comment">// 字符串转其他</span></div><div class="line"><span class="keyword">var</span> s:<span class="type">String</span> = <span class="string">"2.156asd2"</span></div><div class="line"><span class="type">Int</span>(s)</div><div class="line"><span class="keyword">var</span> s1 = s <span class="keyword">as</span> <span class="type">NSString</span></div><div class="line">s1.integerValue</div><div class="line">s1.doubleValue</div><div class="line">s1.floatValue</div><div class="line"></div><div class="line"><span class="comment">// 其他转字符串</span></div><div class="line"><span class="keyword">var</span> d:<span class="type">Double</span> = <span class="number">1.68</span></div><div class="line"><span class="string">"\(d)"</span></div><div class="line">d.format(<span class="string">".1"</span>)</div><div class="line"></div><div class="line"><span class="keyword">var</span> f:<span class="type">Float</span> = <span class="number">1.68</span></div><div class="line"><span class="string">"\(f)"</span></div><div class="line"></div><div class="line"><span class="comment">// var i:Int = 1.68 // 不能直接转换</span></div><div class="line"><span class="comment">// "\(i)"</span></div><div class="line"></div><div class="line"><span class="comment">// 1.6.3 运算符和表达式</span></div><div class="line"><span class="comment">// 赋值运算符</span></div><div class="line"><span class="keyword">let</span> b = <span class="number">20</span></div><div class="line"><span class="keyword">var</span> a = <span class="number">10</span></div><div class="line">a = b</div><div class="line"></div><div class="line"><span class="comment">// 数值运算</span></div><div class="line"><span class="keyword">var</span> newString = <span class="string">"hello, "</span> + <span class="string">"world"</span></div><div class="line"><span class="keyword">let</span> endChar: <span class="type">Character</span> = <span class="string">"!"</span></div><div class="line">newString.append(endChar)</div><div class="line"></div><div class="line"><span class="comment">// 求余</span></div><div class="line"><span class="number">9</span> % <span class="number">4</span></div><div class="line"></div><div class="line"><span class="comment">// 自增、自减</span></div><div class="line"><span class="keyword">var</span> aInt = <span class="number">0</span></div><div class="line">++aInt</div><div class="line"></div><div class="line"><span class="keyword">let</span> bInt = ++aInt</div><div class="line"><span class="keyword">let</span> cInt = aInt++</div><div class="line"></div><div class="line"><span class="comment">// 正负号</span></div><div class="line"><span class="keyword">let</span> three = <span class="number">3</span></div><div class="line"><span class="keyword">let</span> minusThree = -three</div><div class="line"><span class="keyword">let</span> plusThree = -minusThree</div><div class="line"></div><div class="line"><span class="keyword">let</span> minusSix = -<span class="number">6</span></div><div class="line"><span class="keyword">let</span> alsoMinusSix = +minusSix</div><div class="line"></div><div class="line"><span class="comment">// 复合赋值</span></div><div class="line"><span class="keyword">var</span> aF = <span class="number">1</span></div><div class="line">aF += <span class="number">2</span></div><div class="line"></div><div class="line"><span class="comment">// 比较运算 == != &gt; &lt; &gt;= &lt;=</span></div><div class="line"><span class="number">1</span> == <span class="number">1</span></div><div class="line"><span class="number">2</span> != <span class="number">1</span></div><div class="line"><span class="number">2</span> &gt; <span class="number">1</span></div><div class="line"><span class="number">1</span> &lt; <span class="number">2</span></div><div class="line"><span class="number">1</span> &gt;= <span class="number">1</span></div><div class="line"><span class="number">2</span> &lt;= <span class="number">1</span></div><div class="line"></div><div class="line"><span class="comment">// 三元条件运算</span></div><div class="line"><span class="keyword">let</span> contentHeight = <span class="number">40</span></div><div class="line"><span class="keyword">let</span> hasHeader = <span class="literal">true</span></div><div class="line"><span class="keyword">let</span> rowHeight = contentHeight + (hasHeader ? <span class="number">50</span> : <span class="number">20</span>)</div><div class="line"></div><div class="line"><span class="comment">// 区间运算符</span></div><div class="line"><span class="keyword">for</span> index <span class="keyword">in</span> <span class="number">1</span>...<span class="number">5</span>&#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"\(index) * 5 = \(index * 5)"</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">for</span> index <span class="keyword">in</span> <span class="number">1</span>..&lt;<span class="number">5</span>&#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"\(index) * 5 = \(index * 5)"</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 逻辑运算</span></div><div class="line"><span class="keyword">var</span> book: <span class="type">Bool</span> = <span class="literal">true</span></div><div class="line"><span class="keyword">var</span> bjwxhl: <span class="type">Bool</span> = <span class="literal">true</span></div><div class="line"><span class="keyword">var</span> oc:<span class="type">Bool</span> = <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> (oc &amp;&amp; book &amp;&amp; bjwxhl)&#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"恭喜你，你将很快成为Swift专家"</span>)</div><div class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span> ((!oc &amp;&amp; book &amp;&amp; bjwxhl) || (oc &amp;&amp; !book &amp;&amp; bjwxhl))&#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"zdwuxmhulmvryepwxyxx,nijlhfrsyivhwoSwiftyuyj"</span>)</div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"nixuycjkgozijixbkudenulicdhvvhwoSwiftyuyj"</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 类型转换运算符</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeSuperType</span> </span>&#123;&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeType</span>: <span class="title">SomeSuperType</span> </span>&#123;&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeChildType</span>: <span class="title">SomeType</span> </span>&#123;&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> st = <span class="type">SomeType</span>()</div><div class="line"><span class="keyword">let</span> x = st <span class="keyword">as</span> <span class="type">SomeSuperType</span></div><div class="line"><span class="comment">// let y = st as Int    // 编译错误</span></div><div class="line"><span class="comment">// let z = st as SomeChildType  // 可能在运行发生错误</span></div><div class="line"></div><div class="line"><span class="comment">//也可以用 "as" </span></div><div class="line"><span class="keyword">let</span> y1 = x <span class="keyword">as</span> <span class="type">SomeSuperType</span></div><div class="line"><span class="keyword">let</span> y2: <span class="type">SomeSuperType</span> = x</div><div class="line"></div><div class="line"><span class="comment">// is 检查特定类型</span></div><div class="line"><span class="string">"Hello"</span> <span class="keyword">is</span> <span class="type">String</span></div><div class="line"><span class="string">"hello"</span> <span class="keyword">is</span> <span class="type">Int</span></div><div class="line"></div><div class="line"><span class="comment">// 1.6.4 控制流</span></div><div class="line"><span class="comment">// 1.for</span></div><div class="line"><span class="keyword">for</span> index <span class="keyword">in</span> <span class="number">1</span>...<span class="number">5</span>&#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"\(index) * 5 = \(index * 5)"</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"> // 过时</div><div class="line">for var i=0;i&lt;6;i+=1 &#123;</div><div class="line">    print("i = \(i)")</div><div class="line">&#125;</div><div class="line"> */</div><div class="line"></div><div class="line"><span class="comment">// 2.while</span></div><div class="line"><span class="comment">// while循环</span></div><div class="line"><span class="keyword">var</span> ip = <span class="number">0</span></div><div class="line"><span class="keyword">while</span> (ip&lt;<span class="number">5</span>)&#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"ip = \(ip)"</span>)</div><div class="line">    <span class="comment">// ip++ 不推荐</span></div><div class="line">    ip += <span class="number">1</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// repeat-while循环</span></div><div class="line"><span class="keyword">var</span> pa = <span class="number">5</span></div><div class="line"><span class="keyword">repeat</span>&#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"pa = \(pa)"</span>)</div><div class="line">    pa += <span class="number">1</span></div><div class="line">&#125; <span class="keyword">while</span> (pa&lt;<span class="number">5</span>)</div><div class="line"></div><div class="line"><span class="comment">// 3.if switch</span></div><div class="line"><span class="comment">// if 语句</span></div><div class="line"><span class="keyword">var</span> book1:<span class="type">Bool</span> = <span class="literal">true</span></div><div class="line"><span class="keyword">var</span> bjwxhl1:<span class="type">Bool</span> = <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> (book1)&#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"You bought this book "</span>)</div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"You didn't buy this book "</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// switch</span></div><div class="line"><span class="keyword">var</span> day1 = <span class="string">"Mon"</span></div><div class="line"><span class="keyword">switch</span> day1&#123;</div><div class="line">    <span class="keyword">case</span> <span class="string">"Mon"</span>: <span class="built_in">print</span>(<span class="string">"Monday"</span>)</div><div class="line">    <span class="keyword">case</span> <span class="string">"Tue"</span>: <span class="built_in">print</span>(<span class="string">"Tuesday"</span>)</div><div class="line">    <span class="keyword">default</span>: <span class="built_in">print</span>(<span class="string">"I don't know"</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> <span class="built_in">count</span> = <span class="number">3_000</span></div><div class="line"><span class="keyword">var</span> naturalThings:<span class="type">String</span></div><div class="line"><span class="keyword">switch</span> <span class="built_in">count</span>&#123;</div><div class="line"><span class="keyword">case</span> <span class="number">0</span>:</div><div class="line">    naturalThings = <span class="string">"zero"</span></div><div class="line"><span class="keyword">case</span> <span class="number">1</span>...<span class="number">3</span>:</div><div class="line">    naturalThings = <span class="string">"one two three"</span></div><div class="line"><span class="keyword">case</span> <span class="number">1000</span>...<span class="number">9999</span>:</div><div class="line">    naturalThings = <span class="string">"1000 to 9999"</span></div><div class="line"><span class="keyword">default</span>:</div><div class="line">    naturalThings = <span class="string">"I don't know"</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 4.控制转换语句</span></div><div class="line"><span class="comment">// continue break fallthrough return</span></div><div class="line"></div><div class="line"><span class="comment">// 5.枚举和结构体</span></div><div class="line"><span class="class"><span class="keyword">enum</span> <span class="title">MapDirection</span></span>&#123;</div><div class="line">    <span class="keyword">case</span> <span class="type">North</span></div><div class="line">    <span class="keyword">case</span> <span class="type">South</span></div><div class="line">    <span class="keyword">case</span> <span class="type">East</span></div><div class="line">    <span class="keyword">case</span> <span class="type">West</span></div><div class="line">    <span class="comment">// case North,South,East,West</span></div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">simpleDescription</span><span class="params">()</span></span> -&gt; <span class="type">String</span>&#123;</div><div class="line">        <span class="keyword">switch</span> <span class="keyword">self</span>&#123;</div><div class="line">        <span class="keyword">case</span> .<span class="type">East</span>:</div><div class="line">            <span class="keyword">return</span> <span class="string">"East"</span></div><div class="line">        <span class="keyword">case</span> .<span class="type">West</span>:</div><div class="line">            <span class="keyword">return</span> <span class="string">"West"</span></div><div class="line">        <span class="keyword">case</span> .<span class="type">North</span>:</div><div class="line">            <span class="keyword">return</span> <span class="string">"North"</span></div><div class="line">        <span class="keyword">case</span> .<span class="type">South</span>:</div><div class="line">            <span class="keyword">return</span> <span class="string">"South"</span></div><div class="line">        <span class="keyword">default</span>:</div><div class="line">            <span class="keyword">return</span> <span class="string">"unknown"</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> directionToHead = <span class="type">MapDirection</span>.<span class="type">East</span></div><div class="line">directionToHead = .<span class="type">South</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// struct 结构体</span></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Summation</span></span>&#123;</div><div class="line">    <span class="keyword">var</span> addend: <span class="type">Int</span></div><div class="line">    <span class="keyword">var</span> augend: <span class="type">Int</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">sum</span><span class="params">()</span></span> -&gt; <span class="type">Int</span>&#123;</div><div class="line">        <span class="keyword">return</span> addend + augend</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> newStruct = <span class="type">Summation</span>(addend: <span class="number">6</span>, augend: <span class="number">8</span>)</div><div class="line"><span class="keyword">let</span> newNum = newStruct.sum()</div><div class="line"><span class="built_in">print</span>(newNum)</div><div class="line"></div><div class="line"><span class="comment">// 1.6.6 宏定义</span></div><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="keyword">let</span> iPHONE4_DEV:<span class="type">Bool</span>! = (<span class="type">UIScreen</span>.mainScreen().bounds.size.height == <span class="number">480</span>) ? <span class="literal">true</span> : <span class="literal">false</span></div><div class="line"><span class="keyword">let</span> iPHONE5_DEV:<span class="type">Bool</span>! = (<span class="type">UIScreen</span>.mainScreen().bounds.size.height == <span class="number">568</span>) ? <span class="literal">true</span> : <span class="literal">false</span></div><div class="line"><span class="keyword">let</span> iPad_DEVICE:<span class="type">Bool</span>! = (<span class="type">UIScreen</span>.mainScreen().bounds.size.height == <span class="number">480</span>) ? <span class="literal">true</span> : <span class="literal">false</span></div><div class="line"></div><div class="line"><span class="comment">// 条件编译</span></div><div class="line">#<span class="keyword">if</span> iPHONE4_DEV</div><div class="line">    <span class="comment">// ...</span></div><div class="line">#elseif iPHONE5_DEV</div><div class="line">    <span class="comment">// ...</span></div><div class="line">#elseif iPad_DEVICE</div><div class="line">    <span class="comment">// ...</span></div><div class="line">#<span class="keyword">else</span></div><div class="line">    <span class="comment">// ...</span></div><div class="line">#endif</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/swift/" rel="tag">#swift</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/11/OC学习笔记2：类的创建（分文件）/" rel="next" title="OC学习笔记2：类的创建（分文件）">
+                <i class="fa fa-chevron-left"></i> OC学习笔记2：类的创建（分文件）
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/09/11/learn-Swift/"
+           data-title="learn Swift" data-url="http://yecj.me/2016/09/11/learn-Swift/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Jacky Yip" />
+          <p class="site-author-name" itemprop="name">Jacky Yip</p>
+          <p class="site-description motion-element" itemprop="description">Jacky Yip's Blog</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jacky Yip</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"leifjacky"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+
+</body>
+</html>
