@@ -1,0 +1,771 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="swift," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+<meta property="og:type" content="article">
+<meta property="og:title" content="learn Swift 2">
+<meta property="og:url" content="http://yecj.me/2016/09/12/learn-Swift-2/index.html">
+<meta property="og:site_name" content="Miraky">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+<meta property="og:updated_time" content="2016-09-12T08:01:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="learn Swift 2">
+<meta name="twitter:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yecj.me/2016/09/12/learn-Swift-2/"/>
+
+  <title> learn Swift 2 | Miraky </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?7650320e34a9ace0e660d0147d338d4b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Miraky</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'aHp7sjm9BxK2nt1DbxJg','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                learn Swift 2
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-12T16:00:31+08:00" content="2016-09-12">
+              2016-09-12
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/12/learn-Swift-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/12/learn-Swift-2/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div><div class="line">264</div><div class="line">265</div><div class="line">266</div><div class="line">267</div><div class="line">268</div><div class="line">269</div><div class="line">270</div><div class="line">271</div><div class="line">272</div><div class="line">273</div><div class="line">274</div><div class="line">275</div><div class="line">276</div><div class="line">277</div><div class="line">278</div><div class="line">279</div><div class="line">280</div><div class="line">281</div><div class="line">282</div><div class="line">283</div><div class="line">284</div><div class="line">285</div><div class="line">286</div><div class="line">287</div><div class="line">288</div><div class="line">289</div><div class="line">290</div><div class="line">291</div><div class="line">292</div><div class="line">293</div><div class="line">294</div><div class="line">295</div><div class="line">296</div><div class="line">297</div><div class="line">298</div><div class="line">299</div><div class="line">300</div><div class="line">301</div><div class="line">302</div><div class="line">303</div><div class="line">304</div><div class="line">305</div><div class="line">306</div><div class="line">307</div><div class="line">308</div><div class="line">309</div><div class="line">310</div><div class="line">311</div><div class="line">312</div><div class="line">313</div><div class="line">314</div><div class="line">315</div><div class="line">316</div><div class="line">317</div><div class="line">318</div><div class="line">319</div><div class="line">320</div><div class="line">321</div><div class="line">322</div><div class="line">323</div><div class="line">324</div><div class="line">325</div><div class="line">326</div><div class="line">327</div><div class="line">328</div><div class="line">329</div><div class="line">330</div><div class="line">331</div><div class="line">332</div><div class="line">333</div><div class="line">334</div><div class="line">335</div><div class="line">336</div><div class="line">337</div><div class="line">338</div><div class="line">339</div><div class="line">340</div><div class="line">341</div><div class="line">342</div><div class="line">343</div><div class="line">344</div><div class="line">345</div><div class="line">346</div><div class="line">347</div><div class="line">348</div><div class="line">349</div><div class="line">350</div><div class="line">351</div><div class="line">352</div><div class="line">353</div><div class="line">354</div><div class="line">355</div><div class="line">356</div><div class="line">357</div><div class="line">358</div><div class="line">359</div><div class="line">360</div><div class="line">361</div><div class="line">362</div><div class="line">363</div><div class="line">364</div><div class="line">365</div><div class="line">366</div><div class="line">367</div><div class="line">368</div><div class="line">369</div><div class="line">370</div><div class="line">371</div><div class="line">372</div><div class="line">373</div><div class="line">374</div><div class="line">375</div><div class="line">376</div><div class="line">377</div><div class="line">378</div><div class="line">379</div><div class="line">380</div><div class="line">381</div><div class="line">382</div><div class="line">383</div><div class="line">384</div><div class="line">385</div><div class="line">386</div><div class="line">387</div><div class="line">388</div><div class="line">389</div><div class="line">390</div><div class="line">391</div><div class="line">392</div><div class="line">393</div><div class="line">394</div><div class="line">395</div><div class="line">396</div><div class="line">397</div><div class="line">398</div><div class="line">399</div><div class="line">400</div><div class="line">401</div><div class="line">402</div><div class="line">403</div><div class="line">404</div><div class="line">405</div><div class="line">406</div><div class="line">407</div><div class="line">408</div><div class="line">409</div><div class="line">410</div><div class="line">411</div><div class="line">412</div><div class="line">413</div><div class="line">414</div><div class="line">415</div><div class="line">416</div><div class="line">417</div><div class="line">418</div><div class="line">419</div><div class="line">420</div><div class="line">421</div><div class="line">422</div><div class="line">423</div><div class="line">424</div><div class="line">425</div><div class="line">426</div><div class="line">427</div><div class="line">428</div><div class="line">429</div><div class="line">430</div><div class="line">431</div><div class="line">432</div><div class="line">433</div><div class="line">434</div><div class="line">435</div><div class="line">436</div><div class="line">437</div><div class="line">438</div><div class="line">439</div><div class="line">440</div><div class="line">441</div><div class="line">442</div><div class="line">443</div><div class="line">444</div><div class="line">445</div><div class="line">446</div><div class="line">447</div><div class="line">448</div><div class="line">449</div><div class="line">450</div><div class="line">451</div><div class="line">452</div><div class="line">453</div><div class="line">454</div><div class="line">455</div><div class="line">456</div><div class="line">457</div><div class="line">458</div><div class="line">459</div><div class="line">460</div><div class="line">461</div><div class="line">462</div><div class="line">463</div><div class="line">464</div><div class="line">465</div><div class="line">466</div><div class="line">467</div><div class="line">468</div><div class="line">469</div><div class="line">470</div><div class="line">471</div><div class="line">472</div><div class="line">473</div><div class="line">474</div><div class="line">475</div><div class="line">476</div><div class="line">477</div><div class="line">478</div><div class="line">479</div><div class="line">480</div><div class="line">481</div><div class="line">482</div><div class="line">483</div><div class="line">484</div><div class="line">485</div><div class="line">486</div><div class="line">487</div><div class="line">488</div><div class="line">489</div><div class="line">490</div><div class="line">491</div><div class="line">492</div><div class="line">493</div><div class="line">494</div><div class="line">495</div><div class="line">496</div><div class="line">497</div><div class="line">498</div><div class="line">499</div><div class="line">500</div><div class="line">501</div><div class="line">502</div><div class="line">503</div><div class="line">504</div><div class="line">505</div><div class="line">506</div><div class="line">507</div><div class="line">508</div><div class="line">509</div><div class="line">510</div><div class="line">511</div><div class="line">512</div><div class="line">513</div><div class="line">514</div><div class="line">515</div><div class="line">516</div><div class="line">517</div><div class="line">518</div><div class="line">519</div><div class="line">520</div><div class="line">521</div><div class="line">522</div><div class="line">523</div><div class="line">524</div><div class="line">525</div><div class="line">526</div><div class="line">527</div><div class="line">528</div><div class="line">529</div><div class="line">530</div><div class="line">531</div><div class="line">532</div><div class="line">533</div><div class="line">534</div><div class="line">535</div><div class="line">536</div><div class="line">537</div><div class="line">538</div><div class="line">539</div><div class="line">540</div><div class="line">541</div><div class="line">542</div><div class="line">543</div><div class="line">544</div><div class="line">545</div><div class="line">546</div><div class="line">547</div><div class="line">548</div><div class="line">549</div><div class="line">550</div><div class="line">551</div><div class="line">552</div><div class="line">553</div><div class="line">554</div><div class="line">555</div><div class="line">556</div><div class="line">557</div><div class="line">558</div><div class="line">559</div><div class="line">560</div><div class="line">561</div><div class="line">562</div><div class="line">563</div><div class="line">564</div><div class="line">565</div><div class="line">566</div><div class="line">567</div><div class="line">568</div><div class="line">569</div><div class="line">570</div><div class="line">571</div><div class="line">572</div><div class="line">573</div><div class="line">574</div><div class="line">575</div><div class="line">576</div><div class="line">577</div><div class="line">578</div><div class="line">579</div><div class="line">580</div><div class="line">581</div><div class="line">582</div><div class="line">583</div><div class="line">584</div><div class="line">585</div><div class="line">586</div><div class="line">587</div><div class="line">588</div><div class="line">589</div><div class="line">590</div><div class="line">591</div><div class="line">592</div><div class="line">593</div><div class="line">594</div><div class="line">595</div><div class="line">596</div><div class="line">597</div><div class="line">598</div><div class="line">599</div><div class="line">600</div><div class="line">601</div><div class="line">602</div><div class="line">603</div><div class="line">604</div><div class="line">605</div><div class="line">606</div><div class="line">607</div><div class="line">608</div><div class="line">609</div><div class="line">610</div><div class="line">611</div><div class="line">612</div><div class="line">613</div><div class="line">614</div><div class="line">615</div><div class="line">616</div><div class="line">617</div><div class="line">618</div><div class="line">619</div><div class="line">620</div><div class="line">621</div><div class="line">622</div><div class="line">623</div><div class="line">624</div><div class="line">625</div><div class="line">626</div><div class="line">627</div><div class="line">628</div><div class="line">629</div><div class="line">630</div><div class="line">631</div><div class="line">632</div><div class="line">633</div><div class="line">634</div><div class="line">635</div><div class="line">636</div><div class="line">637</div><div class="line">638</div><div class="line">639</div><div class="line">640</div><div class="line">641</div><div class="line">642</div><div class="line">643</div><div class="line">644</div><div class="line">645</div><div class="line">646</div><div class="line">647</div><div class="line">648</div><div class="line">649</div><div class="line">650</div><div class="line">651</div><div class="line">652</div><div class="line">653</div><div class="line">654</div><div class="line">655</div><div class="line">656</div><div class="line">657</div><div class="line">658</div><div class="line">659</div><div class="line">660</div><div class="line">661</div><div class="line">662</div><div class="line">663</div><div class="line">664</div><div class="line">665</div><div class="line">666</div><div class="line">667</div><div class="line">668</div><div class="line">669</div><div class="line">670</div><div class="line">671</div><div class="line">672</div><div class="line">673</div><div class="line">674</div><div class="line">675</div><div class="line">676</div><div class="line">677</div><div class="line">678</div><div class="line">679</div><div class="line">680</div><div class="line">681</div><div class="line">682</div><div class="line">683</div><div class="line">684</div><div class="line">685</div><div class="line">686</div><div class="line">687</div><div class="line">688</div><div class="line">689</div><div class="line">690</div><div class="line">691</div><div class="line">692</div><div class="line">693</div><div class="line">694</div><div class="line">695</div><div class="line">696</div><div class="line">697</div><div class="line">698</div><div class="line">699</div><div class="line">700</div><div class="line">701</div><div class="line">702</div><div class="line">703</div><div class="line">704</div><div class="line">705</div><div class="line">706</div><div class="line">707</div><div class="line">708</div><div class="line">709</div><div class="line">710</div><div class="line">711</div><div class="line">712</div><div class="line">713</div><div class="line">714</div><div class="line">715</div><div class="line">716</div><div class="line">717</div><div class="line">718</div><div class="line">719</div><div class="line">720</div><div class="line">721</div><div class="line">722</div><div class="line">723</div><div class="line">724</div><div class="line">725</div><div class="line">726</div><div class="line">727</div><div class="line">728</div><div class="line">729</div><div class="line">730</div><div class="line">731</div><div class="line">732</div><div class="line">733</div><div class="line">734</div><div class="line">735</div><div class="line">736</div><div class="line">737</div><div class="line">738</div><div class="line">739</div><div class="line">740</div><div class="line">741</div><div class="line">742</div><div class="line">743</div><div class="line">744</div><div class="line">745</div><div class="line">746</div><div class="line">747</div><div class="line">748</div><div class="line">749</div><div class="line">750</div><div class="line">751</div><div class="line">752</div><div class="line">753</div><div class="line">754</div><div class="line">755</div><div class="line">756</div><div class="line">757</div><div class="line">758</div><div class="line">759</div><div class="line">760</div><div class="line">761</div><div class="line">762</div><div class="line">763</div><div class="line">764</div><div class="line">765</div><div class="line">766</div><div class="line">767</div><div class="line">768</div><div class="line">769</div><div class="line">770</div><div class="line">771</div><div class="line">772</div><div class="line">773</div><div class="line">774</div><div class="line">775</div><div class="line">776</div><div class="line">777</div><div class="line">778</div><div class="line">779</div><div class="line">780</div><div class="line">781</div><div class="line">782</div><div class="line">783</div><div class="line">784</div><div class="line">785</div><div class="line">786</div><div class="line">787</div><div class="line">788</div><div class="line">789</div><div class="line">790</div><div class="line">791</div><div class="line">792</div><div class="line">793</div><div class="line">794</div><div class="line">795</div><div class="line">796</div><div class="line">797</div><div class="line">798</div><div class="line">799</div><div class="line">800</div><div class="line">801</div><div class="line">802</div><div class="line">803</div><div class="line">804</div><div class="line">805</div><div class="line">806</div><div class="line">807</div><div class="line">808</div><div class="line">809</div><div class="line">810</div><div class="line">811</div><div class="line">812</div><div class="line">813</div><div class="line">814</div><div class="line">815</div><div class="line">816</div><div class="line">817</div><div class="line">818</div><div class="line">819</div><div class="line">820</div><div class="line">821</div><div class="line">822</div><div class="line">823</div><div class="line">824</div><div class="line">825</div><div class="line">826</div><div class="line">827</div><div class="line">828</div><div class="line">829</div><div class="line">830</div><div class="line">831</div><div class="line">832</div><div class="line">833</div><div class="line">834</div><div class="line">835</div><div class="line">836</div><div class="line">837</div><div class="line">838</div><div class="line">839</div><div class="line">840</div><div class="line">841</div><div class="line">842</div><div class="line">843</div><div class="line">844</div><div class="line">845</div><div class="line">846</div><div class="line">847</div><div class="line">848</div><div class="line">849</div><div class="line">850</div><div class="line">851</div><div class="line">852</div><div class="line">853</div><div class="line">854</div><div class="line">855</div><div class="line">856</div><div class="line">857</div><div class="line">858</div><div class="line">859</div><div class="line">860</div><div class="line">861</div><div class="line">862</div><div class="line">863</div><div class="line">864</div><div class="line">865</div><div class="line">866</div><div class="line">867</div><div class="line">868</div><div class="line">869</div><div class="line">870</div><div class="line">871</div><div class="line">872</div><div class="line">873</div><div class="line">874</div><div class="line">875</div><div class="line">876</div><div class="line">877</div><div class="line">878</div><div class="line">879</div><div class="line">880</div><div class="line">881</div><div class="line">882</div><div class="line">883</div><div class="line">884</div><div class="line">885</div><div class="line">886</div><div class="line">887</div><div class="line">888</div><div class="line">889</div><div class="line">890</div><div class="line">891</div><div class="line">892</div><div class="line">893</div><div class="line">894</div><div class="line">895</div><div class="line">896</div><div class="line">897</div><div class="line">898</div><div class="line">899</div><div class="line">900</div><div class="line">901</div><div class="line">902</div><div class="line">903</div><div class="line">904</div><div class="line">905</div><div class="line">906</div><div class="line">907</div><div class="line">908</div><div class="line">909</div><div class="line">910</div><div class="line">911</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//: Playground - noun: a place where people can play</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="comment">// 2.1 字符串</span></div><div class="line"><span class="comment">// 1.声明</span></div><div class="line"><span class="keyword">let</span> tempString = <span class="string">"this is a temp string"</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> wiseWords=<span class="string">"\0 , \" , \' , \\ , \t , \n, \r"</span></div><div class="line"><span class="built_in">print</span>(wiseWords)</div><div class="line"></div><div class="line"><span class="keyword">let</span> dollarSign = <span class="string">"\u&#123;24&#125;"</span>   <span class="comment">// unicode标量</span></div><div class="line"><span class="keyword">let</span> blackHeart = <span class="string">"\u&#123;2665&#125;"</span></div><div class="line"></div><div class="line"><span class="comment">// 2.常用方法</span></div><div class="line"><span class="comment">//字符串拼接</span></div><div class="line"><span class="keyword">var</span> varString = <span class="string">"iphonetrain"</span></div><div class="line">varString = <span class="string">"iphonetrain.com"</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> constantString = <span class="string">"the url"</span></div><div class="line"><span class="comment">// constantString += "is iphonetrain.com"   // 这种情况无法使用+=运算符</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> string1 = <span class="string">"hello"</span></div><div class="line"><span class="keyword">let</span> string2 = <span class="string">" iphonetrain"</span></div><div class="line"><span class="keyword">var</span> welcome = string1 + string2</div><div class="line"></div><div class="line"><span class="keyword">var</span> instruction = <span class="string">"look over"</span></div><div class="line">instruction += string2</div><div class="line"></div><div class="line"><span class="keyword">let</span> exclamationMark: <span class="type">Character</span> = <span class="string">"!"</span></div><div class="line">welcome.append(exclamationMark)</div><div class="line"></div><div class="line"><span class="comment">// 使用字符</span></div><div class="line"><span class="keyword">for</span> character <span class="keyword">in</span> <span class="string">"iphonetrain"</span>.characters&#123;</div><div class="line">    <span class="built_in">print</span>(character);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 计算字符数量</span></div><div class="line"><span class="keyword">let</span> countstring = <span class="string">"iphoengweljglgwhodss"</span></div><div class="line"><span class="built_in">print</span>(<span class="string">"countstring has \(countstring.characters.count) characters"</span>)</div><div class="line"><span class="built_in">print</span>(<span class="string">"countstring has \(strlen(countstring)) characters"</span>)</div><div class="line"></div><div class="line"><span class="comment">// 字符串插值</span></div><div class="line"><span class="keyword">let</span> multiplier = <span class="number">5</span></div><div class="line"><span class="keyword">let</span> message = <span class="string">"\(multiplier) times 2.5 is \(Double(multiplier) * 2.5)"</span></div><div class="line"></div><div class="line"><span class="comment">// 字符串相等</span></div><div class="line"><span class="keyword">let</span> quotation = <span class="string">"the url is iphonetrain.com."</span></div><div class="line"><span class="keyword">let</span> sameQuotation = <span class="string">"the url is iphonetrain.com."</span></div><div class="line"><span class="keyword">if</span> quotation == sameQuotation&#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"same"</span>)</div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"different"</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 前后缀相等</span></div><div class="line"><span class="keyword">let</span> completeString = <span class="string">"the url is iphonetrain.com"</span></div><div class="line"><span class="keyword">if</span> completeString.hasPrefix(<span class="string">"the url"</span>)&#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"has prefix the url"</span>);</div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"don't has prefix"</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">if</span> completeString.hasSuffix(<span class="string">".com"</span>)&#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"has suffix .com"</span>);</div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"don't has suffix .com"</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 大小写</span></div><div class="line"><span class="keyword">let</span> normal = <span class="string">"Could you help me, please?"</span></div><div class="line"><span class="keyword">let</span> uppercaseString = normal.uppercaseString</div><div class="line"><span class="built_in">print</span>(uppercaseString)</div><div class="line"></div><div class="line"><span class="keyword">let</span> lowercaseString = normal.lowercaseString</div><div class="line"><span class="built_in">print</span>(lowercaseString)</div><div class="line"></div><div class="line"><span class="keyword">let</span> capitalizedString = normal.capitalizedString</div><div class="line"><span class="built_in">print</span>(capitalizedString)</div><div class="line"></div><div class="line"><span class="comment">// 空判断</span></div><div class="line"><span class="keyword">var</span> emptyString = <span class="string">""</span></div><div class="line"><span class="keyword">if</span> emptyString.isEmpty&#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"emptyString字符串为空"</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 字符串截取</span></div><div class="line"><span class="keyword">var</span> sString : <span class="type">String</span> = <span class="string">"the url is iphonetrain.com"</span></div><div class="line"></div><div class="line"><span class="comment">// 方法1.转换为NSString</span></div><div class="line"><span class="keyword">var</span> fromString = (sString <span class="keyword">as</span> <span class="type">NSString</span>).substringFromIndex(<span class="number">5</span>)</div><div class="line"><span class="keyword">var</span> <span class="built_in">toString</span> = (sString <span class="keyword">as</span> <span class="type">NSString</span>).substringToIndex(<span class="number">4</span>)</div><div class="line"><span class="keyword">var</span> rangeString = (sString <span class="keyword">as</span> <span class="type">NSString</span>).substringWithRange(<span class="type">NSMakeRange</span>(<span class="number">4</span>, <span class="number">1</span>))</div><div class="line"></div><div class="line"><span class="comment">// 方法2.直接调用String的方法（推荐）</span></div><div class="line"><span class="comment">// String.Index并非Int类型，所以要创建String.Index类型参数值</span></div><div class="line"><span class="keyword">let</span> index = sString.startIndex.advancedBy(<span class="number">7</span>)</div><div class="line"><span class="keyword">let</span> index2 = sString.endIndex.advancedBy(-<span class="number">6</span>)</div><div class="line"><span class="keyword">var</span> range = <span class="type">Range</span>&lt;<span class="type">String</span>.<span class="type">Index</span>&gt;(start: index, end: index2)</div><div class="line"><span class="keyword">var</span> subString1 = sString.substringFromIndex(index)</div><div class="line"><span class="keyword">var</span> subString2 = sString.substringToIndex(index2)</div><div class="line"><span class="keyword">var</span> subString3 = sString.substringWithRange(range)</div><div class="line"></div><div class="line"><span class="comment">// 2.2 集合类型</span></div><div class="line"><span class="comment">// 1.数组</span></div><div class="line"><span class="comment">// Array&lt;SomeType&gt;  简写：[SomeType]</span></div><div class="line"></div><div class="line"><span class="comment">// 带默认值的数组</span></div><div class="line"><span class="keyword">var</span> threeDoubles = [<span class="type">Double</span>](<span class="built_in">count</span>: <span class="number">3</span>, repeatedValue: <span class="number">0.0</span>)   <span class="comment">// threeDoubles为3个0.0的Double型数组</span></div><div class="line"><span class="keyword">var</span> teachers:[<span class="type">String</span>] = [<span class="string">"Mr. Wang"</span>, <span class="string">"Mr. Liu"</span>]</div><div class="line"><span class="comment">// 当类型可以确认时</span></div><div class="line"><span class="keyword">var</span> students = [<span class="string">"Mike"</span>, <span class="string">"Tom"</span>]</div><div class="line"></div><div class="line"><span class="comment">// 常见操作</span></div><div class="line"><span class="keyword">var</span> arrayCount = teachers.<span class="built_in">count</span></div><div class="line"><span class="built_in">print</span>(<span class="string">"teachers 数组一共 \(arrayCount) 位老师"</span>)</div><div class="line"></div><div class="line"><span class="keyword">if</span> teachers.isEmpty&#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"The teachers array is empty."</span>)</div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"The teachers array is not empty"</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line">teachers.append(<span class="string">"Mr. Li"</span>)</div><div class="line">teachers += [<span class="string">"Mr. Jiang"</span>, <span class="string">"Ms. Tang"</span>]</div><div class="line">teachers.insert(<span class="string">"Hongjun"</span>, atIndex: <span class="number">0</span>)</div><div class="line"></div><div class="line"><span class="keyword">let</span> oneTeacher = teachers.removeAtIndex(<span class="number">1</span>)</div><div class="line"><span class="keyword">let</span> delTeacher = teachers.removeLast()</div><div class="line"></div><div class="line"><span class="keyword">var</span> firstItem = teachers[<span class="number">0</span>]</div><div class="line">teachers[<span class="number">0</span>] = <span class="string">"Mr. Zhao"</span></div><div class="line"></div><div class="line">teachers</div><div class="line">teachers[<span class="number">1</span>...<span class="number">3</span>] = [<span class="string">"HuiTong"</span>, <span class="string">"Gaven"</span>]</div><div class="line">teachers</div><div class="line"></div><div class="line"><span class="comment">// 数组遍历</span></div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> teachers&#123;</div><div class="line">    <span class="built_in">print</span>(item)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">for</span> (index, value) <span class="keyword">in</span> teachers.<span class="built_in">enumerate</span>()&#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"Item \(index): \(value)"</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 字典（Map）</span></div><div class="line"><span class="keyword">var</span> languageDic: <span class="type">Dictionary</span>&lt;<span class="type">String</span>, <span class="type">String</span>&gt; = [<span class="string">"French"</span>: <span class="string">"fr"</span>, <span class="string">"English"</span>:<span class="string">"en"</span>]</div><div class="line"><span class="keyword">var</span> dicCount = languageDic.<span class="built_in">count</span></div><div class="line">languageDic[<span class="string">"German"</span>]=<span class="string">"ger"</span></div><div class="line"></div><div class="line"><span class="comment">// 更新值，返回原值</span></div><div class="line"><span class="keyword">let</span> oldValue = languageDic.updateValue(<span class="string">"Ge"</span>, forKey: <span class="string">"German"</span>)</div><div class="line"></div><div class="line"><span class="comment">// 检索特定键</span></div><div class="line"><span class="keyword">let</span> englisthShorthand = languageDic[<span class="string">"English"</span>]</div><div class="line"></div><div class="line"><span class="comment">// 删除值</span></div><div class="line">languageDic[<span class="string">"English"</span>] = <span class="literal">nil</span></div><div class="line"><span class="keyword">let</span> removeValue = languageDic.removeValueForKey(<span class="string">"English"</span>)</div><div class="line"></div><div class="line"><span class="comment">// 字典遍历</span></div><div class="line"><span class="keyword">for</span> (language, shorthand) <span class="keyword">in</span> languageDic&#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"\(language) : \(shorthand)"</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">for</span> language <span class="keyword">in</span> languageDic.keys&#123;</div><div class="line">    <span class="built_in">print</span>(language)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">for</span> shorthand <span class="keyword">in</span> languageDic.values&#123;</div><div class="line">    <span class="built_in">print</span>(shorthand)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> languagueArray = <span class="type">Array</span>(languageDic.keys)</div><div class="line"><span class="keyword">let</span> shorthandArray = <span class="type">Array</span>(languageDic.values)</div><div class="line"></div><div class="line"><span class="comment">// 2.3 解包 if let 和 guard</span></div><div class="line"><span class="keyword">let</span> possibleString: <span class="type">String</span>? = <span class="string">"An optional string"</span></div><div class="line"><span class="built_in">print</span>(possibleString!)</div><div class="line"></div><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> sValue = possibleString&#123;</div><div class="line">    <span class="keyword">let</span> stringValue = sValue</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// guard语句</span></div><div class="line"><span class="comment">// guard只有一个else代码块，if可以有多个else if</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">checkLogin</span><span class="params">(person: [String: String!])</span></span>&#123;</div><div class="line">    <span class="comment">// check username</span></div><div class="line">    <span class="keyword">guard</span> <span class="keyword">let</span> uname = person[<span class="string">"uname"</span>] <span class="keyword">else</span>&#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"null username"</span>)</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">// check password</span></div><div class="line">    <span class="keyword">guard</span> <span class="keyword">let</span> pawd = person[<span class="string">"pawd"</span>] <span class="keyword">else</span>&#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"null password"</span>)</div><div class="line">        <span class="keyword">return</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">// allow Login</span></div><div class="line">    <span class="built_in">print</span>(<span class="string">"username: \(uname)  password: \(pawd)"</span>)</div><div class="line">    <span class="built_in">print</span>(<span class="string">"Login..."</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line">checkLogin([<span class="string">"pawd"</span>:<span class="string">"123456"</span>])</div><div class="line">checkLogin([<span class="string">"uname"</span>:<span class="string">"swift"</span>])</div><div class="line">checkLogin([<span class="string">"uname"</span>:<span class="string">"1234356"</span>, <span class="string">"pawd"</span>:<span class="string">"12346"</span>])</div><div class="line"></div><div class="line"><span class="comment">//func checkLoginIf(person: [String: String!])&#123;</span></div><div class="line"><span class="comment">//    if let uname = person["uname"]&#123;</span></div><div class="line"><span class="comment">//    &#125;else&#123;</span></div><div class="line"><span class="comment">//        print("invalid username")</span></div><div class="line"><span class="comment">//        return</span></div><div class="line"><span class="comment">//    &#125;</span></div><div class="line"><span class="comment">//    </span></div><div class="line"><span class="comment">//    if let pawd = person["pawd"]&#123;</span></div><div class="line"><span class="comment">//    &#125;else&#123;</span></div><div class="line"><span class="comment">//        print("invalid password")</span></div><div class="line"><span class="comment">//        return</span></div><div class="line"><span class="comment">//    &#125;</span></div><div class="line"><span class="comment">//    </span></div><div class="line"><span class="comment">//    print("username: \(uname)  password: \(pawd)")</span></div><div class="line"><span class="comment">//    print("Login...")</span></div><div class="line"><span class="comment">//&#125;</span></div><div class="line"></div><div class="line"><span class="comment">// 2.4 类</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeClass</span></span>&#123;</div><div class="line">    <span class="keyword">var</span> value1 = <span class="number">0</span></div><div class="line">    <span class="keyword">var</span> value2 : <span class="type">Int</span> = <span class="number">1</span></div><div class="line">    </div><div class="line">    <span class="comment">// 计算属性</span></div><div class="line">    <span class="keyword">var</span> cal:<span class="type">Int</span>&#123;</div><div class="line">        <span class="keyword">get</span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">10</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">set</span>(newValue)&#123;</div><div class="line">            value2=newValue</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">// 类型属性，不需要实例化即可访问</span></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">var</span> <span class="title">newvalue</span>: <span class="title">Int</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">10</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">// 属性监视器，每次属性被修改时都会被调用</span></div><div class="line">    <span class="keyword">var</span> teachers: <span class="type">Int</span> = <span class="number">0</span>&#123;</div><div class="line">        <span class="comment">// 完整的属性监视器</span></div><div class="line">        <span class="comment">// willSet在属性修改前调用</span></div><div class="line">        <span class="keyword">willSet</span>(newTeachers)&#123;</div><div class="line">            <span class="built_in">print</span>(<span class="string">"new teacher \(newTeachers)"</span>)</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="comment">// didSet在属性修改后调用</span></div><div class="line">        <span class="keyword">didSet</span>(old)&#123;</div><div class="line">            <span class="keyword">if</span> teachers &gt; old&#123;</div><div class="line">                <span class="built_in">print</span>(<span class="string">"add \(teachers-old) teachers"</span>)</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 访问存储属性</span></div><div class="line"><span class="keyword">var</span> someClass = <span class="type">SomeClass</span>()</div><div class="line"><span class="keyword">let</span> newValue1 = someClass.value1</div><div class="line"><span class="keyword">let</span> newValue2 = someClass.value2</div><div class="line"></div><div class="line"><span class="built_in">print</span>(someClass.value2)</div><div class="line">someClass.cal=<span class="number">20</span></div><div class="line"><span class="built_in">print</span>(someClass.value2)</div><div class="line"><span class="built_in">print</span>(someClass.cal)</div><div class="line"></div><div class="line"><span class="type">SomeClass</span>.newvalue</div><div class="line"></div><div class="line">someClass.teachers=<span class="number">10</span></div><div class="line"></div><div class="line"><span class="comment">// 实例方法</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">GameRules</span></span>&#123;</div><div class="line">    <span class="keyword">var</span> score = <span class="number">0</span></div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">additive</span><span class="params">()</span></span>&#123;</div><div class="line">        score+=<span class="number">1</span></div><div class="line">        <span class="built_in">print</span>(score)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">subtraction</span><span class="params">(amount: Int)</span></span>&#123;</div><div class="line">        score -= amount</div><div class="line">        <span class="built_in">print</span>(score)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">reset</span><span class="params">()</span></span>&#123;</div><div class="line">        score=<span class="number">0</span></div><div class="line">        <span class="built_in">print</span>(score)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> gameRules = <span class="type">GameRules</span>()    <span class="comment">// 实例化</span></div><div class="line">gameRules.additive()</div><div class="line">gameRules.subtraction(<span class="number">10</span>)</div><div class="line">gameRules.reset()</div><div class="line"></div><div class="line"><span class="comment">// 类方法</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Weaponry</span></span>&#123;</div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">func</span> <span class="title">betterArmed</span>()</span>&#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"You better own a sword"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="type">Weaponry</span>.betterArmed()</div><div class="line"></div><div class="line"><span class="comment">// 子类重写父类方法，需要添加override关键字</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">NewWeaponry</span> : <span class="title">Weaponry</span></span>&#123;</div><div class="line">    <span class="keyword">override</span> <span class="class"><span class="keyword">class</span> <span class="title">func</span> <span class="title">betterArmed</span>()</span>&#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"override"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line">        变量名称            |           定义范围</div><div class="line"> -----------------------------------------------------</div><div class="line">        存储属性            |          定义在类中</div><div class="line">        局部变量            |       函数、方法或闭包内部</div><div class="line">        全局变量            |函数、方法、闭包或任何类型之外定义的变量</div><div class="line"> */</div><div class="line"></div><div class="line"><span class="comment">// self属性</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">NewClass</span></span>&#123;</div><div class="line">    <span class="keyword">var</span> <span class="built_in">count</span>: <span class="type">Int</span> = <span class="number">100</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">printcount</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">var</span> <span class="built_in">count</span>:<span class="type">Int</span>=<span class="number">50</span></div><div class="line">        <span class="built_in">print</span>(<span class="built_in">count</span>)</div><div class="line">        <span class="built_in">print</span>(<span class="keyword">self</span>.<span class="built_in">count</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 下标脚本</span></div><div class="line"><span class="comment">/*</span></div><div class="line"> subscript(var1:type1,var2:type2,....) -&gt; return_type&#123;</div><div class="line">    get&#123;</div><div class="line">        return value(same type with return_type)</div><div class="line">    &#125;</div><div class="line">    set(var_name)&#123;</div><div class="line">        ...</div><div class="line">    &#125;</div><div class="line"> &#125;</div><div class="line"> */</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Experience</span></span>&#123;</div><div class="line">    <span class="keyword">var</span> age:[<span class="type">Int</span>] = <span class="type">Array</span>(<span class="built_in">count</span>:<span class="number">5</span>, repeatedValue:<span class="number">0</span>)</div><div class="line">    </div><div class="line">    <span class="comment">// 下标脚本可以配置成“只写”或“只读”</span></div><div class="line">    <span class="keyword">subscript</span>(index:<span class="type">Int</span>) -&gt; <span class="type">Int</span>&#123;</div><div class="line">        <span class="keyword">get</span>&#123;</div><div class="line">            <span class="keyword">return</span> age[index]</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">set</span>&#123;</div><div class="line">            age[index] = newValue</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> ex = <span class="type">Experience</span>()</div><div class="line">ex[<span class="number">0</span>]=<span class="number">5</span>     <span class="comment">// 直接通过下标访问、修改</span></div><div class="line">ex[<span class="number">1</span>]=<span class="number">6</span></div><div class="line"><span class="built_in">print</span>(ex[<span class="number">0</span>])</div><div class="line"><span class="built_in">print</span>(ex[<span class="number">1</span>])</div><div class="line"></div><div class="line"><span class="comment">// 2.5.1 函数</span></div><div class="line"><span class="comment">// 带参，带返回值</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">additive</span><span class="params">(a:Int, b:Int)</span></span> -&gt; <span class="type">Int</span>&#123;</div><div class="line">    <span class="keyword">return</span> a+b</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 不带参，不带返回值</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">printWelcome</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"Welcome"</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 使用函数类型</span></div><div class="line"><span class="keyword">var</span> newFunc: (<span class="type">Int</span>, <span class="type">Int</span>) -&gt; <span class="type">Int</span> = additive</div><div class="line"><span class="built_in">print</span>(<span class="string">"Result: \(newFunc(2,3))"</span>)</div><div class="line"><span class="comment">// 省略写法</span></div><div class="line"><span class="keyword">let</span> anotherFunc = additive</div><div class="line"></div><div class="line"><span class="comment">// 函数类型作为参数</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">printAdditiveResult</span><span class="params">(addFun: <span class="params">(Int,Int)</span></span></span>-&gt;<span class="type">Int</span>, a: <span class="type">Int</span>, b: <span class="type">Int</span>)&#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"Result: \(addFun(a,b))"</span>)</div><div class="line">&#125;</div><div class="line">printAdditiveResult(additive, a: <span class="number">4</span>, b: <span class="number">6</span>)</div><div class="line"></div><div class="line"><span class="comment">// 返回值类型为函数</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">increase</span><span class="params">(input: Int)</span></span> -&gt; <span class="type">Int</span>&#123;</div><div class="line">    <span class="keyword">return</span> input + <span class="number">1</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">reduce</span><span class="params">(input: Int)</span></span> -&gt; <span class="type">Int</span>&#123;</div><div class="line">    <span class="keyword">return</span> input - <span class="number">1</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">chooseFunction</span><span class="params">(backwards: Bool)</span></span> -&gt; (<span class="type">Int</span>) -&gt; <span class="type">Int</span>&#123;</div><div class="line">    <span class="keyword">return</span> backwards ? <span class="built_in">reduce</span> : increase</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> afun = chooseFunction(<span class="number">3</span>&gt;<span class="number">2</span>)</div><div class="line"><span class="built_in">print</span>(afun(<span class="number">3</span>))</div><div class="line"></div><div class="line"><span class="comment">// 嵌套函数</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">mainFunction</span><span class="params">(input: Int)</span></span> -&gt; <span class="type">Int</span>&#123;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">internalFunction</span><span class="params">(input: Int)</span></span> -&gt; <span class="type">Int</span>&#123;</div><div class="line">        <span class="keyword">return</span> input - <span class="number">1</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> internalFunction(input)</div><div class="line">&#125;</div><div class="line">mainFunction(<span class="number">10</span>)</div><div class="line"></div><div class="line"><span class="comment">// 2.5.2 闭包</span></div><div class="line"><span class="comment">// 闭包可以捕获和存储其所在上下文中任意常量和变量的引用。这就是所谓闭合或包裹常量和变量，俗称闭包。</span></div><div class="line"><span class="comment">// 闭包采取如下3种形式之一</span></div><div class="line"><span class="comment">//      1.全局函数是一个有名字但不会不获任何值的闭包。</span></div><div class="line"><span class="comment">//      2.嵌套函数是一个有名字并可以捕获其封闭函数域内值的闭包。</span></div><div class="line"><span class="comment">//      3.闭包表达式是一个利用轻量级语法所写的可以捕获其上下文中变量或常量值的没有名字的闭包。</span></div><div class="line"><span class="comment">// 格式：</span></div><div class="line"><span class="comment">//&#123;</span></div><div class="line"><span class="comment">//    (var:type) -&gt; return_type in</span></div><div class="line"><span class="comment">//    balalala</span></div><div class="line"><span class="comment">//    return value</span></div><div class="line"><span class="comment">//&#125;</span></div><div class="line"><span class="comment">// Note:</span></div><div class="line"><span class="comment">//  1.闭包主要指向函数类型</span></div><div class="line"><span class="comment">//  2.闭包的参数必须和函数类型的参数和返回值一致</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">GetList</span><span class="params">(arr:[Int], pre:<span class="params">(Int)</span></span></span>-&gt;<span class="type">Bool</span>) -&gt; [<span class="type">Int</span>]&#123;</div><div class="line">    <span class="comment">// 定义一个空的可变整型集合</span></div><div class="line">    <span class="keyword">var</span> tempArr = [<span class="type">Int</span>]()</div><div class="line">    </div><div class="line">    <span class="keyword">for</span> temp <span class="keyword">in</span> arr &#123;</div><div class="line">        <span class="keyword">if</span> pre(temp)&#123;</div><div class="line">            tempArr.append(temp)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> tempArr</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> arr=<span class="type">GetList</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>], pre: &#123;(s:<span class="type">Int</span>) <span class="keyword">in</span> <span class="keyword">return</span> s&gt;<span class="number">2</span>&#125;)</div><div class="line"><span class="built_in">print</span>(arr)</div><div class="line"></div><div class="line"><span class="comment">// 闭包的3种简写方法</span></div><div class="line"><span class="comment">// 1.省略参数类型和括号</span></div><div class="line"><span class="keyword">var</span> <span class="type">Arr</span> = <span class="type">GetList</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>], pre:&#123;s <span class="keyword">in</span> <span class="keyword">return</span> s&gt;<span class="number">2</span>&#125;)</div><div class="line"><span class="comment">// 2.在1的基础上省略return</span></div><div class="line"><span class="type">Arr</span> = <span class="type">GetList</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>], pre:&#123;s <span class="keyword">in</span> s&gt;<span class="number">2</span>&#125;)</div><div class="line"><span class="comment">// 3.参数名称缩写</span></div><div class="line"><span class="type">Arr</span> = <span class="type">GetList</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>], pre: &#123;$<span class="number">0</span>&gt;<span class="number">2</span>&#125;)</div><div class="line"></div><div class="line"><span class="comment">// 尾随闭包</span></div><div class="line"><span class="comment">//func Function(s:Int,closure: ()-&gt;())&#123;</span></div><div class="line"><span class="comment">//    balbalba</span></div><div class="line"><span class="comment">//&#125;</span></div><div class="line"></div><div class="line"><span class="comment">// 2.6 初始化与反初始化</span></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">School</span></span>&#123;</div><div class="line">    <span class="keyword">var</span> name: <span class="type">String</span></div><div class="line">    <span class="keyword">init</span>()&#123;</div><div class="line">        name = <span class="string">"Infinite"</span></div><div class="line">    &#125;</div><div class="line">    <span class="comment">// var name = "Infinite"</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> s = <span class="type">School</span>()</div><div class="line"><span class="built_in">print</span>(<span class="string">"The school name is \(s.name)"</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 自定义初始化</span></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Distance</span></span>&#123;</div><div class="line">    <span class="keyword">var</span> meters: <span class="type">Double</span> = <span class="number">0.0</span></div><div class="line">    <span class="keyword">init</span>(fromKm km: <span class="type">Double</span>)&#123;</div><div class="line">        meters = km * <span class="number">1000.0</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">init</span>(fromCm cm: <span class="type">Double</span>)&#123;</div><div class="line">        meters = cm / <span class="number">100.0</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> meters1 = <span class="type">Distance</span>(fromKm: <span class="number">1.0</span>)</div><div class="line"><span class="built_in">print</span>(meters1.meters)</div><div class="line"></div><div class="line"><span class="keyword">let</span> meters2 = <span class="type">Distance</span>(fromCm: <span class="number">100.0</span>)</div><div class="line"><span class="built_in">print</span>(meters2.meters)</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SwiftColor</span></span>&#123;</div><div class="line">    <span class="keyword">var</span> red = <span class="number">0.0</span>, green = <span class="number">0.0</span>, blue = <span class="number">0.0</span></div><div class="line">    <span class="keyword">init</span>(red: <span class="type">Double</span>, green: <span class="type">Double</span>, blue: <span class="type">Double</span>)&#123;</div><div class="line">        <span class="keyword">self</span>.red = red;</div><div class="line">        <span class="keyword">self</span>.green = green;</div><div class="line">        <span class="keyword">self</span>.blue = blue;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> blue = <span class="type">SwiftColor</span>(red: <span class="number">0.0</span>, green: <span class="number">0.0</span>, blue: <span class="number">1.0</span>)</div><div class="line"></div><div class="line"><span class="comment">// 默认构造器</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SchoolInfo</span></span>&#123;</div><div class="line">    <span class="keyword">var</span> name = <span class="string">"Infinite"</span></div><div class="line">    <span class="keyword">var</span> url = <span class="string">"http://yecj.me"</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> info = <span class="type">SchoolInfo</span>()</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ViewPoint</span></span>&#123;</div><div class="line">    <span class="keyword">var</span> x = <span class="number">0.0</span>, y = <span class="number">0.0</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> viewPoint = <span class="type">ViewPoint</span>(x: <span class="number">20.0</span>, y: <span class="number">100.0</span>)</div><div class="line"></div><div class="line"><span class="comment">// 类的继承和初始化</span></div><div class="line"><span class="comment">/*</span></div><div class="line"> 1. 指定初始化器一定调用父类的指定初始化器</div><div class="line"> 2. 便利初始化器最终调用自己的指定初始化器</div><div class="line"> */</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 初始化</span></div><div class="line"><span class="comment">/*</span></div><div class="line"> // in OC</div><div class="line"> UITableView *myTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];</div><div class="line"> // in Swift</div><div class="line"> let myTableView: UITableView = UITableView(frame: CGrectZero, sytle: .Plain)</div><div class="line"> let myTableView = UITableView(frame: CGRectZero, style: .Plain)</div><div class="line"> </div><div class="line"> // in OC</div><div class="line"> UIColor *color = [UIColor colorWithRed: 0.5 green:0.5 blue:0.5 alpha:1.0];</div><div class="line"> // in Swift</div><div class="line"> let color = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1.0)</div><div class="line"> */</div><div class="line"></div><div class="line"><span class="comment">// 反初始化</span></div><div class="line"><span class="comment">// 反初始化函数用deinit标识，只用于类类型。在一个类的实例被释放之前，反初始化函数被立即调用。</span></div><div class="line"><span class="comment">// 每个类最多只能有一个反初始化函数</span></div><div class="line"><span class="comment">/*</span></div><div class="line"> deinit&#123;</div><div class="line">    bablalbalba</div><div class="line"> &#125;</div><div class="line"> */</div><div class="line"></div><div class="line"><span class="comment">// id兼容性</span></div><div class="line"><span class="comment">// Swift语言将OC中的id对象对入为AnyObject类型，表示任意类型的对象。</span></div><div class="line"><span class="keyword">var</span> myObject: <span class="type">AnyObject</span> = <span class="type">UITableViewCell</span>()</div><div class="line">myObject = <span class="type">NSDate</span>()</div><div class="line"></div><div class="line"><span class="keyword">let</span> futureDate = myObject.dateByAddingTimeInterval(<span class="number">10</span>)</div><div class="line"><span class="keyword">let</span> timeSinceNow = myObject.timeIntervalSinceNow</div><div class="line"></div><div class="line"><span class="comment">// 当用AnyObject对象调用一个方法时，可以通过optional特性来决定AnyObject类型的对象是否调用该方法，这次调用是隐式展开optional的行为</span></div><div class="line"><span class="comment">//let myCount = myObject.count?   // 不被执行，myCount会被推测成可选的Int</span></div><div class="line"><span class="keyword">let</span> myChar = myObject.characterAtIndex?(<span class="number">5</span>)  <span class="comment">// 不被执行，NSDate中没有characterAtIndex方法</span></div><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> fifthCharacter = myObject.characterAtIndex?(<span class="number">5</span>)&#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"Found \(fifthCharacter) at index 5"</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 对于Swift强制转换，从AnyObject转为明确的类型不能保证成功，所以返回值是可选值</span></div><div class="line"><span class="keyword">let</span> userDefaults = <span class="type">NSUserDefaults</span>.standardUserDefaults()</div><div class="line"><span class="keyword">let</span> lastRefreshDate: <span class="type">AnyObject</span>? = userDefaults.objectForKey(<span class="string">"LastRefreshDate"</span>)</div><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> date = lastRefreshDate <span class="keyword">as</span>? <span class="type">NSDate</span>&#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"\(date.timeIntervalSinceReferenceDate)"</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 当确定对象类型并且不为nil，使用as强制调用</span></div><div class="line"><span class="comment">// let myDate = lastRefreshDate as! NSDate</span></div><div class="line"><span class="comment">// let timeInterval = myDate.timeIntervalSinceReferencxeDate</span></div><div class="line"></div><div class="line"><span class="comment">// 2.9 继承</span></div><div class="line"><span class="comment">// 继承</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> baseName: <span class="type">String</span></div><div class="line">    <span class="keyword">var</span> baseTag: <span class="type">Int</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">getBaseName</span><span class="params">()</span></span> -&gt; <span class="type">String</span>&#123;</div><div class="line">        <span class="keyword">return</span> baseName</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">init</span>()&#123;</div><div class="line">        baseName = <span class="string">"Base Class"</span></div><div class="line">        baseTag = <span class="number">1</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SubClass</span>: <span class="title">Base</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">getSubName</span><span class="params">()</span></span> -&gt; <span class="type">String</span>&#123;</div><div class="line">        <span class="keyword">return</span> getBaseName() + <span class="string">"'s Child"</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> subClass = <span class="type">SubClass</span>()</div><div class="line"><span class="built_in">print</span>(subClass.getSubName())</div><div class="line"></div><div class="line"><span class="comment">// 重写</span></div><div class="line"><span class="comment">// 使用super访问父类</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">OverrideClass</span>: <span class="title">Base</span></span>&#123;</div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">getBaseName</span><span class="params">()</span></span> -&gt; <span class="type">String</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"New Base Class"</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> overrideClass = <span class="type">OverrideClass</span>()</div><div class="line"><span class="built_in">print</span>(overrideClass.getBaseName())</div><div class="line"></div><div class="line"><span class="comment">// 重写属性</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">NewBaseName</span>: <span class="title">Base</span></span>&#123;</div><div class="line">    <span class="keyword">override</span> <span class="keyword">var</span> baseName: <span class="type">String</span>&#123;</div><div class="line">        <span class="keyword">get</span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">super</span>.baseName</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">set</span>&#123;</div><div class="line">            <span class="keyword">super</span>.baseName = <span class="string">"New Name"</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> newBaseName = <span class="type">NewBaseName</span>()</div><div class="line"><span class="built_in">print</span>(newBaseName.baseName)</div><div class="line">newBaseName.baseName = <span class="string">"New"</span></div><div class="line"><span class="built_in">print</span>(newBaseName.baseName)</div><div class="line"></div><div class="line"><span class="comment">// 2.10 扩展</span></div><div class="line"><span class="comment">// 扩展：想一个已有的类、结构体、枚举类型添加新功能</span></div><div class="line"><span class="comment">// Swift中可以扩展属性、构造器、方法、下标、嵌套类型</span></div><div class="line"><span class="comment">// 使用extension关键字</span></div><div class="line"></div><div class="line"><span class="comment">// 可以扩展一个已有类型，使其能够适配一个或多个协议</span></div><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">Double</span></span>&#123;</div><div class="line">    <span class="comment">//balbalbal</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">SomeProtocol</span></span>&#123;</div><div class="line">    <span class="comment">// definition of protocol</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">AnotherProtocol</span></span>&#123;</div><div class="line">    <span class="comment">// definition</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">Double</span>:<span class="title">SomeProtocol</span>, <span class="title">AnotherProtocol</span></span>&#123;</div><div class="line">    <span class="comment">// 协议方法在这里执行</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 扩展属性</span></div><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">Double</span></span>&#123;</div><div class="line">    <span class="keyword">var</span> cm: <span class="type">Double</span>&#123; <span class="keyword">return</span> <span class="keyword">self</span> / <span class="number">100.0</span>&#125;</div><div class="line">    <span class="keyword">var</span> km: <span class="type">Double</span>&#123; <span class="keyword">return</span> <span class="keyword">self</span> * <span class="number">1000.0</span>&#125;</div><div class="line">    <span class="keyword">var</span> m: <span class="type">Double</span> &#123; <span class="keyword">return</span> <span class="keyword">self</span>&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 使用扩展</span></div><div class="line"><span class="keyword">let</span> meterss = <span class="number">10</span>.cm</div><div class="line"><span class="built_in">print</span>(<span class="string">"10 cm is \(meterss) meters"</span>)</div><div class="line"></div><div class="line"><span class="keyword">let</span> meterss2 = <span class="number">5.0</span>.km</div><div class="line"><span class="built_in">print</span>(<span class="string">"5 km is \(meterss2) meters"</span>)</div><div class="line"></div><div class="line"><span class="keyword">let</span> aMarathon = <span class="number">42</span>.km + <span class="number">195</span>.m</div><div class="line"><span class="built_in">print</span>(<span class="string">"A marathon is \(aMarathon) meters long"</span>)</div><div class="line"></div><div class="line"><span class="comment">// 扩展构造器</span></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Size</span></span>&#123;</div><div class="line">    <span class="keyword">var</span> width = <span class="number">0.0</span>, height = <span class="number">0.0</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Point</span></span>&#123;</div><div class="line">    <span class="keyword">var</span> x = <span class="number">0.0</span>, y = <span class="number">0.0</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Rect</span></span>&#123;</div><div class="line">    <span class="keyword">var</span> origin = <span class="type">Point</span>()</div><div class="line">    <span class="keyword">var</span> size = <span class="type">Size</span>()</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 默认构造器</span></div><div class="line"><span class="keyword">let</span> defaultRect = <span class="type">Rect</span>()</div><div class="line"><span class="comment">// 成员构造器</span></div><div class="line"><span class="keyword">let</span> memberwiseRect = <span class="type">Rect</span>(origin: <span class="type">Point</span>(x: <span class="number">3.0</span>, y: <span class="number">3.0</span>), size: <span class="type">Size</span>(width: <span class="number">5.0</span>, height: <span class="number">5.0</span>))</div><div class="line"></div><div class="line"><span class="comment">// 扩展方法</span></div><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">Int</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">cubedInt</span><span class="params">()</span></span> -&gt; <span class="type">Int</span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">self</span> * <span class="keyword">self</span> * <span class="keyword">self</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">// 使用关键字修改self值</span></div><div class="line">    <span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">square</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">self</span> = <span class="keyword">self</span> * <span class="keyword">self</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> cube3 = <span class="number">3</span>.cubedInt()</div><div class="line"><span class="keyword">let</span> cube4 = <span class="number">4</span>.cubedInt()</div><div class="line"></div><div class="line"><span class="keyword">var</span> someInt = <span class="number">3</span></div><div class="line">someInt.square()</div><div class="line"><span class="built_in">print</span>(someInt)</div><div class="line"></div><div class="line"><span class="comment">// 扩展下标脚本</span></div><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">Int</span></span>&#123;</div><div class="line">    <span class="keyword">subscript</span>(index: <span class="type">Int</span>) -&gt; <span class="type">Int</span>&#123;</div><div class="line">        <span class="keyword">var</span> decimal = <span class="number">1</span></div><div class="line">        <span class="keyword">for</span> <span class="number">_</span> <span class="keyword">in</span> <span class="number">1</span>...index&#123;</div><div class="line">            decimal *= <span class="number">10</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> (<span class="keyword">self</span>/decimal)%<span class="number">10</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">print</span>(<span class="number">123456789</span>[<span class="number">1</span>])</div><div class="line"><span class="built_in">print</span>(<span class="number">123456789</span>[<span class="number">3</span>])</div><div class="line"><span class="built_in">print</span>(<span class="number">123456789</span>[<span class="number">5</span>])</div><div class="line"><span class="built_in">print</span>(<span class="number">123456789</span>[<span class="number">7</span>])</div><div class="line"><span class="built_in">print</span>(<span class="number">123456789</span>[<span class="number">9</span>])     <span class="comment">// 越界，返回 0</span></div><div class="line"></div><div class="line"><span class="comment">// 扩展嵌套类型</span></div><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">String</span></span>&#123;</div><div class="line">    <span class="class"><span class="keyword">enum</span> <span class="title">Biological</span></span>&#123;</div><div class="line">        <span class="keyword">case</span> <span class="type">Plants</span>, <span class="type">Animals</span>, <span class="type">Microbes</span>, <span class="type">Unknown</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">var</span> biological: <span class="type">Biological</span>&#123;</div><div class="line">        <span class="keyword">switch</span> <span class="type">String</span>(<span class="keyword">self</span>).lowercaseString &#123;</div><div class="line">        <span class="keyword">case</span> <span class="string">"rose"</span>,<span class="string">"lily"</span>,<span class="string">"orchid"</span>,<span class="string">"azalea"</span>,<span class="string">"apple"</span>:</div><div class="line">            <span class="keyword">return</span> .<span class="type">Plants</span></div><div class="line">        <span class="keyword">case</span> <span class="string">"horse"</span>, <span class="string">"ox"</span>,<span class="string">"sheep"</span>,<span class="string">"deer"</span>,<span class="string">"cat"</span>,<span class="string">"dog"</span>,<span class="string">"bear"</span>,<span class="string">"rabbit"</span>:</div><div class="line">            <span class="keyword">return</span> .<span class="type">Animals</span></div><div class="line">        <span class="keyword">case</span> <span class="string">"Bacteria"</span>, <span class="string">"Fungus"</span>, <span class="string">"Viruses"</span>:</div><div class="line">            <span class="keyword">return</span> .<span class="type">Microbes</span></div><div class="line">        <span class="keyword">default</span>:</div><div class="line">            <span class="keyword">return</span> .<span class="type">Unknown</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">printStringKinds</span><span class="params">(word: String)</span></span>&#123;</div><div class="line">    <span class="keyword">switch</span> word.biological &#123;</div><div class="line">    <span class="keyword">case</span> .<span class="type">Plants</span>:</div><div class="line">        <span class="built_in">print</span>(word + <span class="string">" plants"</span>)</div><div class="line">    <span class="keyword">default</span>:</div><div class="line">        <span class="built_in">print</span>(word + <span class="string">" other"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">printStringKinds(<span class="string">"sheep"</span>)</div><div class="line">printStringKinds(<span class="string">"lily"</span>)</div><div class="line"></div><div class="line"><span class="comment">// 2.11 协议（类似接口）</span></div><div class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">FirstProtocol</span></span>&#123;</div><div class="line">    <span class="comment">// 在这里定义协议的一些方法、属性的规范</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">SecondProtocol</span> </span>&#123;</div><div class="line">    <span class="comment">// 在这里定义协议的一些方法、属性的规范</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 一种类型采用一种特定的协议，放在类型名之后</span></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SomeStructure</span>: <span class="title">FirstProtocol</span>, <span class="title">SecondProtocol</span></span>&#123;</div><div class="line">    <span class="comment">// 在这里实现所有协议</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 如果要继承父类，则父类应写在前</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeSuperClass</span></span>&#123;</div><div class="line">    </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeOtherClass</span>: <span class="title">SomeSuperClass</span>, <span class="title">FirstProtocol</span>, <span class="title">SecondProtocol</span></span>&#123;</div><div class="line">    </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 属性要求</span></div><div class="line"><span class="comment">// 必须声明成变量属性，设置可获取和可设置&#123; get set &#125;</span></div><div class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">SomeOtherProtocol</span></span>&#123;</div><div class="line">    <span class="keyword">var</span> readAndWrite: <span class="type">Int</span>&#123; <span class="keyword">get</span> <span class="keyword">set</span> &#125;</div><div class="line">    <span class="keyword">var</span> onlyRead: <span class="type">Int</span>&#123; <span class="keyword">get</span> &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 用类实现协议时，需要用class表示该属性为类成员，用结构体或枚举实现时，用static关键字表示</span></div><div class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">AnotherOtherProtocol</span></span>&#123;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">var</span> someTypeProperty: <span class="type">Int</span>&#123; <span class="keyword">get</span> <span class="keyword">set</span> &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 方法要求</span></div><div class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">SomeProtocol2</span></span>&#123;</div><div class="line">    <span class="keyword">static</span> <span class="function"><span class="keyword">func</span> <span class="title">someFunc</span><span class="params">()</span></span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">CertificateGenerator</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">certificate</span><span class="params">()</span></span> -&gt; <span class="type">String</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">EncryptionGenerator</span>: <span class="title">CertificateGenerator</span></span>&#123;</div><div class="line">    <span class="keyword">var</span> publicKey = <span class="string">"UDID"</span></div><div class="line">    <span class="keyword">let</span> privateKey = <span class="string">"400-323-2304"</span></div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">certificate</span><span class="params">()</span></span> -&gt; <span class="type">String</span> &#123;</div><div class="line">        <span class="keyword">let</span> certificateKey = publicKey + privateKey</div><div class="line">        <span class="keyword">return</span> certificateKey</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> generator = <span class="type">EncryptionGenerator</span>()</div><div class="line"><span class="built_in">print</span>(<span class="string">"Certificate Key: \(generator.certificate())"</span>)</div><div class="line"></div><div class="line"><span class="comment">// 突变方法要求</span></div><div class="line"><span class="comment">// 能在方法或函数内部改变实例类型的方法称为突变方法。</span></div><div class="line"><span class="comment">// 协议突变方法前缀加上mutating，类在实现带mutating突变方法协议的方法时，不需要写mutating。</span></div><div class="line"><span class="comment">// mutating只用于结构和枚举</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">CanBeModified</span> </span>&#123;</div><div class="line">    <span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">canBeModified</span><span class="params">()</span></span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">enum</span> <span class="title">OnOffSwitch</span>: <span class="title">CanBeModified</span></span>&#123;</div><div class="line">    <span class="keyword">case</span> <span class="type">Off</span>, <span class="type">On</span></div><div class="line">    <span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">canBeModified</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">switch</span> <span class="keyword">self</span>&#123;</div><div class="line">        <span class="keyword">case</span> <span class="type">Off</span>:</div><div class="line">            <span class="keyword">self</span> = <span class="type">On</span></div><div class="line">        <span class="keyword">case</span> <span class="type">On</span>:</div><div class="line">            <span class="keyword">self</span> = <span class="type">Off</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> lightSwitch = <span class="type">OnOffSwitch</span>.<span class="type">Off</span></div><div class="line">lightSwitch.canBeModified()</div><div class="line"></div><div class="line"><span class="comment">// 协议作为类型</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProtocolType</span></span>&#123;</div><div class="line">    <span class="keyword">var</span> cer: <span class="type">CertificateGenerator</span></div><div class="line">    </div><div class="line">    <span class="keyword">init</span>(cerTemp: <span class="type">CertificateGenerator</span>)&#123;</div><div class="line">        <span class="keyword">self</span>.cer = cerTemp</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">newCertificate</span><span class="params">()</span></span> -&gt; <span class="type">String</span>&#123;</div><div class="line">        <span class="keyword">return</span> cer.certificate()</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> newProtocolType = <span class="type">ProtocolType</span>(cerTemp: <span class="type">EncryptionGenerator</span>())</div><div class="line"><span class="keyword">let</span> newCer = newProtocolType.newCertificate()</div><div class="line"><span class="built_in">print</span>(newCer)</div><div class="line"></div><div class="line"><span class="comment">// 委托（代理）</span></div><div class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">LoadingDelegate</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">didLoading</span><span class="params">()</span></span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">LoadingView</span>: <span class="title">LoadingDelegate</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">didLoading</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="comment">// 动画加载成功，注册成功</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">RegistrationView</span></span>&#123;</div><div class="line">    <span class="keyword">var</span> delegate: <span class="type">LoadingDelegate</span>?</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">registration</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">let</span> loading = <span class="type">LoadingView</span>()</div><div class="line">        delegate = loading</div><div class="line">        </div><div class="line">        delegate?.didLoading()</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// Optional协议要求</span></div><div class="line"><span class="comment">// 遵循者可以选择是否实现某些成员，使用@optional作为前缀定义可选成员</span></div><div class="line"><span class="comment">// 整个协议添加前缀@objc，作为定义的一部分</span></div><div class="line"><span class="comment">// 可选协议只能在含有@objc前缀的协议中生效，且@objc的协议只能被类遵循，同时只能通过类调用。</span></div><div class="line"><span class="meta">@objc</span> <span class="class"><span class="keyword">protocol</span> <span class="title">ListDataSource</span></span>&#123;</div><div class="line">    <span class="keyword">optional</span> <span class="function"><span class="keyword">func</span> <span class="title">numberOfRowInList</span><span class="params">(<span class="built_in">count</span>: Int)</span></span> -&gt; <span class="type">Int</span></div><div class="line">    <span class="keyword">optional</span> <span class="keyword">var</span> fixedRow: <span class="type">Int</span> &#123; <span class="keyword">get</span> &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">List</span></span>&#123;</div><div class="line">    <span class="keyword">var</span> rows = <span class="number">0</span></div><div class="line">    <span class="keyword">var</span> dataSource: <span class="type">ListDataSource</span>?     <span class="comment">// 调用</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">increment</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">if</span> <span class="keyword">let</span> <span class="built_in">count</span> = dataSource?.numberOfRowInList!(rows)&#123;</div><div class="line">            rows += <span class="built_in">count</span></div><div class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> <span class="keyword">let</span> <span class="built_in">count</span> = dataSource?.fixedRow!&#123;</div><div class="line">            rows += <span class="built_in">count</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 2.12 自动引用计数</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Exam</span></span>&#123;</div><div class="line">    <span class="keyword">let</span> name: <span class="type">String</span>?</div><div class="line">    <span class="keyword">init</span>(na: <span class="type">String</span>)&#123;</div><div class="line">        <span class="keyword">self</span>.name = na</div><div class="line">        <span class="built_in">print</span>(<span class="string">"\(self.name)"</span>)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">deinit</span>&#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"\(self.name)"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> exam1: <span class="type">Exam</span>?</div><div class="line"><span class="keyword">var</span> exam2: <span class="type">Exam</span>?</div><div class="line"><span class="keyword">var</span> exam3: <span class="type">Exam</span>?</div><div class="line"></div><div class="line">exam1 = <span class="type">Exam</span>(na: <span class="string">"exam computer"</span>)   <span class="comment">// ARC+1</span></div><div class="line">exam2 = exam1       <span class="comment">// ARC+1</span></div><div class="line">exam3 = exam1       <span class="comment">// ARC+1</span></div><div class="line"></div><div class="line">exam1 = <span class="literal">nil</span>     <span class="comment">// ARC-1</span></div><div class="line">exam2 = <span class="literal">nil</span>     <span class="comment">// ARC-1</span></div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/swift/" rel="tag">#swift</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/11/learn-Swift/" rel="next" title="learn Swift">
+                <i class="fa fa-chevron-left"></i> learn Swift
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/09/12/learn-Swift-2/"
+           data-title="learn Swift 2" data-url="http://yecj.me/2016/09/12/learn-Swift-2/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Jacky Yip" />
+          <p class="site-author-name" itemprop="name">Jacky Yip</p>
+          <p class="site-description motion-element" itemprop="description">Jacky Yip's Blog</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jacky Yip</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"leifjacky"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+
+</body>
+</html>
